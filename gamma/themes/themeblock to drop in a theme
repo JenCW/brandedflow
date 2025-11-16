@@ -1,0 +1,32 @@
+{
+  "theme": {
+    "name": "Luxe Fine Dining",
+    "colors": {
+      "primary": "#C9A646",
+      "secondary": "#000000",
+      "accent1": "#FFFFFF",
+      "accent2": "#7A1C1C",
+      "accent3": "#F5E6D3"
+    },
+    "fonts": {
+      "heading": "Garamond, Times New Roman, Serif",
+      "body": "Helvetica, Open Sans, Sans-Serif"
+    },
+    "imagery": [
+      "Fine dining plates",
+      "Martini glasses",
+      "Elegant interiors",
+      "Event gatherings"
+    ],
+    "tone": {
+      "keywords": [
+        "Luxury",
+        "Celebration",
+        "Italian Tradition",
+        "Community",
+        "Warmth"
+      ]
+    },
+    "statement": "Luxe Fine Dining blends Italian tradition with luxury and community, positioning itself as a venue for memorable celebrations."
+  }
+}
