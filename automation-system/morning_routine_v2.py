@@ -183,7 +183,8 @@ def run_morning_routine():
 
     # Show summary
     summary = (
-        "YOUR PRIORITIES TODAY:\n\n"
+        f"✅ YOUR PRIORITIES - {current_day}\n"
+        f"{current_date}\n\n"
         f"🎯 P1: {priority_1}\n\n"
         f"🎯 P2: {priority_2}\n\n"
         f"🎯 P3: {priority_3}\n\n"
@@ -191,7 +192,7 @@ def run_morning_routine():
         "No email/social until it's done!"
     )
 
-    send_dialog("Your Day", summary)
+    send_dialog(f"Your Day | {current_date}", summary)
 
     # Mark complete
     with open(today_file, 'a') as f:
