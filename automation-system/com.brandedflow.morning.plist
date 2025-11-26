@@ -8,7 +8,7 @@
     <key>ProgramArguments</key>
     <array>
         <string>/usr/bin/python3</string>
-        <string>/Users/jencortez-walters/brandedflow/automation-system/morning_routine.py</string>
+        <string>/Users/jencortez-walters/brandedflow/automation-system/morning_routine_v2.py</string>
     </array>
 
     <key>RunAtLoad</key>

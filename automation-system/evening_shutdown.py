@@ -141,10 +141,13 @@ def run_evening_shutdown():
     time.sleep(2)
 
     # Step 1: Review today - show actual priorities
+    current_date = datetime.now().strftime("%B %d, %Y")
+    current_day = datetime.now().strftime("%A")
+
     status_summary = "\n".join(status_lines)
     send_dialog(
-        "Evening Shutdown - Step 1 of 4",
-        f"Today's Score: {score}/3 priorities\n\n"
+        f"Evening Shutdown - Step 1 of 4 | {current_date}",
+        f"📊 {current_day}'s Score: {score}/3 priorities\n\n"
         f"{status_summary}\n\n"
         f"Quick reflection:\n"
         f"• What got in the way today?\n"
@@ -152,27 +155,39 @@ def run_evening_shutdown():
     )
     time.sleep(1)
 
-    # Step 2: Brain dump - optional text input
-    brain_dump = get_text_input(
-        "Evening Shutdown - Step 2 of 4",
-        "Brain dump (optional):\n\n"
-        "Get everything out of your head:\n"
-        "• Incomplete tasks\n"
-        "• Worries\n"
-        "• Random thoughts\n\n"
-        "Type it or leave blank:"
-    )
+    # Step 2: Brain dump - REQUIRED
+    current_time = datetime.now().strftime("%B %d, %Y at %I:%M %p")
 
-    if brain_dump.strip():
-        today_file = get_today_file()
-        with open(today_file, 'a') as f:
-            f.write(f"\n=== BRAIN DUMP ===\n{brain_dump}\n\n")
+    brain_dump = ""
+    while not brain_dump.strip():
+        brain_dump = get_text_input(
+            f"Evening Shutdown - Step 2 of 4 | {current_time}",
+            "📝 BRAIN DUMP (Required)\n\n"
+            "Get EVERYTHING out of your head:\n"
+            "• What didn't get done?\n"
+            "• What's bothering you?\n"
+            "• Random thoughts?\n\n"
+            "Type it all here (this is required):"
+        )
+
+        if not brain_dump.strip():
+            send_dialog(
+                "Brain Dump Required",
+                "You need to brain dump before ending your day.\n\n"
+                "Even if it's just 'Nothing on my mind' - type something.\n\n"
+                "It helps you sleep better."
+            )
+
+    today_file = get_today_file()
+    with open(today_file, 'a') as f:
+        f.write(f"\n=== BRAIN DUMP ===\n{brain_dump}\n\n")
 
     time.sleep(1)
 
     # Step 3: Biggest win
     win = get_text_input(
-        "Evening Shutdown - Step 3 of 4",
+        f"Evening Shutdown - Step 3 of 4 | {current_date}",
+        f"🏆 BIGGEST WIN - {current_day}\n\n"
         "What was your BIGGEST WIN today?\n\n"
         "Even if it was a tough day,\n"
         "what's one thing that went well?\n\n"
@@ -186,9 +201,12 @@ def run_evening_shutdown():
     time.sleep(1)
 
     # Step 4: Set tomorrow's Priority 1
+    tomorrow_date = (datetime.now() + timedelta(days=1)).strftime("%A, %B %d")
+
     tomorrow_p1 = get_text_input(
-        "Evening Shutdown - Step 4 of 4",
-        "Tomorrow's Priority 1\n\n"
+        f"Evening Shutdown - Step 4 of 4 | Planning {tomorrow_date}",
+        f"🎯 TOMORROW'S PRIORITY 1\n\n"
+        f"{tomorrow_date}\n\n"
         "What's the ONE revenue-generating thing\n"
         "that MUST get done tomorrow?\n\n"
         "Type it:"

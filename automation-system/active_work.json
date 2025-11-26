@@ -1,0 +1,92 @@
+{
+  "active_clients": [
+    {
+      "name": "AQR Remodeling",
+      "status": "active",
+      "common_tasks": [
+        "Finish AQR website design",
+        "Update AQR kitchen mockups",
+        "Send AQR project update",
+        "Review AQR feedback"
+      ]
+    },
+    {
+      "name": "Luxe Fine Dining Catering",
+      "status": "active",
+      "common_tasks": [
+        "Complete Luxe brand strategy",
+        "Create Luxe social media content",
+        "Send Luxe proposal",
+        "Follow up on Luxe project"
+      ]
+    },
+    {
+      "name": "Dental Bunny",
+      "status": "proposal_sent",
+      "common_tasks": [
+        "Follow up on Dental Bunny proposal",
+        "Revise Dental Bunny proposal",
+        "Schedule Dental Bunny call"
+      ]
+    },
+    {
+      "name": "Richard Hart Partnership",
+      "status": "discussion",
+      "common_tasks": [
+        "Draft Richard Hart partnership terms",
+        "Schedule Richard Hart meeting",
+        "Research AI receptionist pricing"
+      ]
+    }
+  ],
+  "recurring_business_tasks": [
+    "Post 2-3 Instagram stories/reels",
+    "Send 5 cold outreach DMs",
+    "Update portfolio with recent work",
+    "Create LinkedIn content",
+    "Build new service template",
+    "Update pricing document",
+    "Work on Branded+Flow website",
+    "Record client testimonial"
+  ],
+  "recurring_admin_tasks": [
+    "Send outstanding invoices",
+    "Follow up on unpaid invoices",
+    "File this week's receipts",
+    "Update financial tracker",
+    "Schedule next week's calls",
+    "Respond to pending emails",
+    "Update project tracker",
+    "Review calendar for week ahead"
+  ],
+  "day_of_week_defaults": {
+    "Monday": {
+      "focus": "Client work - start week strong",
+      "suggested_priority_1": "Most urgent client deliverable"
+    },
+    "Tuesday": {
+      "focus": "Client work + sales",
+      "suggested_priority_1": "Client work or proposal"
+    },
+    "Wednesday": {
+      "focus": "Content creation day",
+      "suggested_priority_1": "Create and post content"
+    },
+    "Thursday": {
+      "focus": "Client work + follow-ups",
+      "suggested_priority_1": "Client deliverable or sales follow-up"
+    },
+    "Friday": {
+      "focus": "Wrap up + admin",
+      "suggested_priority_1": "Complete week's deliverables"
+    },
+    "Saturday": {
+      "focus": "Optional catch-up or systems",
+      "suggested_priority_1": "Whatever didn't get done this week"
+    },
+    "Sunday": {
+      "focus": "Planning only",
+      "suggested_priority_1": "Weekly planning session"
+    }
+  }
+}
