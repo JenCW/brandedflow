@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - AQ Remodeling</title>
+    <meta name="description" content="View our portfolio of completed residential and commercial remodeling projects throughout Orange County.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">AQ Remodeling</a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="commercial.html">Commercial</a></li>
+                <li><a href="residential.html">Residential</a></li>
+                <li><a href="portfolio.html" class="active">Portfolio</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-toggle">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero hero-simple" style="background-image: url('images/Work-pics-and-vids/IMG_0464.png');">
+        <h1>Our portfolio of distinction</h1>
+        <p>Explore our completed projects and see the quality craftsmanship that sets us apart</p>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="section">
+        <div style="text-align: center; margin-bottom: 3rem;">
+            <button class="filter-btn active" data-filter="all" style="padding: 0.8rem 2rem; margin: 0.5rem; background: var(--secondary-color); color: var(--white); border: none; border-radius: 5px; cursor: pointer; font-weight: 600;">All Projects</button>
+            <button class="filter-btn" data-filter="residential" style="padding: 0.8rem 2rem; margin: 0.5rem; background: var(--gray-light); color: var(--text-dark); border: none; border-radius: 5px; cursor: pointer; font-weight: 600;">Residential</button>
+            <button class="filter-btn" data-filter="commercial" style="padding: 0.8rem 2rem; margin: 0.5rem; background: var(--gray-light); color: var(--text-dark); border: none; border-radius: 5px; cursor: pointer; font-weight: 600;">Commercial</button>
+            <button class="filter-btn" data-filter="kitchen" style="padding: 0.8rem 2rem; margin: 0.5rem; background: var(--gray-light); color: var(--text-dark); border: none; border-radius: 5px; cursor: pointer; font-weight: 600;">Kitchens</button>
+            <button class="filter-btn" data-filter="bathroom" style="padding: 0.8rem 2rem; margin: 0.5rem; background: var(--gray-light); color: var(--text-dark); border: none; border-radius: 5px; cursor: pointer; font-weight: 600;">Bathrooms</button>
+        </div>
+
+        <!-- Portfolio Grid -->
+        <div class="portfolio-grid">
+            <!-- All Images Auto-Generated -->
+            <div class="portfolio-item" data-category="residential kitchen">
+                <img src="images/Work-pics-and-vids/IMG_0468.png" alt="Luxury Kitchen with Ocean View">
+                <div class="portfolio-overlay">
+                    <h3>Luxury Kitchen with Ocean View</h3>
+                    <p>Modern coastal kitchen with premium finishes and panoramic views</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="residential kitchen">
+                <img src="images/Work-pics-and-vids/IMG_0463.png" alt="Marble Island Kitchen">
+                <div class="portfolio-overlay">
+                    <h3>Marble Island Kitchen</h3>
+                    <p>Elegant kitchen featuring stunning marble waterfall island</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="residential kitchen">
+                <img src="images/Work-pics-and-vids/IMG_0466.png" alt="Dark Luxury Kitchen">
+                <div class="portfolio-overlay">
+                    <h3>Dark Luxury Kitchen</h3>
+                    <p>Contemporary dark cabinetry with gold accent hardware</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="residential kitchen">
+                <img src="images/Work-pics-and-vids/IMG_0470.png" alt="Navy and Marble Kitchen">
+                <div class="portfolio-overlay">
+                    <h3>Navy and Marble Kitchen</h3>
+                    <p>Sophisticated navy cabinets with white marble countertops</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="residential kitchen">
+                <img src="images/Work-pics-and-vids/IMG_0475.png" alt="Modern Outdoor Kitchen">
+                <div class="portfolio-overlay">
+                    <h3>Modern Outdoor Kitchen</h3>
+                    <p>Complete outdoor entertainment space with built-in appliances</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="residential kitchen">
+                <img src="images/Work-pics-and-vids/IMG_0464.png" alt="Natural Light Kitchen">
+                <div class="portfolio-overlay">
+                    <h3>Natural Light Kitchen</h3>
+                    <p>Bright open kitchen with floor-to-ceiling windows</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="residential kitchen">
+                <img src="images/Work-pics-and-vids/IMG_0465.png" alt="Contemporary Kitchen Design">
+                <div class="portfolio-overlay">
+                    <h3>Contemporary Kitchen Design</h3>
+                    <p>Modern kitchen with integrated appliances and custom cabinetry</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="commercial">
+                <img src="images/Work-pics-and-vids/IMG_0480.png" alt="Commercial Space Renovation">
+                <div class="portfolio-overlay">
+                    <h3>Commercial Space Renovation</h3>
+                    <p>Modern commercial interior with custom finishes</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="residential bathroom">
+                <img src="images/Work-pics-and-vids/IMG_0485.png" alt="Luxury Master Bathroom">
+                <div class="portfolio-overlay">
+                    <h3>Luxury Master Bathroom</h3>
+                    <p>Spa-inspired bathroom with premium fixtures and finishes</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="residential bathroom">
+                <img src="images/Work-pics-and-vids/IMG_0486.png" alt="Contemporary Bathroom">
+                <div class="portfolio-overlay">
+                    <h3>Contemporary Bathroom</h3>
+                    <p>Modern bathroom with walk-in shower and floating vanity</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="residential kitchen">
+                <img src="images/Work-pics-and-vids/IMG_0467.png" alt="Gourmet Kitchen">
+                <div class="portfolio-overlay">
+                    <h3>Gourmet Kitchen</h3>
+                    <p>Chef-inspired kitchen with professional-grade appliances</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="residential kitchen">
+                <img src="images/Work-pics-and-vids/IMG_0469.png" alt="Classic Kitchen Remodel">
+                <div class="portfolio-overlay">
+                    <h3>Classic Kitchen Remodel</h3>
+                    <p>Timeless design with modern functionality</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="residential kitchen">
+                <img src="images/Work-pics-and-vids/IMG_0471.png" alt="Open Concept Kitchen">
+                <div class="portfolio-overlay">
+                    <h3>Open Concept Kitchen</h3>
+                    <p>Spacious kitchen flowing into dining and living areas</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="residential kitchen">
+                <img src="images/Work-pics-and-vids/IMG_0472.png" alt="Modern Kitchen Island">
+                <div class="portfolio-overlay">
+                    <h3>Modern Kitchen Island</h3>
+                    <p>Statement island with seating and storage</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="residential kitchen">
+                <img src="images/Work-pics-and-vids/IMG_0473.png" alt="Contemporary Kitchen">
+                <div class="portfolio-overlay">
+                    <h3>Contemporary Kitchen</h3>
+                    <p>Sleek design with integrated lighting and premium appliances</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="residential kitchen">
+                <img src="images/Work-pics-and-vids/IMG_0474.png" alt="Designer Kitchen">
+                <div class="portfolio-overlay">
+                    <h3>Designer Kitchen</h3>
+                    <p>Custom cabinetry with luxury finishes throughout</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="residential kitchen">
+                <img src="images/Work-pics-and-vids/IMG_0476.png" alt="Bright Kitchen Remodel">
+                <div class="portfolio-overlay">
+                    <h3>Bright Kitchen Remodel</h3>
+                    <p>Light and airy kitchen with white cabinetry</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="residential kitchen">
+                <img src="images/Work-pics-and-vids/IMG_0477.png" alt="Luxury Kitchen Design">
+                <div class="portfolio-overlay">
+                    <h3>Luxury Kitchen Design</h3>
+                    <p>High-end kitchen with custom details and premium materials</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="residential kitchen">
+                <img src="images/Work-pics-and-vids/IMG_0478.png" alt="Traditional Kitchen">
+                <div class="portfolio-overlay">
+                    <h3>Traditional Kitchen</h3>
+                    <p>Classic design with modern conveniences</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="residential kitchen">
+                <img src="images/Work-pics-and-vids/IMG_0479.png" alt="Elegant Kitchen Space">
+                <div class="portfolio-overlay">
+                    <h3>Elegant Kitchen Space</h3>
+                    <p>Sophisticated kitchen with timeless appeal</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="residential">
+                <img src="images/Work-pics-and-vids/IMG_0481.png" alt="Interior Remodel">
+                <div class="portfolio-overlay">
+                    <h3>Interior Remodel</h3>
+                    <p>Complete interior transformation with custom finishes</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="residential">
+                <img src="images/Work-pics-and-vids/IMG_0482.png" alt="Home Renovation">
+                <div class="portfolio-overlay">
+                    <h3>Home Renovation</h3>
+                    <p>Modern updates throughout the entire home</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="residential">
+                <img src="images/Work-pics-and-vids/IMG_0483.png" alt="Living Space Remodel">
+                <div class="portfolio-overlay">
+                    <h3>Living Space Remodel</h3>
+                    <p>Contemporary living areas with refined details</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="residential">
+                <img src="images/Work-pics-and-vids/IMG_0484.png" alt="Custom Home Interior">
+                <div class="portfolio-overlay">
+                    <h3>Custom Home Interior</h3>
+                    <p>Bespoke interior design and construction</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="residential bathroom">
+                <img src="images/Work-pics-and-vids/IMG_0485.png" alt="Spa Bathroom">
+                <div class="portfolio-overlay">
+                    <h3>Spa Bathroom</h3>
+                    <p>Resort-style bathroom with soaking tub and rain shower</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="residential bathroom">
+                <img src="images/Work-pics-and-vids/IMG_0486.png" alt="Master Bath Suite">
+                <div class="portfolio-overlay">
+                    <h3>Master Bath Suite</h3>
+                    <p>Luxurious master bathroom with dual vanities</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="residential">
+                <img src="images/Work-pics-and-vids/IMG_0487.png" alt="Modern Home Interior">
+                <div class="portfolio-overlay">
+                    <h3>Modern Home Interior</h3>
+                    <p>Clean lines and contemporary finishes throughout</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="residential">
+                <img src="images/Work-pics-and-vids/IMG_0488.png" alt="Residential Renovation">
+                <div class="portfolio-overlay">
+                    <h3>Residential Renovation</h3>
+                    <p>Complete home transformation with premium materials</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="residential">
+                <img src="images/Work-pics-and-vids/IMG_0489.png" alt="Custom Living Space">
+                <div class="portfolio-overlay">
+                    <h3>Custom Living Space</h3>
+                    <p>Tailored design meeting every lifestyle need</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="residential kitchen">
+                <img src="images/Work-pics-and-vids/IMG_0491.png" alt="Transitional Kitchen">
+                <div class="portfolio-overlay">
+                    <h3>Transitional Kitchen</h3>
+                    <p>Perfect blend of traditional and contemporary styles</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="residential kitchen">
+                <img src="images/Work-pics-and-vids/IMG_0492.png" alt="Chef's Kitchen">
+                <div class="portfolio-overlay">
+                    <h3>Chef's Kitchen</h3>
+                    <p>Professional kitchen designed for culinary excellence</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="residential kitchen">
+                <img src="images/Work-pics-and-vids/IMG_0493.png" alt="Coastal Kitchen">
+                <div class="portfolio-overlay">
+                    <h3>Coastal Kitchen</h3>
+                    <p>Beach-inspired kitchen with relaxed elegance</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="residential kitchen">
+                <img src="images/Work-pics-and-vids/IMG_0494.png" alt="Farmhouse Kitchen">
+                <div class="portfolio-overlay">
+                    <h3>Farmhouse Kitchen</h3>
+                    <p>Rustic charm with modern amenities</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="section section-dark">
+        <div class="section-header">
+            <h2>Ready to transform<br>your space?</h2>
+        </div>
+        <div class="stats-container">
+            <div class="stat-item">
+                <span class="stat-number">500+</span>
+                <span class="stat-label">Completed projects</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">98%</span>
+                <span class="stat-label">Satisfied clients</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">20+</span>
+                <span class="stat-label">Years experience</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="section">
+        <div class="section-header">
+            <h2>Build something<br>extraordinary</h2>
+            <p>See our process and hear from satisfied clients</p>
+        </div>
+        <div class="video-placeholder" style="max-width: 900px; margin: 0 auto;">▶</div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section section-dark">
+        <div style="text-align: center; background: var(--primary-color); color: var(--white); padding: 5rem 3rem; border-radius: 12px;">
+            <h2 style="font-size: 3rem; margin-bottom: 1.5rem; color: var(--white);">Start your project today</h2>
+            <p style="font-size: 1.3rem; margin-bottom: 2.5rem; opacity: 0.95;">Let's discuss your vision and create something amazing together</p>
+            <a href="contact.html" class="cta-button">Get Your Free Quote</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>AQ Remodeling</h3>
+                <p>Transforming spaces with quality craftsmanship and exceptional service since 2005.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Services</h3>
+                <a href="commercial.html">Commercial Remodeling</a>
+                <a href="residential.html">Residential Remodeling</a>
+                <a href="portfolio.html">Portfolio</a>
+            </div>
+            <div class="footer-section">
+                <h3>Company</h3>
+                <a href="about.html">About Us</a>
+                <a href="faq.html">FAQ</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>📧 info@aqremodeling.com</p>
+                <p>📞 (555) 123-4567</p>
+                <p>📍 Orange County, CA</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 AQ Remodeling. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

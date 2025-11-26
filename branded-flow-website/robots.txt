@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://brandedandflow.com/sitemap.xml
+
+# Block admin/system files (add when needed)
+Disallow: /admin/
+Disallow: /*.pdf$
+
+# Crawl-delay (optional, helps prevent overwhelming server)
+Crawl-delay: 1
