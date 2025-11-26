@@ -134,11 +134,11 @@ def run_morning_routine():
     time.sleep(1)
 
     # Priority 1 - Revenue
-    p1_intro = "Priority 1 = REVENUE\n\nPick your #1 money-making priority:"
+    p1_intro = f"💰 PRIORITY 1 = REVENUE\n{current_day}, {current_date}\n\nPick your #1 money-making priority:"
     p1_options = suggestions['revenue_options'][:6]
     p1_options.append("✏️  Write my own")
 
-    priority_1 = show_choice_list("Priority 1 - Revenue", p1_intro, p1_options)
+    priority_1 = show_choice_list(f"Priority 1 - Revenue | {current_date}", p1_intro, p1_options)
 
     if not priority_1:
         send_notification("Cancelled", "Morning routine cancelled", sound=False)
@@ -148,24 +148,24 @@ def run_morning_routine():
         priority_1 = get_text_input("Priority 1 - Custom", "Type your revenue priority:")
 
     # Priority 2 - Business Building
-    p2_intro = "Priority 2 = BUSINESS BUILDING\n\nPick your #2 growth priority:"
+    p2_intro = f"📈 PRIORITY 2 = BUSINESS BUILDING\n{current_day}, {current_date}\n\nPick your #2 growth priority:"
     p2_options = suggestions['business_options'][:6]
     p2_options.append("✏️  Write my own")
 
-    priority_2 = show_choice_list("Priority 2 - Business", p2_intro, p2_options)
+    priority_2 = show_choice_list(f"Priority 2 - Business | {current_date}", p2_intro, p2_options)
 
     if not priority_2:
         priority_2 = "No Priority 2 set"
     elif "Write my own" in priority_2:
-        priority_2 = get_text_input("Priority 2 - Custom", "Type your business priority:")
+        priority_2 = get_text_input(f"Priority 2 - Custom | {current_date}", "Type your business priority:")
 
     # Priority 3 - Admin
-    p3_intro = "Priority 3 = ADMIN\n\nPick your #3 admin priority:"
+    p3_intro = f"📋 PRIORITY 3 = ADMIN\n{current_day}, {current_date}\n\nPick your #3 admin priority:"
     p3_options = suggestions['admin_options'][:6]
     p3_options.append("✏️  Write my own")
     p3_options.append("⏭️  Skip Priority 3")
 
-    priority_3 = show_choice_list("Priority 3 - Admin", p3_intro, p3_options)
+    priority_3 = show_choice_list(f"Priority 3 - Admin | {current_date}", p3_intro, p3_options)
 
     if not priority_3 or "Skip" in priority_3:
         priority_3 = "No Priority 3 set"
