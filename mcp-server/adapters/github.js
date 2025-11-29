@@ -1,6 +1,6 @@
-const { Octokit } = require('@octokit/rest');
-
-function getOctokit() {
+async function getOctokit() {
+  // Import Octokit dynamically because @octokit/rest is an ESM-only package.
+  const { Octokit } = await import('@octokit/rest');
   const token = process.env.GITHUB_TOKEN;
   if (!token) throw new Error('GITHUB_TOKEN not set');
   return new Octokit({ auth: token });
@@ -35,13 +35,13 @@ async function createTree(octokit, owner, repo, baseSha, fileChanges) {
 
 module.exports = {
   listRepos: async (org) => {
-    const octokit = getOctokit();
+    const octokit = await getOctokit();
     const res = await octokit.repos.listForOrg({ org });
     return res.data.map(r => ({ name: r.name, full_name: r.full_name }));
   },
   
   createCommit: async ({ owner, repo, message, fileChanges }) => {
-    const octokit = getOctokit();
+    const octokit = await getOctokit();
     const { data: headRef } = await octokit.git.getRef({ owner, repo, ref: 'heads/main' });
     const headSha = headRef.object.sha;
     
@@ -57,7 +57,7 @@ module.exports = {
   },
   
   createBranchAndPR: async ({ owner, repo, base = 'main', branchName, title, body, fileChanges = [] }) => {
-    const octokit = getOctokit();
+    const octokit = await getOctokit();
     
     // Get base ref
     const { data: baseRef } = await octokit.git.getRef({ owner, repo, ref: `heads/${base}` });
@@ -96,7 +96,7 @@ module.exports = {
   },
   
   listPullRequests: async ({ owner, repo, state = 'open' }) => {
-    const octokit = getOctokit();
+    const octokit = await getOctokit();
     const { data } = await octokit.pulls.list({ owner, repo, state });
     return data.map(pr => ({ number: pr.number, title: pr.title, url: pr.html_url, state: pr.state }));
   }
