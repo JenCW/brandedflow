@@ -82,6 +82,9 @@ def priority_checkup():
     completed = get_priority_status()
     priorities = get_saved_priorities()
 
+    current_date = datetime.now().strftime("%B %d, %Y")
+    current_time = datetime.now().strftime("%I:%M %p")
+
     if len(completed) == 3:
         send_notification(
             "All Priorities Done!",
@@ -94,18 +97,18 @@ def priority_checkup():
     if 1 not in completed:
         next_priority = 1
         priority_text = priorities[1] if priorities[1] else "your #1 revenue priority"
-        message = f"Priority 1 Check-in\n\nHave you completed:\n\"{priority_text}\"\n\nDone?"
+        message = f"💰 PRIORITY 1 CHECK-IN\n{current_time}\n\nHave you completed:\n\"{priority_text}\"\n\nDone?"
     elif 2 not in completed:
         next_priority = 2
         priority_text = priorities[2] if priorities[2] else "your #2 business-building priority"
-        message = f"Priority 2 Check-in\n\nPriority 1 is done! Nice.\n\nHave you completed:\n\"{priority_text}\"\n\nDone?"
+        message = f"📈 PRIORITY 2 CHECK-IN\n{current_time}\n\nPriority 1 is done! Nice.\n\nHave you completed:\n\"{priority_text}\"\n\nDone?"
     else:
         next_priority = 3
         priority_text = priorities[3] if priorities[3] else "your #3 admin priority"
-        message = f"Priority 3 Check-in\n\nTwo down, one to go!\n\nHave you completed:\n\"{priority_text}\"\n\nDone?"
+        message = f"📋 PRIORITY 3 CHECK-IN\n{current_time}\n\nTwo down, one to go!\n\nHave you completed:\n\"{priority_text}\"\n\nDone?"
 
     response = send_dialog(
-        f"Priority {next_priority} Status",
+        f"Priority {next_priority} Check | {current_date}",
         message,
         buttons=["Done", "Still Working", "Skipping"]
     )
