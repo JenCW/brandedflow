@@ -98,7 +98,7 @@ def run_evening_shutdown():
     # Check if already done
     if has_shutdown_today():
         send_notification(
-            "Already Done",
+            "Branded + Flow | Already Done",
             "You've already done your evening shutdown today.",
             sound=False
         )
@@ -134,7 +134,7 @@ def run_evening_shutdown():
         emoji = "🔄"
 
     send_notification(
-        "Evening Shutdown Time",
+        "Branded + Flow | Evening Shutdown",
         f"{emoji} {greeting}",
         sound=True
     )
@@ -146,7 +146,7 @@ def run_evening_shutdown():
 
     status_summary = "\n".join(status_lines)
     send_dialog(
-        f"Evening Shutdown - Step 1 of 4 | {current_date}",
+        f"Branded + Flow | Evening Shutdown 1/4 | {current_date}",
         f"📊 {current_day}'s Score: {score}/3 priorities\n\n"
         f"{status_summary}\n\n"
         f"Quick reflection:\n"
@@ -161,7 +161,7 @@ def run_evening_shutdown():
     brain_dump = ""
     while not brain_dump.strip():
         brain_dump = get_text_input(
-            f"Evening Shutdown - Step 2 of 4 | {current_time}",
+            f"Branded + Flow | Evening Shutdown 2/4 | {current_time}",
             "📝 BRAIN DUMP (Required)\n\n"
             "Get EVERYTHING out of your head:\n"
             "• What didn't get done?\n"
@@ -172,7 +172,7 @@ def run_evening_shutdown():
 
         if not brain_dump.strip():
             send_dialog(
-                "Brain Dump Required",
+                "Branded + Flow | Brain Dump Required",
                 "You need to brain dump before ending your day.\n\n"
                 "Even if it's just 'Nothing on my mind' - type something.\n\n"
                 "It helps you sleep better."
@@ -186,7 +186,7 @@ def run_evening_shutdown():
 
     # Step 3: Biggest win
     win = get_text_input(
-        f"Evening Shutdown - Step 3 of 4 | {current_date}",
+        f"Branded + Flow | Evening Shutdown 3/4 | {current_date}",
         f"🏆 BIGGEST WIN - {current_day}\n\n"
         "What was your BIGGEST WIN today?\n\n"
         "Even if it was a tough day,\n"
@@ -204,7 +204,7 @@ def run_evening_shutdown():
     tomorrow_date = (datetime.now() + timedelta(days=1)).strftime("%A, %B %d")
 
     tomorrow_p1 = get_text_input(
-        f"Evening Shutdown - Step 4 of 4 | Planning {tomorrow_date}",
+        f"Branded + Flow | Evening Shutdown 4/4 | {tomorrow_date}",
         f"🎯 TOMORROW'S PRIORITY 1\n\n"
         f"{tomorrow_date}\n\n"
         "What's the ONE revenue-generating thing\n"
@@ -226,7 +226,7 @@ def run_evening_shutdown():
 
     # Final message
     send_notification(
-        "Day Closed",
+        "Branded + Flow | Day Closed",
         "You're done. Leave work behind. Rest well.",
         sound=True
     )

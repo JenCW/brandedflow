@@ -87,7 +87,7 @@ def priority_checkup():
 
     if len(completed) == 3:
         send_notification(
-            "All Priorities Done!",
+            "Branded + Flow | All Priorities Done!",
             "You crushed all 3 priorities today. You're done.",
             sound=True
         )
@@ -108,7 +108,7 @@ def priority_checkup():
         message = f"📋 PRIORITY 3 CHECK-IN\n{current_time}\n\nTwo down, one to go!\n\nHave you completed:\n\"{priority_text}\"\n\nDone?"
 
     response = send_dialog(
-        f"Priority {next_priority} Check | {current_date}",
+        f"Branded + Flow | Priority {next_priority} | {current_date}",
         message,
         buttons=["Done", "Still Working", "Skipping"]
     )
@@ -116,14 +116,14 @@ def priority_checkup():
     if "Done" in response:
         mark_priority_done(next_priority)
         send_notification(
-            f"Priority {next_priority} Complete!",
+            f"Branded + Flow | Priority {next_priority} Complete!",
             f"✓ {len(completed) + 1}/3 priorities done today",
             sound=True
         )
 
         if len(completed) + 1 == 3:
             send_notification(
-                "Day Complete!",
+                "Branded + Flow | Day Complete!",
                 "All 3 priorities done. You can rest easy tonight.",
                 sound=True
             )
@@ -132,13 +132,13 @@ def priority_checkup():
         with open(get_today_file(), 'a') as f:
             f.write(f"priority_{next_priority}_skipped: {datetime.now().strftime('%H:%M:%S')}\n")
         send_notification(
-            "Priority Skipped",
+            "Branded + Flow | Priority Skipped",
             "Noted. Moving to next priority.",
             sound=False
         )
     else:
         send_notification(
-            "Keep Going",
+            "Branded + Flow | Keep Going",
             "You got this. Stay focused.",
             sound=False
         )

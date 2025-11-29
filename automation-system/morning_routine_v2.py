@@ -103,7 +103,7 @@ def run_morning_routine():
 
     # Welcome
     send_notification(
-        "Good Morning!",
+        "Branded + Flow | Good Morning!",
         "Let's set your priorities (this'll be quick)",
         sound=True
     )
@@ -130,7 +130,7 @@ def run_morning_routine():
 
     context_msg += "\nNext: Pick your 3 priorities"
 
-    send_dialog(f"Morning Routine | {current_date}", context_msg)
+    send_dialog(f"Branded + Flow | Morning Routine | {current_date}", context_msg)
     time.sleep(1)
 
     # Priority 1 - Revenue
@@ -138,26 +138,26 @@ def run_morning_routine():
     p1_options = suggestions['revenue_options'][:6]
     p1_options.append("✏️  Write my own")
 
-    priority_1 = show_choice_list(f"Priority 1 - Revenue | {current_date}", p1_intro, p1_options)
+    priority_1 = show_choice_list(f"Branded + Flow | Priority 1 | {current_date}", p1_intro, p1_options)
 
     if not priority_1:
-        send_notification("Cancelled", "Morning routine cancelled", sound=False)
+        send_notification("Branded + Flow", "Morning routine cancelled", sound=False)
         return
 
     if "Write my own" in priority_1:
-        priority_1 = get_text_input("Priority 1 - Custom", "Type your revenue priority:")
+        priority_1 = get_text_input(f"Branded + Flow | Priority 1 Custom | {current_date}", "Type your revenue priority:")
 
     # Priority 2 - Business Building
     p2_intro = f"📈 PRIORITY 2 = BUSINESS BUILDING\n{current_day}, {current_date}\n\nPick your #2 growth priority:"
     p2_options = suggestions['business_options'][:6]
     p2_options.append("✏️  Write my own")
 
-    priority_2 = show_choice_list(f"Priority 2 - Business | {current_date}", p2_intro, p2_options)
+    priority_2 = show_choice_list(f"Branded + Flow | Priority 2 | {current_date}", p2_intro, p2_options)
 
     if not priority_2:
         priority_2 = "No Priority 2 set"
     elif "Write my own" in priority_2:
-        priority_2 = get_text_input(f"Priority 2 - Custom | {current_date}", "Type your business priority:")
+        priority_2 = get_text_input(f"Branded + Flow | Priority 2 Custom | {current_date}", "Type your business priority:")
 
     # Priority 3 - Admin
     p3_intro = f"📋 PRIORITY 3 = ADMIN\n{current_day}, {current_date}\n\nPick your #3 admin priority:"
@@ -165,12 +165,12 @@ def run_morning_routine():
     p3_options.append("✏️  Write my own")
     p3_options.append("⏭️  Skip Priority 3")
 
-    priority_3 = show_choice_list(f"Priority 3 - Admin | {current_date}", p3_intro, p3_options)
+    priority_3 = show_choice_list(f"Branded + Flow | Priority 3 | {current_date}", p3_intro, p3_options)
 
     if not priority_3 or "Skip" in priority_3:
         priority_3 = "No Priority 3 set"
     elif "Write my own" in priority_3:
-        priority_3 = get_text_input("Priority 3 - Custom", "Type your admin priority:")
+        priority_3 = get_text_input(f"Branded + Flow | Priority 3 Custom | {current_date}", "Type your admin priority:")
 
     # Save priorities
     today_file = get_today_file()
@@ -192,7 +192,7 @@ def run_morning_routine():
         "No email/social until it's done!"
     )
 
-    send_dialog(f"Your Day | {current_date}", summary)
+    send_dialog(f"Branded + Flow | Your Day | {current_date}", summary)
 
     # Mark complete
     with open(today_file, 'a') as f:
@@ -201,7 +201,7 @@ def run_morning_routine():
 
     # Final push
     send_notification(
-        "Let's Go!",
+        "Branded + Flow | Let's Go!",
         f"P1: {priority_1[:50]}...",
         sound=True
     )
