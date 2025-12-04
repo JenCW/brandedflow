@@ -1,0 +1,30 @@
+{
+  "timestamp": "2025-12-04T03:02:51.536899",
+  "files": {
+    "CONTEXT.md": {
+      "exists": true,
+      "path": "docs/CONTEXT.md",
+      "last_modified": "2025-12-03T22:26:29.021379",
+      "days_old": 0,
+      "status": "current",
+      "description": "Master context file - your \"start here\" document"
+    },
+    "CLIENT_STATUS.md": {
+      "exists": true,
+      "path": "docs/CLIENT_STATUS.md",
+      "last_modified": "2025-12-03T22:27:06.277905",
+      "days_old": 0,
+      "status": "current",
+      "description": "Client pipeline and status tracking"
+    },
+    "DECISIONS_LOG.md": {
+      "exists": true,
+      "path": "docs/DECISIONS_LOG (1).md",
+      "last_modified": "2025-12-04T02:43:43.605305",
+      "days_old": 0,
+      "status": "current",
+      "description": "Chronological decision history"
+    }
+  },
+  "suggestions": []
+}

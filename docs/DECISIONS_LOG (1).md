@@ -166,6 +166,24 @@ Chronological record of all major business decisions for Branded + Flow
 
 ---
 
+## December 4, 2024
+
+### AI Assistant Rules System
+**Decision:** Create mandatory rules system for all AI assistants (AI_RULES.md, .cursorrules, .claude_code_rules)
+**Rationale:** Cursor Composer violated folder structure by creating files in wrong locations with wrong naming conventions. Need enforceable rules that auto-load for all AI tools.
+**Impact:** Created comprehensive rule system with auto-loading configs for Cursor and Claude Code. Rules prevent: creating root-level folders, using CAPS/underscores in names, forgetting to update docs, breaking established structure. Updated CONTEXT.md and README.md to reference rules prominently.
+**Alternatives Considered:** Manual reminders each session (rejected: unreliable), post-hoc fixes (rejected: wastes time), no enforcement (rejected: chaos continues)
+**Review Date:** After 7 days (evaluate if AI assistants follow rules consistently)
+
+### Context File Automation System
+**Decision:** Keep Cursor Composer's context-automation system in systems/ folder, delete duplicate reference file
+**Rationale:** Composer created automated system (Python scripts, shell scripts, HTML dashboard, git hooks) to help maintain CONTEXT.md and related docs. System is properly located in systems/context-automation/ per folder structure rules. Duplicate quick-reference file in company/operations/ was unnecessary.
+**Impact:** Automation system available in systems/context-automation/ for optional use. Can check context file freshness, show update checklists, open dashboard. Not required but helpful for maintaining documentation.
+**Alternatives Considered:** Delete entire system (rejected: potentially useful), move to automation-library (rejected: it's an operational system not reusable library), keep duplicate file (rejected: violates single source of truth)
+**Review Date:** After trying the automation for 1 week (evaluate if it's actually helpful or just overhead)
+
+---
+
 ## Template for Future Decisions
 
 **Date:**  

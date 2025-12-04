@@ -1,0 +1,21 @@
+═══════════════════════════════════════════════════════════
+  BRANDED + FLOW - CONTEXT AUTOMATION
+═══════════════════════════════════════════════════════════
+
+TO RUN:
+  ./automation-system/update_and_open.sh
+
+WHAT IT DOES:
+  - Checks your files
+  - Shows what needs updating
+  - Opens dashboard in browser
+
+WHEN TO USE:
+  - Every morning
+  - Before committing code
+  - When you make changes
+
+THAT'S IT!
+
+═══════════════════════════════════════════════════════════
+
