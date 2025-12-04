@@ -5,14 +5,26 @@ Intelligence-powered branding & automation agency for overwhelmed solopreneurs.
 
 ---
 
+## 🚨 AI ASSISTANTS: READ FIRST
+
+**Before creating or modifying ANYTHING:**
+1. **Read [AI_RULES.md](AI_RULES.md)** - MANDATORY folder structure and naming rules
+2. **Read [docs/CONTEXT.md](docs/CONTEXT.md)** - Current project state
+3. **Read [company/operations/UPDATE_CHECKLIST.md](company/operations/UPDATE_CHECKLIST.md)** - What to update when
+
+**These rules prevent you from creating files in wrong locations or breaking the folder structure.**
+
+---
+
 ## 🚀 QUICK START
 
 **New to this project? Start here:**
 
-1. Read [docs/CONTEXT.md](docs/CONTEXT.md) - Master context file (auto-loaded by Cursor)
-2. Read [docs/INIT.md](docs/INIT.md) - Session initialization guide
-3. Check [docs/CLIENT_STATUS.md](docs/CLIENT_STATUS.md) - Current client status
-4. Review [docs/QUICK_STARTS.md](docs/QUICK_STARTS.md) - Our 15 service offerings
+1. Read [AI_RULES.md](AI_RULES.md) - **MANDATORY** before creating anything
+2. Read [docs/CONTEXT.md](docs/CONTEXT.md) - Master context file (auto-loaded by Cursor)
+3. Read [docs/INIT.md](docs/INIT.md) - Session initialization guide
+4. Check [docs/CLIENT_STATUS.md](docs/CLIENT_STATUS.md) - Current client status
+5. Review [docs/QUICK_STARTS.md](docs/QUICK_STARTS.md) - Our 15 service offerings
 
 ---
 

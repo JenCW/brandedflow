@@ -1,0 +1,46 @@
+# CLAUDE CODE RULES FOR BRANDED + FLOW
+
+## 🚨 READ THESE FILES FIRST (EVERY SESSION)
+
+1. **AI_RULES.md** - Mandatory rules for all AI assistants
+2. **docs/CONTEXT.md** - Current project state and priorities
+3. **company/operations/UPDATE_CHECKLIST.md** - What to update when
+
+## 📁 FOLDER STRUCTURE (NEVER VIOLATE)
+
+Root level has ONLY 6 folders:
+- clients/
+- company/
+- docs/
+- automation-library/
+- systems/
+- templates/
+
+**If you need to create something, it goes IN ONE OF THESE, not at root level.**
+
+## 📝 NAMING RULES
+
+- Files: `lowercase-kebab-case.md`
+- Folders: `lowercase-kebab-case/`
+- NO CAPS (except CONTEXT.md, README.md, etc. if already established)
+- NO underscores
+- NO spaces
+
+## ⚠️ BEFORE TAKING ACTION
+
+1. Check if it already exists: `grep -r "feature_name"`
+2. Verify correct location using AI_RULES.md folder structure
+3. Ask user if unsure where something belongs
+
+## 🔄 AFTER TAKING ACTION
+
+1. Update docs/CONTEXT.md (if affects current state)
+2. Update docs/DECISIONS_LOG.md (if significant decision)
+3. Update relevant docs per UPDATE_CHECKLIST.md
+4. Commit to git with clear message
+
+## 📖 FULL RULES
+
+See AI_RULES.md for complete details.
+
+**Read AI_RULES.md at the start of EVERY session.**

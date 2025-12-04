@@ -1,7 +1,19 @@
 # BRANDED + FLOW - MASTER CONTEXT
-**Last Updated:** December 3, 2024
+**Last Updated:** December 4, 2024
 **Status:** Pre-launch, Foundation Phase
 **Next Big Thing:** Luxe Fine Dining pitch presentation tomorrow morning
+
+---
+
+## 🚨 AI ASSISTANTS: READ FIRST
+
+**Before creating or modifying ANYTHING:**
+1. **Read [AI_RULES.md](../AI_RULES.md)** - Mandatory folder structure and naming rules
+2. **Read this file (CONTEXT.md)** - Current project state
+3. **Read [UPDATE_CHECKLIST.md](../company/operations/UPDATE_CHECKLIST.md)** - What to update when
+
+**Cursor users:** Rules auto-load from `.cursorrules`
+**Claude Code users:** Rules auto-load from `.claude_code_rules`
 
 ---
 

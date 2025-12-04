@@ -1,0 +1,55 @@
+# CURSOR RULES FOR BRANDED + FLOW
+
+## 🚨 MANDATORY - READ BEFORE ANY ACTION
+
+**Before creating, moving, or modifying ANY files:**
+
+1. **READ FIRST:** `/Users/jencortez-walters/brandedflow/AI_RULES.md`
+2. **READ CONTEXT:** `/Users/jencortez-walters/brandedflow/docs/CONTEXT.md`
+3. **FOLLOW CHECKLIST:** `/Users/jencortez-walters/brandedflow/company/operations/UPDATE_CHECKLIST.md`
+
+## 📁 FOLDER STRUCTURE (DO NOT VIOLATE)
+
+Only 6 folders exist at root level:
+- `clients/` - Client work
+- `company/` - Company operations
+- `docs/` - All documentation
+- `automation-library/` - Reusable automation
+- `systems/` - Operational systems
+- `templates/` - Templates
+
+**NEVER create folders at root level. NEVER use CAPS or underscores in folder names.**
+
+## 📝 NAMING CONVENTION
+
+- Files: `lowercase-kebab-case.md`
+- Folders: `lowercase-kebab-case/`
+- NO spaces, NO underscores, NO CAPS (except established docs like CONTEXT.md)
+
+## ⚠️ CURSOR COMPOSER SPECIFIC RULES
+
+You are Cursor Composer. You have a tendency to:
+- Create entire folder structures without asking
+- Use root-level folders (DON'T DO THIS)
+- Forget to update documentation
+
+**STOP before creating:**
+1. Check if it already exists
+2. Ask where it should go if unsure
+3. Use established folder structure
+4. Update docs/CONTEXT.md and docs/DECISIONS_LOG.md after
+
+## 🔄 AFTER MAKING CHANGES
+
+**ALWAYS update:**
+- `docs/CONTEXT.md` - If affects priorities/status
+- `docs/DECISIONS_LOG.md` - If significant decision
+- Relevant docs per `company/operations/UPDATE_CHECKLIST.md`
+
+**ALWAYS commit to git with clear message**
+
+## 📖 FULL RULES
+
+See `/Users/jencortez-walters/brandedflow/AI_RULES.md` for complete rules.
+
+**When in doubt, ASK THE USER before creating files/folders.**
