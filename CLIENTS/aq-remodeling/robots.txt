@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://aqremodeling.com/sitemap.xml
+
+# Directories
+Disallow: /js/
+Disallow: /css/
+
+# Allow images for Google Image Search
+Allow: /images/
