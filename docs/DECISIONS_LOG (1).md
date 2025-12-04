@@ -134,6 +134,38 @@ Chronological record of all major business decisions for Branded + Flow
 
 ---
 
+## December 3, 2024
+
+### Website Platform Strategy
+**Decision:** Use Netlify + AI-generated static HTML for all client websites
+**Rationale:** AQ Remodeling site successfully deployed on Netlify with full integration capabilities (forms, CRM, analytics, Base44 portal, metrics tracking). Provides user-editable sites without code, fast performance, no vendor lock-in, and clients own everything.
+**Impact:** Abandons WordPress/Elementor/10Web approach entirely. Template established via AQ Remodeling site structure. Faster, cheaper, more flexible delivery.
+**Alternatives Considered:** WordPress/Elementor (rejected: too complex, vendor lock-in, slower performance), 10Web (rejected: expensive, limited control)
+**Review Date:** After 5 client websites delivered (evaluate if approach scales)
+
+### Context Management System
+**Decision:** Implement master context file system with docs/CONTEXT.md as auto-loaded source of truth
+**Rationale:** Need ANY AI tool (Cursor, ChatGPT, Claude) to have latest context automatically without manual updates. Prevents losing decisions, current status, or client information between sessions.
+**Impact:** Created comprehensive context file hierarchy with CONTEXT.md linking to CLIENT_STATUS.md, TECH_STACK.md, QUICK_STARTS.md. Cursor auto-loads at session start. Eliminates "what was I working on?" problem.
+**Alternatives Considered:** RAG system (rejected: too complex for solo operator), manual context passing (rejected: unreliable, will forget)
+**Review Date:** After 30 days of usage (evaluate if system is being maintained)
+
+### Folder Structure Reorganization
+**Decision:** Complete reorganization to 6 main folders: clients/, company/, docs/, automation-library/, systems/, templates/
+**Rationale:** Previous structure had too many folders, inconsistent naming (CAPS vs lowercase), no clear source of truth, duplicate/unclear content across brandedflow and brandedflow-clean.
+**Impact:** Clean structure with lowercase-kebab-case naming throughout. Single source of truth for documentation. Clear separation between client work, company operations, and automation systems. Working systems preserved (daily-accountability).
+**Alternatives Considered:** Keep existing structure (rejected: confusion unsustainable), merge into fewer folders (rejected: loses logical separation)
+**Review Date:** After Luxe pitch (December 4, 2024) - evaluate if structure supports workflow
+
+### Documentation Update Workflow
+**Decision:** Establish source of truth hierarchy - CONTEXT.md is always current, detailed docs updated as needed, UPDATE_CHECKLIST.md provides quick reference
+**Rationale:** Need clear system for "what gets updated where" to prevent documentation drift. Solo operator needs minimal-friction update process that won't be forgotten.
+**Impact:** Clear responsibilities: (1) CONTEXT.md updated when priorities/status change, (2) Detailed docs updated when systems/services change, (3) Archive outdated versions. Checklist prevents forgetting what needs updating.
+**Alternatives Considered:** Automated updates via git hooks (future Phase 4), daily manual reviews (rejected: too time-consuming)
+**Review Date:** After 2 weeks of usage (evaluate if workflow is sustainable)
+
+---
+
 ## Template for Future Decisions
 
 **Date:**  
