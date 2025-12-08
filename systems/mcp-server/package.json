@@ -1,0 +1,26 @@
+{
+  "name": "brandedflow-mcp-server",
+  "version": "1.0.0",
+  "description": "MCP server for Branded + Flow internal processes and automations",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [
+    "mcp",
+    "automation",
+    "doe"
+  ],
+  "author": "Branded + Flow",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "fs-extra": "^11.3.2",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
