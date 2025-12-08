@@ -1,0 +1,1 @@
+How the business runs: tech stack, SOPs, workflows.

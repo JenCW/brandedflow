@@ -1,0 +1,16 @@
+- Task: Build hybrid wallpaper renderer.
+- [ ] Task: Type: test
+- [ ] Task: Type: directive_created
+- [ ] Task: Create proposal MCP
+- [ ] Task: Test proposal generation
+- [ ] Task: - systems/doe-engine/directives/create-and-send-proposal.md
+- [ ] Task: Type: test
+- [ ] Task: Type: directive_created
+- [ ] Task: Create proposal MCP
+- [ ] Task: Test proposal generation
+- [ ] Task: - systems/doe-engine/directives/create-and-send-proposal.md
+- [ ] Task: Type: test
+- [ ] Task: Type: directive_created
+- [ ] Task: Create proposal MCP
+- [ ] Task: Test proposal generation
+- [ ] Task: - systems/doe-engine/directives/create-and-send-proposal.md

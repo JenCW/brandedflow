@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>BrandedFlow Dashboard</title>
+  <style>
+    body{font-family: -apple-system, system-ui, Arial; margin: 24px;}
+    .grid{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+    .card{border:1px solid #ddd; border-radius:12px; padding:16px;}
+    h1{margin:0 0 8px 0;}
+    h2{margin:0 0 10px 0; font-size:16px;}
+    ul{margin:0; padding-left:18px; max-height:400px; overflow-y:auto;}
+    .muted{color:#666; font-size:12px;}
+    pre{white-space:pre-wrap;}
+  </style>
+</head>
+<body>
+  <h1>Dashboard</h1>
+  <div class="muted">Last build: 2025-12-08 02:40 PM</div>
+
+  <div class="grid" style="margin-top:16px;">
+    <div class="card">
+      <h2>All Tasks (15 pending)</h2>
+      <ul><li> Task: Type: test</li><li> Task: Type: directive_created</li><li> Task: Create proposal MCP</li><li> Task: Test proposal generation</li><li> Task: - systems/doe-engine/directives/create-and-send-proposal.md</li><li> Task: Type: test</li><li> Task: Type: directive_created</li><li> Task: Create proposal MCP</li><li> Task: Test proposal generation</li><li> Task: - systems/doe-engine/directives/create-and-send-proposal.md</li><li> Task: Type: test</li><li> Task: Type: directive_created</li><li> Task: Create proposal MCP</li><li> Task: Test proposal generation</li><li> Task: - systems/doe-engine/directives/create-and-send-proposal.md</li></ul>
+    </div>
+
+    <div class="card">
+      <h2>Latest Decisions</h2>
+      <ul><li>Decision: We will do weekly check-ins Fridays at 8am.</li><li> Decision: Use client profile for proposal customization (latest version)</li><li> Decision: Use client profile for proposal customization (latest version)</li><li> Decision: Use client profile for proposal customization (latest version)</li></ul>
+    </div>
+
+    <div class="card">
+      <h2>Latest Tasks</h2>
+      <ul><li> Task: Type: test</li><li> Task: Type: directive_created</li><li> Task: Create proposal MCP</li><li> Task: Test proposal generation</li><li> Task: - systems/doe-engine/directives/create-and-send-proposal.md</li><li> Task: Type: test</li><li> Task: Type: directive_created</li><li> Task: Create proposal MCP</li><li> Task: Test proposal generation</li><li> Task: - systems/doe-engine/directives/create-and-send-proposal.md</li><li> Task: Type: test</li><li> Task: Type: directive_created</li><li> Task: Create proposal MCP</li><li> Task: Test proposal generation</li><li> Task: - systems/doe-engine/directives/create-and-send-proposal.md</li></ul>
+    </div>
+
+    <div class="card">
+      <h2>Notes</h2>
+      <ul><li>Wallpaper not applying; pipeline generates wallpaper.png successfully. Next step: debug osascript permissions / wallpaper overrides (Shuffle/3rd party app) and print osascript stderr from set_wallpaper().</li></ul>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:16px;">
+    <h2>Critical Files (Need Your Approval)</h2>
+    <p style='color:#666;'>(No critical files pending)</p>
+  </div>
+
+  <div class="card" style="margin-top:16px;">
+    <h2>Foundational Docs (Need Updates)</h2>
+    <p style='color:#666;'>(No foundational docs need updates)</p>
+  </div>
+
+  <div class="card" style="margin-top:16px;">
+    <h2>Files</h2>
+    <ul>
+      <li>systems/trackers/decisions-log.md</li>
+      <li>systems/trackers/tasks.md</li>
+      <li>systems/trackers/daily-summary.md</li>
+      <li>systems/trackers/notes.md</li>
+    </ul>
+  </div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+{
+    "canvas": {
+      "width": 1920,
+      "height": 1080,
+      "background": "#ffffff"
+    },
+  
+    "sections": {
+      "header": {
+        "x": 60,
+        "y": 60,
+        "font_size": 48,
+        "color": "#222222"
+      },
+  
+      "top3": {
+        "title": "Top 3 Priorities",
+        "x": 60,
+        "y": 160,
+        "width": 800,
+        "font_size": 28,
+        "color": "#333333"
+      },
+  
+      "decisions": {
+        "title": "Recent Decisions",
+        "x": 60,
+        "y": 420,
+        "width": 800,
+        "font_size": 24,
+        "color": "#333333"
+      },
+  
+      "notes": {
+        "title": "Notes",
+        "x": 1000,
+        "y": 160,
+        "width": 800,
+        "font_size": 24,
+        "color": "#333333"
+      }
+    }
+  }

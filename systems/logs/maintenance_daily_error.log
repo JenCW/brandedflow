@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/Users/jencortez-walters/brandedflow/systems/automation-engine/maintenance_agent.py", line 16, in <module>
+    BASE_DIR = HERE.parent.parent  # points to your project root  # pyright: ignore[reportUndefinedVariable]
+NameError: name 'HERE' is not defined

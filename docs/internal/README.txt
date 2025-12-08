@@ -1,0 +1,1 @@
+Internal-only notes, context, logs, strategy.

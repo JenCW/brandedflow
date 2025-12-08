@@ -1,0 +1,21 @@
+[
+  {
+    "timestamp": "2025-12-08T21:59:30.245Z",
+    "action_type": "directive_created",
+    "title": "Created proposal directive",
+    "details": "",
+    "files_created": [
+      "systems/doe-engine/directives/create-and-send-proposal.md"
+    ],
+    "files_updated": [],
+    "decisions": [
+      "Use client profile for proposal customization"
+    ],
+    "tasks": [
+      "Create proposal MCP",
+      "Test proposal generation"
+    ],
+    "notes": [],
+    "log_file": "work-2025-12-08T21-59-30.txt"
+  }
+]

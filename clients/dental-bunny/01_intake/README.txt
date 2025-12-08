@@ -1,0 +1,1 @@
+Everything received FROM the client: notes, screenshots, onboarding, raw content.

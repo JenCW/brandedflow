@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Luxe Fine Dining & Catering | Dana Point</title>
+    <meta name="description" content="Award-winning fine dining restaurant and premium catering in Dana Point. Italian cuisine, signature martinis, and exceptional event catering.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/style-combined.css">
+</head>
+<body>
+    <!-- ═══════════════════════════════════════════════════════════════
+         HERO SECTION - Dark with Martini Glass Click
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="hero-section" id="heroSection">
+        <div class="hero-background-dark"></div>
+        <div class="hero-overlay-dark"></div>
+        
+        <div class="hero-content-wrapper">
+            <div class="hero-text-content">
+                <h1 class="hero-main-title">The Luxe Dining Experience</h1>
+                <p class="hero-subtitle">Fine Dining & Event Catering — with a twist.</p>
+            </div>
+            
+            <div class="martini-glass-container" id="martiniGlass">
+                <div class="martini-glass">
+                    <svg viewBox="0 0 100 140" xmlns="http://www.w3.org/2000/svg" class="martini-svg">
+                        <defs>
+                            <linearGradient id="liquidGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#D4AF37;stop-opacity:0.8" />
+                                <stop offset="100%" style="stop-color:#B8956E;stop-opacity:0.4" />
+                            </linearGradient>
+                            <filter id="glow">
+                                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                                <feMerge>
+                                    <feMergeNode in="coloredBlur"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+                        </defs>
+                        
+                        <!-- Glass bowl - elegant V shape -->
+                        <path class="glass-outline" d="M15 20 L50 65 L85 20" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)"/>
+                        
+                        <!-- Rim line -->
+                        <line class="glass-outline" x1="12" y1="20" x2="88" y2="20" stroke-linecap="round" filter="url(#glow)"/>
+                        
+                        <!-- Liquid fill -->
+                        <path class="liquid" d="M20 25 L50 60 L80 25 Z"/>
+                        
+                        <!-- Stem -->
+                        <line class="glass-outline" x1="50" y1="65" x2="50" y2="110" stroke-linecap="round" filter="url(#glow)"/>
+                        
+                        <!-- Base - elegant foot -->
+                        <path class="glass-outline" d="M30 110 Q38 113 50 113 Q62 113 70 110" stroke-linecap="round" filter="url(#glow)"/>
+                        <line class="glass-outline" x1="25" y1="115" x2="75" y2="115" stroke-linecap="round" filter="url(#glow)"/>
+                        
+                        <!-- Olive pick -->
+                        <line class="pick" x1="50" y1="10" x2="50" y2="40" stroke-linecap="round"/>
+                        
+                        <!-- Olives - two stacked -->
+                        <ellipse class="olive" cx="50" cy="30" rx="6" ry="5"/>
+                        <ellipse class="olive" cx="50" cy="38" rx="6" ry="5"/>
+                        
+                        <!-- Pimento dots -->
+                        <circle fill="#8B0000" cx="50" cy="30" r="2"/>
+                        <circle fill="#8B0000" cx="50" cy="38" r="2"/>
+                    </svg>
+                </div>
+                <p class="martini-hint">Click to enter</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         CURTAIN OVERLAY - Mind-Blowing Reveal
+         ═══════════════════════════════════════════════════════════════ -->
+    <div class="curtain-overlay" id="curtainOverlay">
+        <div class="curtain curtain-left"></div>
+        <div class="curtain curtain-right"></div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         REVEAL BUTTONS - Appear After Curtain Opens
+         ═══════════════════════════════════════════════════════════════ -->
+    <div class="reveal-buttons" id="revealButtons">
+        <a href="#reservations" class="reveal-btn reveal-btn-restaurant" onclick="handleRevealClick(event, 'restaurant')">The Restaurant</a>
+        <div class="reveal-divider"></div>
+        <a href="#lead-magnet" class="reveal-btn reveal-btn-events" onclick="handleRevealClick(event, 'events')">Private Events</a>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         NAVIGATION - Appears After Curtain Reveal
+         ═══════════════════════════════════════════════════════════════ -->
+    <nav class="main-nav" id="mainNav">
+        <div class="nav-container">
+            <div class="nav-logo">THE LUXE</div>
+            <ul class="nav-links">
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#chef">Chef</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#reservations" onclick="openReservations(event); return false;">Reservations</a></li>
+                <li><a href="#lead-magnet" onclick="openLeadMagnet(event); return false;" class="nav-cta">Menu</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         MAIN CONTENT
+         ═══════════════════════════════════════════════════════════════ -->
+    <main class="main-content" id="mainContent">
+        
+        <!-- ═══════════════════════════════════════════════════════════════
+             SPLIT EXPERIENCE SECTION
+             ═══════════════════════════════════════════════════════════════ -->
+        <section class="split-experience" id="experience">
+            <!-- LEFT: Fine Dining -->
+            <div class="experience-side">
+                <div class="experience-bg">
+                    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1920&q=80" alt="Fine Dining Restaurant Interior">
+                </div>
+                <div class="experience-overlay"></div>
+                <div class="experience-content">
+                    <span class="experience-label">Restaurant</span>
+                    <p class="experience-subheading">The bar. The bites. The vibe.</p>
+                    <p class="experience-description">Intimate ambiance. Award-winning cuisine. Signature martinis. An evening you won't forget.</p>
+                    <div class="experience-cta">
+                        <a href="#reservations" class="btn btn-filled" onclick="openReservations(event)">Reserve Table</a>
+                        <a href="#menu" class="btn btn-outline">View Menu</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- RIGHT: Catering -->
+            <div class="experience-side experience-side-gold">
+                <div class="experience-bg">
+                    <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1920&q=80" alt="Elegant Event Catering">
+                </div>
+                <div class="experience-overlay"></div>
+                <div class="experience-content">
+                    <span class="experience-label">Private Events</span>
+                    <p class="experience-description">Corporate events. Weddings. Private celebrations. Flawless execution, every time.</p>
+                    <div class="experience-cta">
+                        <a href="#lead-magnet" class="btn btn-filled" onclick="openLeadMagnet(event)">Get Free Menu</a>
+                        <a href="#quote" class="btn btn-outline">Request Quote</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════════
+             SOCIAL PROOF STRIP
+             ═══════════════════════════════════════════════════════════════ -->
+        <section class="social-proof-strip">
+            <div class="social-proof-content">
+                <p class="social-proof-label">As Seen At</p>
+                <div class="social-proof-items">
+                    <span class="social-proof-item">Orange County Register</span>
+                    <span class="social-proof-divider">•</span>
+                    <span class="social-proof-item">Coastal Living</span>
+                    <span class="social-proof-divider">•</span>
+                    <span class="social-proof-item">Ritz-Carlton Laguna</span>
+                    <span class="social-proof-divider">•</span>
+                    <span class="social-proof-item">Montage Resort</span>
+                    <span class="social-proof-divider">•</span>
+                    <span class="social-proof-item">St. Regis Monarch Beach</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════════
+             A TASTE OF BOTH WORLDS
+             ═══════════════════════════════════════════════════════════════ -->
+        <section class="taste-both-worlds">
+            <div class="taste-container">
+                <!-- Restaurant Path -->
+                <div class="taste-path taste-restaurant">
+                    <div class="taste-visual">
+                        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800" alt="Restaurant ambiance">
+                    </div>
+                    <div class="taste-content">
+                        <span class="taste-label">The Restaurant</span>
+                        <h2 class="taste-title">Intimate Evenings,<br>Unforgettable Flavors</h2>
+                        <p class="taste-description">Step into an atmosphere where every detail matters. Award-winning Italian cuisine, handcrafted martinis, and the kind of service that makes you feel like family. This isn't just dinner—it's an experience that lingers.</p>
+                        <ul class="taste-features">
+                            <li>Signature martini bar</li>
+                            <li>Award-winning Italian cuisine</li>
+                            <li>Intimate, elegant ambiance</li>
+                            <li>40+ years of culinary mastery</li>
+                        </ul>
+                        <a href="#reservations" class="taste-cta btn btn-filled" onclick="openReservations(event)">Reserve Your Table</a>
+                    </div>
+                </div>
+                
+                <!-- Catering Path -->
+                <div class="taste-path taste-catering">
+                    <div class="taste-content">
+                        <span class="taste-label">Private Events</span>
+                        <h2 class="taste-title">Restaurant Quality,<br>Anywhere You Need It</h2>
+                        <p class="taste-description">Why compromise on your most important moments? We bring the same passion, precision, and artistry to your venue. From intimate gatherings to celebrations of 750, we transform events into memories.</p>
+                        <ul class="taste-features">
+                            <li>Up to 750 guests</li>
+                            <li>Custom menu design</li>
+                            <li>Flawless execution</li>
+                            <li>500+ events annually</li>
+                        </ul>
+                        <a href="#lead-magnet" class="taste-cta btn btn-filled" onclick="openLeadMagnet(event)">Start Planning</a>
+                    </div>
+                    <div class="taste-visual">
+                        <img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=800" alt="Catering event">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════════
+             LEAD MAGNET - Free Menu Download
+             ═══════════════════════════════════════════════════════════════ -->
+        <section class="lead-magnet-section" id="lead-magnet">
+            <div class="lead-magnet-container">
+                <div class="lead-magnet-content">
+                    <h2 class="lead-magnet-title">Get Our Signature Menu</h2>
+                    <p class="lead-magnet-subtitle">Download our complete menu featuring award-winning Italian cuisine, fresh seafood, premium steaks, and signature martinis.</p>
+                    <form class="lead-magnet-form" id="leadMagnetForm" onsubmit="handleLeadMagnet(event)">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                        <input type="email" name="email" placeholder="Your Email" required>
+                        <input type="tel" name="phone" placeholder="Phone (Optional)">
+                        <button type="submit" class="btn btn-filled">Download Free Menu</button>
+                    </form>
+                    <p class="lead-magnet-note">We respect your privacy. Unsubscribe at any time.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════════
+             BRAND STATEMENT
+             ═══════════════════════════════════════════════════════════════ -->
+        <section class="brand-statement">
+            <div class="brand-ornament">✦</div>
+            <blockquote class="brand-quote">
+                "Food is not merely sustenance. It is memory, celebration, and connection made tangible. Every plate we create carries forty years of passion."
+            </blockquote>
+            <p class="brand-attribution">— Chef Jimmy, Executive Chef & Co-Owner</p>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════════
+             CHEF SECTION
+             ═══════════════════════════════════════════════════════════════ -->
+        <section class="chef-section" id="chef">
+            <div class="chef-image">
+                <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=1000" alt="Chef in kitchen">
+            </div>
+            <div class="chef-content">
+                <div class="chef-years">40<span>+</span></div>
+                <p class="chef-years-label">Years of Culinary Mastery</p>
+                <h2 class="chef-name">Chef Jimmy</h2>
+                <p class="chef-title">Executive Chef & Co-Owner</p>
+                <p class="chef-bio">
+                    Trained under the legendary Victor Testa, Chef Jimmy brings four decades of culinary artistry to every dish. His philosophy is simple: honor the ingredients, respect the craft, and create experiences that linger in memory long after the last bite.
+                </p>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════════
+             STATISTICS
+             ═══════════════════════════════════════════════════════════════ -->
+        <section class="stats-section">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">15<span>+</span></div>
+                    <p class="stat-label">Years in Dana Point</p>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">750</div>
+                    <p class="stat-label">Catering Capacity</p>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">1000<span>+</span></div>
+                    <p class="stat-label">Five-Star Reviews</p>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">500<span>+</span></div>
+                    <p class="stat-label">Events Annually</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════════
+             SERVICES GRID
+             ═══════════════════════════════════════════════════════════════ -->
+        <section class="services-section" id="services">
+            <div class="section-header">
+                <p class="section-eyebrow">Catering Services</p>
+                <h2 class="section-title">Every Occasion, Elevated</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <img src="https://luxefinedining.com/wp-content/uploads/2021/11/Corporate-Event-300x198.jpg" alt="Corporate">
+                    <div class="service-content">
+                        <h3 class="service-name">Corporate</h3>
+                        <p class="service-tagline">Boardrooms to galas</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img src="https://luxefinedining.com/wp-content/uploads/2021/11/Wedding-Catering-300x198.jpg" alt="Weddings">
+                    <div class="service-content">
+                        <h3 class="service-name">Weddings</h3>
+                        <p class="service-tagline">Your day, perfected</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=600" alt="Senior Living">
+                    <div class="service-content">
+                        <h3 class="service-name">Senior Living</h3>
+                        <p class="service-tagline">Enrichment programs</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=600" alt="Martini Bar">
+                    <div class="service-content">
+                        <h3 class="service-name">Martini Bar</h3>
+                        <p class="service-tagline">Signature service</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════════
+             RESERVATIONS SECTION - OpenTable Integration
+             ═══════════════════════════════════════════════════════════════ -->
+        <section class="reservations-section" id="reservations">
+            <div class="reservations-container">
+                <div class="reservations-header">
+                    <h2 class="reservations-title">Reserve Your Table</h2>
+                    <p class="reservations-subtitle">Experience award-winning cuisine in an intimate setting</p>
+                </div>
+                <div class="opentable-widget" id="opentableWidget">
+                    <!-- OpenTable Widget will load here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════════
+             CTA SECTION
+             ═══════════════════════════════════════════════════════════════ -->
+        <section class="cta-section">
+            <div class="cta-content">
+                <h2 class="cta-title">Begin Crafting Your Experience</h2>
+                <p class="cta-subtitle">From intimate gatherings to grand celebrations, we bring the same passion to every occasion.</p>
+                <div class="cta-buttons">
+                    <a href="tel:9492764990" class="btn btn-filled">Call (949) 276-4990</a>
+                    <a href="#lead-magnet" class="btn btn-outline" onclick="openLeadMagnet(event)">Get Free Menu</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════════
+             FOOTER
+             ═══════════════════════════════════════════════════════════════ -->
+        <footer class="footer">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="footer-logo">THE LUXE</div>
+                    <p class="footer-tagline">Where culinary artistry meets timeless hospitality. Dana Point's destination for fine dining and exceptional catering since 2010.</p>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Dining</h4>
+                    <ul class="footer-links">
+                        <li><a href="#menu">Menus</a></li>
+                        <li><a href="#reservations" onclick="openReservations(event); return false;">Reservations</a></li>
+                        <li><a href="#private">Private Events</a></li>
+                        <li><a href="#martini">Martini Bar</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Catering</h4>
+                    <ul class="footer-links">
+                        <li><a href="#corporate">Corporate</a></li>
+                        <li><a href="#weddings">Weddings</a></li>
+                        <li><a href="#senior">Senior Living</a></li>
+                        <li><a href="#quote">Request Quote</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Contact</h4>
+                    <ul class="footer-links">
+                        <li><a href="tel:9492764990">(949) 276-4990</a></li>
+                        <li><a href="mailto:info@luxefinedining.com">info@luxefinedining.com</a></li>
+                        <li><a href="https://maps.google.com/?q=24582+Del+Prado+Ave,+Dana+Point,+CA+92629" target="_blank">24582 Del Prado Ave<br>Dana Point, CA 92629</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copyright">© 2024 The Luxe Fine Dining & Catering. All Rights Reserved.</p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Instagram">IG</a>
+                    <a href="#" aria-label="Facebook">FB</a>
+                    <a href="#" aria-label="LinkedIn">LI</a>
+                </div>
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         LEAD MAGNET MODAL
+         ═══════════════════════════════════════════════════════════════ -->
+    <div class="lead-magnet-modal" id="leadMagnetModal">
+        <div class="modal-overlay" onclick="closeLeadMagnet()"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeLeadMagnet()">×</button>
+            <h2 class="lead-magnet-title">Get Our Signature Menu</h2>
+            <p class="lead-magnet-subtitle">Download our complete menu featuring award-winning Italian cuisine, fresh seafood, premium steaks, and signature martinis.</p>
+            <form class="lead-magnet-form" id="leadMagnetFormModal" onsubmit="handleLeadMagnet(event)">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <input type="tel" name="phone" placeholder="Phone (Optional)">
+                <button type="submit" class="btn btn-filled">Download Free Menu</button>
+            </form>
+            <p class="lead-magnet-note">We respect your privacy. Unsubscribe at any time.</p>
+        </div>
+    </div>
+
+    <script>
+        // ═══════════════════════════════════════════════════════════════
+        // MARTINI GLASS CLICK & CURTAIN REVEAL ANIMATION
+        // ═══════════════════════════════════════════════════════════════
+        document.addEventListener('DOMContentLoaded', function() {
+            const martiniGlass = document.getElementById('martiniGlass');
+            const heroSection = document.getElementById('heroSection');
+            const curtainOverlay = document.getElementById('curtainOverlay');
+            const mainContent = document.getElementById('mainContent');
+            const revealButtons = document.getElementById('revealButtons');
+            const mainNav = document.getElementById('mainNav');
+            let hasTriggered = false;
+            
+            function triggerReveal() {
+                if (hasTriggered) return;
+                hasTriggered = true;
+                
+                // Martini glass animation - mind-blowing effects
+                martiniGlass.classList.add('clicked');
+                
+                // Create particle explosion effect
+                createParticleExplosion();
+                
+                // Hero fade out
+                setTimeout(() => {
+                    heroSection.classList.add('fade-out');
+                }, 800);
+                
+                // Curtain reveal
+                setTimeout(() => {
+                    curtainOverlay.classList.add('open');
+                }, 1200);
+                
+                // Reveal buttons and main content
+                setTimeout(() => {
+                    try {
+                        revealButtons.classList.add('visible');
+                        mainContent.classList.add('visible');
+                        if (mainNav) {
+                            mainNav.classList.add('visible');
+                        }
+                        // Don't load widget immediately - wait for user interaction
+                    } catch (error) {
+                        console.error('Error revealing content:', error);
+                    }
+                }, 2500);
+            }
+            
+            // Click martini glass
+            if (martiniGlass) {
+                martiniGlass.addEventListener('click', triggerReveal);
+                martiniGlass.style.cursor = 'pointer';
+            }
+            
+            // Create particle explosion effect
+            function createParticleExplosion() {
+                try {
+                    const particles = 30;
+                    const glassRect = martiniGlass.getBoundingClientRect();
+                    const centerX = glassRect.left + glassRect.width / 2;
+                    const centerY = glassRect.top + glassRect.height / 2;
+                    
+                    for (let i = 0; i < particles; i++) {
+                        const particle = document.createElement('div');
+                        particle.className = 'particle';
+                        particle.style.left = centerX + 'px';
+                        particle.style.top = centerY + 'px';
+                        document.body.appendChild(particle);
+                        
+                        const angle = (Math.PI * 2 * i) / particles;
+                        const velocity = 200 + Math.random() * 100;
+                        const x = Math.cos(angle) * velocity;
+                        const y = Math.sin(angle) * velocity;
+                        
+                        particle.style.setProperty('--x', x + 'px');
+                        particle.style.setProperty('--y', y + 'px');
+                        
+                        setTimeout(() => {
+                            if (particle.parentNode) {
+                                particle.remove();
+                            }
+                        }, 2000);
+                    }
+                } catch (error) {
+                    console.error('Error creating particles:', error);
+                }
+            }
+        });
+
+        // Handle reveal button clicks
+        function handleRevealClick(e, type) {
+            try {
+                e.preventDefault();
+                const revealButtons = document.getElementById('revealButtons');
+                if (revealButtons) {
+                    revealButtons.style.opacity = '0';
+                    setTimeout(() => {
+                        revealButtons.style.display = 'none';
+                    }, 500);
+                }
+                
+                setTimeout(() => {
+                    if (type === 'restaurant') {
+                        openReservations(e);
+                    } else {
+                        openLeadMagnet(e);
+                    }
+                }, 600);
+            } catch (error) {
+                console.error('Error handling reveal click:', error);
+            }
+        }
+        
+        // Add global error handler
+        window.addEventListener('error', function(e) {
+            console.error('Global error:', e.error);
+        });
+
+        // ═══════════════════════════════════════════════════════════════
+        // OPENTABLE RESERVATION WIDGET
+        // ═══════════════════════════════════════════════════════════════
+        function loadOpenTableWidget() {
+            try {
+                const widgetContainer = document.getElementById('opentableWidget');
+                if (!widgetContainer || widgetContainer.innerHTML.trim() !== '') return;
+                
+                // Create OpenTable iframe
+                const iframe = document.createElement('iframe');
+                iframe.src = 'https://www.opentable.com/widget/reservation/loader?rid=71470&type=standard&theme=standard&iframe=true&domain=com&lang=en-US&newtab=false&ot_source=Restaurant%20website';
+                iframe.width = '100%';
+                iframe.height = '600';
+                iframe.frameBorder = '0';
+                iframe.style.border = 'none';
+                iframe.style.borderRadius = '4px';
+                widgetContainer.appendChild(iframe);
+            } catch (error) {
+                console.error('Error loading OpenTable widget:', error);
+            }
+        }
+
+        function openReservations(e) {
+            if (e) e.preventDefault();
+            const reservationsSection = document.getElementById('reservations');
+            if (reservationsSection) {
+                reservationsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                // Ensure widget loads if not already loaded
+                setTimeout(() => {
+                    loadOpenTableWidget();
+                }, 500);
+            }
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // LEAD MAGNET FUNCTIONALITY
+        // ═══════════════════════════════════════════════════════════════
+        function openLeadMagnet(e) {
+            if (e) e.preventDefault();
+            const modal = document.getElementById('leadMagnetModal');
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            } else {
+                // Scroll to lead magnet section if modal doesn't exist
+                const section = document.getElementById('lead-magnet');
+                if (section) {
+                    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+        }
+
+        function closeLeadMagnet() {
+            const modal = document.getElementById('leadMagnetModal');
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        function handleLeadMagnet(e) {
+            e.preventDefault();
+            const form = e.target;
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData);
+            
+            // Here you would normally send to your CRM/email service
+            // For now, we'll simulate success and download
+            console.log('Lead captured:', data);
+            
+            // Show success message
+            const successMsg = document.createElement('div');
+            successMsg.className = 'lead-magnet-success';
+            successMsg.innerHTML = '<h3>✓ Thank You!</h3><p>Your menu download will begin shortly. Check your email for the complete menu.</p>';
+            form.parentElement.appendChild(successMsg);
+            
+            // Simulate download (in production, this would be a real PDF)
+            setTimeout(() => {
+                // You would trigger actual PDF download here
+                alert('Menu download started! Check your email for the complete menu.');
+            }, 1000);
+            
+            // Close modal if open
+            closeLeadMagnet();
+            
+            // Reset form
+            form.reset();
+        }
+
+        // Close modal on ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLeadMagnet();
+            }
+        });
+
+        // ═══════════════════════════════════════════════════════════════
+        // NAVIGATION SCROLL EFFECT
+        // ═══════════════════════════════════════════════════════════════
+        window.addEventListener('scroll', function() {
+            const mainNav = document.getElementById('mainNav');
+            if (mainNav && mainNav.classList.contains('visible')) {
+                if (window.scrollY > 50) {
+                    mainNav.style.background = 'rgba(0, 0, 0, 0.98)';
+                    mainNav.style.borderBottomColor = 'rgba(212, 175, 55, 0.2)';
+                } else {
+                    mainNav.style.background = 'rgba(0, 0, 0, 0.95)';
+                    mainNav.style.borderBottomColor = 'rgba(212, 175, 55, 0.1)';
+                }
+            }
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('.nav-links a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && href.startsWith('#')) {
+                    const target = document.querySelector(href);
+                    if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

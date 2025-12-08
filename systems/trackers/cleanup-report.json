@@ -1,0 +1,168 @@
+{
+  "conflicts_detected": [
+    {
+      "type": "decision",
+      "items": [
+        "[ ] Decision: Use client profile for proposal customization (latest version)",
+        "[ ] Decision: Use client profile for proposal customization (latest version)",
+        "[ ] Decision: Use client profile for proposal customization (latest version)"
+      ],
+      "similarity": 1.0
+    },
+    {
+      "type": "task",
+      "items": [
+        "[ ] Task: Type: test",
+        "[ ] Task: Type: test",
+        "[ ] Task: Type: test"
+      ],
+      "similarity": 1.0
+    },
+    {
+      "type": "task",
+      "items": [
+        "[ ] Task: Type: directive_created",
+        "[ ] Task: Type: directive_created",
+        "[ ] Task: Type: directive_created"
+      ],
+      "similarity": 1.0
+    },
+    {
+      "type": "task",
+      "items": [
+        "[ ] Task: Create proposal MCP",
+        "[ ] Task: Create proposal MCP",
+        "[ ] Task: Create proposal MCP"
+      ],
+      "similarity": 1.0
+    },
+    {
+      "type": "task",
+      "items": [
+        "[ ] Task: Test proposal generation",
+        "[ ] Task: Test proposal generation",
+        "[ ] Task: Test proposal generation"
+      ],
+      "similarity": 1.0
+    },
+    {
+      "type": "task",
+      "items": [
+        "[ ] Task: - systems/doe-engine/directives/create-and-send-proposal.md",
+        "[ ] Task: - systems/doe-engine/directives/create-and-send-proposal.md",
+        "[ ] Task: - systems/doe-engine/directives/create-and-send-proposal.md"
+      ],
+      "similarity": 1.0
+    }
+  ],
+  "superseded_archived": [],
+  "duplicates_found": [
+    {
+      "base_name": "readme",
+      "files": [
+        "clients/README.txt",
+        "clients/ianswering-ai/02_brand/README.txt",
+        "clients/ianswering-ai/04_automation/README.txt",
+        "clients/ianswering-ai/03_website/README.txt",
+        "clients/ianswering-ai/01_intake/README.txt",
+        "clients/ianswering-ai/05_deliverables/README.txt",
+        "clients/dental-bunny/02_brand/README.txt",
+        "clients/dental-bunny/04_automation/README.txt",
+        "clients/dental-bunny/03_website/README.txt",
+        "clients/dental-bunny/01_intake/README.txt",
+        "clients/dental-bunny/05_deliverables/README.txt",
+        "clients/aq-remodeling/02_brand/README.txt",
+        "clients/aq-remodeling/04_automation/README.txt",
+        "clients/aq-remodeling/03_website/README.txt",
+        "clients/aq-remodeling/01_intake/README.txt",
+        "clients/aq-remodeling/05_deliverables/README.txt",
+        "clients/luxe-fine-dining/02_brand/README.txt",
+        "clients/luxe-fine-dining/04_automation/README.txt",
+        "clients/luxe-fine-dining/website/README.md",
+        "clients/luxe-fine-dining/03_website/README.txt",
+        "clients/luxe-fine-dining/01_intake/README.txt",
+        "clients/luxe-fine-dining/05_deliverables/README.md",
+        "clients/luxe-fine-dining/05_deliverables/README.txt",
+        "_core/brand/README.txt",
+        "docs/README.txt",
+        "docs/processes/README.txt",
+        "docs/training/README.txt",
+        "docs/internal/README.md",
+        "docs/internal/README.txt",
+        "docs/automation-library/README.txt",
+        "systems/README.txt",
+        "systems/context-automation/README.md",
+        "systems/daily-accountability/README.md",
+        "systems/mcp-server/README.md",
+        "systems/trackers/README.txt",
+        "systems/dashboard/README.txt",
+        "company/README.txt",
+        "company/accounting/README.txt",
+        "company/sales/README.txt",
+        "company/brand/README.txt",
+        "company/operations/README.txt"
+      ],
+      "count": 41
+    },
+    {
+      "base_name": "rules",
+      "files": [
+        "clients/RULES.md",
+        "mcp/RULES.md",
+        "docs/RULES.md",
+        "docs/processes/RULES.md",
+        "docs/training/RULES.md",
+        "docs/internal/RULES.md",
+        "docs/automation-library/RULES.md",
+        "systems/RULES.md",
+        "systems/trackers/RULES.md",
+        "systems/dashboard/RULES.md",
+        "systems/automation-engine/RULES.md",
+        "systems/context-engine/RULES.md",
+        "company/RULES.md",
+        "company/accounting/RULES.md",
+        "company/sales/RULES.md",
+        "company/brand/RULES.md",
+        "company/operations/RULES.md"
+      ],
+      "count": 17
+    },
+    {
+      "base_name": "index",
+      "files": [
+        "clients/aq-remodeling/03_website/index.html",
+        "clients/luxe-fine-dining/03_website/index.html",
+        "systems/mcp-server/index.js",
+        "systems/dashboard/html/index.html",
+        "company/website/index.html",
+        "company/website/dist/index.html",
+        "company/website/cursor_website/index.html"
+      ],
+      "count": 7
+    },
+    {
+      "base_name": "untitled design",
+      "files": [
+        "_core/brand/Untitled design.svg",
+        "company/brand/Untitled design.svg",
+        "company/brand/Untitled design.png",
+        "company/brand/assets/Untitled design.svg",
+        "company/brand/assets/Logosets/Icon/Untitled design.svg",
+        "company/brand/assets/Logosets/Icon/Untitled design.png"
+      ],
+      "count": 6
+    },
+    {
+      "base_name": "style",
+      "files": [
+        "systems/dashboard/html/style.css",
+        "company/website/style.css",
+        "company/website/cursor_website/css/style.css",
+        "company/website/src/style.css"
+      ],
+      "count": 4
+    }
+  ],
+  "old_files_cleaned": [],
+  "timestamp": "2025-12-08T14:40:50.300214"
+}

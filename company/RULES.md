@@ -1,0 +1,1 @@
+Internal business assets: brand, ops, sales, finances.

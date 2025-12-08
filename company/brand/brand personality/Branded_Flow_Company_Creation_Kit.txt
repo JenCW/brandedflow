@@ -1,0 +1,285 @@
+# Branded+Flow — Company Creation Downloads (Reusable)
+
+# Company Creation Kit — Positioning Snapshot (Plain English)
+
+**Use this to define what you do in a way normal humans understand.**  
+Date: 2025-12-07
+
+## 1) The real problem (what they’re feeling)
+**My customers feel:**  
+- [ ] Overwhelmed  
+- [ ] Anxious  
+- [ ] Behind / embarrassed  
+- [ ] Exhausted  
+- [ ] Stuck / confused  
+- [ ] Lonely doing it all
+
+**Because:**  
+- They don’t understand “marketing speak” and feel judged.  
+- AI feels like a moving train they can’t catch.  
+- They don’t know what to do first, so they do nothing.
+
+## 2) Who we help (no titles, describe the situation)
+We help: **__________________________________________**  
+Examples: “service-based owners doing everything themselves”, “local business owners who rely on referrals”, “coaches with messy intake/follow-up”.
+
+## 3) What we help them get (the relief)
+After working with us, they get:  
+- **Clarity:** _________________________________________  
+- **Follow-through:** __________________________________  
+- **Results:** _________________________________________  
+- **Relief:** __________________________________________
+
+## 4) What we actually do (in one sentence)
+We help ____________________ who feel ____________________ by ____________________ so they can ____________________.
+
+## 5) The “translation” promise (your differentiation)
+Most options in your market:  
+- teach concepts, sell hype, drown people in tools
+
+**We do:**  
+- translate the jargon  
+- pick the few moves that matter  
+- implement the system  
+- make it stick
+
+## 6) Your 3 outcomes (measurable)
+1) _________________________________________________  
+2) _________________________________________________  
+3) _________________________________________________  
+
+## 7) Your proof (why you’re credible)
+- What have you built/done that proves you can solve this?  
+  ____________________________________________________  
+- What’s your “I’ve seen this 100 times” insight?  
+  ____________________________________________________
+
+## 8) Your anti-promise (what you’re NOT)
+We are not:  
+- a hype machine  
+- a “post every day” content sweatshop  
+- a tool collector  
+- a done-with-you course that leaves you stuck
+
+## 9) Call to action (one simple next step)
+The next step is: **____________________________________**  
+Examples: “fill out the intake form”, “book a 15-min fit check”, “request a build quote”.
+
+
+---
+
+# Company Creation Kit — Brand Backbone (Messaging Map)
+
+Date: 2025-12-07
+
+## A) Your “front door” message (website / bio / intro)
+**One-liner:**  
+______________________________________________________
+
+**Two-liner (feeling → relief):**  
+______________________________________________________  
+______________________________________________________
+
+## B) Your message pillars (3–5 things you repeat forever)
+1) **Pillar:** ____________________  
+   - What you mean in plain words: ____________________  
+   - Example proof/story: _____________________________  
+2) **Pillar:** ____________________  
+   - Plain words: ____________________________________  
+   - Proof/story: ____________________________________  
+3) **Pillar:** ____________________  
+   - Plain words: ____________________________________  
+   - Proof/story: ____________________________________
+
+## C) The “feelings” you speak to (use their words)
+- “I feel ____________________________________________”
+- “I’m scared _________________________________________”
+- “I can’t keep up because _____________________________”
+- “I don’t even know where to start with _______________”
+
+## D) The “translation” lines (marketing + AI → real life)
+**Marketing, translated:**  
+- “Marketing” = getting the right people to understand you + take the next step.  
+- “Strategy” = what we will do first, second, third.  
+- “Funnel” = how strangers become clients.
+
+**AI, translated:**  
+- “AI” = a helper that drafts, sorts, summarizes, and saves time.  
+- “Automations” = if-this-then-that rules so the business runs without you pushing every button.
+
+## E) Your offer names (make them normal)
+Offer 1 name: ____________________  
+Offer 2 name: ____________________  
+Offer 3 name: ____________________
+
+## F) Your “why you” (no bragging, just truth)
+People choose us because:  
+- ____________________________________________________  
+- ____________________________________________________  
+- ____________________________________________________
+
+## G) Your boundaries (this is leadership)
+We work best when:  
+- ____________________________________________________  
+We don’t do:  
+- ____________________________________________________
+
+
+---
+
+# Company Creation Kit — ICP + Pain Language (No Marketing Speak)
+
+Date: 2025-12-07
+
+## 1) Who we do NOT help
+We are not for:  
+- ____________________________________________________  
+- ____________________________________________________
+
+## 2) Who we DO help (describe the real-life scene)
+They are:  
+- ____________________________________________________  
+They’re juggling:  
+- ____________________________________________________  
+They’ve tried:  
+- ____________________________________________________  
+They feel:  
+- ____________________________________________________
+
+## 3) Their top 10 “pain sentences” (write like they talk)
+1) “__________________________________________________”  
+2) “__________________________________________________”  
+3) “__________________________________________________”  
+4) “__________________________________________________”  
+5) “__________________________________________________”  
+6) “__________________________________________________”  
+7) “__________________________________________________”  
+8) “__________________________________________________”  
+9) “__________________________________________________”  
+10) “_________________________________________________”
+
+## 4) What they secretly want (beneath the pain)
+They want:  
+- __________________________________ (relief)  
+- __________________________________ (control)  
+- __________________________________ (respect/credibility)  
+- __________________________________ (time/space)
+
+## 5) What they’re afraid will happen
+They’re afraid:  
+- ____________________________________________________  
+- ____________________________________________________
+
+## 6) The transformation (before → after)
+Before: _______________________________________________  
+After: ________________________________________________
+
+## 7) What would make them trust you quickly
+- ____________________________________________________  
+- ____________________________________________________  
+- ____________________________________________________
+
+
+---
+
+# Company Creation Kit — Automation Spine Blueprint (Simple + Reusable)
+
+Date: 2025-12-07
+
+**Goal:** stop dropped balls. create predictable follow-through. reduce anxiety.
+
+## 1) Intake (how leads enter)
+Lead sources (check all):  
+- [ ] Website form  
+- [ ] Instagram/DM  
+- [ ] Email  
+- [ ] Referrals  
+- [ ] Ads  
+- [ ] Other: _____________
+
+**Single source of truth (your CRM):** __________________________
+
+## 2) The spine (if-this-then-that)
+### Trigger 1: New lead captured
+When: _______________________________________________  
+Then:
+- Create/update contact in CRM  
+- Tag/source = ______________________  
+- Send confirmation message (email/text)  
+- Notify owner (Slack/email)  
+- Start nurture sequence
+
+### Trigger 2: Discovery requested / fit check
+When: _______________________________________________  
+Then:
+- Send scheduling link or “reply with 3 times”  
+- Send pre-call questions (short)  
+- Create task “Prep: read form”
+
+### Trigger 3: Proposal sent
+When: _______________________________________________  
+Then:
+- Start follow-up sequence: Day 2 / Day 5 / Day 10  
+- If no response by Day 10 → “close loop” message
+
+### Trigger 4: Payment received
+When: _______________________________________________  
+Then:
+- Send welcome + next steps  
+- Create client folder  
+- Create ClickUp project/tasks  
+- Start onboarding sequence
+
+### Trigger 5: Client onboarding complete
+When: _______________________________________________  
+Then:
+- Start delivery cadence (weekly update reminder)  
+- Start review/referral request after X days
+
+## 3) Minimum viable sequences (copy/paste goals)
+**Confirmation:** “Got it. Here’s what happens next.”  
+**Nurture:** “Here’s a helpful tip / example / proof.”  
+**Follow-up:** “Still want help with this? Reply YES and I’ll send next step.”
+
+## 4) Owner-friendly rules (anti-overwhelm)
+- One CRM. One intake form. One follow-up system.  
+- No manual follow-up unless the system fails.  
+- Every trigger creates a task so nothing lives in memory.
+
+## 5) Metrics (to know it’s working)
+- Leads captured per week: _____  
+- Response time: _____  
+- Show rate: _____  
+- Close rate: _____  
+- Time saved per week: _____
+
+
+---
+
+# Company Creation Kit — Plain-English Glossary (Marketing + AI)
+
+Date: 2025-12-07
+
+## Marketing words → normal words
+- **Brand** = what people remember about you + what they expect from you  
+- **Positioning** = who it’s for and why you, in one clean sentence  
+- **Messaging** = the words you use repeatedly so people “get it” fast  
+- **Offer** = what you sell and what they get  
+- **Funnel** = the path from “never heard of you” to “paid”  
+- **Nurture** = staying in touch so they trust you when they’re ready  
+- **Conversion** = they take the next step (not always buying)
+
+## AI words → normal words
+- **AI** = a helper that drafts, sorts, summarizes, and speeds up thinking  
+- **Prompt** = your instructions to the helper  
+- **Agent** = AI that can take multi-step actions (when allowed)  
+- **Workflow** = a repeatable set of steps  
+- **Automation** = rules that run the workflow without you pushing buttons  
+- **CRM** = the place contacts/leads live so they don’t disappear  
+- **Sequence** = timed messages that go out automatically
+
+## The “so what?”
+If you can:
+1) say what you do clearly (brand), and  
+2) follow up without effort (automation),  
+you win—because consistency beats talent when life gets messy.

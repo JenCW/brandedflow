@@ -1,0 +1,1 @@
+Anything you deliver TO the client: proposals, audits, drafts, mockups, presentations.

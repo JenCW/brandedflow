@@ -1,0 +1,1 @@
+Brand identity: logos, colors, fonts, brand kit, assets.

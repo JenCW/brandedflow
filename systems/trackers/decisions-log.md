@@ -1,0 +1,4 @@
+- Decision: We will do weekly check-ins Fridays at 8am.
+- [ ] Decision: Use client profile for proposal customization (latest version)
+- [ ] Decision: Use client profile for proposal customization (latest version)
+- [ ] Decision: Use client profile for proposal customization (latest version)
