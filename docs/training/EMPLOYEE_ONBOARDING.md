@@ -58,7 +58,7 @@ It's a 3-layer system that separates decision-making from execution:
 - `clients/` - All client work
 - `company/` - Company operations
 - `docs/` - Documentation
-- `automation-library/` - Reusable automation
+- `automations/` - Reusable automation
 - `systems/` - Operational systems
 - `templates/` - Templates
 

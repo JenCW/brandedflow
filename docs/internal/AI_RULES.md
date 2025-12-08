@@ -40,9 +40,9 @@ Before creating ANY file, folder, or making changes:
 - `docs/archive/` - Outdated versions of docs
 
 **For AUTOMATION:**
-- `automation-library/mcp-reference/` - MCP server examples and documentation
-- `automation-library/workflows/` - Reusable n8n workflows, scripts
-- `automation-library/prompts/` - Reusable AI prompts and templates
+- `automations/mcps/` - Reusable MCP code
+- `automations/workflows/` - Reusable n8n workflows, scripts
+- `automations/prompts/` - Reusable AI prompts and templates
 
 **For SYSTEMS:**
 - `systems/daily-accountability/` - Daily task system (LIVE - don't break!)
@@ -97,7 +97,7 @@ Before creating ANY file, folder, or making changes:
 - **Where does this belong?** Use the folder structure above
 - **Is this client work or company work?** Goes in `clients/` or `company/`
 - **Is this documentation?** Goes in `docs/`
-- **Is this automation?** Goes in `automation-library/` or `systems/`
+- **Is this automation?** Goes in `automations/` or `systems/`
 
 ### 2. CHECK EXISTING STRUCTURE:
 ```bash
@@ -109,7 +109,7 @@ ls -la systems/  # See existing systems
 ### 3. ASK USER IF UNSURE:
 "I want to create [X] for [Y purpose]. Should this go in:
 - `systems/{new-system-name}/` (new operational system)
-- `automation-library/workflows/` (reusable automation)
+- `automations/workflows/` (reusable automation)
 - `company/operations/` (internal process doc)
 - Somewhere else?"
 
@@ -192,7 +192,7 @@ Before creating anything, verify:
 
 ## 📞 WHEN IN DOUBT
 
-**ASK:** "I want to create [X]. Based on AI_RULES.md, should this go in `systems/`, `automation-library/`, or somewhere else?"
+**ASK:** "I want to create [X]. Based on AI_RULES.md, should this go in `systems/`, `automations/`, or somewhere else?"
 
 **DON'T:** Just create it in a new root folder or random location.
 

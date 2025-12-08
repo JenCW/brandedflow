@@ -135,7 +135,7 @@ Errors are learning opportunities. When something breaks:
     - `clients/`
     - `company/`
     - `systems/`
-    - `automation-library/`
+    - `automations/`
 
 - **Tech Stack**:
     - Web: Vite (Vanilla/React), Netlify.

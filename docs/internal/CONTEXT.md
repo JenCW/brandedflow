@@ -111,7 +111,7 @@ brandedflow/
 ├── clients/              # Client projects (aq-remodeling, luxe-fine-dining, etc.)
 ├── company/             # YOUR business ops (website, templates, accounting, sales)
 ├── docs/                # Strategic docs (THIS FILE, INIT.md, OPERATIONS_MANUAL.md)
-├── automation-library/  # Future MCPs and workflows
+├── automations/         # Reusable automation code (MCPs, workflows, prompts)
 ├── systems/            # Active systems (daily-accountability)
 └── templates/          # Reusable templates
 ```

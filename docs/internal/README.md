@@ -57,10 +57,10 @@ brandedflow/
 │   ├── MASTER_BRAND_GUIDE.md  # Brand voice & identity
 │   └── archive/         # Outdated/reference docs
 │
-├── automation-library/  # Future MCPs & workflows
-│   ├── client-mcps/     # 15 Quick Start MCPs (to be built)
-│   ├── internal-workflows/  # n8n workflows for YOUR ops
-│   └── mcp-reference/   # MCP documentation
+├── automations/         # Reusable automation code
+│   ├── mcps/            # Reusable MCP code
+│   ├── workflows/       # Reusable n8n workflows
+│   └── prompts/         # Reusable AI prompts
 │
 ├── systems/             # Active running systems
 │   └── daily-accountability/  # ⚡ Morning/evening popups (ACTIVE)
@@ -87,7 +87,7 @@ brandedflow/
 
 ### Technical
 - [AI_WORKFLOW_GUIDE.md](docs/AI_WORKFLOW_GUIDE.md) - Which AI tool for what task
-- [MCP Documentation](automation-library/mcp-reference/) - MCP guides and references
+- [MCP Documentation](docs/automation-library/mcp-reference/) - MCP guides and references (note: actual MCP code is in `automations/mcps/`)
 
 ---
 
@@ -176,8 +176,8 @@ See [CLIENT_STATUS.md](docs/CLIENT_STATUS.md) for details.
 3. AQ Remodeling serves as website template
 
 ### Building Automations (Future)
-1. Client MCPs go in `/automation-library/client-mcps/`
-2. Internal workflows go in `/automation-library/internal-workflows/`
+1. Reusable MCPs go in `/automations/mcps/`
+2. Reusable workflows go in `/automations/workflows/`
 3. Each MCP will be its own project
 
 ### Updating Documentation

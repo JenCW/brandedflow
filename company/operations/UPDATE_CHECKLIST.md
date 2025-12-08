@@ -54,7 +54,7 @@ Quick reference guide for "what gets updated where" when things change.
 - [ ] Update [docs/DECISIONS_LOG.md](../../docs/DECISIONS_LOG.md) - Why chosen
 
 ### When You Build an MCP/Automation
-- [ ] Create documentation in automation-library/
+- [ ] Create documentation in automations/
 - [ ] Update [docs/QUICK_STARTS.md](../../docs/QUICK_STARTS.md) - If client-facing
 - [ ] Update [docs/OPERATIONS_MANUAL.md](../../docs/OPERATIONS_MANUAL.md) - If internal workflow
 - [ ] Update [docs/CONTEXT.md](../../docs/CONTEXT.md) - If affects current capabilities

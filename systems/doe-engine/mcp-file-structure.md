@@ -66,7 +66,7 @@ clients/
   - `docs/README.md` (client documentation)
 
 **Result:**
-- ✅ Reusable MCP code stays in `automation-library/mcps/`
+- ✅ Reusable MCP code stays in `automations/mcps/`
 - ✅ Client-specific files go in `clients/dental-bunny/04_automation/`
 
 ## The Flow

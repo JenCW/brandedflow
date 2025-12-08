@@ -19,7 +19,7 @@ Before any task, ask:
 - `clients/` - Client work
 - `company/` - Company operations  
 - `docs/` - Documentation
-- `automation-library/` - Reusable automation
+- `automations/` - Reusable automation
 - `systems/` - Operational systems
 - `templates/` - Templates
 

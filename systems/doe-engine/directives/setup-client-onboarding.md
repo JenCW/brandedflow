@@ -80,7 +80,7 @@ Automate client onboarding process: Contract signed â†’ Base44 portal created â†
 ### Phase 4: n8n Workflow Creation
 1. **Create workflow file**
    - Location: `clients/{client-name}/04_automation/workflows/onboarding-workflow.json`
-   - Template: `automation-library/workflows/onboarding-template.json` (if exists)
+   - Template: `automations/workflows/onboarding-template.json` (if exists)
    - Use script: `execution/create-onboarding-workflow.py` (if exists)
 
 2. **Configure workflow steps**:

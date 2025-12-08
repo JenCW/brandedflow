@@ -72,7 +72,7 @@ Set up complete lead magnet automation: Landing page → Form → CRM → PDF de
 ### Phase 3: Build n8n Workflow
 1. **Create workflow file**
    - Location: `clients/{client-name}/04_automation/workflows/lead-magnet-workflow.json`
-   - Template: `automation-library/workflows/lead-magnet-template.json` (if exists)
+   - Template: `automations/workflows/lead-magnet-template.json` (if exists)
    - Use script: `execution/create-n8n-workflow.py` (if exists)
 
 2. **Configure workflow steps**:
@@ -198,7 +198,7 @@ Set up complete lead magnet automation: Landing page → Form → CRM → PDF de
 - Use profile for CRM and email (consistency)
 - Profile carries variations through all automations
 - Always test workflow end-to-end before delivery
-- Keep n8n workflow templates in `automation-library/workflows/` for reuse
+- Keep n8n workflow templates in `automations/workflows/` for reuse
 - PDF generation works best with client-specific content from intake
 - Always document API keys and credentials securely (never commit to git)
 - Base44 portal must be updated for client access
