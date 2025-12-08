@@ -14,7 +14,7 @@ Only 6 folders exist at root level:
 - `clients/` - Client work
 - `company/` - Company operations
 - `docs/` - All documentation
-- `automation-library/` - Reusable automation
+- `automations/` - Reusable automation
 - `systems/` - Operational systems
 - `templates/` - Templates
 
@@ -38,6 +38,49 @@ You are Cursor Composer. You have a tendency to:
 2. Ask where it should go if unsure
 3. Use established folder structure
 4. Update docs/CONTEXT.md and docs/DECISIONS_LOG.md after
+
+## 🎯 DOE METHOD - MANDATORY WORKFLOW
+
+**Before executing ANY task, follow the Directive → Orchestrate → Execute pattern:**
+
+### Step 1: Assess Task (3-Question Test)
+Before using DOE, quickly assess:
+1. **Will this be done again?** (Recurring task)
+2. **Is this complex?** (Multiple steps, integrations, error-prone)
+3. **Does consistency matter?** (Same quality every time)
+
+**If 2+ answers are "Yes" → Use DOE**
+**If 0-1 answers are "Yes" → Skip DOE, do it directly**
+
+### Step 2: Check for Directive (If Using DOE)
+1. Search for existing directive: `systems/doe-engine/directives/{task-name}.md`
+2. If directive exists: Read it fully before proceeding
+3. If no directive exists:
+   - For common/recurring tasks: Ask user if you should create one
+   - For one-off tasks: Proceed but note what directive could be created
+
+### Step 3: Check for Execution Scripts (If Using DOE)
+1. Before writing code, check: `systems/doe-engine/execution/`
+2. If script exists: Use it (don't rewrite)
+3. If no script exists: Create one for deterministic operations
+4. Only write code directly if it's exploratory/prototyping
+
+### Step 4: Orchestrate (Your Role)
+- Read directive → Understand goals/inputs/outputs
+- Decide which execution scripts to call
+- Handle errors and edge cases
+- Update directive with learnings (ask permission first)
+
+### Step 5: Self-Anneal on Errors
+When something breaks:
+1. Fix the execution script
+2. Test it (ask before using paid APIs)
+3. Update the directive with new learnings (ask permission)
+4. Document what changed
+
+**Key Principle:** Push complexity into deterministic scripts. You orchestrate, scripts execute.
+
+**See:** `systems/doe-engine/gemini.md` for full architecture details
 
 ## 🔄 AFTER MAKING CHANGES
 
