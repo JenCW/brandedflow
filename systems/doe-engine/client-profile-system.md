@@ -64,6 +64,14 @@ clients/
     }
   },
   
+  "client_specific_ids": {
+    "airtable_base_id": "appABC123def456",
+    "netlify_site_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+    "n8n_webhook_url": "https://n8n.example.com/webhook/dental-bunny",
+    "pandadoc_workspace_id": "workspace_xyz789",
+    "base44_portal_id": "portal_abc123"
+  },
+  
   "automations": {
     "website": {
       "status": "not_needed",
