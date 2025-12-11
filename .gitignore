@@ -37,3 +37,6 @@ Temporary Items
 # Personal notes (if you want to keep private notes in this folder)
 PRIVATE_NOTES.md
 TODO_PERSONAL.md
+
+# Local Netlify folder
+.netlify

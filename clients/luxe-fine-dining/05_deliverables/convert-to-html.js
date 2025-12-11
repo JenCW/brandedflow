@@ -193,3 +193,8 @@ ${html}
 fs.writeFileSync(htmlPath, fullHtml);
 console.log('HTML file created successfully at:', htmlPath);
 
+
+
+
+
+

@@ -83,7 +83,6 @@
         "clients/luxe-fine-dining/01_intake/README.txt",
         "clients/luxe-fine-dining/05_deliverables/README.md",
         "clients/luxe-fine-dining/05_deliverables/README.txt",
-        "_core/brand/README.txt",
         "docs/README.txt",
         "docs/processes/README.txt",
         "docs/training/README.txt",
@@ -102,19 +101,19 @@
         "company/brand/README.txt",
         "company/operations/README.txt"
       ],
-      "count": 41
+      "count": 40
     },
     {
       "base_name": "rules",
       "files": [
         "clients/RULES.md",
-        "mcp/RULES.md",
         "docs/RULES.md",
         "docs/processes/RULES.md",
         "docs/training/RULES.md",
         "docs/internal/RULES.md",
         "docs/automation-library/RULES.md",
         "systems/RULES.md",
+        "systems/mcp-server/RULES.md",
         "systems/trackers/RULES.md",
         "systems/dashboard/RULES.md",
         "systems/automation-engine/RULES.md",
@@ -131,26 +130,16 @@
       "base_name": "index",
       "files": [
         "clients/aq-remodeling/03_website/index.html",
+        "clients/luxe-fine-dining/proposal-deploy/index.html",
         "clients/luxe-fine-dining/03_website/index.html",
+        "clients/luxe-fine-dining/05_deliverables/index.html",
         "systems/mcp-server/index.js",
         "systems/dashboard/html/index.html",
         "company/website/index.html",
         "company/website/dist/index.html",
         "company/website/cursor_website/index.html"
       ],
-      "count": 7
-    },
-    {
-      "base_name": "untitled design",
-      "files": [
-        "_core/brand/Untitled design.svg",
-        "company/brand/Untitled design.svg",
-        "company/brand/Untitled design.png",
-        "company/brand/assets/Untitled design.svg",
-        "company/brand/assets/Logosets/Icon/Untitled design.svg",
-        "company/brand/assets/Logosets/Icon/Untitled design.png"
-      ],
-      "count": 6
+      "count": 9
     },
     {
       "base_name": "style",
@@ -161,8 +150,19 @@
         "company/website/src/style.css"
       ],
       "count": 4
+    },
+    {
+      "base_name": "untitled design",
+      "files": [
+        "company/brand/Untitled design.svg",
+        "company/brand/Untitled design.png",
+        "company/brand/assets/Untitled design.svg",
+        "company/brand/assets/Logosets/Icon/Untitled design.svg",
+        "company/brand/assets/Logosets/Icon/Untitled design.png"
+      ],
+      "count": 5
     }
   ],
   "old_files_cleaned": [],
-  "timestamp": "2025-12-08T14:40:50.300214"
+  "timestamp": "2025-12-10T08:00:01.130101"
 }

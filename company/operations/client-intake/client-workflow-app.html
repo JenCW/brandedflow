@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Workflow - Branded + Flow</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .app-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        
+        .app-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .app-header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .app-header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+        
+        .workflow-steps {
+            display: flex;
+            justify-content: space-between;
+            padding: 30px;
+            background: #f8f9fa;
+            border-bottom: 2px solid #e0e0e0;
+            overflow-x: auto;
+        }
+        
+        .step-indicator {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            min-width: 120px;
+        }
+        
+        .step-indicator::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 60%;
+            width: 80%;
+            height: 3px;
+            background: #e0e0e0;
+            z-index: 0;
+        }
+        
+        .step-indicator:last-child::after {
+            display: none;
+        }
+        
+        .step-indicator.completed::after {
+            background: #28a745;
+        }
+        
+        .step-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #e0e0e0;
+            color: #666;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s;
+        }
+        
+        .step-indicator.active .step-circle {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+        
+        .step-indicator.completed .step-circle {
+            background: #28a745;
+            color: white;
+        }
+        
+        .step-indicator.locked .step-circle {
+            background: #e0e0e0;
+            color: #999;
+            cursor: not-allowed;
+        }
+        
+        .step-label {
+            font-size: 0.85rem;
+            color: #666;
+            font-weight: 500;
+        }
+        
+        .step-indicator.active .step-label {
+            color: #667eea;
+            font-weight: 600;
+        }
+        
+        .step-indicator.completed .step-label {
+            color: #28a745;
+        }
+        
+        .step-content {
+            padding: 40px;
+            min-height: 500px;
+        }
+        
+        .step-panel {
+            display: none;
+            animation: fadeIn 0.3s;
+        }
+        
+        .step-panel.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .step-title {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .step-description {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+        
+        .form-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .section-title {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        .required {
+            color: #dc3545;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="number"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+            font-family: inherit;
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .inline-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 10px;
+            border-radius: 6px;
+            transition: background 0.2s;
+        }
+        
+        .checkbox-item:hover {
+            background: rgba(102, 126, 234, 0.05);
+        }
+        
+        .checkbox-item input[type="checkbox"] {
+            width: auto;
+            margin-top: 3px;
+        }
+        
+        .action-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background: #f8f9fa;
+            border-top: 2px solid #e0e0e0;
+        }
+        
+        .btn {
+            padding: 14px 28px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .btn-primary:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-success {
+            background: #28a745;
+            color: white;
+        }
+        
+        .btn-success:hover:not(:disabled) {
+            background: #218838;
+        }
+        
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .message {
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        
+        .message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+        
+        .message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: block;
+        }
+        
+        .message.info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+            display: block;
+        }
+        
+        .config-section {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            border: 1px solid #ffc107;
+        }
+        
+        .config-section input {
+            font-size: 0.9rem;
+            padding: 8px;
+        }
+        
+        .progress-info {
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .locked-message {
+            text-align: center;
+            padding: 40px;
+            color: #999;
+        }
+        
+        .locked-message .icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .inline-group {
+                grid-template-columns: 1fr;
+            }
+            
+            .workflow-steps {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .step-indicator::after {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <div class="app-header">
+            <h1>🚀 Client Workflow</h1>
+            <p>Guided process from intake to deployment</p>
+        </div>
+        
+        <div class="workflow-steps">
+            <div class="step-indicator active" data-step="1">
+                <div class="step-circle">1</div>
+                <div class="step-label">Basic Info</div>
+            </div>
+            <div class="step-indicator locked" data-step="2">
+                <div class="step-circle">2</div>
+                <div class="step-label">Business</div>
+            </div>
+            <div class="step-indicator locked" data-step="3">
+                <div class="step-circle">3</div>
+                <div class="step-label">Brand & Design</div>
+            </div>
+            <div class="step-indicator locked" data-step="4">
+                <div class="step-circle">4</div>
+                <div class="step-label">Services</div>
+            </div>
+            <div class="step-indicator locked" data-step="5">
+                <div class="step-circle">5</div>
+                <div class="step-label">Proposal</div>
+            </div>
+            <div class="step-indicator locked" data-step="6">
+                <div class="step-circle">6</div>
+                <div class="step-label">Contract</div>
+            </div>
+            <div class="step-indicator locked" data-step="7">
+                <div class="step-circle">✓</div>
+                <div class="step-label">Approve</div>
+            </div>
+        </div>
+        
+        <div class="step-content">
+            <div id="message" class="message"></div>
+            
+            <div class="config-section" style="margin: 0 40px 20px;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label>MCP Server URL</label>
+                        <input type="text" id="mcpUrl" value="http://localhost:4000">
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label>API Key</label>
+                        <input type="text" id="apiKey" value="key1">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- STEP 1: Basic Info -->
+            <div class="step-panel active" id="step-1">
+                <h2 class="step-title">Step 1: Basic Information</h2>
+                <p class="step-description">Let's start with the essentials. Fill in the minimum required information to create the client folder and start research.</p>
+                
+                <div class="form-section">
+                    <div class="form-group">
+                        <label>Client Name <span class="required">*</span></label>
+                        <input type="text" id="clientName" required placeholder="lowercase-kebab-case (e.g., dental-bunny)">
+                        <small style="color: #666; font-size: 0.85em; display: block; margin-top: 5px;">Use lowercase with hyphens, no spaces</small>
+                    </div>
+                    
+                    <div class="inline-group">
+                        <div class="form-group">
+                            <label>Business Name <span class="required">*</span></label>
+                            <input type="text" id="businessName" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Industry</label>
+                            <select id="industry">
+                                <option value="">Select...</option>
+                                <option value="restaurant">Restaurant/Food Service</option>
+                                <option value="retail">Retail</option>
+                                <option value="professional-services">Professional Services</option>
+                                <option value="healthcare">Healthcare</option>
+                                <option value="beauty-wellness">Beauty & Wellness</option>
+                                <option value="home-services">Home Services</option>
+                                <option value="real-estate">Real Estate</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="inline-group">
+                        <div class="form-group">
+                            <label>Contact Email <span class="required">*</span></label>
+                            <input type="email" id="contactEmail" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Contact Phone</label>
+                            <input type="tel" id="contactPhone">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- STEP 2: Business -->
+            <div class="step-panel" id="step-2">
+                <h2 class="step-title">Step 2: Business Context</h2>
+                <p class="step-description">Tell us about the business. This information will be used in the proposal and website.</p>
+                
+                <div class="form-section">
+                    <div class="form-group">
+                        <label>Target Market/Audience</label>
+                        <textarea id="targetMarket" rows="3" placeholder="Who are your ideal customers?"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Business Story</label>
+                        <textarea id="businessStory" rows="5" placeholder="Tell us about your business - how long you've been around, what makes you special, your success story..."></textarea>
+                        <small style="color: #666; font-size: 0.85em; display: block; margin-top: 5px;">This will be used in the proposal "Story" section</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Main Problems/Challenges</label>
+                        <textarea id="problems" rows="4" placeholder="What are the main problems you're facing? (One per line)"></textarea>
+                        <small style="color: #666; font-size: 0.85em; display: block; margin-top: 5px;">This will be used in the proposal "Problem" section</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Market Opportunity</label>
+                        <textarea id="opportunity" rows="3" placeholder="What's the market potential? What are you missing?"></textarea>
+                        <small style="color: #666; font-size: 0.85em; display: block; margin-top: 5px;">This will be used in the proposal "Opportunity" section</small>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- STEP 3: Brand & Design -->
+            <div class="step-panel" id="step-3">
+                <h2 class="step-title">Step 3: Brand & Design</h2>
+                <p class="step-description">Define the brand identity and design preferences.</p>
+                
+                <div class="form-section">
+                    <div class="section-title">Design Preferences</div>
+                    
+                    <div class="form-group">
+                        <label>Design Style</label>
+                        <select id="designStyle">
+                            <option value="">Select...</option>
+                            <option value="modern-bright-editorial">Modern Bright Editorial</option>
+                            <option value="dark-luxury-flowy">Dark Luxury Flowy</option>
+                            <option value="minimal-clean">Minimal & Clean</option>
+                            <option value="bold-vibrant">Bold & Vibrant</option>
+                            <option value="custom">Custom</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Brand Colors (Hex Codes)</label>
+                        <input type="text" id="brandColors" placeholder="#1a1a1a, #D4AF37, #ffffff">
+                        <small style="color: #666; font-size: 0.85em; display: block; margin-top: 5px;">Separate multiple colors with commas</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Brand Tone/Personality</label>
+                        <select id="brandTone">
+                            <option value="">Select...</option>
+                            <option value="friendly">Friendly</option>
+                            <option value="luxury">Luxury</option>
+                            <option value="professional">Professional</option>
+                            <option value="playful">Playful</option>
+                            <option value="sophisticated">Sophisticated</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Typography Preferences</label>
+                        <input type="text" id="typography" placeholder="e.g., Elegant serif, Clean sans-serif">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- STEP 4: Services -->
+            <div class="step-panel" id="step-4">
+                <h2 class="step-title">Step 4: Services Needed</h2>
+                <p class="step-description">Select the services this client needs.</p>
+                
+                <div class="form-section">
+                    <div class="checkbox-group">
+                        <div class="checkbox-item" style="background: #f0f4ff; padding: 15px; border-radius: 6px; border: 2px solid #667eea;">
+                            <input type="checkbox" id="service-ai" value="AI Receptionist (iAnswering.ai)">
+                            <label for="service-ai" style="font-weight: 600; color: #667eea;">
+                                <strong>⭐ AI Receptionist (iAnswering.ai)</strong><br>
+                                <small style="color: #666; font-weight: normal;">24/7 phone answering, lead qualification, appointment booking</small>
+                            </label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="service-website" value="Website">
+                            <label for="service-website">Website</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="service-lead-magnet" value="Lead Magnet">
+                            <label for="service-lead-magnet">Lead Magnet</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="service-onboarding" value="Client Onboarding">
+                            <label for="service-onboarding">Client Onboarding System</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="service-email" value="Email Marketing">
+                            <label for="service-email">Email Marketing</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="service-crm" value="CRM Setup">
+                            <label for="service-crm">CRM Setup</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- STEP 5: Proposal -->
+            <div class="step-panel" id="step-5">
+                <h2 class="step-title">Step 5: Proposal Details</h2>
+                <p class="step-description">Define the proposal structure and pricing.</p>
+                
+                <div class="form-section">
+                    <div class="form-group">
+                        <label>Proposal Type</label>
+                        <select id="proposalType">
+                            <option value="phased">Phased Approach (Recommended)</option>
+                            <option value="single">Single Proposal</option>
+                        </select>
+                    </div>
+                    
+                    <div id="phasedProposal">
+                        <div class="form-group">
+                            <label>Phase 1 Setup Fee</label>
+                            <input type="number" id="phase1Setup" placeholder="3500">
+                        </div>
+                        <div class="form-group">
+                            <label>Phase 1 Monthly Fee</label>
+                            <input type="number" id="phase1Monthly" placeholder="697">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- STEP 6: Contract -->
+            <div class="step-panel" id="step-6">
+                <h2 class="step-title">Step 6: Contract Details</h2>
+                <p class="step-description">Finalize contract terms and payment structure.</p>
+                
+                <div class="form-section">
+                    <div class="form-group">
+                        <label>Payment Terms</label>
+                        <select id="paymentTerms">
+                            <option value="50-50">50% upfront, 50% at completion</option>
+                            <option value="33-33-33">33% upfront, 33% mid-project, 33% at completion</option>
+                            <option value="custom">Custom payment schedule</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Monthly Fee Start Date</label>
+                        <select id="monthlyStart">
+                            <option value="30-days">30 days after project start</option>
+                            <option value="immediate">Immediate (upon approval)</option>
+                            <option value="completion">Upon project completion</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- STEP 7: Approve -->
+            <div class="step-panel" id="step-7">
+                <h2 class="step-title">Step 7: Review & Approve</h2>
+                <p class="step-description">Review everything and approve to trigger full setup.</p>
+                
+                <div class="form-section">
+                    <h3 style="margin-bottom: 20px;">What Will Happen When You Approve:</h3>
+                    <ul style="line-height: 2; color: #666;">
+                        <li>✓ Client folder created (if not exists)</li>
+                        <li>✓ Research workflow triggered</li>
+                        <li>✓ Proposal generated</li>
+                        <li>✓ Contract created</li>
+                        <li>✓ Airtable base created</li>
+                        <li>✓ Base44 portal created</li>
+                        <li>✓ Onboarding docs generated</li>
+                        <li>✓ iAnswering.ai setup (if selected)</li>
+                        <li>✓ Auto-sync to Base44 activated</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="action-bar">
+            <div class="progress-info">
+                <span id="currentStepText">Step 1 of 7</span>
+            </div>
+            <div style="display: flex; gap: 10px;">
+                <button class="btn btn-secondary" onclick="goToPreviousStep()" id="btnPrevious" style="display: none;">← Previous</button>
+                <button class="btn btn-primary" onclick="completeCurrentStep()" id="btnComplete">Complete Step</button>
+                <button class="btn btn-success" onclick="approveAndSetup()" id="btnApprove" style="display: none;">✓ Approve & Setup</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let currentStep = 1;
+        const totalSteps = 7;
+        const stepStatus = {}; // Track which steps are completed
+        
+        // Load saved progress
+        window.addEventListener('load', () => {
+            loadProgress();
+            updateUI();
+        });
+        
+        // Auto-save on input
+        document.addEventListener('input', debounce(() => {
+            saveProgress();
+        }, 1000));
+        
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+        
+        function saveProgress() {
+            const data = {
+                currentStep,
+                stepStatus,
+                formData: {}
+            };
+            
+            document.querySelectorAll('input, textarea, select').forEach(field => {
+                if (field.type === 'checkbox') {
+                    data.formData[field.id] = field.checked;
+                } else {
+                    data.formData[field.id] = field.value;
+                }
+            });
+            
+            localStorage.setItem('clientWorkflowProgress', JSON.stringify(data));
+        }
+        
+        function loadProgress() {
+            const saved = localStorage.getItem('clientWorkflowProgress');
+            if (saved) {
+                const data = JSON.parse(saved);
+                currentStep = data.currentStep || 1;
+                stepStatus = data.stepStatus || {};
+                
+                // Restore form data
+                Object.keys(data.formData || {}).forEach(key => {
+                    const field = document.getElementById(key);
+                    if (field) {
+                        if (field.type === 'checkbox') {
+                            field.checked = data.formData[key];
+                        } else {
+                            field.value = data.formData[key];
+                        }
+                    }
+                });
+            }
+        }
+        
+        function updateUI() {
+            // Update step indicators
+            document.querySelectorAll('.step-indicator').forEach((indicator, index) => {
+                const stepNum = index + 1;
+                indicator.classList.remove('active', 'completed', 'locked');
+                
+                if (stepNum < currentStep) {
+                    indicator.classList.add('completed');
+                } else if (stepNum === currentStep) {
+                    indicator.classList.add('active');
+                } else {
+                    indicator.classList.add('locked');
+                }
+            });
+            
+            // Update step panels
+            document.querySelectorAll('.step-panel').forEach((panel, index) => {
+                panel.classList.remove('active');
+                if (index + 1 === currentStep) {
+                    panel.classList.add('active');
+                }
+            });
+            
+            // Update buttons
+            document.getElementById('btnPrevious').style.display = currentStep > 1 ? 'block' : 'none';
+            document.getElementById('btnComplete').style.display = currentStep < 7 ? 'block' : 'none';
+            document.getElementById('btnApprove').style.display = currentStep === 7 ? 'block' : 'none';
+            document.getElementById('currentStepText').textContent = `Step ${currentStep} of ${totalSteps}`;
+        }
+        
+        function goToPreviousStep() {
+            if (currentStep > 1) {
+                currentStep--;
+                updateUI();
+                saveProgress();
+            }
+        }
+        
+        async function completeCurrentStep() {
+            // Validate required fields for current step
+            if (!validateStep(currentStep)) {
+                showMessage('Please fill in all required fields', 'error');
+                return;
+            }
+            
+            // Mark step as completed
+            stepStatus[currentStep] = 'completed';
+            
+            // Perform step-specific actions
+            if (currentStep === 1) {
+                // Step 1: Create client folder and trigger research
+                await createClientAndResearch();
+            }
+            
+            // Move to next step
+            if (currentStep < totalSteps) {
+                currentStep++;
+                updateUI();
+                saveProgress();
+                showMessage(`Step ${currentStep - 1} completed! Moving to step ${currentStep}...`, 'success');
+            }
+        }
+        
+        function validateStep(step) {
+            if (step === 1) {
+                return document.getElementById('clientName').value &&
+                       document.getElementById('businessName').value &&
+                       document.getElementById('contactEmail').value;
+            }
+            // Add validation for other steps as needed
+            return true;
+        }
+        
+        async function createClientAndResearch() {
+            const clientName = document.getElementById('clientName').value;
+            const intakeData = collectIntakeData();
+            
+            try {
+                showMessage('Creating client folder and triggering research...', 'info');
+                
+                // Create intake
+                const intakeResult = await callMcp('process-client-intake', {
+                    client_name: clientName,
+                    intake_data: intakeData,
+                    source: 'manual'
+                });
+                
+                if (!intakeResult.success) {
+                    throw new Error(intakeResult.error || 'Failed to create client folder');
+                }
+                
+                // Trigger research
+                const researchResult = await callMcp('trigger-client-research', {
+                    client_name: clientName,
+                    research_type: 'full'
+                });
+                
+                if (researchResult.success) {
+                    showMessage('✓ Client folder created! ✓ Research workflow triggered!', 'success');
+                }
+            } catch (error) {
+                showMessage(error.message, 'error');
+            }
+        }
+        
+        async function approveAndSetup() {
+            const clientName = document.getElementById('clientName').value;
+            
+            if (!confirm('This will trigger FULL SETUP. Proceed?')) {
+                return;
+            }
+            
+            try {
+                showMessage('Approving and triggering full setup...', 'info');
+                
+                const result = await callMcp('approve-client-proposal', {
+                    client_name: clientName,
+                    approval_date: new Date().toISOString()
+                });
+                
+                if (result.success) {
+                    showMessage('✓ Proposal approved! Full setup initiated.', 'success');
+                    stepStatus[7] = 'completed';
+                    updateUI();
+                } else {
+                    showMessage(result.error || 'Failed to approve', 'error');
+                }
+            } catch (error) {
+                showMessage(error.message, 'error');
+            }
+        }
+        
+        function collectIntakeData() {
+            return {
+                business_name: document.getElementById('businessName').value,
+                contact_email: document.getElementById('contactEmail').value,
+                contact_phone: document.getElementById('contactPhone').value,
+                industry: document.getElementById('industry').value,
+                target_market: document.getElementById('targetMarket').value,
+                business_story: document.getElementById('businessStory').value,
+                problems: document.getElementById('problems').value,
+                opportunity: document.getElementById('opportunity').value,
+                design_style: document.getElementById('designStyle').value,
+                brand_colors: document.getElementById('brandColors').value,
+                brand_tone: document.getElementById('brandTone').value,
+                typography: document.getElementById('typography').value,
+                services: Array.from(document.querySelectorAll('input[type="checkbox"]:checked')).map(cb => cb.value)
+            };
+        }
+        
+        async function callMcp(mcpName, params) {
+            const mcpUrl = document.getElementById('mcpUrl').value;
+            const apiKey = document.getElementById('apiKey').value;
+            
+            try {
+                const response = await fetch(`${mcpUrl}/run`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-API-Key': apiKey
+                    },
+                    body: JSON.stringify({
+                        mcp: mcpName,
+                        params: params
+                    })
+                });
+                
+                return await response.json();
+            } catch (error) {
+                throw new Error(`Failed to call MCP: ${error.message}`);
+            }
+        }
+        
+        function showMessage(text, type = 'info') {
+            const message = document.getElementById('message');
+            message.textContent = text;
+            message.className = `message ${type}`;
+            setTimeout(() => {
+                message.className = 'message';
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+

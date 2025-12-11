@@ -115,3 +115,8 @@ A good proposal:
 - Always include payment terms
 - Always make it mobile-responsive
 
+
+
+
+
+

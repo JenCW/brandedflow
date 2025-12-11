@@ -73,3 +73,8 @@ Create a **headless Netlify CMS** to manage client websites. This will allow cli
 **Last Updated:** December 2024
 **Status:** Documented, MCPs to be built
 
+
+
+
+
+
