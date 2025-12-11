@@ -40,3 +40,41 @@ TODO_PERSONAL.md
 
 # Local Netlify folder
 .netlify
+
+# Video files - TOO LARGE for git (use cloud storage or CDN instead)
+*.MOV
+*.MP4
+*.mov
+*.mp4
+*.avi
+*.AVI
+*.m4v
+*.M4V
+*.webm
+*.WEBM
+
+# Large media files in client websites
+clients/*/03_website/images/**/*.MOV
+clients/*/03_website/images/**/*.MP4
+clients/*/03_website/images/**/*.mov
+clients/*/03_website/images/**/*.mp4
+
+# Client media drop folders - temporary storage, NOT in git
+clients/*/00_media-drop/
+clients/*/00_media-drop/**
+
+# Cloudinary config (contains API keys - keep private)
+clients/*/cloudinary-config.json
+
+# Keep existing video files out of git (they're on CDN now)
+clients/aq-remodeling/03_website/images/**/*.MOV
+clients/aq-remodeling/03_website/images/**/*.MP4
+clients/aq-remodeling/03_website/images/**/*.mov
+clients/aq-remodeling/03_website/images/**/*.mp4
+
+# Node modules (dependencies - should not be in git)
+node_modules/
+
+# Log files (automatically generated - should not be in git)
+*.log
+automation-system/logs/
