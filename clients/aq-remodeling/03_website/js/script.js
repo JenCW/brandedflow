@@ -161,12 +161,20 @@ if (contactForm) {
             return;
         }
 
-        // Success
-        console.log('Form submitted:', data);
-        showNotification('Thank you! We\'ll contact you within 24 hours.', 'success');
-        contactForm.reset();
-
-        // In production, integrate with form service
+        // Submit to Netlify Forms
+        fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams(formData).toString()
+        })
+        .then(() => {
+            showNotification('Thank you! We\'ll contact you within 24 hours.', 'success');
+            contactForm.reset();
+        })
+        .catch((error) => {
+            console.error('Form submission error:', error);
+            showNotification('There was an error submitting your form. Please try again or call us directly.', 'error');
+        });
     });
 }
 

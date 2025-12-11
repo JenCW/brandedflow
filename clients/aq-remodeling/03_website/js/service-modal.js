@@ -2,7 +2,7 @@
 const serviceData = {
     tenant: {
         title: 'Tenant Improvements',
-        image: 'images/Work-pics-and-vids/IMG_0480.png',
+        image: 'images/Work-pics-and-vids/IMG_0480.webp',
         description: 'Transform commercial spaces with complete tenant improvement build-outs that exceed expectations. We handle every aspect of your project from initial design through final inspection.',
         details: `Our tenant improvement services include comprehensive planning, permitting, construction, and finish work that creates impressive commercial environments. We specialize in minimizing disruption to existing tenants while delivering high-quality results on time and on budget.`,
         includes: [
@@ -20,7 +20,7 @@ const serviceData = {
     },
     hotel: {
         title: 'Hotel Upgrades',
-        image: 'images/Work-pics-and-vids/IMG_0468.png',
+        image: 'images/Work-pics-and-vids/IMG_0468.webp',
         description: 'Elevate guest experiences with stunning hotel renovations that increase property value and guest satisfaction ratings.',
         details: `From guest room refreshes to complete lobby transformations, we understand the unique challenges of hotel renovations. Our team works efficiently to minimize downtime while delivering luxurious results that wow guests and drive bookings.`,
         includes: [
@@ -38,7 +38,7 @@ const serviceData = {
     },
     commercial: {
         title: 'Commercial Remodels',
-        image: 'images/Work-pics-and-vids/IMG_0475.png',
+        image: 'images/Work-pics-and-vids/IMG_0475.webp',
         description: 'Complete commercial space transformations for offices, warehouses, and mixed-use properties that enhance functionality and aesthetics.',
         details: `Whether you're updating an outdated office or converting a warehouse to modern commercial space, our team brings expertise in large-scale commercial renovations. We manage complex projects with multiple trades, ensuring seamless coordination and exceptional results.`,
         includes: [
@@ -56,7 +56,7 @@ const serviceData = {
     },
     retail: {
         title: 'Retail Renovations',
-        image: 'images/Work-pics-and-vids/IMG_0466.png',
+        image: 'images/Work-pics-and-vids/IMG_0466.webp',
         description: 'Create retail environments that attract customers and drive sales through strategic design and quality construction.',
         details: `Your retail space is your brand's physical expression. We create compelling shopping environments with attention to customer flow, product display, and brand identity. From boutique storefronts to large retail spaces, we deliver renovations that boost your bottom line.`,
         includes: [
@@ -74,7 +74,7 @@ const serviceData = {
     },
     office: {
         title: 'Office Remodels',
-        image: 'images/Work-pics-and-vids/IMG_0463.png',
+        image: 'images/Work-pics-and-vids/IMG_0463.webp',
         description: 'Modern office spaces that enhance productivity, reflect your brand, and attract top talent.',
         details: `The modern workplace is evolving, and your office should too. We create collaborative, inspiring work environments with flexible layouts, modern technology infrastructure, and design elements that boost employee morale and productivity.`,
         includes: [
@@ -92,7 +92,7 @@ const serviceData = {
     },
     reception: {
         title: 'Hotel Reception & Lobby',
-        image: 'images/Work-pics-and-vids/IMG_0464.png',
+        image: 'images/Work-pics-and-vids/IMG_0464.webp',
         description: 'First impressions that wow guests and set the tone for an exceptional stay.',
         details: `Your lobby and reception area are the gateway to your guest experience. We create stunning, functional spaces that combine luxury aesthetics with operational efficiency, ensuring smooth check-ins and memorable first impressions.`,
         includes: [

@@ -119,19 +119,33 @@ Build and deploy a professional, conversion-optimized static website for a clien
 
 ### Phase 3: Integration Setup
 1. **Form integration**
-   - Ensure forms have `netlify` attribute
+   - Ensure forms have `data-netlify="true"` attribute
+   - Add `name="contact"` and `method="POST"` attributes
+   - Add hidden `form-name` input and honeypot field for spam protection
+   - Update JavaScript to submit to Netlify Forms AND Airtable (if configured)
    - Test form submission (if possible)
    - Document form field mappings for CRM
 
 2. **Google Analytics setup**
-   - Add GA4 tracking code (if client has GA account)
-   - Document GA property ID in client folder
-   - Note: Client needs to provide GA property ID
+   - Add GA4 tracking code to ALL HTML pages (placeholder: `G-XXXXXXXXXX`)
+   - Create `build.js` script that replaces placeholder with `GOOGLE_ANALYTICS_ID` env var
+   - Add build command to `netlify.toml`: `command = "node build.js"`
+   - Document GA property ID requirement in setup docs
+   - Note: Client needs to provide GA property ID in Netlify environment variables
 
 3. **CRM integration preparation**
+   - **Airtable**: Add webhook URL to form submission JavaScript
+   - **Base44**: Create Netlify function `netlify/functions/submit-to-base44.js`
+   - Configure Netlify Forms webhook to trigger Base44 function
    - Document form field structure
-   - Note integration points for Airtable/CRM
-   - Create integration notes file
+   - Note integration points for Airtable/CRM/Base44
+   - Create integration notes file (`docs/NETLIFY_SETUP.md`)
+
+4. **Netlify CMS setup** (if client needs content management)
+   - Create `admin/config.yml` with content types (pages, testimonials, portfolio, FAQs)
+   - Create `admin/index.html` for CMS access
+   - Document Git Gateway setup in Netlify dashboard
+   - Note: Requires Netlify Identity + Git Gateway enabled
 
 ### Phase 4: Validation & Testing
 1. **Validate structure**
@@ -149,8 +163,12 @@ Build and deploy a professional, conversion-optimized static website for a clien
 3. **Prepare for deployment**
    - Ensure: `robots.txt` exists
    - Ensure: `sitemap.xml` exists
-   - Ensure: Forms have `netlify` attribute
+   - Ensure: Forms have `data-netlify="true"` attribute
+   - Ensure: `netlify.toml` has build command and environment variable notes
+   - Ensure: `build.js` exists and processes all HTML files
+   - Ensure: `.netlifyignore` excludes dev files but includes `build.js`
    - Ensure: All images are optimized (if possible)
+   - Create: `docs/NETLIFY_SETUP.md` with environment variable setup instructions
    - Use script: `execution/prepare-netlify-deployment.py` (if exists)
 
 ## 4. OUTPUTS
@@ -169,6 +187,13 @@ Build and deploy a professional, conversion-optimized static website for a clien
   - `sitemap.xml` (SEO)
 - Documentation:
   - `README.md` (deployment instructions, form setup, etc.)
+  - `docs/NETLIFY_SETUP.md` (environment variables, integrations setup)
+- Build Files:
+  - `build.js` (replaces environment variable placeholders during build)
+  - `netlify.toml` (build settings, redirects, environment variable notes)
+- Integration Files:
+  - `netlify/functions/submit-to-base44.js` (if Base44 integration needed)
+  - `admin/config.yml` and `admin/index.html` (if Netlify CMS needed)
 - Client Profile Updated:
   - `clients/{client-name}/client-profile.json` updated with website status
   - Portal updated with website information

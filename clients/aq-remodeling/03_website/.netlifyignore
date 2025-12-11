@@ -1,0 +1,19 @@
+# Documentation (not needed for live site)
+docs/
+README.txt
+
+# Development/utility scripts (not needed for live site)
+deploy.sh
+add-videos-from-phone.sh
+compress-videos.sh
+compress-videos-node.js
+upload-*.js
+upload-videos
+load-media.js
+
+# Note: build.js IS needed - it runs during Netlify build
+
+# Git files
+.git/
+.gitignore
+
