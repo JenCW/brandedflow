@@ -227,6 +227,11 @@ Build and deploy a professional, conversion-optimized static website for a clien
 - **Google Analytics**: Client must provide GA property ID (can't create for them)
 - **Forms**: Must test after deployment to Netlify (Netlify Forms requires deployment)
 - **Images**: Client may need to provide images, or use placeholders
+- **Worker Videos**: NEVER include videos showing workers, construction in progress, or behind-the-scenes footage. These are unprofessional and hurt brand perception. Replace with:
+  - Professional, high-end finished project photos
+  - Photorealistic, classy, modern AI-generated images if needed
+  - Images should be luxury, middle-class high-end aesthetic
+  - Optimized for Google and AI search engine ranking (high-quality, descriptive alt text, proper file names)
 
 ## 7. LEARNINGS & PROFILE UPDATES
 

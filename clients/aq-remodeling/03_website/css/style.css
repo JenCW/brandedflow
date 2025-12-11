@@ -2110,3 +2110,264 @@ p {
     background-size: 1000px 100%;
     animation: shimmer 3s infinite;
 }
+
+/* ============================================
+   PROFESSIONAL VIDEO-STYLE PRESENTATIONS
+   World-Class Video Editor Styling
+   ============================================ */
+
+.premium-video-presentation {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: var(--radius-medium);
+    overflow: hidden;
+    background: var(--primary-dark);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(212, 175, 55, 0.1);
+    cursor: pointer;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    isolation: isolate;
+}
+
+.premium-video-presentation::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(10, 10, 10, 0.3) 0%,
+        rgba(212, 175, 55, 0.05) 50%,
+        rgba(10, 10, 10, 0.4) 100%
+    );
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.premium-video-presentation:hover::before {
+    opacity: 1;
+}
+
+.premium-video-presentation:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(212, 175, 55, 0.3), 0 0 40px rgba(212, 175, 55, 0.15);
+}
+
+.premium-video-presentation img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), filter 0.5s ease;
+    filter: brightness(0.95) contrast(1.05) saturate(1.1);
+}
+
+.premium-video-presentation:hover img {
+    transform: scale(1.08);
+    filter: brightness(1.05) contrast(1.1) saturate(1.15);
+}
+
+/* Cinematic Overlay */
+.premium-video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(10, 10, 10, 0) 0%,
+        rgba(10, 10, 10, 0.3) 50%,
+        rgba(10, 10, 10, 0.7) 100%
+    );
+    z-index: 3;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+.premium-video-presentation:hover .premium-video-overlay {
+    opacity: 0.6;
+}
+
+/* Professional Play Button */
+.premium-play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background: rgba(212, 175, 55, 0.95);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 4;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 20px rgba(212, 175, 55, 0.4), 0 0 0 0 rgba(212, 175, 55, 0.5);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.premium-play-button::before {
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 24px solid var(--primary-dark);
+    border-top: 14px solid transparent;
+    border-bottom: 14px solid transparent;
+    margin-left: 6px;
+    transition: all 0.3s ease;
+}
+
+.premium-video-presentation:hover .premium-play-button {
+    transform: translate(-50%, -50%) scale(1.15);
+    background: rgba(212, 175, 55, 1);
+    box-shadow: 0 8px 30px rgba(212, 175, 55, 0.6), 0 0 0 8px rgba(212, 175, 55, 0.2);
+}
+
+.premium-video-presentation:hover .premium-play-button::before {
+    border-left-width: 28px;
+    border-top-width: 16px;
+    border-bottom-width: 16px;
+}
+
+/* Animated Pulse Effect */
+@keyframes premium-pulse {
+    0%, 100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+}
+
+.premium-play-button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px solid rgba(212, 175, 55, 0.6);
+    animation: premium-pulse 2s ease-in-out infinite;
+    z-index: -1;
+}
+
+/* Video Title Overlay */
+.premium-video-title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 2rem;
+    background: linear-gradient(to top, rgba(10, 10, 10, 0.95) 0%, rgba(10, 10, 10, 0.7) 70%, transparent 100%);
+    z-index: 4;
+    transform: translateY(100%);
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.premium-video-presentation:hover .premium-video-title {
+    transform: translateY(0);
+}
+
+.premium-video-title h4 {
+    color: var(--luxury-gold);
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+    letter-spacing: 0.02em;
+}
+
+.premium-video-title p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    opacity: 0.9;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.8);
+}
+
+/* Corner Accent */
+.premium-video-presentation::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, transparent 0%, rgba(212, 175, 55, 0.2) 100%);
+    border-bottom-left-radius: 100%;
+    z-index: 3;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.premium-video-presentation:hover::after {
+    opacity: 1;
+}
+
+/* Loading Shimmer Effect */
+@keyframes premium-shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+.premium-video-presentation .premium-shimmer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(212, 175, 55, 0.1) 50%,
+        transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: premium-shimmer 3s infinite;
+    z-index: 5;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.premium-video-presentation:hover .premium-shimmer {
+    opacity: 1;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .premium-play-button {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .premium-play-button::before {
+        border-left-width: 18px;
+        border-top-width: 10px;
+        border-bottom-width: 10px;
+        margin-left: 4px;
+    }
+    
+    .premium-video-title {
+        padding: 1.5rem;
+    }
+    
+    .premium-video-title h4 {
+        font-size: 1.2rem;
+    }
+}
