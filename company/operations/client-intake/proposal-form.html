@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Proposal - Branded + Flow</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .form-section {
+            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .form-section:last-child {
+            border-bottom: none;
+        }
+        
+        .section-title {
+            font-size: 1.3em;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        input[type="date"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .checkbox-item input[type="checkbox"] {
+            width: auto;
+        }
+        
+        .pricing-option {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            border: 2px solid #e0e0e0;
+        }
+        
+        .pricing-option.selected {
+            border-color: #667eea;
+            background: #f0f4ff;
+        }
+        
+        .pricing-option input[type="radio"] {
+            margin-right: 10px;
+        }
+        
+        .pricing-details {
+            margin-top: 10px;
+            padding-left: 25px;
+            font-size: 0.9em;
+            color: #666;
+        }
+        
+        .service-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px;
+            border-radius: 4px;
+        }
+        
+        .service-item:hover {
+            background: #f8f9fa;
+        }
+        
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .message {
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        
+        .message.show {
+            display: block;
+        }
+        
+        .message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .required {
+            color: #e74c3c;
+        }
+        
+        .config-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 6px;
+            margin-bottom: 30px;
+        }
+        
+        .config-section label {
+            font-size: 0.9em;
+            color: #666;
+        }
+        
+        .inline-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        small {
+            color: #666;
+            font-size: 0.85em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Create Client Proposal</h1>
+        <p class="subtitle">Fill out proposal details to generate a customized proposal</p>
+        
+        <div class="config-section">
+            <div class="form-group">
+                <label>MCP Server URL</label>
+                <input type="text" id="mcpUrl" value="http://localhost:4000" placeholder="http://localhost:4000">
+            </div>
+            <div class="form-group">
+                <label>API Key</label>
+                <input type="text" id="apiKey" value="key1" placeholder="key1">
+            </div>
+        </div>
+        
+        <div id="message" class="message"></div>
+        
+        <form id="proposalForm">
+            <!-- Client Information -->
+            <div class="form-section">
+                <div class="section-title">Client Information</div>
+                
+                <div class="form-group">
+                    <label>Client Name <span class="required">*</span></label>
+                    <input type="text" id="clientName" required placeholder="lowercase-kebab-case (e.g., dental-bunny)">
+                    <small>Use lowercase with hyphens, no spaces</small>
+                </div>
+            </div>
+            
+            <!-- Services -->
+            <div class="form-section">
+                <div class="section-title">Services Included <span class="required">*</span></div>
+                
+                <div class="form-group">
+                    <div class="checkbox-group">
+                        <div class="service-item">
+                            <input type="checkbox" id="service-brand" value="Brand Refresh + Auto-Announcement">
+                            <label for="service-brand">Brand Refresh + Auto-Announcement</label>
+                        </div>
+                        <div class="service-item">
+                            <input type="checkbox" id="service-lead-magnet" value="Lead Magnet + Auto-Delivery System">
+                            <label for="service-lead-magnet">Lead Magnet + Auto-Delivery System</label>
+                        </div>
+                        <div class="service-item">
+                            <input type="checkbox" id="service-website-facelift" value="Website Face-Lift + Launch Announcement">
+                            <label for="service-website-facelift">Website Face-Lift + Launch Announcement</label>
+                        </div>
+                        <div class="service-item">
+                            <input type="checkbox" id="service-onboarding" value="Client Onboarding System">
+                            <label for="service-onboarding">Client Onboarding System</label>
+                        </div>
+                        <div class="service-item">
+                            <input type="checkbox" id="service-website-lead" value="Website + Lead Capture System">
+                            <label for="service-website-lead">Website + Lead Capture System</label>
+                        </div>
+                        <div class="service-item">
+                            <input type="checkbox" id="service-brand-marketing" value="Brand + Marketing Automation">
+                            <label for="service-brand-marketing">Brand + Marketing Automation</label>
+                        </div>
+                        <div class="service-item">
+                            <input type="checkbox" id="service-complete" value="Complete Business System">
+                            <label for="service-complete">Complete Business System</label>
+                        </div>
+                        <div class="service-item" style="background: #f0f4ff; padding: 10px; border-radius: 6px; border: 2px solid #667eea;">
+                            <input type="checkbox" id="service-ai" value="AI Receptionist (iAnswering.ai)">
+                            <label for="service-ai" style="font-weight: 600; color: #667eea;">
+                                <strong>⭐ AI Receptionist (iAnswering.ai)</strong><br>
+                                <small style="color: #666; font-weight: normal;">24/7 phone answering, lead qualification, appointment booking - Our biggest selling point!</small>
+                            </label>
+                        </div>
+                        <div class="service-item">
+                            <input type="checkbox" id="service-custom" value="Custom Service">
+                            <label for="service-custom">Custom Service</label>
+                        </div>
+                    </div>
+                    <input type="text" id="customService" placeholder="Describe custom service" style="margin-top: 10px; display: none;">
+                </div>
+            </div>
+            
+            <!-- Pricing -->
+            <div class="form-section">
+                <div class="section-title">Pricing Option <span class="required">*</span></div>
+                
+                <div class="form-group">
+                    <div class="pricing-option" id="pricing-diy">
+                        <label>
+                            <input type="radio" name="pricingType" value="diy" id="pricing-diy-radio" required>
+                            <strong>DIY (One-Time Payment)</strong>
+                        </label>
+                        <div class="pricing-details">
+                            We build it, train you, hand it off. You own it and run it yourself.
+                        </div>
+                    </div>
+                    
+                    <div class="pricing-option" id="pricing-managed">
+                        <label>
+                            <input type="radio" name="pricingType" value="managed" id="pricing-managed-radio">
+                            <strong>Managed (Setup + Monthly)</strong>
+                        </label>
+                        <div class="pricing-details">
+                            We build it AND manage it every month - optimizing, improving, and growing it for you.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Total Amount <span class="required">*</span></label>
+                    <input type="number" id="totalAmount" required min="0" step="0.01" placeholder="0.00">
+                </div>
+                
+                <div class="form-group" id="setupFeeGroup" style="display: none;">
+                    <label>Setup Fee</label>
+                    <input type="number" id="setupFee" min="0" step="0.01" placeholder="0.00">
+                </div>
+                
+                <div class="form-group" id="monthlyFeeGroup" style="display: none;">
+                    <label>Monthly Fee</label>
+                    <input type="number" id="monthlyFee" min="0" step="0.01" placeholder="0.00">
+                </div>
+                
+                <div class="form-group">
+                    <label>Payment Structure</label>
+                    <input type="text" id="paymentStructure" placeholder="e.g., 50% deposit, 50% on delivery">
+                    <small>Leave blank to use default: 50% deposit, 50% on delivery (DIY) or Setup fee + monthly billing (Managed)</small>
+                </div>
+            </div>
+            
+            <!-- Timeline -->
+            <div class="form-section">
+                <div class="section-title">Timeline</div>
+                
+                <div class="form-group">
+                    <label>Project Timeline</label>
+                    <input type="text" id="timeline" placeholder="e.g., 1-2 weeks, 2-3 weeks, 3-4 weeks">
+                    <small>Default: 1-2 weeks for Quick Starts, 2-4 weeks for Full Systems</small>
+                </div>
+            </div>
+            
+            <!-- Additional Details -->
+            <div class="form-section">
+                <div class="section-title">Additional Details</div>
+                
+                <div class="form-group">
+                    <label>Custom Requirements / Notes</label>
+                    <textarea id="customNotes" rows="4" placeholder="Any special requirements, customizations, or notes for this proposal"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Proposal Expiration Date</label>
+                    <input type="date" id="expirationDate">
+                    <small>Leave blank for default 30 days from today</small>
+                </div>
+            </div>
+            
+            <button type="submit" id="submitBtn">Create Proposal</button>
+        </form>
+    </div>
+    
+    <script>
+        // Show/hide custom service input
+        document.getElementById('service-custom').addEventListener('change', function() {
+            const customInput = document.getElementById('customService');
+            if (this.checked) {
+                customInput.style.display = 'block';
+            } else {
+                customInput.style.display = 'none';
+            }
+        });
+        
+        // Show/hide pricing options
+        document.querySelectorAll('input[name="pricingType"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const setupGroup = document.getElementById('setupFeeGroup');
+                const monthlyGroup = document.getElementById('monthlyFeeGroup');
+                const diyOption = document.getElementById('pricing-diy');
+                const managedOption = document.getElementById('pricing-managed');
+                
+                if (this.value === 'managed') {
+                    setupGroup.style.display = 'block';
+                    monthlyGroup.style.display = 'block';
+                    managedOption.classList.add('selected');
+                    diyOption.classList.remove('selected');
+                } else {
+                    setupGroup.style.display = 'none';
+                    monthlyGroup.style.display = 'none';
+                    diyOption.classList.add('selected');
+                    managedOption.classList.remove('selected');
+                }
+            });
+        });
+        
+        // Handle form submission
+        document.getElementById('proposalForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const messageDiv = document.getElementById('message');
+            submitBtn.disabled = true;
+            messageDiv.className = 'message';
+            messageDiv.textContent = 'Creating proposal...';
+            messageDiv.classList.add('show');
+            
+            try {
+                const clientName = document.getElementById('clientName').value.trim();
+                
+                // Get services
+                const services = [];
+                document.querySelectorAll('input[type="checkbox"]:checked').forEach(cb => {
+                    if (cb.id.startsWith('service-')) {
+                        if (cb.value === 'Custom Service') {
+                            const customVal = document.getElementById('customService').value.trim();
+                            if (customVal) services.push(customVal);
+                        } else {
+                            services.push(cb.value);
+                        }
+                    }
+                });
+                
+                if (services.length === 0) {
+                    throw new Error('Please select at least one service');
+                }
+                
+                // Get pricing
+                const pricingType = document.querySelector('input[name="pricingType"]:checked')?.value;
+                if (!pricingType) {
+                    throw new Error('Please select a pricing option');
+                }
+                
+                const totalAmount = parseFloat(document.getElementById('totalAmount').value);
+                if (!totalAmount || totalAmount <= 0) {
+                    throw new Error('Please enter a valid total amount');
+                }
+                
+                let deposit = totalAmount * 0.5;
+                let paymentStructure = '50% deposit, 50% on delivery';
+                
+                if (pricingType === 'managed') {
+                    const setupFee = parseFloat(document.getElementById('setupFee').value) || 0;
+                    const monthlyFee = parseFloat(document.getElementById('monthlyFee').value) || 0;
+                    deposit = setupFee;
+                    paymentStructure = `$${setupFee.toFixed(2)} setup fee + $${monthlyFee.toFixed(2)}/month`;
+                }
+                
+                const customPaymentStructure = document.getElementById('paymentStructure').value.trim();
+                if (customPaymentStructure) {
+                    paymentStructure = customPaymentStructure;
+                }
+                
+                const pricing = {
+                    total: totalAmount,
+                    deposit: deposit,
+                    payment_structure: paymentStructure
+                };
+                
+                if (pricingType === 'managed') {
+                    pricing.setup_fee = parseFloat(document.getElementById('setupFee').value) || 0;
+                    pricing.monthly_fee = parseFloat(document.getElementById('monthlyFee').value) || 0;
+                }
+                
+                const timeline = document.getElementById('timeline').value.trim() || '1-2 weeks';
+                const customNotes = document.getElementById('customNotes').value.trim();
+                const expirationDate = document.getElementById('expirationDate').value;
+                
+                const mcpUrl = document.getElementById('mcpUrl').value.trim();
+                const apiKey = document.getElementById('apiKey').value.trim();
+                
+                // Create proposal
+                const response = await fetch(`${mcpUrl}/run`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-API-Key': apiKey
+                    },
+                    body: JSON.stringify({
+                        automation: 'create-proposal-from-template',
+                        params: {
+                            client_name: clientName,
+                            services: services,
+                            pricing: pricing,
+                            timeline: timeline
+                        }
+                    })
+                });
+                
+                const result = await response.json();
+                
+                if (!result.ok) {
+                    throw new Error(result.error || 'Failed to create proposal');
+                }
+                
+                // Step 2: Setup iAnswering.ai if service selected
+                let iansweringSetup = '⏭️ Not needed';
+                if (services.some(s => s.includes('AI Receptionist') || s.includes('iAnswering'))) {
+                    messageDiv.textContent = 'Setting up iAnswering.ai account...';
+                    try {
+                        const iansweringResponse = await fetch(`${mcpUrl}/run`, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-API-Key': apiKey
+                            },
+                            body: JSON.stringify({
+                                automation: 'setup-ianswering-account',
+                                params: { client_name: clientName }
+                            })
+                        });
+                        const iansweringResult = await iansweringResponse.json();
+                        if (iansweringResult.ok) {
+                            iansweringSetup = '✅ Account configured';
+                            // Also connect to CRM
+                            try {
+                                await fetch(`${mcpUrl}/run`, {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                        'X-API-Key': apiKey
+                                    },
+                                    body: JSON.stringify({
+                                        automation: 'connect-ianswering-to-crm',
+                                        params: { client_name: clientName }
+                                    })
+                                });
+                            } catch (error) {
+                                // Continue
+                            }
+                        } else {
+                            iansweringSetup = '⏭️ Skipped (API key not configured)';
+                        }
+                    } catch (error) {
+                        iansweringSetup = '⏭️ Skipped';
+                    }
+                }
+                
+                // Step 3: Auto-sync to Base44 and PandaDoc
+                messageDiv.textContent = 'Syncing to Base44 and PandaDoc...';
+                const syncResults = {};
+                
+                // Sync to Base44
+                try {
+                    const base44Response = await fetch(`${mcpUrl}/run`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-API-Key': apiKey
+                        },
+                        body: JSON.stringify({
+                            automation: 'update-base44-portal',
+                            params: { client_name: clientName }
+                        })
+                    });
+                    const base44Result = await base44Response.json();
+                    syncResults.base44 = base44Result.ok ? '✅ Synced' : '⏭️ Skipped (API key not configured)';
+                } catch (error) {
+                    syncResults.base44 = '⏭️ Skipped';
+                }
+                
+                // Upload to PandaDoc (need to get client email from profile)
+                try {
+                    // First, try to get client email
+                    const loadProfileResponse = await fetch(`${mcpUrl}/run`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-API-Key': apiKey
+                        },
+                        body: JSON.stringify({
+                            automation: 'load-client-profile',
+                            params: { client_name: clientName }
+                        })
+                    });
+                    const profileResult = await loadProfileResponse.json();
+                    const clientEmail = profileResult.result?.profile?.contact_email;
+                    
+                    if (clientEmail) {
+                        const pandadocResponse = await fetch(`${mcpUrl}/run`, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-API-Key': apiKey
+                            },
+                            body: JSON.stringify({
+                                automation: 'upload-to-pandadoc',
+                                params: {
+                                    client_name: clientName,
+                                    document_type: 'proposal',
+                                    recipient_email: clientEmail,
+                                    expiration_days: 30
+                                }
+                            })
+                        });
+                        const pandadocResult = await pandadocResponse.json();
+                        syncResults.pandadoc = pandadocResult.ok ? '✅ Uploaded' : '⏭️ Skipped (API key not configured)';
+                    } else {
+                        syncResults.pandadoc = '⏭️ Skipped (client email not found)';
+                    }
+                } catch (error) {
+                    syncResults.pandadoc = '⏭️ Skipped';
+                }
+                
+                // Success!
+                messageDiv.className = 'message success';
+                messageDiv.innerHTML = `✅ Success! Proposal created for ${clientName}.<br>
+                    Location: ${result.result?.proposal_path || 'clients/' + clientName + '/05_deliverables/'}<br><br>
+                    <strong>Setup Status:</strong><br>
+                    ${iansweringSetup !== '⏭️ Not needed' ? `iAnswering.ai: ${iansweringSetup}<br>` : ''}
+                    Base44: ${syncResults.base44}<br>
+                    PandaDoc: ${syncResults.pandadoc}`;
+                messageDiv.classList.add('show');
+                
+                // Reset form
+                document.getElementById('proposalForm').reset();
+                document.getElementById('setupFeeGroup').style.display = 'none';
+                document.getElementById('monthlyFeeGroup').style.display = 'none';
+                
+            } catch (error) {
+                messageDiv.className = 'message error';
+                messageDiv.textContent = `❌ Error: ${error.message}`;
+                messageDiv.classList.add('show');
+            } finally {
+                submitBtn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
+

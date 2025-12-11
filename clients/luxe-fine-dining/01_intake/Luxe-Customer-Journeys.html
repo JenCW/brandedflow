@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxe Automation - Customer Journeys</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+            padding: 40px;
+            min-height: 100vh;
+        }
+        h1 {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        .subtitle {
+            text-align: center;
+            color: #64748b;
+            margin-bottom: 50px;
+            font-size: 16px;
+        }
+        
+        .journey {
+            max-width: 1100px;
+            margin: 0 auto 60px;
+            background: #1e293b;
+            border-radius: 16px;
+            padding: 30px;
+            position: relative;
+        }
+        .journey-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        .journey-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        .journey-title {
+            font-size: 20px;
+            font-weight: 700;
+        }
+        .journey-desc {
+            font-size: 13px;
+            color: #94a3b8;
+        }
+        
+        .flow {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .step {
+            background: #334155;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 12px;
+            max-width: 160px;
+            text-align: center;
+            border-left: 3px solid;
+            position: relative;
+        }
+        .step-action {
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 3px;
+        }
+        .step-detail {
+            font-size: 10px;
+            color: #94a3b8;
+        }
+        .step-auto {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #10b981;
+            color: #fff;
+            font-size: 8px;
+            padding: 2px 6px;
+            border-radius: 10px;
+            font-weight: 600;
+        }
+        
+        .arrow {
+            color: #64748b;
+            font-size: 20px;
+        }
+        
+        .step-trigger { border-color: #8b5cf6; }
+        .step-capture { border-color: #3b82f6; }
+        .step-process { border-color: #f59e0b; }
+        .step-action-out { border-color: #10b981; }
+        .step-client { border-color: #ec4899; }
+        .step-customer { border-color: #06b6d4; }
+        
+        /* Journey colors */
+        .journey-1 .journey-icon { background: #8b5cf6; }
+        .journey-2 .journey-icon { background: #3b82f6; }
+        .journey-3 .journey-icon { background: #f59e0b; }
+        .journey-4 .journey-icon { background: #10b981; }
+        .journey-5 .journey-icon { background: #ef4444; }
+        .journey-6 .journey-icon { background: #06b6d4; }
+        
+        /* Center hub */
+        .hub {
+            max-width: 1100px;
+            margin: 0 auto 60px;
+            text-align: center;
+        }
+        .hub-circle {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 60px rgba(59, 130, 246, 0.3);
+        }
+        .hub-icon { font-size: 40px; margin-bottom: 5px; }
+        .hub-text { font-size: 18px; font-weight: 700; }
+        .hub-sub { font-size: 11px; color: rgba(255,255,255,0.7); }
+        
+        .hub-arrows {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-bottom: 20px;
+        }
+        .hub-arrow {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+        .hub-arrow span {
+            font-size: 11px;
+            color: #64748b;
+        }
+        .hub-arrow .arr {
+            font-size: 24px;
+            color: #3b82f6;
+        }
+        
+        /* Revenue section */
+        .revenue {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #065f46, #047857);
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+        }
+        .revenue h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .revenue .amount {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+        .revenue-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        .revenue-item {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 12px;
+        }
+        .revenue-item .type {
+            font-size: 12px;
+            opacity: 0.8;
+            margin-bottom: 5px;
+        }
+        .revenue-item .val {
+            font-size: 20px;
+            font-weight: 700;
+        }
+        
+        /* Legend */
+        .legend {
+            max-width: 1100px;
+            margin: 40px auto 0;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            color: #94a3b8;
+        }
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 3px;
+        }
+
+        @media (max-width: 900px) {
+            .flow { flex-direction: column; }
+            .arrow { transform: rotate(90deg); }
+            .revenue-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>LUXE AUTOMATION SYSTEM</h1>
+    <p class="subtitle">6 Customer Journeys — All Automated — All Leading to Revenue</p>
+    
+    <!-- JOURNEY 1: Lead Magnet -->
+    <div class="journey journey-1">
+        <div class="journey-header">
+            <div class="journey-icon">📚</div>
+            <div>
+                <div class="journey-title">1. LEAD MAGNET DOWNLOAD</div>
+                <div class="journey-desc">Customer finds content, downloads resource, enters nurture sequence</div>
+            </div>
+        </div>
+        <div class="flow">
+            <div class="step step-trigger">
+                <div class="step-action">Landing Page</div>
+                <div class="step-detail">"Download our Wedding Planning Guide"</div>
+            </div>
+            <div class="arrow">→</div>
+            <div class="step step-trigger">
+                <div class="step-action">Customer Clicks</div>
+                <div class="step-detail">Enters email to download</div>
+            </div>
+            <div class="arrow">→</div>
+            <div class="step step-capture">
+                <div class="step-action">Info Captured</div>
+                <div class="step-detail">Name, email, event type</div>
+                <span class="step-auto">AUTO</span>
+            </div>
+            <div class="arrow">→</div>
+            <div class="step step-capture">
+                <div class="step-action">Added to CRM</div>
+                <div class="step-detail">Airtable + tagged by magnet type</div>
+                <span class="step-auto">AUTO</span>
+            </div>
+            <div class="arrow">→</div>
+            <div class="step step-action-out">
+                <div class="step-action">PDF Delivered</div>
+                <div class="step-detail">Instant email with download</div>
+                <span class="step-auto">AUTO</span>
+            </div>
+            <div class="arrow">→</div>
+            <div class="step step-action-out">
+                <div class="step-action">Drip Campaign</div>
+                <div class="step-detail">4-email nurture sequence starts</div>
+                <span class="step-auto">AUTO</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- JOURNEY 2: Phone Inquiry -->
+    <div class="journey journey-2">
+        <div class="journey-header">
+            <div class="journey-icon">📞</div>
+            <div>
+                <div class="journey-title">2. PHONE CATERING INQUIRY</div>
+                <div class="journey-desc">Customer calls to ask about catering → Full quote-to-booking flow</div>
+            </div>
+        </div>
+        <div class="flow">
+            <div class="step step-trigger">
+                <div class="step-action">Customer Calls</div>
+                <div class="step-detail">iAnswering.ai answers 24/7</div>
+            </div>
+            <div class="arrow">→</div>
+            <div class="step step-capture">
+                <div class="step-action">AI Captures Details</div>
+                <div class="step-detail">Event type, date, guests, food preferences</div>
+                <span class="step-auto">AUTO</span>
+            </div>
+            <div class="arrow">→</div>
+            <div class="step step-process">
+                <div class="step-action">AI Says:</div>
+                <div class="step-detail">"We'll email your quote within 24 hours"</div>
+            </div>
+            <div class="arrow">→</div>
+            <div class="step step-capture">
+                <div class="step-action">CRM Updated</div>
+                <div class="step-detail">Lead created + transcript attached</div>
+                <span class="step-auto">AUTO</span>
+            </div>
+            <div class="arrow">→</div>
+            <div class="step step-client">
+                <div class="step-action">Client Notified</div>
+                <div class="step-detail">Email alert with all details</div>
+                <span class="step-auto">AUTO</span>
+            </div>
+            <div class="arrow">→</div>
+            <div class="step step-client">
+                <div class="step-action">Client Creates Quote</div>
+                <div class="step-detail">Using captured info</div>
+            </div>
+            <div class="arrow">→</div>
+            <div class="step step-action-out">
+                <div class="step-action">Quote Emailed</div>
+                <div class="step-detail">Sent to customer for review</div>
+            </div>
+            <div class="arrow">→</div>
+            <div class="step step-customer">
+                <div class="step-action">Customer Approves</div>
+                <div class="step-detail">Clicks approve button</div>
+            </div>
+            <div class="arrow">→</div>
+            <div class="step step-action-out">
+                <div class="step-action">Confirmation + Contract</div>
+                <div class="step-detail">Auto-sent with e-signature</div>
+                <span class="step-auto">AUTO</span>
+            </div>
+            <div class="arrow">→</div>
+            <div class="step step-client">
+                <div class="step-action">Client Notified</div>
+                <div class="step-detail">Event added to calendar</div>
+                <span class="step-auto">AUTO</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- JOURNEY 3: Online Quote -->
+    <div class="journey journey-3">
+        <div class="journey-header">
+            <div class="journey-icon">💻</div>
+            <div>
+                <div class="journey-title">3. WEBSITE QUOTE INQUIRY</div>
+                <div class="journey-desc">Customer fills out quote form → Scored → Routed appropriately</div>
+            </div>
+        </div>
+        <div class="flow">
+            <div class="step step-trigger">
+                <div class="step-action">Quote Form</div>
+                <div class="step-detail">Customer submits inquiry online</div>
+            </div>
+            <div class="arrow">→</div>
+            <div class="step step-capture">
+                <div class="step-action">Info Captured</div>
+                <div class="step-detail">Event details, budget, timeline</div>
+                <span class="step-auto">AUTO</span>
+            </div>
+            <div class="arrow">→</div>
+            <div class="step step-capture">
+                <div class="step-action">Added to CRM</div>
+                <div class="step-detail">All fields populated</div>
+                <span class="step-auto">AUTO</span>
+            </div>
+            <div class="arrow">→</div>
+            <div class="step step-process">
+                <div class="step-action">Lead Scored</div>
+                <div class="step-detail">Guests + budget + event type = score</div>
+                <span class="step-auto">AUTO</span>
+            </div>
+            <div class="arrow">→</div>
+            <div class="step step-process" style="background: #7f1d1d; border-color: #ef4444;">
+                <div class="step-action">HIGH SCORE?</div>
+                <div class="step-detail">50+ points = HOT</div>
+            </div>
+            <div class="arrow">→</div>
+            <div class="step step-client" style="background: #7f1d1d; border-color: #ef4444;">
+                <div class="step-action">IMMEDIATE ALERT</div>
+                <div class="step-detail">Client notified instantly</div>
+                <span class="step-auto">AUTO</span>
+            </div>
+        </div>
+        <div class="flow" style="margin-top: 15px; margin-left: 50px;">
+            <div class="step step-process" style="background: #78350f; border-color: #f59e0b;">
+                <div class="step-action">MEDIUM SCORE</div>
+                <div class="step-detail">30-49 points = WARM</div>
+            </div>
+            <div class="arrow">→</div>
+            <div class="step step-action-out">
+                <div class="step-action">Nurture Drip</div>
+                <div class="step-detail">Appropriate sequence triggered</div>
+                <span class="step-auto">AUTO</span>
+            </div>
+            <div class="arrow">→</div>
+            <div class="step step-client">
+                <div class="step-action">Next-Day Follow-up</div>
+                <div class="step-detail">Task created for client</div>
+                <span class="step-auto">AUTO</span>
+            </div>
+        </div>
+        <div class="flow" style="margin-top: 15px; margin-left: 50px;">
+            <div class="step step-process" style="background: #1e3a5f; border-color: #3b82f6;">
+                <div class="step-action">LOW SCORE</div>
+                <div class="step-detail">&lt;30 points = COOL</div>
+            </div>
+            <div class="arrow">→</div>
+            <div class="step step-action-out">
+                <div class="step-action">Auto Nurture Only</div>
+                <div class="step-detail">No manual outreach</div>
+                <span class="step-auto">AUTO</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- JOURNEY 4: Blog/Content -->
+    <div class="journey journey-4">
+        <div class="journey-header">
+            <div class="journey-icon">📝</div>
+            <div>
+                <div class="journey-title">4. BLOG / CONTENT UPDATE</div>
+                <div class="journey-desc">New content triggers social distribution + lead capture</div>
+            </div>
+        </div>
+        <div class="flow">
+            <div class="step step-client">
+                <div class="step-action">Blog Updated</div>
+                <div class="step-detail">Client publishes new content</div>
+            </div>
+            <div class="arrow">→</div>
+            <div class="step step-action-out">
+                <div class="step-action">Social Posts Created</div>
+                <div class="step-detail">Auto-generated for each platform</div>
+                <span class="step-auto">AUTO</span>
+            </div>
+            <div class="arrow">→</div>
+            <div class="step step-action-out">
+                <div class="step-action">Posts Scheduled</div>
+                <div class="step-detail">Instagram, Facebook, LinkedIn</div>
+                <span class="step-auto">AUTO</span>
+            </div>
+            <div class="arrow">→</div>
+            <div class="step step-trigger">
+                <div class="step-action">Lead Magnet Attached</div>
+                <div class="step-detail">CTA in post links to download</div>
+            </div>
+            <div class="arrow">→</div>
+            <div class="step step-capture">
+                <div class="step-action">Customer Downloads</div>
+                <div class="step-detail">Info captured → CRM</div>
+                <span class="step-auto">AUTO</span>
+            </div>
+            <div class="arrow">→</div>
+            <div class="step step-action-out">
+                <div class="step-action">Follow-up Triggered</div>
+                <div class="step-detail">Messaging sequence begins</div>
+                <span class="step-auto">AUTO</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- JOURNEY 5: Emergency 72-Hour -->
+    <div class="journey journey-5">
+        <div class="journey-header">
+            <div class="journey-icon">🚨</div>
+            <div>
+                <div class="journey-title">5. 72-HOUR EMERGENCY CATERING</div>
+                <div class="journey-desc">Urgent inquiries via dedicated line → Fast-track to client</div>
+            </div>
+        </div>
+        <div class="flow">
+            <div class="step step-trigger" style="border-color: #ef4444;">
+                <div class="step-action">Emergency Line</div>
+                <div class="step-detail">Different iAnswering extension</div>
+            </div>
+            <div class="arrow">→</div>
+            <div class="step step-capture">
+                <div class="step-action">AI Captures Urgency</div>
+                <div class="step-detail">Date, guests, dietary, budget</div>
+                <span class="step-auto">AUTO</span>
+            </div>
+            <div class="arrow">→</div>
+            <div class="step step-process" style="background: #7f1d1d; border-color: #ef4444;">
+                <div class="step-action">Auto-Scored HIGH</div>
+                <div class="step-detail">Emergency = priority</div>
+                <span class="step-auto">AUTO</span>
+            </div>
+            <div class="arrow">→</div>
+            <div class="step step-capture">
+                <div class="step-action">CRM Updated</div>
+                <div class="step-detail">Tagged URGENT</div>
+                <span class="step-auto">AUTO</span>
+            </div>
+            <div class="arrow">→</div>
+            <div class="step step-client" style="background: #7f1d1d; border-color: #ef4444;">
+                <div class="step-action">INSTANT ALERT</div>
+                <div class="step-detail">Client notified immediately</div>
+                <span class="step-auto">AUTO</span>
+            </div>
+            <div class="arrow">→</div>
+            <div class="step step-client">
+                <div class="step-action">Client Calls Back</div>
+                <div class="step-detail">Within 1 hour</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- JOURNEY 6: Clay Enrichment + Outreach -->
+    <div class="journey journey-6">
+        <div class="journey-header">
+            <div class="journey-icon">🔍</div>
+            <div>
+                <div class="journey-title">6. CLAY ENRICHMENT + OUTREACH</div>
+                <div class="journey-desc">Daily data enrichment → Identifies targets → Triggers outreach</div>
+            </div>
+        </div>
+        <div class="flow">
+            <div class="step step-process">
+                <div class="step-action">Daily Enrichment</div>
+                <div class="step-detail">Clay scans CRM contacts</div>
+                <span class="step-auto">AUTO</span>
+            </div>
+            <div class="arrow">→</div>
+            <div class="step step-process">
+                <div class="step-action">Data Added</div>
+                <div class="step-detail">Company size, industry, title</div>
+                <span class="step-auto">AUTO</span>
+            </div>
+            <div class="arrow">→</div>
+            <div class="step step-process">
+                <div class="step-action">Target Check</div>
+                <div class="step-detail">Matches ideal customer?</div>
+                <span class="step-auto">AUTO</span>
+            </div>
+            <div class="arrow">→</div>
+            <div class="step step-capture">
+                <div class="step-action">CRM Updated</div>
+                <div class="step-detail">Tagged as target market</div>
+                <span class="step-auto">AUTO</span>
+            </div>
+            <div class="arrow">→</div>
+            <div class="step step-action-out">
+                <div class="step-action">Outreach Triggered</div>
+                <div class="step-detail">Apollo sequence begins</div>
+                <span class="step-auto">AUTO</span>
+            </div>
+            <div class="arrow">→</div>
+            <div class="step step-action-out">
+                <div class="step-action">5-Email Sequence</div>
+                <div class="step-detail">Corporate / Senior / Wedding</div>
+                <span class="step-auto">AUTO</span>
+            </div>
+            <div class="arrow">→</div>
+            <div class="step step-customer">
+                <div class="step-action">Response?</div>
+                <div class="step-detail">Moved to active pipeline</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- CRM HUB -->
+    <div class="hub">
+        <div class="hub-arrows">
+            <div class="hub-arrow"><span>Journey 1</span><div class="arr">↓</div></div>
+            <div class="hub-arrow"><span>Journey 2</span><div class="arr">↓</div></div>
+            <div class="hub-arrow"><span>Journey 3</span><div class="arr">↓</div></div>
+            <div class="hub-arrow"><span>Journey 4</span><div class="arr">↓</div></div>
+            <div class="hub-arrow"><span>Journey 5</span><div class="arr">↓</div></div>
+            <div class="hub-arrow"><span>Journey 6</span><div class="arr">↓</div></div>
+        </div>
+        <div class="hub-circle">
+            <div class="hub-icon">📊</div>
+            <div class="hub-text">AIRTABLE CRM</div>
+            <div class="hub-sub">All roads lead here</div>
+        </div>
+        <p style="color: #64748b; margin-top: 15px;">Every journey updates the CRM → Client always has full visibility via Base44 portal</p>
+    </div>
+    
+    <!-- REVENUE -->
+    <div class="revenue">
+        <h2>ALL OF THIS LEADS TO</h2>
+        <div class="amount">$75,000 — $200,000+</div>
+        <p style="margin-bottom: 30px; opacity: 0.9;">Projected Year 1 Revenue from Automation System</p>
+        <div class="revenue-grid">
+            <div class="revenue-item">
+                <div class="type">Corporate Events</div>
+                <div class="val">$3K - $10K each</div>
+            </div>
+            <div class="revenue-item">
+                <div class="type">Weddings</div>
+                <div class="val">$8K - $15K each</div>
+            </div>
+            <div class="revenue-item">
+                <div class="type">Senior Living</div>
+                <div class="val">$5K - $20K / mo</div>
+            </div>
+            <div class="revenue-item">
+                <div class="type">Private Parties</div>
+                <div class="val">$2K - $5K each</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Legend -->
+    <div class="legend">
+        <div class="legend-item">
+            <div class="legend-dot" style="background: #8b5cf6;"></div>
+            <span>Trigger / Entry</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-dot" style="background: #3b82f6;"></div>
+            <span>Data Capture</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-dot" style="background: #f59e0b;"></div>
+            <span>Processing</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-dot" style="background: #10b981;"></div>
+            <span>Automated Action</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-dot" style="background: #ec4899;"></div>
+            <span>Client Action</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-dot" style="background: #06b6d4;"></div>
+            <span>Customer Action</span>
+        </div>
+        <div class="legend-item">
+            <div style="background: #10b981; color: #fff; font-size: 8px; padding: 2px 6px; border-radius: 10px; font-weight: 600;">AUTO</div>
+            <span>Fully Automated Step</span>
+        </div>
+    </div>
+    
+</body>
+</html>

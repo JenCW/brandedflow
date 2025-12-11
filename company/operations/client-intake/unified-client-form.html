@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Form - Branded + Flow</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #eee;
+        }
+        
+        h1 {
+            color: #333;
+            margin: 0;
+        }
+        
+        .status-badge {
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .status-draft { background: #fff3cd; color: #856404; }
+        .status-intake { background: #d1ecf1; color: #0c5460; }
+        .status-proposal { background: #d4edda; color: #155724; }
+        .status-contract { background: #cce5ff; color: #004085; }
+        .status-approved { background: #d1f2eb; color: #00695c; }
+        
+        .progress-bar {
+            height: 6px;
+            background: #e0e0e0;
+            border-radius: 3px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s;
+        }
+        
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #eee;
+            flex-wrap: wrap;
+        }
+        
+        .tab {
+            padding: 12px 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            color: #666;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .tab:hover {
+            color: #667eea;
+        }
+        
+        .tab.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .form-section {
+            margin-bottom: 30px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .section-title {
+            font-size: 1.3em;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section-title .icon {
+            font-size: 1.2em;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        .required {
+            color: #dc3545;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="number"],
+        input[type="date"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+            font-family: inherit;
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .checkbox-group, .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .checkbox-item, .radio-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 10px;
+            border-radius: 6px;
+            transition: background 0.2s;
+        }
+        
+        .checkbox-item:hover, .radio-item:hover {
+            background: rgba(102, 126, 234, 0.05);
+        }
+        
+        .checkbox-item input[type="checkbox"],
+        .radio-item input[type="radio"] {
+            width: auto;
+            margin-top: 3px;
+        }
+        
+        .inline-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        small {
+            color: #666;
+            font-size: 0.85em;
+            display: block;
+            margin-top: 5px;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 2px solid #eee;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 14px 28px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            flex: 1;
+            min-width: 150px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+        
+        .btn-success {
+            background: #28a745;
+            color: white;
+        }
+        
+        .btn-success:hover {
+            background: #218838;
+        }
+        
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .message {
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        
+        .message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+        
+        .message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: block;
+        }
+        
+        .message.info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+            display: block;
+        }
+        
+        .config-section {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            border: 1px solid #ffc107;
+        }
+        
+        .config-section label {
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+        
+        .config-section input {
+            font-size: 0.9rem;
+            padding: 8px;
+        }
+        
+        .save-indicator {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        
+        .save-indicator.show {
+            display: block;
+            animation: fadeInOut 2s;
+        }
+        
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0; transform: translateY(10px); }
+            10%, 90% { opacity: 1; transform: translateY(0); }
+        }
+        
+        .phase-section {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .phase-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .phase-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .inline-group {
+                grid-template-columns: 1fr;
+            }
+            
+            .tabs {
+                overflow-x: auto;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div>
+                <h1>Client Form</h1>
+                <p style="color: #666; margin-top: 5px;">One form for everything - intake, proposal, contract</p>
+            </div>
+            <div class="status-badge" id="statusBadge">Draft</div>
+        </div>
+        
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+        </div>
+        
+        <div id="message" class="message"></div>
+        
+        <div class="config-section">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                <div class="form-group" style="margin-bottom: 0;">
+                    <label>MCP Server URL</label>
+                    <input type="text" id="mcpUrl" value="http://localhost:4000" placeholder="http://localhost:4000">
+                </div>
+                <div class="form-group" style="margin-bottom: 0;">
+                    <label>API Key</label>
+                    <input type="text" id="apiKey" value="key1" placeholder="key1">
+                </div>
+            </div>
+        </div>
+        
+        <div class="tabs">
+            <button class="tab active" data-tab="basic">1. Basic Info</button>
+            <button class="tab" data-tab="business">2. Business</button>
+            <button class="tab" data-tab="brand">3. Brand & Design</button>
+            <button class="tab" data-tab="services">4. Services</button>
+            <button class="tab" data-tab="proposal">5. Proposal</button>
+            <button class="tab" data-tab="contract">6. Contract</button>
+        </div>
+        
+        <form id="unifiedForm">
+            <!-- TAB 1: Basic Info -->
+            <div class="tab-content active" id="tab-basic">
+                <div class="form-section">
+                    <div class="section-title">
+                        <span class="icon">👤</span>
+                        Client Information
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Client Name <span class="required">*</span></label>
+                        <input type="text" id="clientName" required placeholder="lowercase-kebab-case (e.g., dental-bunny)">
+                        <small>Use lowercase with hyphens, no spaces. This creates the folder name.</small>
+                    </div>
+                    
+                    <div class="inline-group">
+                        <div class="form-group">
+                            <label>Business Name <span class="required">*</span></label>
+                            <input type="text" id="businessName" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Industry</label>
+                            <select id="industry">
+                                <option value="">Select...</option>
+                                <option value="restaurant">Restaurant/Food Service</option>
+                                <option value="retail">Retail</option>
+                                <option value="professional-services">Professional Services</option>
+                                <option value="healthcare">Healthcare</option>
+                                <option value="beauty-wellness">Beauty & Wellness</option>
+                                <option value="home-services">Home Services</option>
+                                <option value="real-estate">Real Estate</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="inline-group">
+                        <div class="form-group">
+                            <label>Contact Email <span class="required">*</span></label>
+                            <input type="email" id="contactEmail" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Contact Phone</label>
+                            <input type="tel" id="contactPhone">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- TAB 2: Business -->
+            <div class="tab-content" id="tab-business">
+                <div class="form-section">
+                    <div class="section-title">
+                        <span class="icon">🏢</span>
+                        Business Context
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Target Market/Audience</label>
+                        <textarea id="targetMarket" rows="3" placeholder="Who are your ideal customers?"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Business Story</label>
+                        <textarea id="businessStory" rows="5" placeholder="Tell us about your business - how long you've been around, what makes you special, your success story..."></textarea>
+                        <small>This will be used in the proposal "Story" section</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Main Problems/Challenges</label>
+                        <textarea id="problems" rows="4" placeholder="What are the main problems you're facing? (One per line)"></textarea>
+                        <small>This will be used in the proposal "Problem" section</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Market Opportunity</label>
+                        <textarea id="opportunity" rows="3" placeholder="What's the market potential? What are you missing?"></textarea>
+                        <small>This will be used in the proposal "Opportunity" section</small>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- TAB 3: Brand & Design -->
+            <div class="tab-content" id="tab-brand">
+                <div class="form-section">
+                    <div class="section-title">
+                        <span class="icon">🎨</span>
+                        Brand & Design Preferences
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Design Style</label>
+                        <select id="designStyle">
+                            <option value="">Select...</option>
+                            <option value="modern-bright-editorial">Modern Bright Editorial</option>
+                            <option value="dark-luxury-flowy">Dark Luxury Flowy</option>
+                            <option value="minimal-clean">Minimal & Clean</option>
+                            <option value="bold-vibrant">Bold & Vibrant</option>
+                            <option value="custom">Custom</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Brand Colors (Hex Codes)</label>
+                        <input type="text" id="brandColors" placeholder="#1a1a1a, #D4AF37, #ffffff">
+                        <small>Separate multiple colors with commas</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Brand Tone/Personality</label>
+                        <select id="brandTone">
+                            <option value="">Select...</option>
+                            <option value="friendly">Friendly</option>
+                            <option value="luxury">Luxury</option>
+                            <option value="professional">Professional</option>
+                            <option value="playful">Playful</option>
+                            <option value="sophisticated">Sophisticated</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Typography Preferences</label>
+                        <input type="text" id="typography" placeholder="e.g., Elegant serif, Clean sans-serif">
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <div class="section-title">
+                        <span class="icon">⚙️</span>
+                        Tech Stack
+                    </div>
+                    
+                    <div class="inline-group">
+                        <div class="form-group">
+                            <label>Website Platform</label>
+                            <select id="websitePlatform">
+                                <option value="">Select...</option>
+                                <option value="static-html">Static HTML (Netlify)</option>
+                                <option value="wix">Wix</option>
+                                <option value="wordpress">WordPress</option>
+                                <option value="custom">Custom</option>
+                                <option value="none">None</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Email Provider</label>
+                            <select id="emailProvider">
+                                <option value="">Select...</option>
+                                <option value="outlook">Outlook</option>
+                                <option value="gmail">Gmail</option>
+                                <option value="custom">Custom</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="inline-group">
+                        <div class="form-group">
+                            <label>CRM</label>
+                            <select id="crm">
+                                <option value="">Select...</option>
+                                <option value="airtable">Airtable</option>
+                                <option value="hubspot">HubSpot</option>
+                                <option value="salesforce">Salesforce</option>
+                                <option value="existing">Existing</option>
+                                <option value="none">None</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Calendar</label>
+                            <select id="calendar">
+                                <option value="">Select...</option>
+                                <option value="google-calendar">Google Calendar</option>
+                                <option value="outlook">Outlook</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Other Tools/Integrations</label>
+                        <textarea id="otherTools" rows="3" placeholder="List any other tools or integrations you use"></textarea>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- TAB 4: Services -->
+            <div class="tab-content" id="tab-services">
+                <div class="form-section">
+                    <div class="section-title">
+                        <span class="icon">✨</span>
+                        Services Needed
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="checkbox-group">
+                            <div class="checkbox-item" style="background: #f0f4ff; padding: 15px; border-radius: 6px; border: 2px solid #667eea;">
+                                <input type="checkbox" id="service-ai" value="AI Receptionist (iAnswering.ai)">
+                                <label for="service-ai" style="font-weight: 600; color: #667eea;">
+                                    <strong>⭐ AI Receptionist (iAnswering.ai)</strong><br>
+                                    <small style="color: #666; font-weight: normal;">24/7 phone answering, lead qualification, appointment booking - Our biggest selling point!</small>
+                                </label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="service-website" value="Website">
+                                <label for="service-website">Website</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="service-lead-magnet" value="Lead Magnet">
+                                <label for="service-lead-magnet">Lead Magnet</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="service-onboarding" value="Client Onboarding">
+                                <label for="service-onboarding">Client Onboarding System</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="service-email" value="Email Marketing">
+                                <label for="service-email">Email Marketing</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="service-crm" value="CRM Setup">
+                                <label for="service-crm">CRM Setup</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="service-chatbot" value="Website Chatbot">
+                                <label for="service-chatbot">Website Chatbot</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="service-social" value="Social Media Automation">
+                                <label for="service-social">Social Media Automation</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="service-seo" value="SEO & Content">
+                                <label for="service-seo">SEO & Content</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="service-outreach" value="Outreach Marketing">
+                                <label for="service-outreach">Outreach Marketing</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="service-custom" value="Custom">
+                                <label for="service-custom">Custom Service</label>
+                            </div>
+                        </div>
+                        <input type="text" id="customService" placeholder="Describe custom service" style="margin-top: 10px; display: none;">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Special Requirements/Notes</label>
+                        <textarea id="specialNotes" rows="4" placeholder="Any special requirements, integrations, or notes"></textarea>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- TAB 5: Proposal -->
+            <div class="tab-content" id="tab-proposal">
+                <div class="form-section">
+                    <div class="section-title">
+                        <span class="icon">📄</span>
+                        Proposal Details
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Proposal Type</label>
+                        <select id="proposalType">
+                            <option value="phased">Phased Approach (Recommended)</option>
+                            <option value="single">Single Proposal</option>
+                        </select>
+                        <small>Phased approach proves value first, then expands</small>
+                    </div>
+                    
+                    <div id="phasedProposal">
+                        <div class="phase-section">
+                            <div class="phase-header">
+                                <div class="phase-title">Phase 1: Foundation</div>
+                            </div>
+                            <div class="inline-group">
+                                <div class="form-group">
+                                    <label>Setup Fee</label>
+                                    <input type="number" id="phase1Setup" placeholder="3500">
+                                </div>
+                                <div class="form-group">
+                                    <label>Monthly Fee</label>
+                                    <input type="number" id="phase1Monthly" placeholder="697">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>What's Included (one per line)</label>
+                                <textarea id="phase1Includes" rows="6" placeholder="Market research & competitive analysis&#10;Target market & niche identification&#10;Professional website&#10;AI phone answering 24/7"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>ROI Calculation</label>
+                                <textarea id="phase1ROI" rows="3" placeholder="e.g., $697/month pays for itself with ONE new client per month"></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="phase-section">
+                            <div class="phase-header">
+                                <div class="phase-title">Phase 2: Growth</div>
+                            </div>
+                            <div class="inline-group">
+                                <div class="form-group">
+                                    <label>Setup Fee</label>
+                                    <input type="number" id="phase2Setup" placeholder="2000">
+                                </div>
+                                <div class="form-group">
+                                    <label>Monthly Fee</label>
+                                    <input type="number" id="phase2Monthly" placeholder="697">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>What's Included (one per line)</label>
+                                <textarea id="phase2Includes" rows="6" placeholder="Automatic email follow-ups&#10;Website chatbot&#10;Social media automation"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>ROI Calculation</label>
+                                <textarea id="phase2ROI" rows="3"></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="phase-section">
+                            <div class="phase-header">
+                                <div class="phase-title">Phase 3: Scale</div>
+                            </div>
+                            <div class="inline-group">
+                                <div class="form-group">
+                                    <label>Setup Fee</label>
+                                    <input type="number" id="phase3Setup" placeholder="1500">
+                                </div>
+                                <div class="form-group">
+                                    <label>Monthly Fee</label>
+                                    <input type="number" id="phase3Monthly" placeholder="303">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>What's Included (one per line)</label>
+                                <textarea id="phase3Includes" rows="6" placeholder="We find new clients for you&#10;You show up first in search&#10;Reports on what's working"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>ROI Calculation</label>
+                                <textarea id="phase3ROI" rows="3"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="singleProposal" style="display: none;">
+                        <div class="inline-group">
+                            <div class="form-group">
+                                <label>Total Setup Fee</label>
+                                <input type="number" id="singleSetup" placeholder="7000">
+                            </div>
+                            <div class="form-group">
+                                <label>Monthly Fee</label>
+                                <input type="number" id="singleMonthly" placeholder="1697">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>What's Included</label>
+                            <textarea id="singleIncludes" rows="10"></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Automation Process Descriptions</label>
+                        <textarea id="automationProcesses" rows="6" placeholder="Step-by-step descriptions of how automations work (one per line, or detailed)"></textarea>
+                        <small>This will be used in the "How Automations Work" section</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Website Copy (Headlines & Body)</label>
+                        <textarea id="websiteCopy" rows="8" placeholder="Actual headlines and body copy that will appear on the website"></textarea>
+                        <small>This will be used in the "Website Execution Copy" section</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Lead Magnets (if applicable)</label>
+                        <textarea id="leadMagnets" rows="5" placeholder="Describe lead magnets - what they are, what's in each, why they work"></textarea>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- TAB 6: Contract -->
+            <div class="tab-content" id="tab-contract">
+                <div class="form-section">
+                    <div class="section-title">
+                        <span class="icon">📝</span>
+                        Contract Details
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Contract Type</label>
+                        <select id="contractType">
+                            <option value="phased">Phased (matches proposal)</option>
+                            <option value="single">Single Contract</option>
+                        </select>
+                    </div>
+                    
+                    <div class="inline-group">
+                        <div class="form-group">
+                            <label>Contract Date</label>
+                            <input type="date" id="contractDate">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Project Start Date</label>
+                            <input type="date" id="projectStartDate">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Payment Terms</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="payment-50-50" name="paymentTerms" value="50-50" checked>
+                                <label for="payment-50-50">50% upfront, 50% at completion</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="payment-33-33-33" name="paymentTerms" value="33-33-33">
+                                <label for="payment-33-33-33">33% upfront, 33% mid-project, 33% at completion</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="payment-custom" name="paymentTerms" value="custom">
+                                <label for="payment-custom">Custom payment schedule</label>
+                            </div>
+                        </div>
+                        <textarea id="customPaymentTerms" rows="3" placeholder="Describe custom payment terms" style="margin-top: 10px; display: none;"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Monthly Fee Start Date</label>
+                        <select id="monthlyStart">
+                            <option value="30-days">30 days after project start</option>
+                            <option value="immediate">Immediate (upon approval)</option>
+                            <option value="completion">Upon project completion</option>
+                            <option value="custom">Custom</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Contract Notes/Additional Terms</label>
+                        <textarea id="contractNotes" rows="4" placeholder="Any additional terms, notes, or special conditions"></textarea>
+                    </div>
+                </div>
+            </div>
+        </form>
+        
+        <div class="action-buttons">
+            <button class="btn btn-secondary" onclick="saveForm()">💾 Save Progress</button>
+            <button class="btn btn-primary" onclick="generateIntake()" id="btnIntake">📋 Create Client & Start Research</button>
+            <button class="btn btn-primary" onclick="generateProposal()" id="btnProposal">📄 Generate Proposal (Draft)</button>
+            <button class="btn btn-success" onclick="approveProposal()" id="btnApprove">✅ Approve Proposal (Triggers Full Setup)</button>
+            <button class="btn btn-primary" onclick="generateContract()" id="btnContract">📝 Generate Contract</button>
+            <button class="btn btn-primary" onclick="generateOnboarding()" id="btnOnboarding">🚀 Generate Onboarding Docs</button>
+        </div>
+    </div>
+    
+    <div class="save-indicator" id="saveIndicator">✓ Saved</div>
+    
+    <script>
+        // Auto-save to localStorage
+        let autoSaveTimer;
+        const form = document.getElementById('unifiedForm');
+        
+        form.addEventListener('input', () => {
+            clearTimeout(autoSaveTimer);
+            autoSaveTimer = setTimeout(() => {
+                saveToLocalStorage();
+                showSaveIndicator();
+            }, 1000);
+        });
+        
+        // Load from localStorage on page load
+        window.addEventListener('load', () => {
+            loadFromLocalStorage();
+            updateProgress();
+            updateStatus();
+        });
+        
+        // Tab switching
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                const tabName = tab.dataset.tab;
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById(`tab-${tabName}`).classList.add('active');
+                saveToLocalStorage();
+            });
+        });
+        
+        // Proposal type toggle
+        document.getElementById('proposalType').addEventListener('change', (e) => {
+            if (e.target.value === 'phased') {
+                document.getElementById('phasedProposal').style.display = 'block';
+                document.getElementById('singleProposal').style.display = 'none';
+            } else {
+                document.getElementById('phasedProposal').style.display = 'none';
+                document.getElementById('singleProposal').style.display = 'block';
+            }
+        });
+        
+        // Payment terms toggle
+        document.querySelectorAll('input[name="paymentTerms"]').forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                const customTextarea = document.getElementById('customPaymentTerms');
+                if (e.target.value === 'custom') {
+                    customTextarea.style.display = 'block';
+                } else {
+                    customTextarea.style.display = 'none';
+                }
+            });
+        });
+        
+        // Custom service toggle
+        document.getElementById('service-custom').addEventListener('change', (e) => {
+            document.getElementById('customService').style.display = e.target.checked ? 'block' : 'none';
+        });
+        
+        function saveToLocalStorage() {
+            const formData = {};
+            form.querySelectorAll('input, textarea, select').forEach(field => {
+                if (field.type === 'checkbox' || field.type === 'radio') {
+                    if (field.checked) {
+                        if (field.type === 'radio') {
+                            formData[field.name] = field.value;
+                        } else {
+                            if (!formData[field.id]) formData[field.id] = [];
+                            formData[field.id].push(field.value);
+                        }
+                    }
+                } else {
+                    formData[field.id] = field.value;
+                }
+            });
+            localStorage.setItem('unifiedClientForm', JSON.stringify(formData));
+        }
+        
+        function loadFromLocalStorage() {
+            const saved = localStorage.getItem('unifiedClientForm');
+            if (saved) {
+                const formData = JSON.parse(saved);
+                Object.keys(formData).forEach(key => {
+                    const field = document.getElementById(key);
+                    if (field) {
+                        if (field.type === 'checkbox') {
+                            if (Array.isArray(formData[key])) {
+                                field.checked = formData[key].includes(field.value);
+                            }
+                        } else if (field.type === 'radio') {
+                            if (field.value === formData[key]) {
+                                field.checked = true;
+                            }
+                        } else {
+                            field.value = formData[key];
+                        }
+                    }
+                });
+            }
+        }
+        
+        function showSaveIndicator() {
+            const indicator = document.getElementById('saveIndicator');
+            indicator.classList.add('show');
+            setTimeout(() => indicator.classList.remove('show'), 2000);
+        }
+        
+        function updateProgress() {
+            const requiredFields = ['clientName', 'businessName', 'contactEmail'];
+            const filled = requiredFields.filter(id => {
+                const field = document.getElementById(id);
+                return field && field.value.trim();
+            }).length;
+            const progress = (filled / requiredFields.length) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+        }
+        
+        function updateStatus() {
+            // Determine status based on what's been generated
+            const status = 'Draft'; // TODO: Check if intake/proposal/contract exists
+            document.getElementById('statusBadge').textContent = status;
+            document.getElementById('statusBadge').className = `status-badge status-${status.toLowerCase()}`;
+        }
+        
+        async function callMcp(mcpName, params) {
+            const mcpUrl = document.getElementById('mcpUrl').value;
+            const apiKey = document.getElementById('apiKey').value;
+            
+            try {
+                const response = await fetch(`${mcpUrl}/run`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-API-Key': apiKey
+                    },
+                    body: JSON.stringify({
+                        mcp: mcpName,
+                        params: params
+                    })
+                });
+                
+                const result = await response.json();
+                return result;
+            } catch (error) {
+                throw new Error(`Failed to call MCP: ${error.message}`);
+            }
+        }
+        
+        function showMessage(text, type = 'info') {
+            const message = document.getElementById('message');
+            message.textContent = text;
+            message.className = `message ${type}`;
+            setTimeout(() => {
+                message.className = 'message';
+            }, 5000);
+        }
+        
+        async function generateIntake() {
+            const clientName = document.getElementById('clientName').value;
+            const businessName = document.getElementById('businessName').value;
+            const contactEmail = document.getElementById('contactEmail').value;
+            const industry = document.getElementById('industry').value;
+            
+            // Minimum viable intake check
+            if (!clientName || !businessName || !contactEmail) {
+                showMessage('Minimum required: Client Name, Business Name, and Contact Email', 'error');
+                return;
+            }
+            
+            showMessage('Creating client folder and triggering research...', 'info');
+            
+            // Collect all intake data
+            const intakeData = {
+                client_name: clientName,
+                business_name: businessName,
+                contact_email: contactEmail,
+                contact_phone: document.getElementById('contactPhone').value,
+                industry: industry,
+                target_market: document.getElementById('targetMarket').value,
+                business_story: document.getElementById('businessStory').value,
+                problems: document.getElementById('problems').value,
+                opportunity: document.getElementById('opportunity').value,
+                design_style: document.getElementById('designStyle').value,
+                brand_colors: document.getElementById('brandColors').value,
+                brand_tone: document.getElementById('brandTone').value,
+                typography: document.getElementById('typography').value,
+                website_platform: document.getElementById('websitePlatform').value,
+                email_provider: document.getElementById('emailProvider').value,
+                crm: document.getElementById('crm').value,
+                calendar: document.getElementById('calendar').value,
+                other_tools: document.getElementById('otherTools').value,
+                services: Array.from(document.querySelectorAll('input[type="checkbox"]:checked')).map(cb => cb.value),
+                special_notes: document.getElementById('specialNotes').value
+            };
+            
+            try {
+                // Step 1: Process intake (creates folder and profile)
+                const intakeResult = await callMcp('process-client-intake', {
+                    client_name: clientName,
+                    intake_data: intakeData,
+                    source: 'manual'
+                });
+                
+                if (!intakeResult.success) {
+                    showMessage(intakeResult.error || 'Failed to create client folder', 'error');
+                    return;
+                }
+                
+                // Step 2: Trigger research (MOST CRITICAL - informs everything)
+                const researchResult = await callMcp('trigger-client-research', {
+                    client_name: clientName,
+                    research_type: 'full'
+                });
+                
+                if (researchResult.success) {
+                    showMessage('✓ Client folder created! ✓ Research workflow triggered! Check the research folder for ChatGPT prompts.', 'success');
+                    updateStatus();
+                } else {
+                    showMessage('Client folder created, but research trigger failed: ' + (researchResult.error || 'Unknown error'), 'error');
+                }
+            } catch (error) {
+                showMessage(error.message, 'error');
+            }
+        }
+        
+        async function generateProposal() {
+            const clientName = document.getElementById('clientName').value;
+            if (!clientName) {
+                showMessage('Please enter a client name first', 'error');
+                return;
+            }
+            
+            showMessage('Generating proposal...', 'info');
+            
+            // Collect proposal data
+            const proposalType = document.getElementById('proposalType').value;
+            const proposalData = {
+                story: document.getElementById('businessStory').value,
+                problem: document.getElementById('problems').value.split('\n').filter(p => p.trim()),
+                opportunity: document.getElementById('opportunity').value,
+                proposal_type: proposalType
+            };
+            
+            if (proposalType === 'phased') {
+                proposalData.phases = [
+                    {
+                        name: 'Phase 1: Foundation',
+                        setup_fee: parseInt(document.getElementById('phase1Setup').value) || 0,
+                        monthly_fee: parseInt(document.getElementById('phase1Monthly').value) || 0,
+                        what_you_get: document.getElementById('phase1Includes').value.split('\n').filter(i => i.trim()),
+                        roi_calculation: document.getElementById('phase1ROI').value
+                    },
+                    {
+                        name: 'Phase 2: Growth',
+                        setup_fee: parseInt(document.getElementById('phase2Setup').value) || 0,
+                        monthly_fee: parseInt(document.getElementById('phase2Monthly').value) || 0,
+                        what_you_get: document.getElementById('phase2Includes').value.split('\n').filter(i => i.trim()),
+                        roi_calculation: document.getElementById('phase2ROI').value
+                    },
+                    {
+                        name: 'Phase 3: Scale',
+                        setup_fee: parseInt(document.getElementById('phase3Setup').value) || 0,
+                        monthly_fee: parseInt(document.getElementById('phase3Monthly').value) || 0,
+                        what_you_get: document.getElementById('phase3Includes').value.split('\n').filter(i => i.trim()),
+                        roi_calculation: document.getElementById('phase3ROI').value
+                    }
+                ];
+            } else {
+                proposalData.single = {
+                    setup_fee: parseInt(document.getElementById('singleSetup').value) || 0,
+                    monthly_fee: parseInt(document.getElementById('singleMonthly').value) || 0,
+                    what_you_get: document.getElementById('singleIncludes').value.split('\n').filter(i => i.trim())
+                };
+            }
+            
+            proposalData.automation_processes = document.getElementById('automationProcesses').value;
+            proposalData.website_copy = document.getElementById('websiteCopy').value;
+            proposalData.lead_magnets = document.getElementById('leadMagnets').value;
+            proposalData.payment_terms = {
+                setup: '50% upfront, 50% at completion',
+                monthly: 'Begins 30 days after project start'
+            };
+            
+            try {
+                const result = await callMcp('create-modern-proposal', {
+                    client_name: clientName,
+                    proposal_data: proposalData,
+                    contact_email: document.getElementById('contactEmail').value
+                });
+                if (result.success) {
+                    showMessage('Proposal generated successfully!', 'success');
+                    updateStatus();
+                } else {
+                    showMessage(result.error || 'Failed to generate proposal', 'error');
+                }
+            } catch (error) {
+                showMessage(error.message, 'error');
+            }
+        }
+        
+        async function generateContract() {
+            const clientName = document.getElementById('clientName').value;
+            if (!clientName) {
+                showMessage('Please enter a client name first', 'error');
+                return;
+            }
+            
+            showMessage('Generating contract...', 'info');
+            
+            // Collect contract data
+            const contractData = {
+                contract_type: document.getElementById('contractType').value,
+                contract_date: document.getElementById('contractDate').value,
+                project_start_date: document.getElementById('projectStartDate').value,
+                payment_terms: document.querySelector('input[name="paymentTerms"]:checked').value,
+                custom_payment_terms: document.getElementById('customPaymentTerms').value,
+                monthly_start: document.getElementById('monthlyStart').value,
+                notes: document.getElementById('contractNotes').value
+            };
+            
+            // Get pricing from proposal data
+            const proposalType = document.getElementById('proposalType').value;
+            if (proposalType === 'phased') {
+                contractData.phases = [
+                    {
+                        setup_fee: parseInt(document.getElementById('phase1Setup').value) || 0,
+                        monthly_fee: parseInt(document.getElementById('phase1Monthly').value) || 0
+                    },
+                    {
+                        setup_fee: parseInt(document.getElementById('phase2Setup').value) || 0,
+                        monthly_fee: parseInt(document.getElementById('phase2Monthly').value) || 0
+                    },
+                    {
+                        setup_fee: parseInt(document.getElementById('phase3Setup').value) || 0,
+                        monthly_fee: parseInt(document.getElementById('phase3Monthly').value) || 0
+                    }
+                ];
+            } else {
+                contractData.single = {
+                    setup_fee: parseInt(document.getElementById('singleSetup').value) || 0,
+                    monthly_fee: parseInt(document.getElementById('singleMonthly').value) || 0
+                };
+            }
+            
+            try {
+                const result = await callMcp('create-contract', {
+                    client_name: clientName,
+                    contract_data: contractData,
+                    client_email: document.getElementById('contactEmail').value
+                });
+                if (result.success) {
+                    showMessage('Contract generated successfully!', 'success');
+                    updateStatus();
+                } else {
+                    showMessage(result.error || 'Failed to generate contract', 'error');
+                }
+            } catch (error) {
+                showMessage(error.message, 'error');
+            }
+        }
+        
+        async function generateOnboarding() {
+            const clientName = document.getElementById('clientName').value;
+            if (!clientName) {
+                showMessage('Please enter a client name first', 'error');
+                return;
+            }
+            
+            showMessage('Generating onboarding docs...', 'info');
+            
+            try {
+                const result = await callMcp('create-client-startup-docs', {
+                    client_name: clientName
+                });
+                if (result.success) {
+                    showMessage('Onboarding docs generated successfully!', 'success');
+                    updateStatus();
+                } else {
+                    showMessage(result.error || 'Failed to generate onboarding docs', 'error');
+                }
+            } catch (error) {
+                showMessage(error.message, 'error');
+            }
+        }
+        
+        async function approveProposal() {
+            const clientName = document.getElementById('clientName').value;
+            if (!clientName) {
+                showMessage('Please enter a client name first', 'error');
+                return;
+            }
+            
+            if (!confirm('This will trigger FULL SETUP:\n- Airtable base\n- Base44 portal\n- Contract\n- Onboarding docs\n- All automations\n\nProceed?')) {
+                return;
+            }
+            
+            showMessage('Approving proposal and triggering full setup...', 'info');
+            
+            try {
+                const result = await callMcp('approve-client-proposal', {
+                    client_name: clientName,
+                    approval_date: new Date().toISOString(),
+                    approved_phase: document.getElementById('proposalType').value === 'phased' ? 'phase1' : 'all'
+                });
+                
+                if (result.success) {
+                    showMessage('✓ Proposal approved! Full setup initiated. Client folder will auto-sync to Base44.', 'success');
+                    updateStatus();
+                    
+                    // Start watching folder for changes
+                    callMcp('sync-folder-to-base44', {
+                        client_name: clientName,
+                        watch: true
+                    }).catch(err => console.log('Auto-sync setup:', err));
+                } else {
+                    showMessage(result.error || 'Failed to approve proposal', 'error');
+                }
+            } catch (error) {
+                showMessage(error.message, 'error');
+            }
+        }
+        
+        function saveForm() {
+            saveToLocalStorage();
+            showSaveIndicator();
+            showMessage('Form saved!', 'success');
+        }
+    </script>
+</body>
+</html>
+

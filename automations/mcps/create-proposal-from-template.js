@@ -107,6 +107,13 @@ module.exports = {
     const proposalFileName = `proposal-${new Date().toISOString().split('T')[0]}.md`;
     const proposalPath = path.join(deliverablesDir, proposalFileName);
 
+    // Check if iAnswering.ai is included
+    const includesAIReceptionist = services.some(s => 
+      s.toLowerCase().includes('ai receptionist') || 
+      s.toLowerCase().includes('ianswering') ||
+      s.toLowerCase().includes('receptionist')
+    );
+
     // Create markdown proposal
     const markdown = `# Proposal for ${clientInfo.business_name}
 
@@ -117,11 +124,28 @@ module.exports = {
 
 ${services.map((s, i) => `${i + 1}. ${s}`).join('\n')}
 
+${includesAIReceptionist ? `
+### ⭐ AI Receptionist (iAnswering.ai) - Our Biggest Selling Point!
+
+**What You Get:**
+- 24/7 phone answering service
+- Lead qualification and routing
+- Appointment booking integration
+- Call transcription and delivery
+- CRM integration (automatic lead capture)
+
+**Setup:** Included in proposal
+**Ongoing:** iAnswering.ai subscription (separate from this proposal)
+` : ''}
+
 ## Investment
 
 **Total:** $${pricing.total}
 **Deposit:** $${pricing.deposit || pricing.total * 0.5}
 **Payment Structure:** ${pricing.payment_structure || '50% deposit, 50% on delivery'}
+
+${pricing.setup_fee ? `**Setup Fee:** $${pricing.setup_fee.toFixed(2)}` : ''}
+${pricing.monthly_fee ? `**Monthly Fee:** $${pricing.monthly_fee.toFixed(2)}/month` : ''}
 
 ## Timeline
 
@@ -133,10 +157,11 @@ ${timeline}
 2. Approve via PandaDoc (link will be sent)
 3. Pay deposit to begin
 4. Receive portal access for project updates
+${includesAIReceptionist ? '5. iAnswering.ai account will be set up automatically' : ''}
 
 ---
 
-**Note:** This is a draft proposal. Final version will be sent via PandaDoc for signature.
+**Note:** This is a draft proposal. Review and approve to proceed.
 `;
 
     await fs.writeFile(proposalPath, markdown);
@@ -146,7 +171,7 @@ ${timeline}
       client_name,
       proposal_path: proposalPath,
       proposal_content: proposalContent,
-      message: `Proposal created for ${client_name}. Next: Review and send via PandaDoc.`
+      message: `Proposal created for ${client_name}. Ready for review.`
     };
   }
 };

@@ -1,7 +1,7 @@
 # BRANDED + FLOW - MASTER CONTEXT
-**Last Updated:** December 4, 2024
+**Last Updated:** December 8, 2024
 **Status:** Pre-launch, Foundation Phase
-**Next Big Thing:** Luxe Fine Dining pitch presentation tomorrow morning
+**Next Big Thing:** Website creation workflow established, ready for first client website
 
 ---
 
@@ -19,10 +19,13 @@
 
 ## 🎯 CURRENT PRIORITIES (RIGHT NOW)
 
-1. **URGENT:** Luxe Fine Dining pitch deck - presentation tomorrow morning
-2. File structure reorganization - IN PROGRESS (Phase 1)
-3. Build 15 Quick Start MCPs - Coming next (Phase 4)
-4. Document complete company operating system - (Phase 3)
+1. **URGENT:** Luxe Fine Dining proposal finalized - modern HTML proposal deployed
+2. **NEW STANDARD:** Modern proposal process now established - all future proposals use this method
+3. **NEW STANDARD:** Stepped website creation workflow established - 8-step approval process with ROI tracking
+4. File structure reorganization - IN PROGRESS (Phase 1)
+5. Build 15 Quick Start MCPs - Coming next (Phase 4)
+6. Document complete company operating system - (Phase 3)
+7. **NEW:** Unified client form created - One form for intake, proposal, contract, onboarding
 
 ---
 
@@ -35,10 +38,11 @@
 - **Next:** Ongoing support, use as template for future clients
 
 ### Luxe Fine Dining
-- **Status:** 🔥 PITCH PRESENTATION TOMORROW MORNING
-- **Materials:** PDFs in clients/luxe-fine-dining/ + Gamma deck ready
-- **Deliverables:** Catering sales kit, website wireframe, automation workflows, 90-day launch plan, outreach scripts
-- **Next:** Organize presentation flow tonight
+- **Status:** ✅ MODERN PROPOSAL COMPLETE & DEPLOYED
+- **Proposal:** Modern HTML proposal with phased approach, mobile-responsive, deployed to Netlify
+- **Location:** clients/luxe-fine-dining/05_deliverables/PROPOSAL_PHASED_APPROACH_MODERN.html
+- **Deployment:** proposal-deploy folder ready for Netlify
+- **Next:** Client review and approval
 
 ### Dental Bunny
 - **Status:** Proposal stage
@@ -120,9 +124,25 @@ brandedflow/
 
 ## 🔑 KEY DECISIONS
 
+### Proposal Process (NEW STANDARD - December 8, 2024)
+- ✅ **Modern HTML Proposal Process** - All proposals now use this method
+- Story-first approach (never start with price)
+- Simple, jargon-free language
+- Phased approach (prove value first)
+- Mobile-responsive HTML design
+- Working email buttons with pre-filled text
+- Clear payment terms (50% upfront, 50% at completion, monthly starts 30 days after start)
+- **MCP:** `create-modern-proposal.js` automates generation
+- **Workflow:** `company/operations/proposals/MODERN_PROPOSAL_WORKFLOW.md`
+- **Directive:** `systems/doe-engine/directives/create-client-proposal.md`
+- Proven with Luxe Fine Dining proposal
+
 ### Website Approach
 - ✅ Using Netlify + AI-generated HTML (fast, editable, full control)
 - ❌ NOT using WordPress/Elementor/10Web (abandoned this approach)
+- ✅ **NEW:** Stepped approval process (8 steps) - Site Plan → Design → Copy → Features → Review → Deploy → Forms → SEO
+- ✅ **NEW:** ROI tracking starts at deployment - Analytics, conversions, keyword rankings
+- ✅ **NEW:** Semrush integration for comprehensive SEO tracking
 - Template: AQ Remodeling site structure
 
 ### Automation Strategy

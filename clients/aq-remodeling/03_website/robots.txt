@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemaps
-Sitemap: https://aqremodeling.com/sitemap.xml
+Sitemap: https://aqremodelinginc.com/sitemap.xml
 
 # Directories
 Disallow: /js/

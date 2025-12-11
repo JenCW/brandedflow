@@ -1,0 +1,1525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxe Fine Dining - Proposal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a1a1a;
+            --primary-light: #2c2c2c;
+            --accent: #D4AF37;
+            --accent-dark: #B8956E;
+            --text: #2c3e50;
+            --text-light: #7f8c8d;
+            --bg: #ffffff;
+            --bg-light: #f8f9fa;
+            --border: #e0e0e0;
+            --shadow: rgba(0, 0, 0, 0.1);
+            --shadow-lg: rgba(0, 0, 0, 0.15);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            line-height: 1.8;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Table of Contents */
+        .toc-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            box-shadow: 0 4px 12px var(--shadow-lg);
+            display: none;
+            transition: transform 0.2s;
+        }
+
+        .toc-toggle:hover {
+            transform: scale(1.05);
+        }
+
+        .toc-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+        }
+
+        .toc-overlay.active {
+            display: block;
+        }
+
+        .toc-sidebar {
+            position: fixed;
+            top: 0;
+            right: -350px;
+            width: 350px;
+            height: 100%;
+            background: white;
+            box-shadow: -4px 0 20px var(--shadow-lg);
+            z-index: 1000;
+            overflow-y: auto;
+            transition: right 0.3s ease;
+            padding: 30px 20px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        .toc-sidebar.active {
+            right: 0;
+        }
+
+        .toc-sidebar h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+            font-size: 1.3rem;
+        }
+
+        .toc-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .toc-list li {
+            margin-bottom: 12px;
+        }
+
+        .toc-list a {
+            color: var(--text);
+            text-decoration: none;
+            display: block;
+            padding: 10px 15px;
+            border-radius: 8px;
+            transition: all 0.2s;
+            font-size: 0.95rem;
+        }
+
+        .toc-list a:hover {
+            background: var(--bg-light);
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .toc-list a.active {
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+        }
+
+        .toc-list .toc-sub {
+            padding-left: 25px;
+            font-size: 0.85rem;
+            margin-top: 5px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        /* Cover Section */
+        .cover {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
+            color: white;
+            padding: 80px 40px;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .cover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="0.5" fill="%23D4AF37" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .cover h1 {
+            font-size: 4rem;
+            font-weight: 300;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            color: var(--accent);
+        }
+
+        .cover .subtitle {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        .cover .tagline {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.85;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 80px 40px;
+            scroll-margin-top: 20px;
+        }
+
+        .section-dark {
+            background: var(--primary);
+            color: white;
+        }
+
+        .section-light {
+            background: var(--bg-light);
+        }
+
+        .section h2 {
+            font-size: 3rem;
+            font-weight: 300;
+            margin-bottom: 30px;
+            text-align: center;
+            color: var(--primary);
+            letter-spacing: 1px;
+        }
+
+        .section-dark h2 {
+            color: var(--accent);
+        }
+
+        .section h3 {
+            font-size: 2rem;
+            font-weight: 400;
+            margin: 40px 0 20px 0;
+            color: var(--primary);
+        }
+
+        .section-dark h3 {
+            color: white;
+        }
+
+        .section p {
+            font-size: 1.2rem;
+            line-height: 2;
+            margin-bottom: 25px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-dark p {
+            opacity: 0.9;
+        }
+
+        /* Problem Section */
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        @media (max-width: 768px) {
+            .problem-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        .problem-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            border-left: 4px solid var(--accent);
+            box-shadow: 0 4px 12px var(--shadow);
+        }
+
+        .problem-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .problem-card p {
+            font-size: 1rem;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* Solution Phases */
+        .phase {
+            background: white;
+            border-radius: 16px;
+            padding: 50px;
+            margin: 40px 0;
+            box-shadow: 0 4px 20px var(--shadow);
+            border-top: 5px solid var(--accent);
+        }
+
+        .phase-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .phase-title h3 {
+            font-size: 2.5rem;
+            margin: 0 0 15px 0;
+            color: var(--primary);
+        }
+
+        .phase-title .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--primary);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .phase-investment {
+            text-align: right;
+            min-width: 200px;
+        }
+
+        .phase-investment .label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 8px;
+        }
+
+        .phase-investment .amount {
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: var(--primary);
+            display: block;
+        }
+
+        .phase-investment .monthly {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-top: 5px;
+        }
+
+        .phase-content {
+            margin-top: 30px;
+        }
+
+        .phase-content h4 {
+            font-size: 1.5rem;
+            margin: 30px 0 20px 0;
+            color: var(--primary);
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 25px 0;
+        }
+
+        .feature-list li {
+            padding: 15px 0;
+            padding-left: 40px;
+            position: relative;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-list li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        /* Website Copy Section */
+        .copy-section {
+            background: white;
+            padding: 40px;
+            margin: 30px 0;
+            border-radius: 12px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .copy-section h4 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .copy-block {
+            background: var(--bg-light);
+            padding: 25px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+        }
+
+        .copy-block .headline {
+            font-size: 2rem;
+            font-weight: 400;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .copy-block .subheadline {
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        .copy-block .body {
+            font-size: 1.1rem;
+            line-height: 2;
+            margin-bottom: 15px;
+        }
+
+        .copy-block .cta {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            margin-top: 15px;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+
+        .copy-block .cta:hover {
+            transform: scale(1.05);
+        }
+
+        /* Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 30px;
+            background: var(--primary);
+            color: white;
+            border-radius: 12px;
+        }
+
+        .stat-box .number {
+            font-size: 3rem;
+            font-weight: 300;
+            display: block;
+            margin-bottom: 10px;
+            color: var(--accent);
+        }
+
+        .stat-box .label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* ROI Box */
+        .roi-box {
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+            border-left: 5px solid #27ae60;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 25px 0;
+        }
+
+        .roi-box h4 {
+            color: var(--secondary);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        /* Investment Section */
+        .investment-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 80px 40px;
+            text-align: center;
+        }
+
+        .investment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .investment-card {
+            background: white;
+            color: var(--primary);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+        }
+
+        .investment-card h4 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .investment-card .price {
+            font-size: 3rem;
+            font-weight: 300;
+            color: var(--accent);
+            margin: 20px 0;
+        }
+
+        .investment-card .price-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        .investment-card ul {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            margin: 20px 0;
+        }
+
+        .investment-card li {
+            padding: 10px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .investment-card li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--accent);
+            color: var(--primary);
+            padding: 80px 40px;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 3rem;
+            margin-bottom: 30px;
+            color: var(--primary);
+        }
+
+        .cta-buttons {
+            margin-top: 40px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 18px 50px;
+            border-radius: 30px;
+            text-decoration: none;
+            margin: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+        }
+
+        .cta-button.secondary {
+            background: white;
+            color: var(--primary);
+        }
+
+        /* Section Dividers */
+        .section-divider {
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary) 0%, transparent 100%);
+            margin: 50px 0;
+            border-radius: 2px;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .toc-toggle {
+                display: block;
+            }
+
+            .toc-sidebar {
+                width: 280px;
+                right: -280px;
+            }
+
+            .cover {
+                padding: 60px 20px;
+            }
+
+            .cover h1 {
+                font-size: 2.5rem;
+            }
+
+            .cover .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .section {
+                padding: 50px 20px;
+            }
+
+            .section h2 {
+                font-size: 2rem;
+            }
+
+            .phase {
+                padding: 30px 20px;
+            }
+
+            .phase-header {
+                flex-direction: column;
+            }
+
+            .phase-investment {
+                text-align: left;
+                width: 100%;
+            }
+
+            .copy-section {
+                padding: 25px 15px;
+            }
+
+            .copy-block {
+                padding: 20px;
+            }
+
+            .copy-block .headline {
+                font-size: 1.5rem;
+            }
+
+            .problem-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .investment-grid {
+                grid-template-columns: 1fr;
+            }
+
+            table {
+                font-size: 0.85rem;
+            }
+
+            th, td {
+                padding: 10px 8px;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .toc-sidebar {
+                position: sticky;
+                top: 20px;
+                right: auto;
+                width: 280px;
+                height: auto;
+                max-height: calc(100vh - 40px);
+                box-shadow: 2px 0 12px var(--shadow);
+                border-radius: 12px;
+                margin-left: 20px;
+            }
+
+            .container {
+                display: flex;
+                align-items: flex-start;
+                gap: 30px;
+                padding: 40px;
+            }
+
+            .content {
+                flex: 1;
+                min-width: 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .cover h1 {
+                font-size: 2rem;
+            }
+
+            .section h2 {
+                font-size: 1.8rem;
+            }
+
+            .phase-title h3 {
+                font-size: 1.8rem;
+            }
+
+            .investment-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <button class="toc-toggle" id="tocToggle">📑 Menu</button>
+    <div class="toc-overlay" id="tocOverlay"></div>
+
+    <nav class="toc-sidebar" id="tocSidebar">
+        <h3>Table of Contents</h3>
+        <ul class="toc-list">
+            <li><a href="#cover" class="toc-link">Cover</a></li>
+            <li><a href="#the-story" class="toc-link">The Story</a></li>
+            <li><a href="#the-problem" class="toc-link">The Problem</a></li>
+            <li><a href="#the-opportunity" class="toc-link">The Opportunity</a></li>
+            <li><a href="#the-solution" class="toc-link">The Solution</a></li>
+            <li><a href="#phase-1" class="toc-link">Phase 1: Foundation</a></li>
+            <li><a href="#phase-2" class="toc-link">Phase 2: Growth</a></li>
+            <li><a href="#phase-3" class="toc-link">Phase 3: Scale</a></li>
+            <li><a href="#automations" class="toc-link">How Automations Work</a></li>
+            <li><a href="#website-copy" class="toc-link">Website Execution</a></li>
+            <li><a href="#lead-magnets" class="toc-link">Lead Magnets</a></li>
+            <li><a href="#investment" class="toc-link">Investment</a></li>
+            <li><a href="#next-steps" class="toc-link">Next Steps</a></li>
+        </ul>
+    </nav>
+
+    <div class="cover" id="cover">
+        <div class="cover-content">
+            <h1>Luxe Fine Dining</h1>
+            <div class="subtitle">A Proposal for Growth</div>
+            <div class="tagline">
+                Fifteen years of exceptional dining. Now it's time to scale your catering business without working harder.
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="content">
+            <!-- The Story -->
+            <div class="section section-light" id="the-story">
+                <h2>The Story</h2>
+                <p>
+                    When you opened Luxe in 2010, you had one rule: <strong>no ordinary nights.</strong>
+                </p>
+                <p>
+                    Every dish crafted. Every cocktail considered. Every guest remembered.
+                </p>
+                <p>
+                    Fifteen years later, that obsession hasn't faded. Your restaurant is established. Your reputation is solid. Your team is loyal.
+                </p>
+                <p>
+                    But here's what keeps you up at night:
+                </p>
+            </div>
+
+            <!-- The Problem -->
+            <div class="section section-dark" id="the-problem">
+                <h2>The Problem</h2>
+                <p>
+                    You're busy. Really busy. Running a restaurant is a full-time job, and then some.
+                </p>
+                <p>
+                    But you know your catering business could be bigger. You can handle 750-850 meals. You have the kitchen. You have the food. You have the reputation.
+                </p>
+                <p>
+                    The problem? You can't be everywhere at once.
+                </p>
+
+                <div class="problem-grid">
+                    <div class="problem-card">
+                        <h4>You're Missing Calls</h4>
+                        <p>Someone calls about catering during dinner service. You can't answer. They call someone else. That's a $5,000 wedding you just lost.</p>
+                    </div>
+                    <div class="problem-card">
+                        <h4>Quotes Take Too Long</h4>
+                        <p>Someone wants a quote. You're busy. It takes you 3 days to get back to them. By then, they've already booked with someone else.</p>
+                    </div>
+                    <div class="problem-card">
+                        <h4>No One Can Find You</h4>
+                        <p>People search "catering near me" or "corporate catering Dana Point." Your website doesn't show up. They find your competitors instead.</p>
+                    </div>
+                    <div class="problem-card">
+                        <h4>Everything Is Manual</h4>
+                        <p>Every quote. Every follow-up. Every menu you send. You're doing it all yourself. There's no time left to actually grow the business.</p>
+                    </div>
+                </div>
+
+                <p style="text-align: center; font-size: 1.4rem; margin-top: 50px;">
+                    <strong>You're leaving money on the table every single day.</strong>
+                </p>
+            </div>
+
+            <!-- The Opportunity -->
+            <div class="section section-light" id="the-opportunity">
+                <h2>The Opportunity</h2>
+                <p>
+                    Your catering business has massive potential. The market is there:
+                </p>
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <span class="number">$84M</span>
+                        <span class="label">Senior Living Market in OC</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="number">500+</span>
+                        <span class="label">Corporate Offices Nearby</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="number">200+</span>
+                        <span class="label">Weddings Per Year in OC</span>
+                    </div>
+                </div>
+                <p>
+                    But here's the thing: <strong>they can't find you.</strong> Or when they do, you're too busy to answer. Or they want a quote and it takes 3 days to get back to them.
+                </p>
+                <p>
+                    Meanwhile, your competitors are taking those orders. The ones you should have gotten.
+                </p>
+            </div>
+
+            <!-- The Solution -->
+            <div class="section section-dark" id="the-solution">
+                <h2>The Solution</h2>
+                <p>
+                    We're going to build you a system that works 24/7. A system that captures every lead. Answers every call. Sends every quote. Follows up automatically.
+                </p>
+                <p>
+                    But here's what makes this different: <strong>we're going to prove it works before you invest more.</strong>
+                </p>
+                <p>
+                    We'll start with Phase 1. You'll see results in 30 days. Then you decide if you want Phase 2. Then Phase 3.
+                </p>
+                <p>
+                    No big upfront investment. No promises we can't keep. Just proven systems that work.
+                </p>
+            </div>
+
+            <!-- Phase 1 -->
+            <div class="section section-light" id="phase-1">
+                <div class="phase">
+                    <div class="phase-header">
+                        <div class="phase-title">
+                            <h3>Phase 1: The Foundation</h3>
+                            <div class="badge">Prove It Works</div>
+                        </div>
+                        <div class="phase-investment">
+                            <span class="label">Investment</span>
+                            <span class="amount">$3,500</span>
+                            <span class="monthly">+ $697/month</span>
+                        </div>
+                    </div>
+
+                    <div class="phase-content">
+                        <h4>What You Get</h4>
+                        <ul class="feature-list">
+                            <li><strong>Deep market research and competitive analysis.</strong> We analyze your market, identify your top 5 competitors, find gaps and niches you can exploit, and create a complete strategy document. This is yours to keep, even if you don't move forward.</li>
+                            <li><strong>Target market and niche identification.</strong> We identify exactly who your best customers are, what they want, how they buy, and how to reach them. Senior centers, corporate offices, wedding planners - we map it all out.</li>
+                            <li><strong>A professional catering website</strong> that actually converts. Not a generic template. A site built specifically for your target markets: senior centers, corporate events, private parties, and weddings.</li>
+                            <li><strong>An AI that answers your phone 24/7.</strong> Never miss a catering inquiry again. It takes orders, provides quotes, books events, and sends you an email with all the details.</li>
+                            <li><strong>72-Hour Emergency Catering service.</strong> A dedicated landing page and phone line for last-minute catering. "Your caterer canceled? We didn't." This becomes a profit center for urgent orders.</li>
+                            <li><strong>Professional menu PDFs (lead magnets).</strong> Four beautifully designed menu PDFs: Senior Center Menu, Corporate Events Menu, Wedding Menu, and Private Parties Menu. Each has its own landing page. When someone downloads one, they automatically get the PDF via email, get added to your list, and start receiving follow-up emails.</li>
+                            <li><strong>A quote calculator on your website.</strong> Someone wants a quote? They fill out a form with event size, date, and type. They get an instant estimate. No more waiting 3 days.</li>
+                            <li><strong>A simple system that tracks everything.</strong> Every call. Every quote request. Every lead. All in one place. You'll know exactly who's interested and who's ready to book.</li>
+                            <li><strong>A dashboard that shows you what's working.</strong> See how many calls came in. How many quotes went out. How many turned into bookings. Real numbers. Real results.</li>
+                            <li><strong>Your own client portal.</strong> A private portal where you can see everything: project progress, all documents, performance reports, and communicate with us directly.</li>
+                        </ul>
+
+                        <div class="roi-box">
+                            <h4>The Math</h4>
+                            <p><strong>Break-even analysis:</strong></p>
+                            <p>
+                                One corporate event = $3,000-10,000<br>
+                                One wedding = $8,000-15,000<br>
+                                One senior living contract = $5,000-20,000/month
+                            </p>
+                            <p style="margin-top: 15px; font-weight: 700; font-size: 1.1rem;">
+                                $697/month pays for itself with ONE new client per month
+                            </p>
+                            <p style="margin-top: 10px; font-size: 0.95rem; opacity: 0.8;">
+                                (Includes phone system, apps, and all tools)
+                            </p>
+                        </div>
+
+                        <h4>How The Automations Actually Work</h4>
+                        <div class="copy-block" style="margin-top: 20px;">
+                            <div class="body">
+                                <strong>When someone calls:</strong><br>
+                                1. AI answers: "Thanks for calling Luxe. How can I help - reservations, catering, or placing an order?"<br>
+                                2. If they say "catering": AI asks what type of event, how many guests, date, service style<br>
+                                3. AI provides an instant ballpark quote based on your pricing<br>
+                                4. AI captures their name, email, phone, and all event details<br>
+                                5. You get an email with everything: "New catering inquiry from [Name] - 120 guests, wedding, $8,500-12,000 estimate"<br>
+                                6. They get a text message: "Thanks! We'll be in touch within 24 hours."<br>
+                                7. All details automatically saved to your tracking system<br>
+                                <br>
+                                <strong>When someone downloads a menu:</strong><br>
+                                1. They fill out a form on your website: name, email, phone, event type<br>
+                                2. They instantly get the PDF via email<br>
+                                3. They get a text: "Your menu is on its way! Check your email."<br>
+                                4. They're automatically added to your list<br>
+                                5. They start receiving follow-up emails: Day 3, Day 7, Day 14<br>
+                                6. All their info saved to your tracking system<br>
+                                <br>
+                                <strong>When someone requests a quote online:</strong><br>
+                                1. They fill out the quote calculator: event type, guests, date, service style<br>
+                                2. They see an instant estimate: "Your estimated range: $4,200 - $6,800"<br>
+                                3. They enter their contact info to get the full quote<br>
+                                4. You get an email: "New quote request - Corporate event, 75 guests, $5,000-7,000"<br>
+                                5. They get a text: "Thanks! We'll send your full quote within 24 hours."<br>
+                                6. If they don't book in 2 days, they automatically get a follow-up email<br>
+                                <br>
+                                <strong>72-Hour Emergency Catering:</strong><br>
+                                1. Someone calls your emergency line or visits the emergency page<br>
+                                2. AI asks: "What happened? When do you need catering? How many guests?"<br>
+                                3. AI provides immediate availability and pricing<br>
+                                4. You get an urgent alert: "72-HOUR EMERGENCY - 200 guests, corporate event, tomorrow"<br>
+                                5. You can accept or decline, and AI handles the response<br>
+                            </div>
+                        </div>
+
+                        <h4>What Happens in 30 Days</h4>
+                        <ul class="feature-list">
+                            <li>Your website is live and getting found</li>
+                            <li>Every call is being answered</li>
+                            <li>Quotes are going out instantly</li>
+                            <li>You're seeing leads come in</li>
+                            <li>You're seeing bookings happen</li>
+                            <li>You have real numbers showing what's working</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-divider"></div>
+
+            <!-- Phase 2 -->
+            <div class="section section-light" id="phase-2">
+                <div class="phase">
+                    <div class="phase-header">
+                        <div class="phase-title">
+                            <h3>Phase 2: The Growth Engine</h3>
+                            <div class="badge">After Phase 1 Works</div>
+                        </div>
+                        <div class="phase-investment">
+                            <span class="label">Investment</span>
+                            <span class="amount">$2,000</span>
+                            <span class="monthly">+ $697/month</span>
+                        </div>
+                    </div>
+
+                    <div class="phase-content">
+                        <h4>What You Get</h4>
+                        <ul class="feature-list">
+                            <li><strong>Email follow-ups that send themselves.</strong> Someone requested a quote but didn't book? They get a friendly follow-up email. Past clients get thank you emails. Everyone stays in touch without you doing anything.</li>
+                            <li><strong>A chatbot on your website</strong> that answers questions 24/7. Books consultations. Captures contact info. Works even when you're closed.</li>
+                            <li><strong>Social media that posts itself.</strong> We create the content. We schedule it. You don't have to think about it.</li>
+                            <li><strong>Automatic thank yous and reviews.</strong> After every event, customers automatically get a thank you email and a request for a review. Happy customers become repeat customers.</li>
+                            <li><strong>Online ordering for trays and box lunches.</strong> Customers can order online. Orders go straight to your kitchen. No phone calls needed.</li>
+                        </ul>
+
+                        <div class="roi-box">
+                            <h4>The Math</h4>
+                            <p>
+                                One repeat customer = $3,000-10,000<br>
+                                One referral = $5,000-15,000
+                            </p>
+                            <p style="margin-top: 15px; font-weight: 700;">
+                                $697/month pays for itself with ONE repeat customer or referral
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-divider"></div>
+
+            <!-- Phase 3 -->
+            <div class="section section-light" id="phase-3">
+                <div class="phase">
+                    <div class="phase-header">
+                        <div class="phase-title">
+                            <h3>Phase 3: The Scale System</h3>
+                            <div class="badge">When You're Ready to Dominate</div>
+                        </div>
+                        <div class="phase-investment">
+                            <span class="label">Investment</span>
+                            <span class="amount">$1,500</span>
+                            <span class="monthly">+ $303/month</span>
+                        </div>
+                    </div>
+
+                    <div class="phase-content">
+                        <h4>What You Get</h4>
+                        <ul class="feature-list">
+                            <li><strong>We find new clients for you.</strong> We identify senior centers, corporate offices, and wedding planners. We send them personalized emails. We track who's interested. You get warm leads delivered to your inbox.</li>
+                            <li><strong>You show up first when people search.</strong> Blog posts that position you as the expert. Local search that gets you found. When someone searches "catering near me," you're at the top.</li>
+                            <li><strong>Reports that show you what's working.</strong> See exactly which marketing brings in the most bookings. Which target market converts best. What to focus on next.</li>
+                        </ul>
+
+                        <div class="roi-box">
+                            <h4>The Math</h4>
+                            <p>
+                                One new client from outreach = $5,000-15,000<br>
+                                One new client from search = $3,000-10,000
+                            </p>
+                            <p style="margin-top: 15px; font-weight: 700;">
+                                $303/month pays for itself with ONE new client every 2-3 months
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-divider"></div>
+
+            <!-- How Automations Work -->
+            <div class="section section-light" id="automations">
+                <h2>How The Automations Actually Work</h2>
+                <p style="text-align: center; margin-bottom: 50px;">
+                    Here's exactly what happens, step by step, when someone interacts with your business.
+                </p>
+
+                <div class="copy-section">
+                    <h4>When Someone Calls About Catering</h4>
+                    <div class="copy-block">
+                        <div class="body">
+                            <strong>Step 1:</strong> AI answers: "Thanks for calling Luxe Fine Dining. How can I help you today - reservations, catering, or placing an order?"
+                            <br><br>
+                            <strong>Step 2:</strong> If they say "catering," AI asks: "What type of event are you planning?" (Corporate, Wedding, Senior Center, Private Party, or Emergency)
+                            <br><br>
+                            <strong>Step 3:</strong> AI asks: "How many guests are you expecting?" Then: "Do you have a date in mind?" Then: "Are you looking for full service, buffet, or drop-off?"
+                            <br><br>
+                            <strong>Step 4:</strong> AI provides an instant ballpark quote: "For a corporate event with 75 guests and full service, you're typically looking at $5,000 to $7,500."
+                            <br><br>
+                            <strong>Step 5:</strong> AI captures their information: "What's the best email to send you a detailed quote?" and "What's your phone number in case we have questions?"
+                            <br><br>
+                            <strong>Step 6:</strong> You get an email immediately: "NEW CATERING INQUIRY - Corporate event, 75 guests, [Date], Full service, Estimated: $5,000-7,500, Contact: [Name], [Email], [Phone]"
+                            <br><br>
+                            <strong>Step 7:</strong> They get a text message: "Thanks for calling Luxe! We received your catering inquiry. You'll get a detailed quote within 24 hours. Reply if you have questions."
+                            <br><br>
+                            <strong>Step 8:</strong> All details are automatically saved to your tracking system. You can see everything in one place.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="copy-section">
+                    <h4>When Someone Downloads a Menu</h4>
+                    <div class="copy-block">
+                        <div class="body">
+                            <strong>Step 1:</strong> Someone visits your website and clicks "Get Free Menu" or visits a specific menu page (Senior Center, Corporate, Wedding, or Private Party)
+                            <br><br>
+                            <strong>Step 2:</strong> They fill out a simple form: Name, Email, Phone, Event Type
+                            <br><br>
+                            <strong>Step 3:</strong> They instantly receive the PDF via email: "Here's your [Event Type] Menu from Luxe Fine Dining"
+                            <br><br>
+                            <strong>Step 4:</strong> They get a text: "Your menu is on its way! Check your email. Questions? Reply to this text."
+                            <br><br>
+                            <strong>Step 5:</strong> They're automatically added to your list and tagged by event type (Corporate, Wedding, etc.)
+                            <br><br>
+                            <strong>Step 6:</strong> Follow-up emails send automatically:
+                            <br>• Day 3: "How did you like the menu? Ready to talk about your event?"
+                            <br>• Day 7: "We'd love to help make your event unforgettable. Want to schedule a consultation?"
+                            <br>• Day 14: "Still planning? We have availability for [their event month]. Let's talk."
+                            <br><br>
+                            <strong>Step 7:</strong> All their information is saved. You can see who downloaded what, when, and whether they responded to follow-ups.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="copy-section">
+                    <h4>When Someone Requests a Quote Online</h4>
+                    <div class="copy-block">
+                        <div class="body">
+                            <strong>Step 1:</strong> Someone visits your website and uses the quote calculator
+                            <br><br>
+                            <strong>Step 2:</strong> They select: Event Type (Corporate, Wedding, Senior Center, Private Party), Number of Guests (slider), Date, Service Style (Full Service, Buffet, Drop-off)
+                            <br><br>
+                            <strong>Step 3:</strong> They see an instant estimate: "Your estimated range: $4,200 - $6,800"
+                            <br><br>
+                            <strong>Step 4:</strong> They enter their contact info to get the full quote: Name, Email, Phone, Event Location
+                            <br><br>
+                            <strong>Step 5:</strong> You get an email: "NEW QUOTE REQUEST - Corporate event, 75 guests, [Date], Full service, Estimate: $5,000-7,500, Contact: [Name], [Email], [Phone]"
+                            <br><br>
+                            <strong>Step 6:</strong> They get a text: "Thanks! We received your quote request. You'll get a detailed quote within 24 hours."
+                            <br><br>
+                            <strong>Step 7:</strong> If they don't book within 2 days, they automatically get a follow-up email: "Quick question about your event - still planning? We'd love to help."
+                            <br><br>
+                            <strong>Step 8:</strong> If they don't respond after 10 days, they get another email: "Should I close your file, or are you still interested?"
+                        </div>
+                    </div>
+                </div>
+
+                <div class="copy-section">
+                    <h4>72-Hour Emergency Catering</h4>
+                    <div class="copy-block">
+                        <div class="body">
+                            <strong>Step 1:</strong> Someone calls your emergency line or visits your "72-Hour Emergency" page
+                            <br><br>
+                            <strong>Step 2:</strong> AI asks: "What happened? When do you need catering? How many guests?"
+                            <br><br>
+                            <strong>Step 3:</strong> AI checks your availability and provides immediate response: "We can handle 200 guests for tomorrow. Here's what we can do..."
+                            <br><br>
+                            <strong>Step 4:</strong> You get an URGENT alert: "🚨 72-HOUR EMERGENCY - 200 guests, Corporate event, Tomorrow, Contact: [Name], [Phone], [Email]"
+                            <br><br>
+                            <strong>Step 5:</strong> You can accept or decline. If you accept, AI confirms with the customer and sends them a contract immediately.
+                            <br><br>
+                            <strong>Step 6:</strong> If you decline, AI handles it professionally: "I'm sorry, we're not available for that date, but here are three other caterers I'd recommend..."
+                            <br><br>
+                            <strong>Why this works:</strong> Emergency catering commands premium pricing. You can charge 20-30% more because they're desperate. This becomes a profit center.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-divider"></div>
+
+            <!-- Website Execution Copy -->
+            <div class="section section-light" id="website-copy">
+                <h2>What Your Website Will Say</h2>
+                <p style="text-align: center; margin-bottom: 50px;">
+                    Here's exactly what people will see when they visit your website.
+                </p>
+
+                <div class="copy-section">
+                    <h4>Homepage Hero</h4>
+                    <div class="copy-block">
+                        <div class="headline">The Luxe Dining Experience</div>
+                        <div class="subheadline">Fine Dining & Event Catering — with a twist.</div>
+                        <div class="body">
+                            [Interactive martini glass - click to reveal two paths]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="copy-section">
+                    <h4>The Two Paths</h4>
+                    <div class="copy-block">
+                        <div class="headline">The Restaurant</div>
+                        <div class="subheadline">The bar. The bites. The vibe.</div>
+                        <a href="#" class="cta">Make a Reservation</a>
+                    </div>
+                    <div class="copy-block" style="margin-top: 20px;">
+                        <div class="headline">Private Events</div>
+                        <div class="subheadline">Your event. Our obsession.</div>
+                        <a href="#" class="cta">Plan Your Event</a>
+                    </div>
+                </div>
+
+                <div class="copy-section">
+                    <h4>Your Story</h4>
+                    <div class="copy-block">
+                        <div class="headline">More Than a Restaurant</div>
+                        <div class="body">
+                            When you opened Luxe in 2010, you had one rule: no ordinary nights. Every dish crafted. Every cocktail considered. Every guest remembered.
+                            <br><br>
+                            Fifteen years later, that obsession hasn't faded. Neither has the team — most of the staff has been here since day one.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="copy-section">
+                    <h4>Catering Main Page</h4>
+                    <div class="copy-block">
+                        <div class="headline">Private Event Catering</div>
+                        <div class="subheadline">Your event. Our obsession.</div>
+                        <div class="body">
+                            For over 15 years, Luxe has been the secret weapon behind Dana Point's most memorable events. Same kitchen. Same obsessive attention to detail. Wherever you need us.
+                            <br><br>
+                            [Four options: Corporate Events, Weddings, Senior Living, Private Parties]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="copy-section">
+                    <h4>Corporate Events Page</h4>
+                    <div class="copy-block">
+                        <div class="headline">Your Next Corporate Event Should Be Unforgettable. Most Aren't.</div>
+                        <div class="subheadline">We cater for companies who refuse to serve boxed lunches and call it "hospitality."</div>
+                        <div class="body">
+                            Let's be real: most corporate catering is forgettable. Lukewarm chicken. Sad salads. That one vegetarian option no one touches.
+                            <br><br>
+                            Your team deserves better. Your clients definitely do.
+                            <br><br>
+                            <strong>What sets us apart:</strong><br>
+                            • Chef-driven menus — Not reheated trays from a warehouse<br>
+                            • 15 years in Dana Point — We know what impresses this crowd<br>
+                            • The Luxe Guarantee — If they don't rave, your next event is on us
+                        </div>
+                        <a href="#" class="cta">Stop settling. Start impressing.</a>
+                    </div>
+                </div>
+
+                <div class="copy-section">
+                    <h4>Weddings Page</h4>
+                    <div class="copy-block">
+                        <div class="headline">Your Wedding Shouldn't Taste Like Everyone Else's.</div>
+                        <div class="subheadline">Custom menus built from scratch. Because "chicken or fish" is not a personality.</div>
+                        <div class="body">
+                            Most wedding caterers hand you a menu and say "pick three." That's not customization. That's a multiple choice test.
+                            <br><br>
+                            Want your grandmother's recipe scaled for 150? Done.
+                            <br><br>
+                            A late-night taco bar because that's how you two met? We'll make it the highlight of the night.
+                        </div>
+                        <a href="#" class="cta">Let's talk about your wedding</a>
+                    </div>
+                </div>
+
+                <div class="copy-section">
+                    <h4>Senior Living Page</h4>
+                    <div class="copy-block">
+                        <div class="headline">Mealtimes Your Residents Actually Look Forward To.</div>
+                        <div class="subheadline">Enrichment dining programs that elevate the everyday — and keep families coming back.</div>
+                        <div class="body">
+                            Dining is the #1 factor in resident satisfaction. Not the amenities. Not the activities. The food.
+                            <br><br>
+                            Communities with enrichment dining programs see higher occupancy, better reviews, and stronger family referrals. This isn't an expense — it's a competitive advantage.
+                        </div>
+                        <a href="#" class="cta">Schedule a tasting</a>
+                    </div>
+                </div>
+
+                <div class="copy-section">
+                    <h4>Private Parties Page</h4>
+                    <div class="copy-block">
+                        <div class="headline">Your Party. Our Problem.</div>
+                        <div class="subheadline">From backyard birthdays to oceanfront galas — we handle it.</div>
+                        <div class="body">
+                            Throwing a party should be fun. The planning? That's where it gets stressful.
+                            <br><br>
+                            Hand it to us. Tell us the occasion, the vibe, and how many people you're trying to impress. We'll make you look like the host you always wanted to be.
+                        </div>
+                        <a href="#" class="cta">Let's plan your party</a>
+                    </div>
+                </div>
+
+                <div class="copy-section">
+                    <h4>72-Hour Emergency Catering Page</h4>
+                    <div class="copy-block">
+                        <div class="headline">Your Caterer Canceled. We Didn't.</div>
+                        <div class="subheadline">3 days. Any size. We'll make it happen.</div>
+                        <div class="body">
+                            When to call:<br>
+                            • Your caterer just bailed<br>
+                            • An event got scheduled last-minute<br>
+                            • Someone "forgot" to book catering<br>
+                            <br>
+                            We understand. Things happen. Events get moved. Caterers cancel. That's why we offer 72-hour emergency catering.
+                            <br><br>
+                            Call our emergency line. Tell us what happened. We'll tell you if we can make it work. If we can, you'll have a quote within an hour and a contract the same day.
+                        </div>
+                        <a href="#" class="cta">Don't panic. Call Luxe.</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="section-divider"></div>
+
+            <!-- Lead Magnets Details -->
+            <div class="section section-light" id="lead-magnets">
+                <h2>Lead Magnets - What They Are & Why They Work</h2>
+                <p style="text-align: center; margin-bottom: 50px;">
+                    Lead magnets are free resources people want in exchange for their contact information. For you, they're professional menu PDFs that showcase your catering.
+                </p>
+
+                <div class="copy-section">
+                    <h4>Senior Center Menu PDF</h4>
+                    <div class="copy-block">
+                        <div class="body">
+                            This menu is specifically designed for senior living communities and HOAs:
+                            <br><br>
+                            • Heart-healthy options with nutritional information<br>
+                            • Dietary accommodations (diabetic-friendly, low-sodium, gluten-free, etc.)<br>
+                            • Portion sizes optimized for large groups (50-200+ guests)<br>
+                            • Pricing for recurring monthly programs<br>
+                            • Sample monthly rotation ideas to keep meals interesting<br>
+                            • Family visit dining options<br>
+                            • Special event packages (holidays, birthdays, etc.)
+                            <br><br>
+                            <strong>Why it works:</strong> Senior center directors are always looking for ways to improve resident satisfaction. A professional menu shows you understand their needs and can deliver consistently.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="copy-section">
+                    <h4>Corporate Events Menu PDF</h4>
+                    <div class="copy-block">
+                        <div class="body">
+                            This menu targets office managers, HR directors, and executive assistants:
+                            <br><br>
+                            • Executive lunch packages (impressive but efficient)<br>
+                            • Board meeting options (elegant, no mess)<br>
+                            • Team building event menus (fun, shareable)<br>
+                            • Breakfast, lunch, and dinner options<br>
+                            • Recurring program pricing (weekly/monthly contracts)<br>
+                            • Quick service options (30-minute delivery windows)<br>
+                            • Dietary options clearly marked (vegetarian, vegan, gluten-free)
+                            <br><br>
+                            <strong>Why it works:</strong> Corporate buyers need to justify their choices. A professional menu makes it easy for them to present options to their team and get approval.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="copy-section">
+                    <h4>Wedding Menu PDF</h4>
+                    <div class="copy-block">
+                        <div class="body">
+                            This menu is designed for couples planning their wedding:
+                            <br><br>
+                            • Signature dishes that photograph beautifully<br>
+                            • Custom menu examples (showing you can do anything)<br>
+                            • Dietary accommodation examples (for diverse guest lists)<br>
+                            • Timeline and planning guide (when to book, what to expect)<br>
+                            • Pricing ranges for different guest counts (50, 100, 150, 200+)<br>
+                            • Late-night snack options<br>
+                            • Bar service options
+                            <br><br>
+                            <strong>Why it works:</strong> Couples are overwhelmed with decisions. A beautiful menu PDF gives them something concrete to share with family and helps them visualize their day.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="copy-section">
+                    <h4>Private Parties Menu PDF</h4>
+                    <div class="copy-block">
+                        <div class="body">
+                            This menu covers everything from intimate gatherings to large celebrations:
+                            <br><br>
+                            • Intimate gathering options (20-50 guests)<br>
+                            • Large party options (100+ guests)<br>
+                            • Theme party ideas (Italian night, Mediterranean feast, etc.)<br>
+                            • Cocktail party menus (passed appetizers, stations)<br>
+                            • Full-service vs. drop-off options<br>
+                            • Kids' party options<br>
+                            • Milestone celebration packages (birthdays, anniversaries, graduations)
+                            <br><br>
+                            <strong>Why it works:</strong> People planning private parties want options but don't know where to start. A menu gives them ideas and shows you can handle any size or style.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="copy-section">
+                    <h4>How They Work Together</h4>
+                    <div class="copy-block">
+                        <div class="body">
+                            Each menu PDF has its own landing page on your website. When someone visits your catering page, they see four options:
+                            <br><br>
+                            "Get Our Senior Center Menu"<br>
+                            "Get Our Corporate Events Menu"<br>
+                            "Get Our Wedding Menu"<br>
+                            "Get Our Private Parties Menu"
+                            <br><br>
+                            They click the one that matches their need. They fill out a form. They get the PDF instantly. They're added to your list. They start receiving follow-up emails.
+                            <br><br>
+                            <strong>The result:</strong> Instead of hoping people call you, you're building a list of people who are actively planning events. You can reach out to them. You can send them special offers. You can stay top of mind until they're ready to book.
+                            <br><br>
+                            Each PDF is professionally designed, includes your branding, and positions you as the expert. When someone downloads one, they're showing serious interest. That's why we follow up automatically.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Investment -->
+            <div class="investment-section" id="investment">
+                <h2 style="color: var(--accent);">Investment</h2>
+                <p style="font-size: 1.3rem; margin-bottom: 50px; opacity: 0.9;">
+                    Start with Phase 1. See it work. Then decide on Phase 2 and 3.
+                </p>
+
+                <div class="investment-grid">
+                    <div class="investment-card">
+                        <h4>Phase 1</h4>
+                        <div class="price">$3,500</div>
+                        <div class="price-label">Setup + $697/month</div>
+                        <ul>
+                            <li>Market research & competitive analysis</li>
+                            <li>Target market & niche identification</li>
+                            <li>Professional catering website</li>
+                            <li>AI phone answering 24/7</li>
+                            <li>72-Hour Emergency Catering service</li>
+                            <li>4 Menu PDFs (lead magnets)</li>
+                            <li>Instant quote calculator</li>
+                            <li>Simple tracking system</li>
+                            <li>Results dashboard</li>
+                            <li>Your client portal</li>
+                        </ul>
+                    </div>
+
+                    <div class="investment-card">
+                        <h4>Phase 2</h4>
+                        <div class="price">$2,000</div>
+                        <div class="price-label">Setup + $697/month</div>
+                        <ul>
+                            <li>Automatic email follow-ups</li>
+                            <li>Website chatbot</li>
+                            <li>Social media automation</li>
+                            <li>Thank you & review requests</li>
+                            <li>Online ordering system</li>
+                            <li>Everything from Phase 1</li>
+                        </ul>
+                    </div>
+
+                    <div class="investment-card">
+                        <h4>Phase 3</h4>
+                        <div class="price">$1,500</div>
+                        <div class="price-label">Setup + $303/month</div>
+                        <ul>
+                            <li>We find new clients for you</li>
+                            <li>You show up first in search</li>
+                            <li>Reports on what's working</li>
+                            <li>Everything from Phases 1 & 2</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <p style="margin-top: 50px; font-size: 1.2rem; opacity: 0.9;">
+                    <strong>Total if you do all 3 phases:</strong> $7,000 setup + $1,697/month<br>
+                    <em>Same as doing it all at once, but you prove it works first.</em><br>
+                    <em style="font-size: 0.9rem;">Monthly includes phone system, all apps, and tools.</em>
+                </p>
+            </div>
+
+            <!-- Next Steps -->
+            <div class="cta-section" id="next-steps">
+                <h2>Ready to Get Started?</h2>
+                <p style="font-size: 1.3rem; margin-bottom: 30px;">
+                    Let's start with Phase 1. In 30 days, you'll see results. Then we'll talk about what's next.
+                </p>
+                <div class="cta-buttons">
+                    <a href="mailto:jen@brandedandflow.com?subject=Luxe%20Phase%201%20Approval" class="cta-button">Approve Phase 1</a>
+                    <a href="mailto:jen@brandedandflow.com?subject=Luxe%20Proposal%20Questions" class="cta-button secondary">Ask Questions</a>
+                </div>
+                <p style="margin-top: 40px; font-size: 1rem; opacity: 0.8;">
+                    Prepared by Branded + Flow<br>
+                    jen@brandedandflow.com
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const tocToggle = document.getElementById('tocToggle');
+        const tocSidebar = document.getElementById('tocSidebar');
+        const tocOverlay = document.getElementById('tocOverlay');
+        const tocLinks = document.querySelectorAll('.toc-link');
+
+        function toggleTOC() {
+            tocSidebar.classList.toggle('active');
+            tocOverlay.classList.toggle('active');
+        }
+
+        tocToggle.addEventListener('click', toggleTOC);
+        tocOverlay.addEventListener('click', toggleTOC);
+
+        tocLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    toggleTOC();
+                }
+            });
+        });
+
+        const sections = document.querySelectorAll('.section, .cover, .investment-section, .cta-section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.id;
+                    tocLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${id}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, { root: null, rootMargin: '-20% 0px -60% 0px', threshold: 0 });
+
+        sections.forEach(section => observer.observe(section));
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

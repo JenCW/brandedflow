@@ -72,6 +72,9 @@ module.exports = {
       ).join(' '),
       industry: intake.industry || extractIndustry(client_name),
       target_market: intake.target_market || 'general',
+      contact_email: intake.contact_email || null,
+      contact_phone: intake.contact_phone || null,
+      services: intake.services || [],
       variations,
       automations: {},
       last_updated: new Date().toISOString(),
@@ -82,7 +85,22 @@ module.exports = {
     if (await fs.pathExists(profilePath)) {
       const existing = await fs.readJson(profilePath);
       profile.automations = existing.automations || {};
-      profile.business_name = existing.business_name || profile.business_name;
+      // Preserve existing values if new ones aren't provided
+      profile.business_name = intake.business_name || existing.business_name || profile.business_name;
+      profile.industry = intake.industry || existing.industry || profile.industry;
+      profile.target_market = intake.target_market || existing.target_market || profile.target_market;
+      profile.contact_email = intake.contact_email || existing.contact_email || profile.contact_email;
+      profile.contact_phone = intake.contact_phone || existing.contact_phone || profile.contact_phone;
+      profile.services = intake.services && intake.services.length > 0 ? intake.services : (existing.services || []);
+      // Merge variations (new values override existing)
+      if (existing.variations) {
+        profile.variations = {
+          ...existing.variations,
+          ...variations,
+          brand: { ...existing.variations.brand, ...variations.brand },
+          custom_requirements: { ...existing.variations.custom_requirements, ...variations.custom_requirements }
+        };
+      }
     }
 
     // Ensure client directory exists
@@ -113,13 +131,15 @@ module.exports = {
       }
     }
 
+
     return {
       success: true,
       client_name,
       profile_path: profilePath,
       profile,
       folders_created: foldersCreated,
-      message: `Client intake processed and profile created for ${client_name}`
+      sync_results: syncResults,
+      message: `Client intake processed and profile created for ${client_name}. ${syncResults.base44?.skipped ? 'Base44/Airtable sync skipped (API keys not configured).' : 'Synced to Base44 and Airtable.'}`
     };
   }
 };
@@ -166,18 +186,38 @@ function extractValue(line, options) {
 
 function extractVariations(intake, client_name) {
   const variations = {
-    design_style: null,
+    design_style: intake.design_style || null,
     tech_stack: {
       website: intake.website || 'static-html',
       email: intake.email || 'outlook',
       crm: intake.crm || 'airtable'
     },
     existing_tools: {},
-    custom_requirements: {}
+    custom_requirements: {},
+    brand: {
+      colors: null,
+      typography: null,
+      tone: null
+    }
   };
 
+  // Add brand information if provided
+  if (intake.brand_colors) {
+    // Handle both comma-separated and space-separated color lists
+    const colors = intake.brand_colors.includes(',') 
+      ? intake.brand_colors.split(',').map(c => c.trim()).filter(c => c)
+      : intake.brand_colors.split(/\s+/).filter(c => c);
+    variations.brand.colors = colors.length > 0 ? colors : null;
+  }
+  if (intake.typography) {
+    variations.brand.typography = intake.typography;
+  }
+  if (intake.brand_tone) {
+    variations.brand.tone = intake.brand_tone;
+  }
+
   // Detect existing tools
-  if (intake.crm && intake.crm !== 'airtable') {
+  if (intake.crm && intake.crm !== 'airtable' && intake.crm !== 'none') {
     variations.existing_tools.crm = intake.crm;
     variations.tech_stack.crm = `existing-${intake.crm}`;
   }
@@ -187,9 +227,24 @@ function extractVariations(intake, client_name) {
     variations.tech_stack.email = intake.email;
   }
 
-  if (intake.website && intake.website !== 'static-html') {
+  if (intake.website && intake.website !== 'static-html' && intake.website !== 'none') {
     variations.existing_tools.website = intake.website;
     variations.tech_stack.website = intake.website;
+  }
+
+  if (intake.other_tools) {
+    variations.existing_tools.other = intake.other_tools;
+  }
+
+  // Add custom requirements
+  if (intake.animations !== undefined) {
+    variations.custom_requirements.animations = intake.animations;
+  }
+  if (intake.integrations) {
+    variations.custom_requirements.integrations = intake.integrations;
+  }
+  if (intake.special_notes) {
+    variations.custom_requirements.special_notes = intake.special_notes;
   }
 
   return variations;

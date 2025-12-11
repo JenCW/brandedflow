@@ -168,6 +168,128 @@ Chronological record of all major business decisions for Branded + Flow
 
 ## December 4, 2024
 
+## December 10, 2024
+
+### Interactive Forms System
+**Decision:** Create interactive HTML forms for client intake, proposals, and contracts  
+**Rationale:** Eliminates manual copy-paste workflow. Forms prompt for all necessary information, handle partial data gracefully, and automatically create client profiles/proposals/contracts via MCP server.  
+**Impact:** 
+- Faster client onboarding (no more finding templates, copying content)
+- Consistent data collection (all variables captured)
+- Desktop shortcuts for quick access
+- Handles existing client folders gracefully
+- Only requires essential fields (client name, business name, email) - everything else optional
+
+**Implementation:**
+- Created `intake-form.html` - Interactive client intake with all variables (design style, tech stack, services, brand info, etc.)
+- Created `proposal-form.html` - Service selection, pricing options (DIY/Managed), timeline
+- Created `contract-form.html` - Payment schedule, terms, dates
+- Created MCP: `create-contract.js` - Saves contracts to deliverables folder
+- Updated MCP: `process-client-intake.js` - Enhanced to handle brand info, services, partial data
+- Desktop shortcuts created for all three forms
+
+**Location:** `company/operations/client-intake/`
+**Desktop Shortcuts:** Client Intake Form.command, Create Proposal.command, Create Contract.command
+
+## December 8, 2024
+
+### Modern Proposal Process - New Standard
+**Decision:** Make the Luxe Fine Dining proposal process the standard for ALL future proposals  
+**Rationale:** The Luxe proposal was highly successful, conversion-focused, elegant, and client loved it. Process includes: story-first approach (never start with price), simple jargon-free language, phased approach, mobile-responsive HTML, working email buttons, clear payment terms.  
+**Impact:** 
+- All proposals now follow this proven structure
+- Created `create-modern-proposal.js` MCP to automate generation
+- Created `MODERN_PROPOSAL_WORKFLOW.md` as standard process doc
+- Updated `create-client-proposal.md` directive with implementation details
+- Ensures consistent, conversion-focused proposals for all clients
+- Mobile-responsive HTML proposals ready for Netlify deployment
+
+**Key Features:**
+- Never starts with price (always story first)
+- Simple language (no jargon)
+- Phased approach (prove value first)
+- Elegant design (dark theme, gold accents)
+- Mobile-responsive
+- Working email buttons
+- Clear payment terms (50% upfront, 50% at completion, monthly starts 30 days after start)
+
+**Location:** 
+- Directive: `systems/doe-engine/directives/create-client-proposal.md`
+- MCP: `automations/mcps/create-modern-proposal.js`
+- Workflow: `company/operations/proposals/MODERN_PROPOSAL_WORKFLOW.md`
+- Process Doc: `company/operations/proposals/PROPOSAL_CREATION_PROCESS.md`
+
+**Review Date:** After 5 proposals created using this process (evaluate conversion rates)
+
+---
+
+## December 8, 2024
+
+### Stepped Website Creation Workflow - New Standard
+**Decision:** Implement 8-step approval-gated website creation process with ROI tracking starting at deployment  
+**Rationale:** Need iterative, controlled process where each step can be reviewed and approved before proceeding. User is very particular and needs to iterate for 24+ hours on each step. ROI tracking must start at deployment to prove value. Old single-step process didn't allow for iteration and approval gates.  
+**Impact:** 
+- Created 8-step workflow: Site Plan → Design → Copy → Features → Review → Deploy → Forms → SEO
+- Each step requires approval before next step unlocks
+- Can iterate for 24+ hours on each step
+- Nothing deploys until all steps approved
+- ROI tracking starts at deployment (Step 6)
+- Semrush integration for comprehensive SEO tracking
+- PandaDoc removed from all processes
+- Created approval workflow MCP (`approve-website-step`)
+- Site plans and wireframes are simple, understandable (proposal-style), not technical
+
+**Key Features:**
+- Step 1: Site Plan & Wireframe (simple, understandable)
+- Step 2: Design Guide (colors, fonts, look & feel)
+- Step 3: Website Copy (all text content)
+- Step 4: Features (animations, integrations, dynamic elements)
+- Step 5: Client Review (final review before deployment)
+- Step 6: Deploy to Netlify (CMS created, analytics start, ROI tracking begins)
+- Step 7: Forms & Database (contact capture, integrations)
+- Step 8: SEO Implementation (Semrush, keyword tracking, SEO ROI)
+
+**Location:**
+- Directive: `systems/doe-engine/directives/create-client-website-stepped.md`
+- Workflow: `company/operations/website-creation/WEBSITE_CREATION_WORKFLOW.md`
+- MCPs: `create-website-design-brief`, `create-design-guide`, `generate-website-copy`, `add-website-features`, `approve-website-step`, `deploy-website-netlify`, `setup-website-seo`
+- SEO Tool: `company/operations/website-creation/SEO_TOOL_RECOMMENDATION.md` (Semrush)
+
+**Review Date:** After 3 websites created using this process (evaluate iteration time, approval process, ROI tracking)
+
+### Unified Client Form - Single Form for Everything
+**Decision:** Replace multiple forms (intake, proposal, contract, onboarding) with one unified form that can be updated progressively  
+**Rationale:** User wants one form that can be filled incrementally as information is gathered. Don't want separate forms for each step. Form should handle minimum viable intake (triggers folder creation and research), proposal creation (draft until approved), contract creation, and onboarding docs.  
+**Impact:**
+- Created `unified-client-form.html` - One form for everything
+- Minimum viable intake (client name, business name, email, industry) triggers folder creation and research
+- Proposals stay separate until approved (no infrastructure created until approval)
+- Approval triggers full setup (Airtable, Base44, contract, onboarding)
+- Auto-sync to Base44 when any folder is updated
+- Form saves progress automatically (localStorage)
+
+**Location:**
+- Form: `company/operations/client-intake/unified-client-form.html`
+- Workflow: `company/operations/client-intake/CLIENT_WORKFLOW.md`
+- MCPs: `process-client-intake`, `trigger-client-research`, `create-modern-proposal`, `approve-client-proposal`, `sync-folder-to-base44`
+
+**Review Date:** After 5 clients onboarded using unified form
+
+### PandaDoc Removal
+**Decision:** Remove PandaDoc from all processes  
+**Rationale:** No longer using PandaDoc for proposals or contracts. Using markdown files and HTML proposals instead.  
+**Impact:**
+- Removed PandaDoc references from `create-contract.js`
+- Removed PandaDoc references from `create-proposal-from-template.js`
+- Contracts and proposals are now markdown/HTML files
+- No API integration needed
+
+**Review Date:** N/A (removal complete)
+
+---
+
+## December 4, 2024
+
 ### AI Assistant Rules System
 **Decision:** Create mandatory rules system for all AI assistants (AI_RULES.md, .cursorrules, .claude_code_rules)
 **Rationale:** Cursor Composer violated folder structure by creating files in wrong locations with wrong naming conventions. Need enforceable rules that auto-load for all AI tools.

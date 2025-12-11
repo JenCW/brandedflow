@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Contract - Branded + Flow</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .form-section {
+            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .form-section:last-child {
+            border-bottom: none;
+        }
+        
+        .section-title {
+            font-size: 1.3em;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        input[type="date"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .checkbox-item input[type="checkbox"] {
+            width: auto;
+        }
+        
+        .payment-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 10px;
+            align-items: end;
+        }
+        
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .message {
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        
+        .message.show {
+            display: block;
+        }
+        
+        .message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .required {
+            color: #e74c3c;
+        }
+        
+        .config-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 6px;
+            margin-bottom: 30px;
+        }
+        
+        .config-section label {
+            font-size: 0.9em;
+            color: #666;
+        }
+        
+        .inline-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        small {
+            color: #666;
+            font-size: 0.85em;
+        }
+        
+        .add-payment-btn {
+            background: #6c757d;
+            padding: 8px 16px;
+            font-size: 14px;
+            width: auto;
+            margin-top: 10px;
+        }
+        
+        .payment-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+        
+        .remove-payment-btn {
+            background: #dc3545;
+            padding: 6px 12px;
+            font-size: 12px;
+            width: auto;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Create Client Contract</h1>
+        <p class="subtitle">Fill out contract details for client signature</p>
+        
+        <div class="config-section">
+            <div class="form-group">
+                <label>MCP Server URL</label>
+                <input type="text" id="mcpUrl" value="http://localhost:4000" placeholder="http://localhost:4000">
+            </div>
+            <div class="form-group">
+                <label>API Key</label>
+                <input type="text" id="apiKey" value="key1" placeholder="key1">
+            </div>
+        </div>
+        
+        <div id="message" class="message"></div>
+        
+        <form id="contractForm">
+            <!-- Client Information -->
+            <div class="form-section">
+                <div class="section-title">Client Information</div>
+                
+                <div class="form-group">
+                    <label>Client Name <span class="required">*</span></label>
+                    <input type="text" id="clientName" required placeholder="lowercase-kebab-case (e.g., dental-bunny)">
+                    <small>Use lowercase with hyphens, no spaces</small>
+                </div>
+                
+                <div class="form-group">
+                    <label>Client Email for Signature <span class="required">*</span></label>
+                    <input type="email" id="clientEmail" required placeholder="client@example.com">
+                </div>
+            </div>
+            
+            <!-- Services -->
+            <div class="form-section">
+                <div class="section-title">Services Included <span class="required">*</span></div>
+                <p style="color: #666; font-size: 0.9em; margin-bottom: 15px;">
+                    <strong>💡 Include iAnswering.ai if applicable:</strong> AI Receptionist (iAnswering.ai) - 24/7 phone answering, lead qualification, appointment booking.
+                </p>
+                
+                <div class="form-group">
+                    <textarea id="services" rows="4" required placeholder="List all services included in this contract (one per line or comma-separated)&#10;&#10;Examples:&#10;- Website + Lead Capture System&#10;- Brand + Marketing Automation&#10;- AI Receptionist (iAnswering.ai)&#10;- Complete Business System"></textarea>
+                </div>
+            </div>
+            
+            <!-- Payment Terms -->
+            <div class="form-section">
+                <div class="section-title">Payment Terms <span class="required">*</span></div>
+                
+                <div class="form-group">
+                    <label>Contract Type</label>
+                    <select id="contractType" required>
+                        <option value="diy">DIY (One-Time Payment)</option>
+                        <option value="managed">Managed (Setup + Monthly)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Total Contract Amount <span class="required">*</span></label>
+                    <input type="number" id="totalAmount" required min="0" step="0.01" placeholder="0.00">
+                </div>
+                
+                <div id="paymentSchedule">
+                    <div class="payment-item">
+                        <div class="payment-row">
+                            <div>
+                                <label>Payment Description</label>
+                                <input type="text" class="payment-desc" value="Deposit" placeholder="e.g., Deposit, Final Payment">
+                            </div>
+                            <div>
+                                <label>Amount</label>
+                                <input type="number" class="payment-amount" min="0" step="0.01" placeholder="0.00">
+                            </div>
+                            <div>
+                                <label>Due Date</label>
+                                <input type="date" class="payment-date" placeholder="Due date">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="button" class="add-payment-btn" onclick="addPaymentRow()">+ Add Payment</button>
+            </div>
+            
+            <!-- Timeline -->
+            <div class="form-section">
+                <div class="section-title">Project Timeline</div>
+                
+                <div class="form-group">
+                    <label>Project Start Date</label>
+                    <input type="date" id="startDate">
+                </div>
+                
+                <div class="form-group">
+                    <label>Expected Delivery Date</label>
+                    <input type="date" id="deliveryDate">
+                </div>
+                
+                <div class="form-group">
+                    <label>Timeline Description</label>
+                    <input type="text" id="timelineDesc" placeholder="e.g., 1-2 weeks, 2-3 weeks">
+                </div>
+            </div>
+            
+            <!-- Contract Terms -->
+            <div class="form-section">
+                <div class="section-title">Contract Terms</div>
+                
+                <div class="form-group">
+                    <label>Contract Date <span class="required">*</span></label>
+                    <input type="date" id="contractDate" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Contract Expiration Date</label>
+                    <input type="date" id="expirationDate">
+                    <small>Leave blank for no expiration</small>
+                </div>
+                
+                <div class="form-group">
+                    <label>Cancellation Policy</label>
+                    <select id="cancellationPolicy">
+                        <option value="30-days">30 days notice required</option>
+                        <option value="no-cancellation">No cancellation (project-based)</option>
+                        <option value="custom">Custom</option>
+                    </select>
+                    <input type="text" id="customCancellation" placeholder="Custom cancellation terms" style="margin-top: 10px; display: none;">
+                </div>
+                
+                <div class="form-group">
+                    <label>Additional Terms / Notes</label>
+                    <textarea id="additionalTerms" rows="4" placeholder="Any additional terms, conditions, or notes for this contract"></textarea>
+                </div>
+            </div>
+            
+            <button type="submit" id="submitBtn">Create Contract</button>
+        </form>
+    </div>
+    
+    <script>
+        // Set today's date as default for contract date
+        document.getElementById('contractDate').valueAsDate = new Date();
+        
+        // Show/hide custom cancellation
+        document.getElementById('cancellationPolicy').addEventListener('change', function() {
+            const customInput = document.getElementById('customCancellation');
+            if (this.value === 'custom') {
+                customInput.style.display = 'block';
+            } else {
+                customInput.style.display = 'none';
+            }
+        });
+        
+        // Add payment row
+        function addPaymentRow() {
+            const schedule = document.getElementById('paymentSchedule');
+            const newRow = document.createElement('div');
+            newRow.className = 'payment-item';
+            newRow.innerHTML = `
+                <div class="payment-row">
+                    <div>
+                        <label>Payment Description</label>
+                        <input type="text" class="payment-desc" placeholder="e.g., Deposit, Final Payment">
+                    </div>
+                    <div>
+                        <label>Amount</label>
+                        <input type="number" class="payment-amount" min="0" step="0.01" placeholder="0.00">
+                    </div>
+                    <div>
+                        <label>Due Date</label>
+                        <input type="date" class="payment-date" placeholder="Due date">
+                    </div>
+                </div>
+                <button type="button" class="remove-payment-btn" onclick="this.parentElement.remove()">Remove</button>
+            `;
+            schedule.appendChild(newRow);
+        }
+        
+        // Handle form submission
+        document.getElementById('contractForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const messageDiv = document.getElementById('message');
+            submitBtn.disabled = true;
+            messageDiv.className = 'message';
+            messageDiv.textContent = 'Creating contract...';
+            messageDiv.classList.add('show');
+            
+            try {
+                const clientName = document.getElementById('clientName').value.trim();
+                const clientEmail = document.getElementById('clientEmail').value.trim();
+                const services = document.getElementById('services').value.trim();
+                const contractType = document.getElementById('contractType').value;
+                const totalAmount = parseFloat(document.getElementById('totalAmount').value);
+                const contractDate = document.getElementById('contractDate').value;
+                
+                if (!services) {
+                    throw new Error('Please enter services included');
+                }
+                
+                if (!totalAmount || totalAmount <= 0) {
+                    throw new Error('Please enter a valid total amount');
+                }
+                
+                // Collect payment schedule
+                const payments = [];
+                document.querySelectorAll('.payment-item').forEach(item => {
+                    const desc = item.querySelector('.payment-desc').value.trim();
+                    const amount = parseFloat(item.querySelector('.payment-amount').value);
+                    const date = item.querySelector('.payment-date').value;
+                    
+                    if (desc && amount > 0) {
+                        payments.push({
+                            description: desc,
+                            amount: amount,
+                            due_date: date || null
+                        });
+                    }
+                });
+                
+                if (payments.length === 0) {
+                    throw new Error('Please add at least one payment');
+                }
+                
+                // Calculate total from payments
+                const paymentTotal = payments.reduce((sum, p) => sum + p.amount, 0);
+                if (Math.abs(paymentTotal - totalAmount) > 0.01) {
+                    throw new Error(`Payment total ($${paymentTotal.toFixed(2)}) does not match contract total ($${totalAmount.toFixed(2)})`);
+                }
+                
+                const contractData = {
+                    client_name: clientName,
+                    client_email: clientEmail,
+                    services: services.split('\n').filter(s => s.trim()).map(s => s.trim()),
+                    contract_type: contractType,
+                    total_amount: totalAmount,
+                    payment_schedule: payments,
+                    contract_date: contractDate,
+                    start_date: document.getElementById('startDate').value || null,
+                    delivery_date: document.getElementById('deliveryDate').value || null,
+                    timeline: document.getElementById('timelineDesc').value.trim() || null,
+                    expiration_date: document.getElementById('expirationDate').value || null,
+                    cancellation_policy: document.getElementById('cancellationPolicy').value,
+                    additional_terms: document.getElementById('additionalTerms').value.trim() || null
+                };
+                
+                const customCancellation = document.getElementById('customCancellation').value.trim();
+                if (contractData.cancellation_policy === 'custom' && customCancellation) {
+                    contractData.cancellation_policy = customCancellation;
+                }
+                
+                const mcpUrl = document.getElementById('mcpUrl').value.trim();
+                const apiKey = document.getElementById('apiKey').value.trim();
+                
+                // Create contract using MCP
+                const response = await fetch(`${mcpUrl}/run`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-API-Key': apiKey
+                    },
+                    body: JSON.stringify({
+                        automation: 'create-contract',
+                        params: {
+                            client_name: clientName,
+                            contract_data: contractData
+                        }
+                    })
+                });
+                
+                const result = await response.json();
+                
+                if (!result.ok) {
+                    throw new Error(result.error || 'Failed to create contract');
+                }
+                
+                // Step 2: Setup iAnswering.ai if service included
+                let iansweringSetup = '⏭️ Not needed';
+                const servicesList = contractData.services || [];
+                if (servicesList.some(s => s.toLowerCase().includes('ai receptionist') || s.toLowerCase().includes('ianswering'))) {
+                    messageDiv.textContent = 'Setting up iAnswering.ai account...';
+                    try {
+                        const iansweringResponse = await fetch(`${mcpUrl}/run`, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-API-Key': apiKey
+                            },
+                            body: JSON.stringify({
+                                automation: 'setup-ianswering-account',
+                                params: { client_name: clientName }
+                            })
+                        });
+                        const iansweringResult = await iansweringResponse.json();
+                        if (iansweringResult.ok) {
+                            iansweringSetup = '✅ Account configured';
+                            // Also connect to CRM
+                            try {
+                                await fetch(`${mcpUrl}/run`, {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                        'X-API-Key': apiKey
+                                    },
+                                    body: JSON.stringify({
+                                        automation: 'connect-ianswering-to-crm',
+                                        params: { client_name: clientName }
+                                    })
+                                });
+                            } catch (error) {
+                                // Continue
+                            }
+                        } else {
+                            iansweringSetup = '⏭️ Skipped (API key not configured)';
+                        }
+                    } catch (error) {
+                        iansweringSetup = '⏭️ Skipped';
+                    }
+                }
+                
+                // Step 3: Auto-sync to Base44 and PandaDoc
+                messageDiv.textContent = 'Syncing to Base44 and PandaDoc...';
+                const syncResults = {};
+                
+                // Sync to Base44
+                try {
+                    const base44Response = await fetch(`${mcpUrl}/run`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-API-Key': apiKey
+                        },
+                        body: JSON.stringify({
+                            automation: 'update-base44-portal',
+                            params: { client_name: clientName }
+                        })
+                    });
+                    const base44Result = await base44Response.json();
+                    syncResults.base44 = base44Result.ok ? '✅ Synced' : '⏭️ Skipped (API key not configured)';
+                } catch (error) {
+                    syncResults.base44 = '⏭️ Skipped';
+                }
+                
+                // Upload to PandaDoc
+                try {
+                    const expirationDays = contractData.expiration_date ? 
+                        Math.ceil((new Date(contractData.expiration_date) - new Date()) / (1000 * 60 * 60 * 24)) : 30;
+                    
+                    const pandadocResponse = await fetch(`${mcpUrl}/run`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-API-Key': apiKey
+                        },
+                        body: JSON.stringify({
+                            automation: 'upload-to-pandadoc',
+                            params: {
+                                client_name: clientName,
+                                document_type: 'contract',
+                                recipient_email: clientEmail,
+                                expiration_days: expirationDays
+                            }
+                        })
+                    });
+                    const pandadocResult = await pandadocResponse.json();
+                    syncResults.pandadoc = pandadocResult.ok ? '✅ Uploaded' : '⏭️ Skipped (API key not configured)';
+                } catch (error) {
+                    syncResults.pandadoc = '⏭️ Skipped';
+                }
+                
+                // Success!
+                messageDiv.className = 'message success';
+                messageDiv.innerHTML = `✅ Success! Contract created for ${clientName}.<br>
+                    Location: ${result.result?.contract_path || 'clients/' + clientName + '/05_deliverables/'}<br>
+                    Total: $${totalAmount.toFixed(2)}<br>
+                    Payments: ${payments.length} payment(s)<br><br>
+                    <strong>Setup Status:</strong><br>
+                    ${iansweringSetup !== '⏭️ Not needed' ? `iAnswering.ai: ${iansweringSetup}<br>` : ''}
+                    Base44: ${syncResults.base44}<br>
+                    PandaDoc: ${syncResults.pandadoc}`;
+                messageDiv.classList.add('show');
+                
+                // Reset form
+                document.getElementById('contractForm').reset();
+                document.getElementById('contractDate').valueAsDate = new Date();
+                document.getElementById('paymentSchedule').innerHTML = `
+                    <div class="payment-item">
+                        <div class="payment-row">
+                            <div>
+                                <label>Payment Description</label>
+                                <input type="text" class="payment-desc" value="Deposit" placeholder="e.g., Deposit, Final Payment">
+                            </div>
+                            <div>
+                                <label>Amount</label>
+                                <input type="number" class="payment-amount" min="0" step="0.01" placeholder="0.00">
+                            </div>
+                            <div>
+                                <label>Due Date</label>
+                                <input type="date" class="payment-date" placeholder="Due date">
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+            } catch (error) {
+                messageDiv.className = 'message error';
+                messageDiv.textContent = `❌ Error: ${error.message}`;
+                messageDiv.classList.add('show');
+            } finally {
+                submitBtn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
+

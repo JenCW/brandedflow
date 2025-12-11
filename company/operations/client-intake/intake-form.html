@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Intake Form - Branded + Flow</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .form-section {
+            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .form-section:last-child {
+            border-bottom: none;
+        }
+        
+        .section-title {
+            font-size: 1.3em;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .checkbox-group, .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .checkbox-item, .radio-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .checkbox-item input[type="checkbox"],
+        .radio-item input[type="radio"] {
+            width: auto;
+        }
+        
+        .custom-input {
+            margin-top: 8px;
+            display: none;
+        }
+        
+        .custom-input.show {
+            display: block;
+        }
+        
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .message {
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        
+        .message.show {
+            display: block;
+        }
+        
+        .message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .required {
+            color: #e74c3c;
+        }
+        
+        .config-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 6px;
+            margin-bottom: 30px;
+        }
+        
+        .config-section label {
+            font-size: 0.9em;
+            color: #666;
+        }
+        
+        small {
+            color: #666;
+            font-size: 0.85em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Client Intake Form</h1>
+        <p class="subtitle">Fill out what you know - only client name, business name, and email are required</p>
+        
+        <div class="config-section">
+            <div class="form-group">
+                <label>MCP Server URL</label>
+                <input type="text" id="mcpUrl" value="http://localhost:4000" placeholder="http://localhost:4000">
+            </div>
+            <div class="form-group">
+                <label>API Key</label>
+                <input type="text" id="apiKey" value="key1" placeholder="key1">
+            </div>
+        </div>
+        
+        <div id="message" class="message"></div>
+        
+        <form id="intakeForm">
+            <!-- Client Information -->
+            <div class="form-section">
+                <div class="section-title">Client Information</div>
+                
+                <div class="form-group">
+                    <label>Client Name <span class="required">*</span></label>
+                    <input type="text" id="clientName" required placeholder="lowercase-kebab-case (e.g., dental-bunny)">
+                    <small>Use lowercase with hyphens, no spaces</small>
+                </div>
+                
+                <div class="form-group">
+                    <label>Business Name <span class="required">*</span></label>
+                    <input type="text" id="businessName" required placeholder="Official business name">
+                </div>
+                
+                <div class="form-group">
+                    <label>Contact Email <span class="required">*</span></label>
+                    <input type="email" id="contactEmail" required placeholder="client@example.com">
+                </div>
+                
+                <div class="form-group">
+                    <label>Contact Phone</label>
+                    <input type="tel" id="contactPhone" placeholder="(555) 123-4567">
+                </div>
+            </div>
+            
+            <!-- Business Context -->
+            <div class="form-section">
+                <div class="section-title">Business Context</div>
+                
+                <div class="form-group">
+                    <label>Industry</label>
+                    <select id="industry">
+                        <option value="">Select industry...</option>
+                        <option value="dental">Dental</option>
+                        <option value="construction">Construction / Remodeling</option>
+                        <option value="restaurant">Restaurant / Food Service</option>
+                        <option value="retail">Retail</option>
+                        <option value="professional-services">Professional Services</option>
+                        <option value="healthcare">Healthcare</option>
+                        <option value="fitness">Fitness / Wellness</option>
+                        <option value="beauty">Beauty / Salon</option>
+                        <option value="real-estate">Real Estate</option>
+                        <option value="legal">Legal Services</option>
+                        <option value="accounting">Accounting / Financial</option>
+                        <option value="coaching">Coaching / Consulting</option>
+                        <option value="home-services">Home Services</option>
+                        <option value="automotive">Automotive</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <input type="text" id="industryOther" placeholder="Specify other industry" style="margin-top: 8px; display: none;">
+                </div>
+                
+                <div class="form-group">
+                    <label>Target Market</label>
+                    <select id="targetMarket">
+                        <option value="">Select target market...</option>
+                        <option value="solo-entrepreneurs">Solo Entrepreneurs</option>
+                        <option value="small-businesses-75k-250k">Small Businesses ($75K-$250K revenue)</option>
+                        <option value="small-businesses-250k-500k">Small Businesses ($250K-$500K revenue)</option>
+                        <option value="local-businesses">Local Businesses</option>
+                        <option value="solopreneurs">Solopreneurs</option>
+                        <option value="startups">Startups</option>
+                        <option value="established-small-business">Established Small Business</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <input type="text" id="targetMarketOther" placeholder="Specify other target market" style="margin-top: 8px; display: none;">
+                </div>
+            </div>
+            
+            <!-- Tech Stack -->
+            <div class="form-section">
+                <div class="section-title">Tech Stack & Existing Tools</div>
+                
+                <div class="form-group">
+                    <label>Website Platform</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" name="website" value="static-html" id="website-static">
+                            <label for="website-static">Static HTML (Netlify)</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="website" value="wix" id="website-wix">
+                            <label for="website-wix">Wix</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="website" value="wordpress" id="website-wordpress">
+                            <label for="website-wordpress">WordPress</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="website" value="none" id="website-none">
+                            <label for="website-none">No website changes needed</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="website" value="custom" id="website-custom">
+                            <label for="website-custom">Custom/Other</label>
+                        </div>
+                    </div>
+                    <input type="text" class="custom-input" id="websiteCustom" placeholder="Specify custom platform">
+                </div>
+                
+                <div class="form-group">
+                    <label>Email Provider</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" name="email" value="outlook" id="email-outlook" checked>
+                            <label for="email-outlook">Outlook (default)</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="email" value="gmail" id="email-gmail">
+                            <label for="email-gmail">Gmail</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="email" value="custom" id="email-custom">
+                            <label for="email-custom">Custom</label>
+                        </div>
+                    </div>
+                    <input type="text" class="custom-input" id="emailCustom" placeholder="Specify custom email">
+                </div>
+                
+                <div class="form-group">
+                    <label>CRM</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" name="crm" value="airtable" id="crm-airtable" checked>
+                            <label for="crm-airtable">Airtable (we'll create)</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="crm" value="hubspot" id="crm-hubspot">
+                            <label for="crm-hubspot">HubSpot (existing)</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="crm" value="salesforce" id="crm-salesforce">
+                            <label for="crm-salesforce">Salesforce (existing)</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="crm" value="none" id="crm-none">
+                            <label for="crm-none">No CRM needed</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="crm" value="custom" id="crm-custom">
+                            <label for="crm-custom">Other</label>
+                        </div>
+                    </div>
+                    <input type="text" class="custom-input" id="crmCustom" placeholder="Specify custom CRM">
+                </div>
+                
+                <div class="form-group">
+                    <label>Calendar</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" name="calendar" value="google-calendar" id="calendar-google">
+                            <label for="calendar-google">Google Calendar</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="calendar" value="outlook" id="calendar-outlook">
+                            <label for="calendar-outlook">Outlook</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="calendar" value="other" id="calendar-other">
+                            <label for="calendar-other">Other</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="calendar" value="none" id="calendar-none">
+                            <label for="calendar-none">None</label>
+                        </div>
+                    </div>
+                    <input type="text" id="calendarOther" placeholder="Specify other calendar" style="margin-top: 8px; display: none;">
+                </div>
+                
+                <div class="form-group">
+                    <label>Other Tools</label>
+                    <input type="text" id="otherTools" placeholder="List any other tools they use (comma-separated)">
+                </div>
+            </div>
+            
+            <!-- Design Style -->
+            <div class="form-section">
+                <div class="section-title">Design Style</div>
+                
+                <div class="form-group">
+                    <label>Preferred Style</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" name="designStyle" value="modern-bright-editorial" id="style-modern">
+                            <label for="style-modern">Modern, bright, editorial</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="designStyle" value="dark-luxury-flowy" id="style-dark">
+                            <label for="style-dark">Dark, luxury, flowy</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="designStyle" value="custom" id="style-custom">
+                            <label for="style-custom">Custom</label>
+                        </div>
+                    </div>
+                    <input type="text" class="custom-input" id="designStyleCustom" placeholder="Describe custom style">
+                </div>
+                
+                <div class="form-group">
+                    <label>Brand Colors</label>
+                    <input type="text" id="brandColors" placeholder="if known, list colors (e.g., #FF6B9D, #C8E6C9)">
+                </div>
+                
+                <div class="form-group">
+                    <label>Typography</label>
+                    <input type="text" id="typography" placeholder="if known">
+                </div>
+                
+            </div>
+            
+            <!-- Services -->
+            <div class="form-section">
+                <div class="section-title">Services Needed</div>
+                <p style="color: #666; font-size: 0.9em; margin-bottom: 15px;">
+                    <strong>💡 Key Service:</strong> AI Receptionist (iAnswering.ai) - Our biggest selling point! 24/7 phone answering, lead qualification, and appointment booking.
+                </p>
+                
+                <div class="form-group">
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="service-website" value="Website">
+                            <label for="service-website">Website</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="service-lead-magnet" value="Lead Magnet + Delivery">
+                            <label for="service-lead-magnet">Lead Magnet + Delivery</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="service-onboarding" value="Client Onboarding Automation">
+                            <label for="service-onboarding">Client Onboarding Automation</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="service-email" value="Email Marketing System">
+                            <label for="service-email">Email Marketing System</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="service-crm" value="CRM & Pipeline Setup">
+                            <label for="service-crm">CRM & Pipeline Setup</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="service-onboarding" value="Client Onboarding Automation">
+                            <label for="service-onboarding">Client Onboarding Automation</label>
+                        </div>
+                        <div class="checkbox-item" style="background: #f0f4ff; padding: 10px; border-radius: 6px; border: 2px solid #667eea;">
+                            <input type="checkbox" id="service-ai" value="AI Receptionist (iAnswering.ai)">
+                            <label for="service-ai" style="font-weight: 600; color: #667eea;">
+                                <strong>⭐ AI Receptionist (iAnswering.ai)</strong><br>
+                                <small style="color: #666; font-weight: normal;">24/7 phone answering, lead qualification, appointment booking - Our biggest selling point!</small>
+                            </label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="service-other" value="Other">
+                            <label for="service-other">Other</label>
+                        </div>
+                    </div>
+                    <input type="text" class="custom-input" id="serviceOther" placeholder="Specify other service">
+                </div>
+            </div>
+            
+            <!-- Custom Requirements -->
+            <div class="form-section">
+                <div class="section-title">Custom Requirements</div>
+                
+                <div class="form-group">
+                    <label>Animations</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" name="animations" value="yes" id="animations-yes">
+                            <label for="animations-yes">Yes</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="animations" value="no" id="animations-no" checked>
+                            <label for="animations-no">No</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Integrations</label>
+                    <textarea id="integrations" rows="3" placeholder="List any specific integrations needed"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Special Notes</label>
+                    <textarea id="specialNotes" rows="3" placeholder="Any other important info"></textarea>
+                </div>
+            </div>
+            
+            <!-- Contact Information -->
+            <div class="form-section">
+                <div class="section-title">Contact Information</div>
+                
+                <div class="form-group">
+                    <label>Contact Email <span class="required">*</span></label>
+                    <input type="email" id="contactEmail" required placeholder="for proposals and communication">
+                </div>
+                
+                <div class="form-group">
+                    <label>Contact Phone</label>
+                    <input type="tel" id="contactPhone" placeholder="optional">
+                </div>
+            </div>
+            
+            <button type="submit" id="submitBtn">Create Client Profile</button>
+        </form>
+    </div>
+    
+    <script>
+        // Show/hide custom inputs
+        document.querySelectorAll('input[type="radio"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const name = this.name;
+                const customInput = document.getElementById(name + 'Custom');
+                if (customInput && this.value === 'custom') {
+                    customInput.classList.add('show');
+                } else if (customInput) {
+                    customInput.classList.remove('show');
+                }
+            });
+        });
+        
+        document.getElementById('service-other').addEventListener('change', function() {
+            const otherInput = document.getElementById('serviceOther');
+            if (this.checked) {
+                otherInput.classList.add('show');
+            } else {
+                otherInput.classList.remove('show');
+            }
+        });
+        
+        // Show/hide "other" inputs for dropdowns
+        document.getElementById('industry').addEventListener('change', function() {
+            const otherInput = document.getElementById('industryOther');
+            if (this.value === 'other') {
+                otherInput.style.display = 'block';
+            } else {
+                otherInput.style.display = 'none';
+            }
+        });
+        
+        document.getElementById('targetMarket').addEventListener('change', function() {
+            const otherInput = document.getElementById('targetMarketOther');
+            if (this.value === 'other') {
+                otherInput.style.display = 'block';
+            } else {
+                otherInput.style.display = 'none';
+            }
+        });
+        
+        document.getElementById('brandTone').addEventListener('change', function() {
+            const otherInput = document.getElementById('brandToneOther');
+            if (this.value === 'other') {
+                otherInput.style.display = 'block';
+            } else {
+                otherInput.style.display = 'none';
+            }
+        });
+        
+        document.querySelectorAll('input[name="calendar"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const otherInput = document.getElementById('calendarOther');
+                if (this.value === 'other') {
+                    otherInput.style.display = 'block';
+                } else {
+                    otherInput.style.display = 'none';
+                }
+            });
+        });
+        
+        // Handle form submission
+        document.getElementById('intakeForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const messageDiv = document.getElementById('message');
+            submitBtn.disabled = true;
+            messageDiv.className = 'message';
+            messageDiv.textContent = 'Processing...';
+            messageDiv.classList.add('show');
+            
+            try {
+                // Collect form data
+                const clientName = document.getElementById('clientName').value.trim();
+                const businessName = document.getElementById('businessName').value.trim();
+                
+                // Get selected values
+                const website = document.querySelector('input[name="website"]:checked')?.value || null;
+                const websiteValue = website === 'custom' ? document.getElementById('websiteCustom').value : (website === 'none' ? null : website);
+                
+                const email = document.querySelector('input[name="email"]:checked')?.value || 'outlook';
+                const emailValue = email === 'custom' ? document.getElementById('emailCustom').value : email;
+                
+                const crm = document.querySelector('input[name="crm"]:checked')?.value || 'airtable';
+                const crmValue = crm === 'custom' ? document.getElementById('crmCustom').value : (crm === 'none' ? null : crm);
+                
+                const designStyle = document.querySelector('input[name="designStyle"]:checked')?.value || null;
+                const designStyleValue = designStyle === 'custom' ? document.getElementById('designStyleCustom').value : designStyle;
+                
+                const animations = document.querySelector('input[name="animations"]:checked')?.value || 'no';
+                
+                // Get services
+                const services = [];
+                document.querySelectorAll('input[type="checkbox"]:checked').forEach(cb => {
+                    if (cb.id.startsWith('service-')) {
+                        if (cb.value === 'Other') {
+                            const otherVal = document.getElementById('serviceOther').value.trim();
+                            if (otherVal) services.push(otherVal);
+                        } else {
+                            services.push(cb.value);
+                        }
+                    }
+                });
+                
+                // Build intake data object (only include fields that have values)
+                const intakeData = {
+                    business_name: businessName,
+                    contact_email: document.getElementById('contactEmail').value.trim()
+                };
+                
+                const contactPhone = document.getElementById('contactPhone').value.trim();
+                if (contactPhone) intakeData.contact_phone = contactPhone;
+                
+                // Add optional fields only if they have values
+                const industry = document.getElementById('industry').value;
+                if (industry) {
+                    intakeData.industry = industry === 'other' 
+                        ? document.getElementById('industryOther').value.trim() 
+                        : industry;
+                }
+                
+                const targetMarket = document.getElementById('targetMarket').value;
+                if (targetMarket) {
+                    intakeData.target_market = targetMarket === 'other' 
+                        ? document.getElementById('targetMarketOther').value.trim() 
+                        : targetMarket;
+                }
+                
+                const brandTone = document.getElementById('brandTone').value;
+                if (brandTone) {
+                    intakeData.brand_tone = brandTone === 'other' 
+                        ? document.getElementById('brandToneOther').value.trim() 
+                        : brandTone;
+                }
+                
+                if (websiteValue) intakeData.website = websiteValue;
+                intakeData.email = emailValue;
+                if (crmValue) intakeData.crm = crmValue;
+                
+                const calendarValue = document.querySelector('input[name="calendar"]:checked')?.value;
+                if (calendarValue) {
+                    intakeData.calendar = calendarValue === 'other' 
+                        ? document.getElementById('calendarOther').value.trim() 
+                        : calendarValue;
+                }
+                
+                const otherTools = document.getElementById('otherTools').value.trim();
+                if (otherTools) intakeData.other_tools = otherTools;
+                
+                if (designStyleValue) intakeData.design_style = designStyleValue;
+                
+                const brandColors = document.getElementById('brandColors').value.trim();
+                if (brandColors) intakeData.brand_colors = brandColors;
+                
+                const typography = document.getElementById('typography').value.trim();
+                if (typography) intakeData.typography = typography;
+                
+                
+                if (services.length > 0) intakeData.services = services;
+                
+                intakeData.animations = animations === 'yes';
+                
+                const integrations = document.getElementById('integrations').value.trim();
+                if (integrations) intakeData.integrations = integrations;
+                
+                const specialNotes = document.getElementById('specialNotes').value.trim();
+                if (specialNotes) intakeData.special_notes = specialNotes;
+                
+                const mcpUrl = document.getElementById('mcpUrl').value.trim();
+                const apiKey = document.getElementById('apiKey').value.trim();
+                
+                // Step 1: Create client folder (if doesn't exist)
+                messageDiv.textContent = 'Checking/creating client folder...';
+                const folderResponse = await fetch(`${mcpUrl}/run`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-API-Key': apiKey
+                    },
+                    body: JSON.stringify({
+                        automation: 'create-client-folder',
+                        params: { client_name: clientName }
+                    })
+                });
+                
+                const folderResult = await folderResponse.json();
+                
+                // If folder already exists, that's fine - just continue
+                if (!folderResult.ok && !folderResult.error?.includes('already exists')) {
+                    throw new Error(folderResult.error || 'Failed to create client folder');
+                }
+                
+                // Step 2: Process intake
+                messageDiv.textContent = 'Processing intake and creating profile...';
+                const intakeResponse = await fetch(`${mcpUrl}/run`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-API-Key': apiKey
+                    },
+                    body: JSON.stringify({
+                        automation: 'process-client-intake',
+                        params: {
+                            client_name: clientName,
+                            source: 'manual',
+                            intake_data: intakeData
+                        }
+                    })
+                });
+                
+                const intakeResult = await intakeResponse.json();
+                
+                if (!intakeResult.ok) {
+                    throw new Error(intakeResult.error || 'Failed to process intake');
+                }
+                
+                // Step 2.5: CRITICAL - Trigger Research Automation
+                messageDiv.textContent = 'Triggering research automation (MOST CRITICAL STEP)...';
+                try {
+                    const researchResponse = await fetch(`${mcpUrl}/run`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-API-Key': apiKey
+                        },
+                        body: JSON.stringify({
+                            automation: 'trigger-client-research',
+                            params: {
+                                client_name: clientName,
+                                research_type: 'full'
+                            }
+                        })
+                    });
+                    const researchResult = await researchResponse.json();
+                    if (researchResult.ok) {
+                        // Research workflow triggered successfully
+                    }
+                } catch (error) {
+                    // Continue even if research trigger fails (can be done manually)
+                    console.warn('Research trigger failed:', error);
+                }
+                
+                if (!intakeResult.ok) {
+                    throw new Error(intakeResult.error || 'Failed to process intake');
+                }
+                
+                // Step 3: Setup iAnswering.ai if service selected
+                let iansweringSetup = '⏭️ Not needed';
+                if (services.includes('AI Receptionist (iAnswering.ai)')) {
+                    messageDiv.textContent = 'Setting up iAnswering.ai account...';
+                    try {
+                        const iansweringResponse = await fetch(`${mcpUrl}/run`, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-API-Key': apiKey
+                            },
+                            body: JSON.stringify({
+                                automation: 'setup-ianswering-account',
+                                params: { client_name: clientName }
+                            })
+                        });
+                        const iansweringResult = await iansweringResponse.json();
+                        if (iansweringResult.ok) {
+                            iansweringSetup = '✅ Account configured';
+                            // Also connect to CRM
+                            try {
+                                await fetch(`${mcpUrl}/run`, {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                        'X-API-Key': apiKey
+                                    },
+                                    body: JSON.stringify({
+                                        automation: 'connect-ianswering-to-crm',
+                                        params: { client_name: clientName }
+                                    })
+                                });
+                            } catch (error) {
+                                // Continue
+                            }
+                        } else {
+                            iansweringSetup = '⏭️ Skipped (API key not configured)';
+                        }
+                    } catch (error) {
+                        iansweringSetup = '⏭️ Skipped';
+                    }
+                }
+                
+                // Step 4: Auto-sync to Base44 and Airtable
+                messageDiv.textContent = 'Syncing to Base44 and Airtable...';
+                const syncResults = {};
+                
+                // Create Base44 portal setup reminder
+                try {
+                    const base44Response = await fetch(`${mcpUrl}/run`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-API-Key': apiKey
+                        },
+                        body: JSON.stringify({
+                            automation: 'create-base44-portal',
+                            params: { client_name: clientName }
+                        })
+                    });
+                    const base44Result = await base44Response.json();
+                    if (base44Result.ok) {
+                        syncResults.base44 = '✅ Setup reminder created';
+                    } else {
+                        syncResults.base44 = '⏭️ Skipped';
+                    }
+                } catch (error) {
+                    syncResults.base44 = '⏭️ Skipped';
+                }
+                
+                // Create Airtable base for client (each client gets their own base)
+                try {
+                    const createBaseResponse = await fetch(`${mcpUrl}/run`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-API-Key': apiKey
+                        },
+                        body: JSON.stringify({
+                            automation: 'create-airtable-base',
+                            params: { client_name: clientName }
+                        })
+                    });
+                    const createBaseResult = await createBaseResponse.json();
+                    
+                    if (createBaseResult.ok && !createBaseResult.result?.skipped) {
+                        // Now sync to the client's base
+                        const airtableResponse = await fetch(`${mcpUrl}/run`, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-API-Key': apiKey
+                            },
+                            body: JSON.stringify({
+                                automation: 'sync-to-airtable',
+                                params: { client_name: clientName }
+                            })
+                        });
+                        const airtableResult = await airtableResponse.json();
+                        syncResults.airtable = airtableResult.ok ? '✅ Synced to client base' : '⏭️ Base created, sync skipped';
+                    } else {
+                        syncResults.airtable = createBaseResult.result?.skipped ? '⏭️ Base exists' : '⏭️ Skipped (API key not configured)';
+                    }
+                } catch (error) {
+                    syncResults.airtable = '⏭️ Skipped';
+                }
+                
+                // Success!
+                messageDiv.className = 'message success';
+                messageDiv.innerHTML = `✅ Success! Client profile created for ${businessName}.<br>
+                    Client folder: clients/${clientName}/<br><br>
+                    <strong>Setup Status:</strong><br>
+                    ${iansweringSetup !== '⏭️ Not needed' ? `iAnswering.ai: ${iansweringSetup}<br>` : ''}
+                    Base44: ${syncResults.base44}<br>
+                    <small style="color: #666;">→ Add client in Base44 admin panel (Base44 sends OAuth link automatically)</small><br>
+                    Airtable: ${syncResults.airtable}`;
+                messageDiv.classList.add('show');
+                
+                // Reset form
+                document.getElementById('intakeForm').reset();
+                
+            } catch (error) {
+                messageDiv.className = 'message error';
+                messageDiv.textContent = `❌ Error: ${error.message}`;
+                messageDiv.classList.add('show');
+            } finally {
+                submitBtn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
+
