@@ -1879,6 +1879,53 @@ p {
     font-weight: 700;
 }
 
+/* Video Testimonials - Elegant Styling */
+.video-testimonial-container {
+    background: linear-gradient(135deg, var(--accent-dark) 0%, rgba(20, 20, 25, 0.95) 100%);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 2px solid rgba(244, 215, 127, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 20px rgba(244, 215, 127, 0.1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.video-testimonial-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(244, 215, 127, 0.05) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+.video-testimonial-container:hover {
+    transform: translateY(-5px);
+    border-color: rgba(244, 215, 127, 0.4);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.5), 0 0 30px rgba(244, 215, 127, 0.2);
+}
+
+.video-testimonial-container:hover::before {
+    opacity: 1;
+}
+
+.video-testimonial-container video {
+    width: 100%;
+    border-radius: 8px;
+    display: block;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    transition: all 0.4s ease;
+}
+
+.video-testimonial-container:hover video {
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
+}
+
 /* Contact Info */
 .contact-info {
     display: flex;
