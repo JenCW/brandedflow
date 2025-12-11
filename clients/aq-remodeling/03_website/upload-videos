@@ -1,0 +1,6 @@
+#!/bin/bash
+# Simple wrapper to upload videos - just run: ./upload-videos
+
+cd "$(dirname "$0")"
+node upload-testimonial-videos.js
+

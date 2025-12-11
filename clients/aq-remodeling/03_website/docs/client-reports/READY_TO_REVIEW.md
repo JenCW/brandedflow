@@ -3,7 +3,7 @@
 ## ✅ All Documents Created and Updated
 
 ### 1. **AQ Remodeling Professional Content Upgrade Report**
-**Location**: `clients/aq-remodeling/03_website/PROFESSIONAL_CONTENT_UPGRADE.md`
+**Location**: `clients/aq-remodeling/03_website/docs/client-reports/PROFESSIONAL_CONTENT_UPGRADE.md`
 
 **What's Inside**:
 - Complete summary of all changes made tonight
@@ -55,7 +55,7 @@
 
 ### Open All Documents (macOS):
 ```bash
-open clients/aq-remodeling/03_website/PROFESSIONAL_CONTENT_UPGRADE.md
+open clients/aq-remodeling/03_website/docs/client-reports/PROFESSIONAL_CONTENT_UPGRADE.md
 open company/operations/website-creation/HIGH_LEVEL_SUMMARY_AND_RECOMMENDATIONS.md
 open company/operations/website-creation/MASTER_AI_COLLABORATION_GUIDE.md
 ```
