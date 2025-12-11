@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/JenCW/brandedflow#readme",
   "dependencies": {
+    "cloudinary": "^2.8.0",
     "fs-extra": "^11.3.2"
   }
 }

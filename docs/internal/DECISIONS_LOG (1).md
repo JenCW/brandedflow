@@ -3,6 +3,38 @@ Chronological record of all major business decisions for Branded + Flow
 
 ---
 
+## January 2025
+
+### Documentation Organization
+**Decision:** Create hub folder structure for general guides, separate from client-specific docs  
+**Date:** January 2025  
+**Rationale:** 
+- General guides (Git, deployment, Cloudinary, etc.) are reusable across all clients
+- Client-specific docs (reports, strategies) should stay in client folders
+- Reduces duplication and improves findability
+- Makes it clear what's reusable vs. client-specific
+
+**Implementation:**
+- Created `company/operations/[category]/guides/` structure
+- Moved general guides to hub (10 consolidated guides)
+- Organized client docs in `clients/[client]/docs/client-reports/` and `docs/`
+- Deleted 18 superseded/temporary files
+- Created directive: `organize-documentation.md`
+
+**Impact:** 
+- Cleaner file structure
+- Easier to find reusable guides
+- Better organization for future projects
+- Reduced file count from 35+ scattered files to organized structure
+
+**Pattern Established:**
+- General/reusable → `company/operations/[category]/guides/`
+- Client reports → `clients/[client]/docs/client-reports/`
+- Internal client docs → `clients/[client]/docs/`
+- No markdown files at project root level
+
+---
+
 ## November 25, 2024
 
 ### Service Offering

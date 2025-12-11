@@ -65,6 +65,14 @@ Quick reference guide for "what gets updated where" when things change.
 - [ ] Update [docs/CONTEXT.md](../../docs/CONTEXT.md) - If affects current stack
 - [ ] Update affected client docs if impacts delivery
 
+### When Organizing Documentation
+- [ ] Follow directive: `systems/doe-engine/directives/organize-documentation.md`
+- [ ] Move general guides to `company/operations/[category]/guides/`
+- [ ] Organize client docs in `clients/[client-name]/[project]/docs/`
+- [ ] Delete superseded/temporary files
+- [ ] Update README files in both locations
+- [ ] Update this checklist if new patterns discovered
+
 ### Weekly Review (Recommended)
 - [ ] Review [docs/CONTEXT.md](../../docs/CONTEXT.md) - Still accurate?
 - [ ] Review [docs/CLIENT_STATUS.md](../../docs/CLIENT_STATUS.md) - Pipeline current?
