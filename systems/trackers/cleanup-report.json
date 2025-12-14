@@ -8,51 +8,6 @@
         "[ ] Decision: Use client profile for proposal customization (latest version)"
       ],
       "similarity": 1.0
-    },
-    {
-      "type": "task",
-      "items": [
-        "[ ] Task: Type: test",
-        "[ ] Task: Type: test",
-        "[ ] Task: Type: test"
-      ],
-      "similarity": 1.0
-    },
-    {
-      "type": "task",
-      "items": [
-        "[ ] Task: Type: directive_created",
-        "[ ] Task: Type: directive_created",
-        "[ ] Task: Type: directive_created"
-      ],
-      "similarity": 1.0
-    },
-    {
-      "type": "task",
-      "items": [
-        "[ ] Task: Create proposal MCP",
-        "[ ] Task: Create proposal MCP",
-        "[ ] Task: Create proposal MCP"
-      ],
-      "similarity": 1.0
-    },
-    {
-      "type": "task",
-      "items": [
-        "[ ] Task: Test proposal generation",
-        "[ ] Task: Test proposal generation",
-        "[ ] Task: Test proposal generation"
-      ],
-      "similarity": 1.0
-    },
-    {
-      "type": "task",
-      "items": [
-        "[ ] Task: - systems/doe-engine/directives/create-and-send-proposal.md",
-        "[ ] Task: - systems/doe-engine/directives/create-and-send-proposal.md",
-        "[ ] Task: - systems/doe-engine/directives/create-and-send-proposal.md"
-      ],
-      "similarity": 1.0
     }
   ],
   "superseded_archived": [],
@@ -61,6 +16,7 @@
       "base_name": "readme",
       "files": [
         "clients/README.txt",
+        "clients/habibi/README.md",
         "clients/ianswering-ai/02_brand/README.txt",
         "clients/ianswering-ai/04_automation/README.txt",
         "clients/ianswering-ai/03_website/README.txt",
@@ -74,8 +30,10 @@
         "clients/aq-remodeling/02_brand/README.txt",
         "clients/aq-remodeling/04_automation/README.txt",
         "clients/aq-remodeling/03_website/README.txt",
+        "clients/aq-remodeling/03_website/docs/README.md",
         "clients/aq-remodeling/01_intake/README.txt",
         "clients/aq-remodeling/05_deliverables/README.txt",
+        "clients/aq-remodeling/00_media-drop/README.md",
         "clients/luxe-fine-dining/02_brand/README.txt",
         "clients/luxe-fine-dining/04_automation/README.txt",
         "clients/luxe-fine-dining/website/README.md",
@@ -99,9 +57,10 @@
         "company/accounting/README.txt",
         "company/sales/README.txt",
         "company/brand/README.txt",
-        "company/operations/README.txt"
+        "company/operations/README.txt",
+        "company/operations/website-creation/guides/README.md"
       ],
-      "count": 40
+      "count": 44
     },
     {
       "base_name": "rules",
@@ -142,14 +101,25 @@
       "count": 9
     },
     {
+      "base_name": "netlify",
+      "files": [
+        "clients/aq-remodeling/03_website/netlify.toml",
+        "clients/aq-remodeling/03_website/.netlify/netlify.toml",
+        "clients/luxe-fine-dining/proposal-deploy/netlify.toml",
+        "clients/luxe-fine-dining/05_deliverables/netlify.toml"
+      ],
+      "count": 4
+    },
+    {
       "base_name": "style",
       "files": [
+        "clients/aq-remodeling/03_website/css/style.css",
         "systems/dashboard/html/style.css",
         "company/website/style.css",
         "company/website/cursor_website/css/style.css",
         "company/website/src/style.css"
       ],
-      "count": 4
+      "count": 5
     },
     {
       "base_name": "untitled design",
@@ -164,5 +134,5 @@
     }
   ],
   "old_files_cleaned": [],
-  "timestamp": "2025-12-10T08:00:01.130101"
+  "timestamp": "2025-12-14T08:00:03.608270"
 }
