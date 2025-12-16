@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Start Here | Branded + Flow</title>
+    <meta name="description" content="5-minute intake to see if we're a good fit. No pressure, no sales pitch. Just tell me what you need." />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+
+    <header>
+      <div class="container">
+        <nav>
+          <a href="index.html" class="logo">
+            <img src="/Logosets/logo_landscape/landscape_transparent.png" alt="Branded + Flow" loading="eager" />
+            <span class="logo-text">
+              <span class="logo-bold">BRANDED</span>
+              <span class="logo-plus">+</span>
+              <span class="logo-script">flow</span>
+            </span>
+          </a>
+          <div class="nav-links">
+            <a href="index.html#how-it-works">How It Works</a>
+            <a href="services.html">Services</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="start-here.html" class="btn btn-primary nav-cta active">Start Here</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- Intake Hero -->
+      <section class="intake-hero">
+        <div class="container">
+          <div class="intake-hero-content">
+            <span class="section-label animate-fade-up">Start Here</span>
+            <h1 class="intake-headline animate-fade-up delay-1">
+              5-Minute Intake
+            </h1>
+            <p class="intake-intro animate-fade-up delay-2">
+              Tell me what's overwhelming you. I'll figure out what you actually need.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Intake Form -->
+      <section class="intake-form-section">
+        <div class="container">
+          <div class="intake-form-wrapper">
+            <form id="intake-form" class="intake-form animate-fade-up delay-1">
+
+              <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" required placeholder="John Smith" />
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required placeholder="john@example.com" />
+              </div>
+
+              <div class="form-group">
+                <label for="business">What do you do?</label>
+                <textarea id="business" name="business" rows="3" required placeholder="Brief description of your business or service"></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="biggest-pain">What's your biggest pain right now?</label>
+                <select id="biggest-pain" name="biggest-pain" required>
+                  <option value="">Select one...</option>
+                  <option value="overwhelmed">I'm overwhelmed by everything</option>
+                  <option value="dropping-leads">I'm dropping leads and forgetting follow-ups</option>
+                  <option value="no-system">I don't have a system for handling interest</option>
+                  <option value="doing-everything">I'm doing everything myself and it's too much</option>
+                  <option value="behind">I feel behind and embarrassed</option>
+                  <option value="other">Something else</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="what-you-want">What do you want to happen?</label>
+                <select id="what-you-want" name="what-you-want" required>
+                  <option value="">Select one...</option>
+                  <option value="less-overwhelm">Less overwhelm, more control</option>
+                  <option value="leads-handled">Leads handled automatically</option>
+                  <option value="professional-presence">Professional online presence</option>
+                  <option value="systems-running">Systems that run without me</option>
+                  <option value="not-fall-apart">Know the business won't fall apart</option>
+                  <option value="other">Something else</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="current-tools">What tools/systems are you using now? (if any)</label>
+                <input type="text" id="current-tools" name="current-tools" placeholder="CRM, email, website platform, etc." />
+              </div>
+
+              <div class="form-group">
+                <label for="budget">Budget/Timeline</label>
+                <select id="budget" name="budget">
+                  <option value="">Not sure yet</option>
+                  <option value="quick-start">Quick Start ($X - $X)</option>
+                  <option value="full-system">Full System ($X - $X)</option>
+                  <option value="discuss">Let's discuss</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="anything-else">Anything else I should know?</label>
+                <textarea id="anything-else" name="anything-else" rows="4" placeholder="Additional context, questions, concerns..."></textarea>
+              </div>
+
+              <div class="form-group checkbox-group">
+                <label class="checkbox-label">
+                  <input type="checkbox" name="permission" required />
+                  <span>I give permission to follow up via email</span>
+                </label>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-submit">
+                Submit Intake
+              </button>
+
+              <p class="form-note">
+                <strong>What happens next:</strong> I'll review your intake and send you a proposal within 2-3 business days. No surprise calls. Async-first.
+              </p>
+
+            </form>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-logo">
+            <img src="/Logosets/logo_landscape/landscape_transparent_white.png" alt="Branded + Flow" loading="lazy" />
+            <span class="logo-text">
+              <span class="logo-bold">BRANDED</span>
+              <span class="logo-plus">+</span>
+              <span class="logo-script">flow</span>
+            </span>
+          </div>
+          <p class="footer-tagline">BRAND + AUTOMATE + NURTURE</p>
+          <p class="footer-copyright">© 2024 Branded + Flow. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>

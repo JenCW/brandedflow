@@ -39,3 +39,12 @@ Before generating or modifying anything, confirm:
 - Deterministic Python/Node operation
 - One-off or simple automation
 - No MCP/n8n/CrewAI needed
+
+
+
+
+
+
+
+
+

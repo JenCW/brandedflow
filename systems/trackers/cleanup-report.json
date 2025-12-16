@@ -10,8 +10,30 @@
       "similarity": 1.0
     }
   ],
-  "superseded_archived": [],
+  "superseded_archived": [
+    {
+      "decision": "Decision: Use client profile for proposal customization",
+      "timestamp": "2025-12-08T13:59:30.244933",
+      "superseded_at": "2025-12-08T13:59:30.244933"
+    },
+    {
+      "decision": "Decision: Use client profile for proposal customization",
+      "timestamp": "2025-12-08T13:59:30.244933",
+      "superseded_at": "2025-12-08T13:59:30.244933"
+    }
+  ],
   "duplicates_found": [
+    {
+      "base_name": ".cursorrules",
+      "files": [
+        ".cursorrules",
+        "company/.cursorrules",
+        "company/website/.cursorrules",
+        "company/website/site/.cursorrules",
+        "company/website/site/relume/.cursorrules"
+      ],
+      "count": 5
+    },
     {
       "base_name": "readme",
       "files": [
@@ -47,6 +69,7 @@
         "docs/internal/README.md",
         "docs/internal/README.txt",
         "docs/automation-library/README.txt",
+        "docs/reference/README.md",
         "systems/README.txt",
         "systems/context-automation/README.md",
         "systems/daily-accountability/README.md",
@@ -60,7 +83,7 @@
         "company/operations/README.txt",
         "company/operations/website-creation/guides/README.md"
       ],
-      "count": 44
+      "count": 45
     },
     {
       "base_name": "rules",
@@ -94,11 +117,16 @@
         "clients/luxe-fine-dining/05_deliverables/index.html",
         "systems/mcp-server/index.js",
         "systems/dashboard/html/index.html",
-        "company/website/index.html",
-        "company/website/dist/index.html",
-        "company/website/cursor_website/index.html"
+        "company/website/site/relume/home/index.html",
+        "company/website/site/relume/about-us/index.html",
+        "company/website/site/relume/blog-post/index.html",
+        "company/website/site/relume/faq/index.html",
+        "company/website/site/relume/contact-us/index.html",
+        "company/website/site/relume/portfolio/index.html",
+        "company/website/site/relume/services/index.html",
+        "company/website/site/assets/index.html"
       ],
-      "count": 9
+      "count": 14
     },
     {
       "base_name": "netlify",
@@ -111,28 +139,19 @@
       "count": 4
     },
     {
-      "base_name": "style",
-      "files": [
-        "clients/aq-remodeling/03_website/css/style.css",
-        "systems/dashboard/html/style.css",
-        "company/website/style.css",
-        "company/website/cursor_website/css/style.css",
-        "company/website/src/style.css"
-      ],
-      "count": 5
-    },
-    {
       "base_name": "untitled design",
       "files": [
         "company/brand/Untitled design.svg",
         "company/brand/Untitled design.png",
         "company/brand/assets/Untitled design.svg",
         "company/brand/assets/Logosets/Icon/Untitled design.svg",
-        "company/brand/assets/Logosets/Icon/Untitled design.png"
+        "company/brand/assets/Logosets/Icon/Untitled design.png",
+        "company/website/site/public/Logosets/Icon/Untitled design.svg",
+        "company/website/site/public/Logosets/Icon/Untitled design.png"
       ],
-      "count": 5
+      "count": 7
     }
   ],
   "old_files_cleaned": [],
-  "timestamp": "2025-12-14T08:00:03.608270"
+  "timestamp": "2025-12-16T08:00:05.589985"
 }
