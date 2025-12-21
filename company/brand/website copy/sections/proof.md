@@ -17,5 +17,3 @@
 - 4x faster follow-ups
 - 100% automated client response
 - Zero 'oops, I forgot' moments
-
-

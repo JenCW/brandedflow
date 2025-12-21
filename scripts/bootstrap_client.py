@@ -76,10 +76,32 @@ def main():
   (client_root / "DOE_directive.md").write_text(DOE_MD.format(client_name=client_name), encoding="utf-8")
 
   # Git workflow
-  run(["git", "checkout", "-b", branch])
-  run(["git", "add", str(client_root)])
-  run(["git", "commit", "-m", f"Bootstrap client: {client_code}"])
-  run(["git", "push", "-u", "origin", branch])
+  try:
+    run(["git", "checkout", "-b", branch])
+  except subprocess.CalledProcessError:
+    print(f"❌ Error: Failed to create git branch '{branch}'")
+    print("   Make sure you're in a git repository and the branch doesn't already exist.")
+    sys.exit(1)
+
+  try:
+    run(["git", "add", str(client_root)])
+  except subprocess.CalledProcessError:
+    print(f"❌ Error: Failed to stage files in {client_root}")
+    sys.exit(1)
+
+  try:
+    run(["git", "commit", "-m", f"Bootstrap client: {client_code}"])
+  except subprocess.CalledProcessError:
+    print(f"❌ Error: Failed to commit changes")
+    print("   There may be no changes to commit, or git is not properly configured.")
+    sys.exit(1)
+
+  try:
+    run(["git", "push", "-u", "origin", branch])
+  except subprocess.CalledProcessError:
+    print(f"❌ Error: Failed to push branch '{branch}' to origin")
+    print("   Check your git remote configuration and network connection.")
+    sys.exit(1)
 
   # Open PR via gh (recommended)
   try:
@@ -88,11 +110,11 @@ def main():
          "--body", f"Creates standard folder skeleton + DOE files for {client_name}.",
          "--base", "main"])
     print("✅ PR opened.")
-  except Exception:
-    print("⚠️ Couldn’t run `gh pr create`. Install/login to gh, or open PR manually in GitHub.")
+  except subprocess.CalledProcessError:
+    print("⚠️ Couldn't run `gh pr create`. Install/login to gh, or open PR manually in GitHub.")
     print("   Install: brew install gh")
     print("   Login:   gh auth login")
-    sys.exit(0)
+    sys.exit(1)
 
 if __name__ == "__main__":
   main()
