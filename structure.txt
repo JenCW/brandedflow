@@ -1,0 +1,3379 @@
+.
+├── .claude
+│   └── settings.local.json
+├── .claude_code_rules
+├── .cursor
+│   └── worktrees.json
+├── .cursorrules
+├── .DS_Store
+├── .git
+│   ├── .DS_Store
+│   ├── COMMIT_EDITMSG
+│   ├── config
+│   ├── cursor
+│   │   └── crepe
+│   │       └── df040f322c981bcf5de88fa5551dd75ca8a6248c
+│   │           ├── index.bin
+│   │           ├── metadata.json
+│   │           └── postings.bin
+│   ├── description
+│   ├── FETCH_HEAD
+│   ├── HEAD
+│   ├── hooks
+│   │   ├── applypatch-msg.sample
+│   │   ├── commit-msg.sample
+│   │   ├── fsmonitor-watchman.sample
+│   │   ├── post-update.sample
+│   │   ├── pre-applypatch.sample
+│   │   ├── pre-commit.sample
+│   │   ├── pre-merge-commit.sample
+│   │   ├── pre-push.sample
+│   │   ├── pre-rebase.sample
+│   │   ├── pre-receive.sample
+│   │   ├── prepare-commit-msg.sample
+│   │   ├── push-to-checkout.sample
+│   │   ├── sendemail-validate.sample
+│   │   └── update.sample
+│   ├── index
+│   ├── info
+│   │   ├── exclude
+│   │   └── refs
+│   ├── logs
+│   │   ├── HEAD
+│   │   └── refs
+│   │       ├── heads
+│   │       │   └── main
+│   │       └── remotes
+│   │           └── origin
+│   │               ├── HEAD
+│   │               └── main
+│   ├── objects
+│   │   ├── 04
+│   │   │   └── a27243964e402a162eccab33c3680e66b06d96
+│   │   ├── 08
+│   │   │   └── e2a3cab9d52669433715872704ba5cb1885756
+│   │   ├── 09
+│   │   │   └── 78b7d73f7a8ce29515e796d1b54c263a5ba8ed
+│   │   ├── 0a
+│   │   │   └── 5568b3eb72786b7d025f317905c26d9b2a59ce
+│   │   ├── 0c
+│   │   │   └── 4ab90bd2a0f54a2cf9deff870bf83071ff7005
+│   │   ├── 10
+│   │   │   ├── 081598115c65782447f6f57d7c1cc4c90c05ec
+│   │   │   └── 5393d741daeb4f9f22ffbe548bc1526d8ebb37
+│   │   ├── 11
+│   │   │   └── d44aade2c2b4ca28b863c9246a6a8048751392
+│   │   ├── 12
+│   │   │   ├── c3d236d242af16f062860cb78c54ee46cd029b
+│   │   │   ├── e3622a0c6369708637e7e58ef49e92c4e3d4c2
+│   │   │   └── ecb428666be6ab42bbac92dcac5fb8e34f1f26
+│   │   ├── 13
+│   │   │   └── d3ab634fd2cd4a3c3733c36bfc3b4ef3c95422
+│   │   ├── 14
+│   │   │   ├── b45f6a6e3deee78d06e3b8b8d199a5a7cfe8ad
+│   │   │   └── de2d041d86ab12328d2b39a7ff4493a335c7bc
+│   │   ├── 15
+│   │   │   ├── 159a0f058a16aef5588a8d63885b1d5af7c0ee
+│   │   │   ├── 3e7342819e3a2871574731b13d58a14b39fafa
+│   │   │   └── b14381b716203a114b8b722781162c4497a999
+│   │   ├── 16
+│   │   │   └── db4eeb105c02d418450a71df7a289f2d2d06da
+│   │   ├── 18
+│   │   │   └── 041b2e855608c45c735fc996173c09d34f069b
+│   │   ├── 1a
+│   │   │   ├── 067f248fcfb03db979d5dee6e8413688d0cc13
+│   │   │   ├── ac09adff667e7ff98a649eeda6f786993ce20c
+│   │   │   └── d8e075a66ab0a5aca043d42cefe2b28eb9e53a
+│   │   ├── 1c
+│   │   │   └── 6decbd09cfd993373bdb945e57f5602a94a182
+│   │   ├── 1d
+│   │   │   └── 18eaa01bd05133fa1adfd9743c057530055109
+│   │   ├── 21
+│   │   │   ├── 288fa0ca373c7f939dcab312fd496ab8c9d288
+│   │   │   └── c594209c7a2ec9dd668dbe213095e2591dbb4d
+│   │   ├── 22
+│   │   │   └── 884c42aebb793759642e0e94368e3d3570f010
+│   │   ├── 23
+│   │   │   └── 546513d3d16a9c9b362170a96c60fadced6889
+│   │   ├── 24
+│   │   │   ├── 00937e13f515f579667c869932d94c81c77fb5
+│   │   │   └── 8c44c2730316e97cf03141159f1bcc9ab09017
+│   │   ├── 26
+│   │   │   └── e4391e9a10d6bcbdcda10d805d89cb81fba64a
+│   │   ├── 29
+│   │   │   ├── 1ecd0114fec8aebe42536ec0c3928aa4e0765a
+│   │   │   └── e4f375773153463cdbe2aecda2a21a384558fe
+│   │   ├── 2b
+│   │   │   └── 6b633b6700f993c30c02f8acdf9821a66e86d6
+│   │   ├── 2c
+│   │   │   └── 63c0851048d8f7bff41ecf0f8cee05f52fd120
+│   │   ├── 2e
+│   │   │   ├── 0bb3106ac4115be3fe41d07f1d716608a551a6
+│   │   │   ├── 1b13379eb71fcd7f428f07e02694f512e8295d
+│   │   │   ├── 863712e7ec8f593692b2bde0786a2a1ef8e22a
+│   │   │   ├── b41b383870da03f645c8504df7eb19daa7c691
+│   │   │   └── c860eedacf4c3839158aebdaf710410b5773f0
+│   │   ├── 31
+│   │   │   └── b7cd1147771ab368ffd0a3be479fcfcbad3bae
+│   │   ├── 32
+│   │   │   └── c4e78be75eb685654d7731b95acc2425a178c5
+│   │   ├── 33
+│   │   │   ├── 105f202e0629c2efb3cfc1ed3ff53fff8332f2
+│   │   │   └── 6aa5b2b3406e5927b07e6bece285378ba227f2
+│   │   ├── 34
+│   │   │   └── 407db6ba053b36b4950abc1194828c7d1bb55f
+│   │   ├── 35
+│   │   │   ├── 0d9a8bb33c23d5a6543bfc16f0ad46478a1586
+│   │   │   ├── 1a7697fc72fb29b4215bf0ba7ed9b9a845a9dc
+│   │   │   └── 87a9449ea34ed94a40b6d1f4a4947b90d1b6d7
+│   │   ├── 37
+│   │   │   ├── 1b61f2b367028e198d39404d8701ac8f492cbd
+│   │   │   ├── 956c27ce064da68a829a156b67582128a1459e
+│   │   │   ├── b0ce88d4d5a2528c93d589323f65cfb9053661
+│   │   │   └── d5be98d5dfe2bba7a538dc2036d05c74166933
+│   │   ├── 39
+│   │   │   ├── 4ffec96b8104747ec38ee1ee71468706c642d2
+│   │   │   └── 5a8571b34c40b96b03a618275be97c9e1ead84
+│   │   ├── 3a
+│   │   │   └── 8e782259330079b11e4a4bf3bd47bab465f20f
+│   │   ├── 3c
+│   │   │   └── 6d0fa25ba61b0cb5a0685f39652506645b95fc
+│   │   ├── 3d
+│   │   │   ├── 070763191b7ab0f2d7cbb46214b5eb7ec04f7c
+│   │   │   ├── 394c4bd83be00c24d25a3afccd737f59fb5d58
+│   │   │   └── edd1932fd8b8c5244e888f00184c7fa0712a68
+│   │   ├── 3e
+│   │   │   └── d364cc8dcdc898068132817778083bb83fba82
+│   │   ├── 3f
+│   │   │   ├── 37439cdbea6734c2bdb90b75485ee09e7377a9
+│   │   │   └── 3b480bd692fa953a9e98a1dab7da6b2eceeb61
+│   │   ├── 40
+│   │   │   └── 848b975b0668ea5cc19a0183e0da579b0892e5
+│   │   ├── 41
+│   │   │   ├── 6ea4a5be987aadb4625995f54411ac3549d460
+│   │   │   └── fd5e27f0321eef89790f28732766e57180e36c
+│   │   ├── 42
+│   │   │   └── d18a300d5f6d699d16c33a701ae268b9a0e52f
+│   │   ├── 44
+│   │   │   └── 58942deb019363b641a6ce87eaf4c8d9e60383
+│   │   ├── 45
+│   │   │   └── 40aee19f0c5167ae0e340a337eb798c3184b5d
+│   │   ├── 46
+│   │   │   └── 4ca664fa0a019cbb821fba8281872f271e6e90
+│   │   ├── 47
+│   │   │   ├── 518a88a137a676d73a40349e9cbe995307033e
+│   │   │   └── 6d355aeac4fa5aeed0254940c9904eac84f9e9
+│   │   ├── 49
+│   │   │   ├── 234e63949645b327855a868dfeaf134ff1230f
+│   │   │   ├── a824e2f05a6efe94fe9830281fd63076b6261e
+│   │   │   └── c68cfda54efa0c723dd712a1543b34e3b89096
+│   │   ├── 4f
+│   │   │   └── e7128cf5c8e538458077800e80cf64e4dd1406
+│   │   ├── 51
+│   │   │   ├── 232de4d233bcb57d55a222c972385a8fbfb009
+│   │   │   └── 9ce36a14c598ff854955013c079f6b22eca04d
+│   │   ├── 54
+│   │   │   ├── 121f94c8b04394fca79de78666ce869fc68018
+│   │   │   ├── 83c02e49bd82b7220203929094e81a0d41090a
+│   │   │   ├── bbd5d5310f8fc441d6f13f579ff5a76fc8bb18
+│   │   │   └── c73fdc590c509491d3a8f120fd3f8658c12916
+│   │   ├── 55
+│   │   │   └── a6b1e4186ba6dc370d44a3ccf801208d6550f0
+│   │   ├── 56
+│   │   │   ├── 31253d283c1d223d1f558e384178bf380e3be9
+│   │   │   ├── d49a53149696a5d264d97c098f6bc06ddd6621
+│   │   │   └── f155f159983bf624409bcb3ea21364b4999794
+│   │   ├── 57
+│   │   │   └── 483f61a3c2f2f320d543f9c8ab2c332d0f1b94
+│   │   ├── 58
+│   │   │   └── 7c0309af00b5f853b94930576bfb7d37075d9d
+│   │   ├── 59
+│   │   │   ├── 096b609d0fb20810915723af23a0d39c834f75
+│   │   │   ├── 5f86e8d23f35d7372815c65a3393b365b2cb66
+│   │   │   ├── 84869f43e56ceb10061aa1e0846840e569682f
+│   │   │   └── 8aa103fa302366edc435022761748a9039dd6c
+│   │   ├── 5a
+│   │   │   └── 7af263185a57d63957da3a7fa13de256e96688
+│   │   ├── 5d
+│   │   │   └── 51e66eadca955e567b386218c77a68a93114e7
+│   │   ├── 5f
+│   │   │   └── 872ad5f4796cac81a5ed35a02db3cc5896ef94
+│   │   ├── 61
+│   │   │   ├── 537339a12b92bd643bf2f7b93b10ecd70ac855
+│   │   │   └── 6a167664a69fdb25d00eaf1c9ed1688c621a0f
+│   │   ├── 62
+│   │   │   └── 7677b12a6c37ee14e9da6fa58cb02bd04b7806
+│   │   ├── 63
+│   │   │   ├── 0b1f15f277543f992f14cc57e155464cf76614
+│   │   │   └── e76fc6c4f1f7f2097469f538febb4a2361bcc3
+│   │   ├── 64
+│   │   │   ├── 3a4d9c0575d7ba2da554fca2febf0eb2d1eac5
+│   │   │   └── ed838dc60c722e577ef3ed91bc58813ea2517a
+│   │   ├── 65
+│   │   │   └── d818f5e750410bc29065ce3abca1682307f422
+│   │   ├── 66
+│   │   │   ├── 964de4660222bc0e201cc4bb98c817d7127cb1
+│   │   │   └── 968ff8676c57ba311fd26d93d520a1496aa9e5
+│   │   ├── 67
+│   │   │   ├── 0d5a9a917d4206721664bc59af98e70761adb5
+│   │   │   └── 4a068d1d98dbf0c13281a4595b4c09362c96b2
+│   │   ├── 68
+│   │   │   └── 0edf6b81b1547bcfc3f93366b717b8c14a632b
+│   │   ├── 69
+│   │   │   └── 2d8f1297714602db1ce87e0059a06d6c1c81b2
+│   │   ├── 6a
+│   │   │   └── 319d5b4be4066e4b0c5d5facd7ac89ef120d53
+│   │   ├── 6d
+│   │   │   └── e824cdea10be0c6812f7833b74befde2faace5
+│   │   ├── 6e
+│   │   │   └── 839c552dde9c4dbf42b94c43c8e98af1ef3d7d
+│   │   ├── 6f
+│   │   │   └── d15721c033cc8084a87b93e69ac970c1db8b9f
+│   │   ├── 70
+│   │   │   └── 7a21a41c5fc3e9e7fed4ae04773912d3a2a53b
+│   │   ├── 74
+│   │   │   ├── b2cd7e082ac3497057def32f99621a05d131a6
+│   │   │   ├── c2f4c6491b981433c158a8879ff1a22ba48fb2
+│   │   │   └── c3e281e1773c5e6797223170219cb9d3cc2f84
+│   │   ├── 75
+│   │   │   └── c0093b4f41220b457595f2106307140ce6788f
+│   │   ├── 76
+│   │   │   └── 93d46945cac757ce616ac04bd1d591c8950473
+│   │   ├── 78
+│   │   │   └── 1228f56a681fe0f14e9aba9f1294172eec9e13
+│   │   ├── 79
+│   │   │   └── bfdfcffe34ceff94858703a952ff6af49fae61
+│   │   ├── 7a
+│   │   │   ├── 12f46d9ff1f7f90b07d4e09b6fe63e5da1fc7d
+│   │   │   └── 255b91be4b25d91117679774b240a5ddc53970
+│   │   ├── 7c
+│   │   │   └── 96a60cb95f2145d781fd84b10121e04e6a23c1
+│   │   ├── 7d
+│   │   │   ├── d579064cfa232352eb7497f5283665a22b9e10
+│   │   │   └── f61a613be6883c65a41d2341140938f13ebec6
+│   │   ├── 7e
+│   │   │   └── f1405383c972ae8200d1cd762bb77696cb8861
+│   │   ├── 84
+│   │   │   └── 2c3a70e0acbbada668df415ca715769beb3248
+│   │   ├── 85
+│   │   │   └── 0410d97a451ff0db0f930d678aa111ea17f1e4
+│   │   ├── 86
+│   │   │   └── bb12d84bc848743aa3bcf4376f81993440787e
+│   │   ├── 87
+│   │   │   └── 3d0770d62442df40b824ffcfccbc02cebd48d4
+│   │   ├── 88
+│   │   │   ├── 0c7aa99652f6635873d3b891dbae4012193be2
+│   │   │   └── 6f4a55d5f2faafc1f8ff61d18d1dbf6c85e65a
+│   │   ├── 8a
+│   │   │   ├── 633fccc3f71f596e8832ee7ca20b8a7bc5ab68
+│   │   │   └── b1155d0df0f9cad92852f71e4544bddd8a704f
+│   │   ├── 8b
+│   │   │   └── 137891791fe96927ad78e64b0aad7bded08bdc
+│   │   ├── 8c
+│   │   │   └── 41ac014b214275018d33ca94856315a7612bc5
+│   │   ├── 8d
+│   │   │   └── 0cd823df917ebf273e7b25bd7b14b64db85994
+│   │   ├── 8e
+│   │   │   └── a6d83fa82f2bb6cd1c243deb6be63cf076e6c4
+│   │   ├── 90
+│   │   │   └── 156bdca8a4e8018fb7e00c71ce6b4b18c52854
+│   │   ├── 94
+│   │   │   └── ad3a26d9ba6c74d611170f3499c8d7ec1d78f6
+│   │   ├── 95
+│   │   │   └── 473bcd5984b040622946959d3b5bcd5ce789cf
+│   │   ├── 96
+│   │   │   ├── 5ac2b54190f0c7bf64cef61ce97671af4096db
+│   │   │   └── fb4a2259bbb0bcc7a9287b814acdd3735a1b1b
+│   │   ├── 97
+│   │   │   └── 4a8093d60e0bf5683ca745f7d65d09457750c1
+│   │   ├── 99
+│   │   │   └── a16b5978c0e8525a03885b9597dc5e3d9846d2
+│   │   ├── 9b
+│   │   │   └── 66cb1eb6165f3d391398219eb123179d7ea551
+│   │   ├── 9c
+│   │   │   ├── 22f3ed2cc3e12063638928fbd5a863e6f1ca54
+│   │   │   ├── 32ee8683783cca77bcde0273830a90c75df57f
+│   │   │   └── 6272016041b844a7ddd2ba1dbef6a7e07716ad
+│   │   ├── 9d
+│   │   │   └── f73946faa6107664f66fcae0c59a384ceef40c
+│   │   ├── 9e
+│   │   │   └── 3d7ba57b977e21cf123ef46aa0118f6c095747
+│   │   ├── a0
+│   │   │   └── 3add5e5aad334de0dab4a060176a25d861144e
+│   │   ├── a2
+│   │   │   └── 0e442c67e6105d60351d5ef8c68952042c4112
+│   │   ├── a3
+│   │   │   ├── a0a2a974f53303b23aedb42511295b3e4c8dbe
+│   │   │   ├── fb6506f1c9c6ef6b1153c1197e7f6b7de0a9f1
+│   │   │   └── fc05a6506de19bc5a19c7289d54aed6b121101
+│   │   ├── a4
+│   │   │   └── fbbdd3de677d08e4583e7aa971ac2d153db19a
+│   │   ├── a6
+│   │   │   └── d1399349728db63e6bea4c5a4c0380ef4ec644
+│   │   ├── a7
+│   │   │   └── df4b945f18b99ad5059bb746772f9f8d4f45a5
+│   │   ├── a8
+│   │   │   └── acba5b1643b8bf4efead66a265bc450c82ea8f
+│   │   ├── a9
+│   │   │   └── 53ac0cf993f86d08b8a0de8946f2dc11b5de8c
+│   │   ├── aa
+│   │   │   ├── 357f44225f9c700c57b12536f58fc5c563ed33
+│   │   │   └── e95ae98e69e1c665b45a017b186a1c6f7f9a93
+│   │   ├── ae
+│   │   │   └── 84944a8e6c645034716b54e9e835872c2a3126
+│   │   ├── af
+│   │   │   ├── 1a9c9c2cf7bbcf0f5bd35de32e00f6671c1f1e
+│   │   │   ├── 6ff98fd49049f4b78d1c2acf8349d5b3b866c0
+│   │   │   ├── be236e4b2e32515505168467ce216e34c5c8ac
+│   │   │   └── fb1123b412b71bc6b556c0ed4067cd04c78901
+│   │   ├── b1
+│   │   │   ├── 3d5d1a39df204864120de59c17a476c812a752
+│   │   │   └── b965b7daaa297b7c07458d075579ee8904a50d
+│   │   ├── b2
+│   │   │   └── 83caa59d2b4bbf0e8cd1c7954fd862f8a969c7
+│   │   ├── b3
+│   │   │   ├── 00b4d1d03f9e2caebb0e78d21e9c8ff78fb655
+│   │   │   └── 659b559f2885a72ebd31c59cb81d4cfbdda35a
+│   │   ├── b5
+│   │   │   └── a01016de3bdcd0fd9dee9cd5c7ba5e97201154
+│   │   ├── b6
+│   │   │   └── ee6ebb2c01b7963120622f706405a4d1b246f7
+│   │   ├── b8
+│   │   │   └── c07bc1dfe7a604d5cd18b156c2e871ad3f7f64
+│   │   ├── b9
+│   │   │   └── dc02619bfa310c880c82eaf6f067bb87476e1d
+│   │   ├── ba
+│   │   │   ├── ad2f8c0e03ecbd2c29cf3b293c1b1c82cf889e
+│   │   │   └── d14bdbc5d1a11c6093d012520ce5d23ef55425
+│   │   ├── bb
+│   │   │   └── f61fdd6a54b926057341c9f4ed4b8a12b8c271
+│   │   ├── bc
+│   │   │   └── 6aa8eeec6f75b0bfdc41250c4ea1e95fa97b4f
+│   │   ├── bd
+│   │   │   └── 9c57367cec1d98961ff585b2507a4a6c3fe88e
+│   │   ├── c2
+│   │   │   ├── b1f7b3dc567527f1b5ec35b9ebccba52a4ecff
+│   │   │   └── f848e239a5718862a96b016faa39e327db9aae
+│   │   ├── c4
+│   │   │   └── d0b9806e7d23917a9b1a8c4c8905bc8a9bbb62
+│   │   ├── c5
+│   │   │   ├── 2cd4eeab3e76df969dd4ccffbff68baba8f8ba
+│   │   │   └── aa3ce09d076f456bd8d61b83c4ead3cb5c084f
+│   │   ├── c6
+│   │   │   └── 5728eaa657b9ce81293958efddaf719f526410
+│   │   ├── c7
+│   │   │   ├── 425f22ff9dfca0bfb2b3fc667b9f6095c9cce1
+│   │   │   └── 569a98fae18f2a5da3813bc5858e2feaaa4825
+│   │   ├── c8
+│   │   │   └── 26d4f7134d71cd8f0752505544e8aa1de91547
+│   │   ├── c9
+│   │   │   └── 0f19e177581594f2469c87bd4e5aa6e33885b1
+│   │   ├── cb
+│   │   │   ├── 2d60b459dd4c210f3a34a55f0bb6fd09c4dd5d
+│   │   │   ├── 41f40f41d573c985286fa8684aa8b900d822b6
+│   │   │   └── 7f7bd535ca46b4f62cda876660f104cccbb629
+│   │   ├── cc
+│   │   │   └── b28f792f7faad998bc6e6dabb4ab04f1852aca
+│   │   ├── cd
+│   │   │   ├── 4e9df0b7e95562b0efec88196b58be5c7b2243
+│   │   │   └── 6c8181f5e963114de3cfa3d0763e54ad841fed
+│   │   ├── ce
+│   │   │   ├── 066c7e977e8d945250481afedc4fd54a5f4743
+│   │   │   └── e4fad246d17cb05d75d82007e591ee13ce5744
+│   │   ├── cf
+│   │   │   └── d75a6e1d01d7faa1680569732259d0053f1600
+│   │   ├── d0
+│   │   │   ├── 4ee46d2d4ca019f28568f855c7f859647df842
+│   │   │   └── 759edc8accb577a9d467e0d698a5a8dd65fb7f
+│   │   ├── d3
+│   │   │   └── 0a04321af5ce3b376529b966bbeb07ab35028f
+│   │   ├── d4
+│   │   │   └── 1ab07c36ce3b09ef08ff86af6ad45d80e58564
+│   │   ├── d7
+│   │   │   └── c4387fda153d69b84d166597602395c778dac2
+│   │   ├── db
+│   │   │   ├── 2df5c6a9e16dc08bcb08c7902dc7295a0f14ee
+│   │   │   └── 6d076addd3c8c51eba6283634cdec5aebe0712
+│   │   ├── dc
+│   │   │   ├── 26f7d768cca8172c417362a1f72ef7b04deff3
+│   │   │   └── 28d3873d8b713081302d3d86fd4bb0142fcabe
+│   │   ├── dd
+│   │   │   ├── 209fd54a8d3b65fd3ecf3dadee631aba354a5f
+│   │   │   └── 7645acd893ce11ab77d96ae5d3142ff26e2dd0
+│   │   ├── df
+│   │   │   ├── 040f322c981bcf5de88fa5551dd75ca8a6248c
+│   │   │   ├── ae25ed6678709ed334b5c553d5ce060d3bade1
+│   │   │   └── e0f6ab91c92c2dd978117af47954cb0e258f0f
+│   │   ├── e2
+│   │   │   └── daa1bc65171783eb4cd0d1183816af3a5d9fd6
+│   │   ├── e5
+│   │   │   ├── 69383e1ab1244aea812403be10984472f11601
+│   │   │   └── cabc824d50d3ddd65ffb2a603e3a1d3242f079
+│   │   ├── e6
+│   │   │   └── 38905922fefc35e77a1b4c5896d5a477e53092
+│   │   ├── e7
+│   │   │   └── fd8472a1d41b821968731a31f52330b2f1e143
+│   │   ├── e8
+│   │   │   ├── 0394c7d566449c89f67ca7ff4647f5a992e6ee
+│   │   │   └── 47722de70f269c5ca4b77eb17926e3dd752a81
+│   │   ├── e9
+│   │   │   └── 580ad65fd69f87b7b9274f849e3a0ecda296f7
+│   │   ├── ea
+│   │   │   ├── 1337ec5847187eada793571169b7f98339ebf8
+│   │   │   ├── 2105d1c52dab216761ae0cb2e7be2e25f70936
+│   │   │   └── c100c3dca75510a8856382b470c2973ef4a913
+│   │   ├── eb
+│   │   │   ├── a7fad728bb8ecfd81f9d17dfb361182f430a5c
+│   │   │   └── b13869619f8d9d1afe83b00fefc1cc044bd203
+│   │   ├── ec
+│   │   │   └── f56bb0eb79741d5a3f641c3a13e4cdc797dab5
+│   │   ├── ed
+│   │   │   └── fd69d1e7f94d85c9bfe92c5a716ead333503a7
+│   │   ├── ef
+│   │   │   ├── 63c5344c81c3f983347fdf9eb4b866fbe5d7c7
+│   │   │   └── a6ee2a37bbdaa36e462328421c38a2007a0048
+│   │   ├── f1
+│   │   │   └── e2eabe7667d283d099db35090aae9b81b66c94
+│   │   ├── f7
+│   │   │   ├── 45a7e500bf1b5c5ecc1f4cd6d60ed74cc37fb7
+│   │   │   └── f79d9c4f080c6ae8249ef114752d1d3ca9e9d2
+│   │   ├── fa
+│   │   │   ├── 080c5f026e7509f68114138e66c985129f7052
+│   │   │   └── edc8c7680846e9e12b4e5025d0f8d9762eb2e6
+│   │   ├── fb
+│   │   │   └── 57fa1fcd9eb11c1b3fdb875a979e6410d01fd0
+│   │   ├── fd
+│   │   │   └── e37d5d574861fa40b139908c36ffb6d241be59
+│   │   ├── fe
+│   │   │   ├── 09b7f93b9ebc3f6d036a2735f1b74c69923ca5
+│   │   │   ├── c7257be019a6b6b35ecb8624b6c9beec439b7f
+│   │   │   ├── e9dff44c4353bd8211c78e36c04b3cf38f4727
+│   │   │   └── ebac7a4350cc55057fae9b48183915e41ac995
+│   │   ├── info
+│   │   │   ├── commit-graph
+│   │   │   └── packs
+│   │   └── pack
+│   │       ├── pack-27ff4d670a86fa515d677980c9c607f02f85b771.idx
+│   │       ├── pack-27ff4d670a86fa515d677980c9c607f02f85b771.pack
+│   │       └── pack-27ff4d670a86fa515d677980c9c607f02f85b771.rev
+│   ├── ORIG_HEAD
+│   ├── packed-refs
+│   ├── refs
+│   │   ├── heads
+│   │   │   └── main
+│   │   ├── remotes
+│   │   │   └── origin
+│   │   │       ├── HEAD
+│   │   │       └── main
+│   │   └── tags
+│   └── worktrees
+│       ├── gfv
+│       │   ├── commondir
+│       │   ├── FETCH_HEAD
+│       │   ├── gitdir
+│       │   ├── HEAD
+│       │   ├── index
+│       │   ├── logs
+│       │   │   └── HEAD
+│       │   ├── ORIG_HEAD
+│       │   └── refs
+│       ├── kat
+│       │   ├── commondir
+│       │   ├── FETCH_HEAD
+│       │   ├── gitdir
+│       │   ├── HEAD
+│       │   ├── index
+│       │   ├── logs
+│       │   │   └── HEAD
+│       │   ├── ORIG_HEAD
+│       │   └── refs
+│       ├── mnr
+│       │   ├── commondir
+│       │   ├── FETCH_HEAD
+│       │   ├── gitdir
+│       │   ├── HEAD
+│       │   ├── index
+│       │   ├── logs
+│       │   │   └── HEAD
+│       │   ├── ORIG_HEAD
+│       │   └── refs
+│       ├── muj
+│       │   ├── commondir
+│       │   ├── FETCH_HEAD
+│       │   ├── gitdir
+│       │   ├── HEAD
+│       │   ├── index
+│       │   ├── logs
+│       │   │   └── HEAD
+│       │   ├── ORIG_HEAD
+│       │   └── refs
+│       ├── pdm
+│       │   ├── commondir
+│       │   ├── FETCH_HEAD
+│       │   ├── gitdir
+│       │   ├── HEAD
+│       │   ├── index
+│       │   ├── logs
+│       │   │   └── HEAD
+│       │   ├── ORIG_HEAD
+│       │   └── refs
+│       ├── sxo
+│       │   ├── commondir
+│       │   ├── FETCH_HEAD
+│       │   ├── gitdir
+│       │   ├── HEAD
+│       │   ├── index
+│       │   ├── logs
+│       │   │   └── HEAD
+│       │   ├── ORIG_HEAD
+│       │   └── refs
+│       ├── tmn
+│       │   ├── commondir
+│       │   ├── FETCH_HEAD
+│       │   ├── gitdir
+│       │   ├── HEAD
+│       │   ├── index
+│       │   ├── logs
+│       │   │   └── HEAD
+│       │   ├── ORIG_HEAD
+│       │   └── refs
+│       └── uzo
+│           ├── commondir
+│           ├── FETCH_HEAD
+│           ├── gitdir
+│           ├── HEAD
+│           ├── index
+│           ├── logs
+│           │   └── HEAD
+│           ├── ORIG_HEAD
+│           └── refs
+├── .github
+│   └── workflows
+│       └── mcp-deploy.yml
+├── .gitignore
+├── .markdownlint.json
+├── .netlify
+│   ├── .DS_Store
+│   ├── functions-internal
+│   └── v1
+│       └── functions
+├── .vscode
+│   └── settings.json
+├── automation-system
+│   ├── .DS_Store
+│   └── logs
+│       ├── evening.error.log
+│       ├── evening.log
+│       ├── morning.error.log
+│       ├── morning.log
+│       ├── priority.error.log
+│       └── priority.log
+├── automations
+│   ├── .DS_Store
+│   ├── integrations
+│   ├── library
+│   ├── mcps
+│   ├── scripts
+│   └── workflows
+├── clients
+│   ├── .DS_Store
+│   ├── aq-remodeling
+│   │   ├── .DS_Store
+│   │   ├── 00_media-drop
+│   │   │   └── README.md
+│   │   ├── 01_intake
+│   │   │   └── README.txt
+│   │   ├── 02_brand
+│   │   │   └── README.txt
+│   │   ├── 03_website
+│   │   │   ├── .DS_Store
+│   │   │   ├── .netlify
+│   │   │   │   ├── netlify.toml
+│   │   │   │   └── state.json
+│   │   │   ├── .netlifyignore
+│   │   │   ├── about.html
+│   │   │   ├── add-videos-from-phone.sh
+│   │   │   ├── commercial.html
+│   │   │   ├── compress-videos-node.js
+│   │   │   ├── compress-videos.sh
+│   │   │   ├── contact.html
+│   │   │   ├── css
+│   │   │   │   └── style.css
+│   │   │   ├── deploy.sh
+│   │   │   ├── docs
+│   │   │   │   ├── client-reports
+│   │   │   │   │   ├── COMMERCIAL_IMAGES_NEEDED.md
+│   │   │   │   │   ├── PROFESSIONAL_CONTENT_UPGRADE.md
+│   │   │   │   │   ├── READY_TO_REVIEW.md
+│   │   │   │   │   ├── SEO_AEO_SERP_STRATEGY.md
+│   │   │   │   │   └── WEBSITE_UPDATES_TONIGHT.md
+│   │   │   │   ├── EXPERT_MEDIA_SOLUTION.md
+│   │   │   │   ├── NETLIFY_SETUP.md
+│   │   │   │   ├── README.md
+│   │   │   │   ├── SEO_STRATEGY_TRADE_SERVICES.md
+│   │   │   │   ├── VIDEO_DEPLOYMENT_BEST_PRACTICES.md
+│   │   │   │   └── VIDEO_FILES_NOT_IN_GIT.md
+│   │   │   ├── faq.html
+│   │   │   ├── images
+│   │   │   │   ├── .DS_Store
+│   │   │   │   └── Work-pics-and-vids
+│   │   │   │       ├── .DS_Store
+│   │   │   │       ├── BDBF199E-1220-4155-B62B-749A24C7C03A.webp
+│   │   │   │       ├── IMG_0463.webp
+│   │   │   │       ├── IMG_0464.webp
+│   │   │   │       ├── IMG_0465.webp
+│   │   │   │       ├── IMG_0466.webp
+│   │   │   │       ├── IMG_0467.webp
+│   │   │   │       ├── IMG_0468.webp
+│   │   │   │       ├── IMG_0469.webp
+│   │   │   │       ├── IMG_0470.webp
+│   │   │   │       ├── IMG_0471.webp
+│   │   │   │       ├── IMG_0472.webp
+│   │   │   │       ├── IMG_0473.webp
+│   │   │   │       ├── IMG_0474.webp
+│   │   │   │       ├── IMG_0475.webp
+│   │   │   │       ├── IMG_0476.webp
+│   │   │   │       ├── IMG_0477.webp
+│   │   │   │       ├── IMG_0478.webp
+│   │   │   │       ├── IMG_0479.webp
+│   │   │   │       ├── IMG_0480.webp
+│   │   │   │       ├── IMG_0481.webp
+│   │   │   │       ├── IMG_0482.webp
+│   │   │   │       ├── IMG_0483.webp
+│   │   │   │       ├── IMG_0484.webp
+│   │   │   │       ├── IMG_0485.webp
+│   │   │   │       ├── IMG_0486.webp
+│   │   │   │       ├── IMG_0487.webp
+│   │   │   │       ├── IMG_0488.webp
+│   │   │   │       ├── IMG_0489.webp
+│   │   │   │       ├── IMG_0491.webp
+│   │   │   │       ├── IMG_0492.webp
+│   │   │   │       ├── IMG_0493.webp
+│   │   │   │       ├── IMG_0494.webp
+│   │   │   │       ├── IMG_0560.webp
+│   │   │   │       ├── IMG_0563.webp
+│   │   │   │       ├── IMG_0564.webp
+│   │   │   │       ├── IMG_0566.webp
+│   │   │   │       ├── IMG_0571.webp
+│   │   │   │       ├── IMG_0572.webp
+│   │   │   │       ├── IMG_0573.webp
+│   │   │   │       └── IMG_0575.webp
+│   │   │   ├── index.html
+│   │   │   ├── js
+│   │   │   │   ├── script.js
+│   │   │   │   └── service-modal.js
+│   │   │   ├── load-media.js
+│   │   │   ├── netlify.toml
+│   │   │   ├── portfolio.html
+│   │   │   ├── README.txt
+│   │   │   ├── residential.html
+│   │   │   ├── robots.txt
+│   │   │   ├── sitemap.xml
+│   │   │   ├── trade-services.html
+│   │   │   ├── upload-remaining-videos.js
+│   │   │   ├── upload-testimonial-videos.js
+│   │   │   └── upload-videos
+│   │   ├── 04_automation
+│   │   │   └── README.txt
+│   │   ├── 05_deliverables
+│   │   │   └── README.txt
+│   │   ├── 99_archive
+│   │   │   ├── .DS_Store
+│   │   │   ├── AQR Website.md
+│   │   │   ├── CLIENT_DOCS
+│   │   │   │   ├── CHANGE_LOG.md
+│   │   │   │   ├── FILE_MAP.md
+│   │   │   │   ├── QUICK_REFERENCE.md
+│   │   │   │   ├── README.md
+│   │   │   │   └── START_HERE.md
+│   │   │   ├── css
+│   │   │   │   ├── style-elementor.css
+│   │   │   │   └── style.css
+│   │   │   ├── images
+│   │   │   │   └── Work-pics-and-vids
+│   │   │   │       ├── 1fa5ae37-e8a2-4245-865a-2ccb8956395f 2.JPG
+│   │   │   │       ├── 1fa5ae37-e8a2-4245-865a-2ccb8956395f.JPG
+│   │   │   │       ├── 4aaab30f-e420-4637-8613-8972aa444670.JPG
+│   │   │   │       ├── 944d0b09-fcae-49b5-a31e-3e47d4fa78ae.JPG
+│   │   │   │       ├── BDBF199E-1220-4155-B62B-749A24C7C03A.HEIC
+│   │   │   │       ├── BDBF199E-1220-4155-B62B-749A24C7C03A.png
+│   │   │   │       ├── BDBF199E-1220-4155-B62B-749A24C7C03A.webp
+│   │   │   │       ├── Cerramiento Plegable AluTecnic.MP4
+│   │   │   │       ├── IMG_0463.png
+│   │   │   │       ├── IMG_0463.webp
+│   │   │   │       ├── IMG_0464.png
+│   │   │   │       ├── IMG_0464.webp
+│   │   │   │       ├── IMG_0465.png
+│   │   │   │       ├── IMG_0465.webp
+│   │   │   │       ├── IMG_0466.png
+│   │   │   │       ├── IMG_0466.webp
+│   │   │   │       ├── IMG_0467.png
+│   │   │   │       ├── IMG_0467.webp
+│   │   │   │       ├── IMG_0468.png
+│   │   │   │       ├── IMG_0468.webp
+│   │   │   │       ├── IMG_0469.png
+│   │   │   │       ├── IMG_0469.webp
+│   │   │   │       ├── IMG_0470.png
+│   │   │   │       ├── IMG_0470.webp
+│   │   │   │       ├── IMG_0471.png
+│   │   │   │       ├── IMG_0471.webp
+│   │   │   │       ├── IMG_0472.png
+│   │   │   │       ├── IMG_0472.webp
+│   │   │   │       ├── IMG_0473.png
+│   │   │   │       ├── IMG_0473.webp
+│   │   │   │       ├── IMG_0474.png
+│   │   │   │       ├── IMG_0474.webp
+│   │   │   │       ├── IMG_0475.png
+│   │   │   │       ├── IMG_0475.webp
+│   │   │   │       ├── IMG_0476.png
+│   │   │   │       ├── IMG_0476.webp
+│   │   │   │       ├── IMG_0477.png
+│   │   │   │       ├── IMG_0477.webp
+│   │   │   │       ├── IMG_0478.png
+│   │   │   │       ├── IMG_0478.webp
+│   │   │   │       ├── IMG_0479.png
+│   │   │   │       ├── IMG_0479.webp
+│   │   │   │       ├── IMG_0480.png
+│   │   │   │       ├── IMG_0480.webp
+│   │   │   │       ├── IMG_0481.png
+│   │   │   │       ├── IMG_0481.webp
+│   │   │   │       ├── IMG_0482.png
+│   │   │   │       ├── IMG_0482.webp
+│   │   │   │       ├── IMG_0483.png
+│   │   │   │       ├── IMG_0483.webp
+│   │   │   │       ├── IMG_0484.png
+│   │   │   │       ├── IMG_0484.webp
+│   │   │   │       ├── IMG_0485.png
+│   │   │   │       ├── IMG_0485.webp
+│   │   │   │       ├── IMG_0486.png
+│   │   │   │       ├── IMG_0486.webp
+│   │   │   │       ├── IMG_0487.png
+│   │   │   │       ├── IMG_0487.webp
+│   │   │   │       ├── IMG_0488.png
+│   │   │   │       ├── IMG_0488.webp
+│   │   │   │       ├── IMG_0489.png
+│   │   │   │       ├── IMG_0489.webp
+│   │   │   │       ├── IMG_0491.png
+│   │   │   │       ├── IMG_0491.webp
+│   │   │   │       ├── IMG_0492.png
+│   │   │   │       ├── IMG_0492.webp
+│   │   │   │       ├── IMG_0493.png
+│   │   │   │       ├── IMG_0493.webp
+│   │   │   │       ├── IMG_0494.png
+│   │   │   │       ├── IMG_0494.webp
+│   │   │   │       ├── IMG_0560.HEIC
+│   │   │   │       ├── IMG_0560.png
+│   │   │   │       ├── IMG_0560.webp
+│   │   │   │       ├── IMG_0563.HEIC
+│   │   │   │       ├── IMG_0563.png
+│   │   │   │       ├── IMG_0563.webp
+│   │   │   │       ├── IMG_0564.HEIC
+│   │   │   │       ├── IMG_0564.webp
+│   │   │   │       ├── IMG_0566.HEIC
+│   │   │   │       ├── IMG_0566.webp
+│   │   │   │       ├── IMG_0571.HEIC
+│   │   │   │       ├── IMG_0571.webp
+│   │   │   │       ├── IMG_0572.HEIC
+│   │   │   │       ├── IMG_0572.png
+│   │   │   │       ├── IMG_0572.webp
+│   │   │   │       ├── IMG_0573.HEIC
+│   │   │   │       ├── IMG_0573.png
+│   │   │   │       ├── IMG_0573.webp
+│   │   │   │       ├── IMG_0575.HEIC
+│   │   │   │       ├── IMG_0575.png
+│   │   │   │       ├── IMG_0575.webp
+│   │   │   │       └── IMG_0576.HEIC
+│   │   │   ├── js
+│   │   │   │   ├── script.js
+│   │   │   │   └── service-modal.js
+│   │   │   ├── README.md
+│   │   │   └── README.txt
+│   │   └── cloudinary-config.json
+│   ├── dental-bunny
+│   │   ├── .DS_Store
+│   │   ├── 01_intake
+│   │   │   └── README.txt
+│   │   ├── 02_brand
+│   │   │   └── README.txt
+│   │   ├── 03_website
+│   │   │   └── README.txt
+│   │   ├── 04_automation
+│   │   │   └── README.txt
+│   │   ├── 05_deliverables
+│   │   │   ├── Proposal.md
+│   │   │   └── README.txt
+│   │   └── 99_archive
+│   │       └── README.txt
+│   ├── habibi
+│   │   ├── .DS_Store
+│   │   ├── .gitignore
+│   │   ├── config
+│   │   │   ├── __init__.py
+│   │   │   ├── agents_config.py
+│   │   │   ├── crew_config.py
+│   │   │   └── tasks_config.py
+│   │   ├── docs
+│   │   │   ├── ARCHITECTURE.md
+│   │   │   ├── COMPARISON.md
+│   │   │   └── CREWAI_CONCEPTS.md
+│   │   ├── env.example
+│   │   ├── examples
+│   │   │   ├── basic_crew.py
+│   │   │   ├── private_mortgage_example.py
+│   │   │   └── research_crew_template.py
+│   │   ├── README.md
+│   │   ├── requirements.txt
+│   │   └── src
+│   │       ├── __init__.py
+│   │       └── .gitkeep
+│   ├── ianswering-ai
+│   │   ├── .DS_Store
+│   │   ├── 01_intake
+│   │   │   └── README.txt
+│   │   ├── 02_brand
+│   │   │   └── README.txt
+│   │   ├── 03_website
+│   │   │   └── README.txt
+│   │   ├── 04_automation
+│   │   │   └── README.txt
+│   │   ├── 05_deliverables
+│   │   │   ├── Partnership Proposal.md
+│   │   │   └── README.txt
+│   │   └── 99_archive
+│   │       ├── Partnership_for_AI_Receptionist.md
+│   │       └── README.txt
+│   ├── luxe-fine-dining
+│   │   ├── .DS_Store
+│   │   ├── 01_intake
+│   │   │   ├── Luxe-Complete-Proposal (7).md
+│   │   │   ├── Luxe-Customer-Journeys.html
+│   │   │   ├── Luxe-Website-Execution-Guide.docx
+│   │   │   └── README.txt
+│   │   ├── 02_brand
+│   │   │   └── README.txt
+│   │   ├── 03_website
+│   │   │   ├── css
+│   │   │   │   ├── animations.css
+│   │   │   │   └── style-combined.css
+│   │   │   ├── index.html
+│   │   │   ├── js
+│   │   │   └── README.txt
+│   │   ├── 04_automation
+│   │   │   └── README.txt
+│   │   ├── 05_deliverables
+│   │   │   ├── 01_Catering_Sales_Kit.md
+│   │   │   ├── 01_Catering_Sales_Kit.pdf
+│   │   │   ├── 02_Website_Architecture_Wireframe.md
+│   │   │   ├── 02_Website_Architecture_Wireframe.pdf
+│   │   │   ├── 03_Automation_Workflows.md
+│   │   │   ├── 03_Automation_Workflows.pdf
+│   │   │   ├── 04_Pricing_Guide.xlsx
+│   │   │   ├── 05_90_Day_Launch_Plan.md
+│   │   │   ├── 05_90_Day_Launch_Plan.pdf
+│   │   │   ├── 06_Outreach_Scripts.md
+│   │   │   ├── 06_Outreach_Scripts.pdf
+│   │   │   ├── 07_design_summary.md
+│   │   │   ├── convert-to-html.js
+│   │   │   ├── index.html
+│   │   │   ├── Luxe-Complete-Proposal (1).docx
+│   │   │   ├── luxe-fine-dining-deploy.zip
+│   │   │   ├── luxe-fine-dining-market-research-strategy.md
+│   │   │   ├── Luxe-Website-Execution-Guide.md
+│   │   │   ├── netlify.toml
+│   │   │   ├── PROPOSAL_PHASED_APPROACH_MODERN.html
+│   │   │   ├── PROPOSAL_PHASED_APPROACH.html
+│   │   │   ├── PROPOSAL_PHASED_APPROACH.md
+│   │   │   ├── README.md
+│   │   │   ├── README.txt
+│   │   │   ├── site-files-backup.tar.gz
+│   │   │   └── The-Luxe-Experience-Digital-Transformation (1).pdf
+│   │   ├── 99_archive
+│   │   │   ├── luxe-fine-dining-deploy.zip
+│   │   │   └── README.txt
+│   │   ├── proposal-deploy
+│   │   │   ├── index.html
+│   │   │   └── netlify.toml
+│   │   └── website
+│   │       └── README.md
+│   ├── README.txt
+│   └── RULES.md
+├── company
+│   ├── .cursorrules
+│   ├── .DS_Store
+│   ├── accounting
+│   │   ├── README.txt
+│   │   └── RULES.md
+│   ├── brand
+│   │   ├── .DS_Store
+│   │   ├── assets
+│   │   │   ├── .DS_Store
+│   │   │   ├── branded+flow brand sheet.pdf
+│   │   │   ├── Business Card - Branding Automation Specialist
+│   │   │   │   ├── 1.png
+│   │   │   │   └── 2.png
+│   │   │   ├── Business Card - Branding Automation Specialist.zip
+│   │   │   ├── business-card-back.png
+│   │   │   ├── business-card-front.png
+│   │   │   ├── Logosets
+│   │   │   │   ├── .DS_Store
+│   │   │   │   ├── Icon
+│   │   │   │   │   ├── Untitled design.png
+│   │   │   │   │   └── Untitled design.svg
+│   │   │   │   ├── logo_landscape
+│   │   │   │   │   ├── landscape_black_bg.png
+│   │   │   │   │   ├── landscape_transparent_white.png
+│   │   │   │   │   ├── landscape_transparent.png
+│   │   │   │   │   └── landscape_white_bg.png
+│   │   │   │   ├── logo_square
+│   │   │   │   │   ├── .DS_Store
+│   │   │   │   │   ├── square_black_bg.png
+│   │   │   │   │   ├── square_transparent_white.png
+│   │   │   │   │   ├── square_transparent.png
+│   │   │   │   │   └── square_white_bg.png
+│   │   │   │   ├── source
+│   │   │   │   │   ├── logo_vector.svg
+│   │   │   │   │   └── open-sauce
+│   │   │   │   │       ├── Open Sauce One OFL.txt
+│   │   │   │   │       ├── Open Sauce Sans OFL.txt
+│   │   │   │   │       ├── Open Sauce Two OFL.txt
+│   │   │   │   │       ├── OpenSauceOne-Black.ttf
+│   │   │   │   │       ├── OpenSauceOne-BlackItalic.ttf
+│   │   │   │   │       ├── OpenSauceOne-Bold.ttf
+│   │   │   │   │       ├── OpenSauceOne-BoldItalic.ttf
+│   │   │   │   │       ├── OpenSauceOne-ExtraBold.ttf
+│   │   │   │   │       ├── OpenSauceOne-ExtraBoldItalic.ttf
+│   │   │   │   │       ├── OpenSauceOne-Italic.ttf
+│   │   │   │   │       ├── OpenSauceOne-Light.ttf
+│   │   │   │   │       ├── OpenSauceOne-LightItalic.ttf
+│   │   │   │   │       ├── OpenSauceOne-Medium.ttf
+│   │   │   │   │       ├── OpenSauceOne-MediumItalic.ttf
+│   │   │   │   │       ├── OpenSauceOne-Regular.ttf
+│   │   │   │   │       ├── OpenSauceOne-SemiBold.ttf
+│   │   │   │   │       ├── OpenSauceOne-SemiBoldItalic.ttf
+│   │   │   │   │       ├── OpenSauceSans-Black.ttf
+│   │   │   │   │       ├── OpenSauceSans-BlackItalic.ttf
+│   │   │   │   │       ├── OpenSauceSans-Bold.ttf
+│   │   │   │   │       ├── OpenSauceSans-BoldItalic.ttf
+│   │   │   │   │       ├── OpenSauceSans-ExtraBold.ttf
+│   │   │   │   │       ├── OpenSauceSans-ExtraBoldItalic.ttf
+│   │   │   │   │       ├── OpenSauceSans-Italic.ttf
+│   │   │   │   │       ├── OpenSauceSans-Light.ttf
+│   │   │   │   │       ├── OpenSauceSans-LightItalic.ttf
+│   │   │   │   │       ├── OpenSauceSans-Medium.ttf
+│   │   │   │   │       ├── OpenSauceSans-MediumItalic.ttf
+│   │   │   │   │       ├── OpenSauceSans-Regular.ttf
+│   │   │   │   │       ├── OpenSauceSans-SemiBold.ttf
+│   │   │   │   │       ├── OpenSauceSans-SemiBoldItalic.ttf
+│   │   │   │   │       ├── OpenSauceTwo-Black.ttf
+│   │   │   │   │       ├── OpenSauceTwo-BlackItalic.ttf
+│   │   │   │   │       ├── OpenSauceTwo-Bold.ttf
+│   │   │   │   │       ├── OpenSauceTwo-BoldItalic.ttf
+│   │   │   │   │       ├── OpenSauceTwo-ExtraBold.ttf
+│   │   │   │   │       ├── OpenSauceTwo-ExtraBoldItalic.ttf
+│   │   │   │   │       ├── OpenSauceTwo-Italic.ttf
+│   │   │   │   │       ├── OpenSauceTwo-Light.ttf
+│   │   │   │   │       ├── OpenSauceTwo-LightItalic.ttf
+│   │   │   │   │       ├── OpenSauceTwo-Medium.ttf
+│   │   │   │   │       ├── OpenSauceTwo-MediumItalic.ttf
+│   │   │   │   │       ├── OpenSauceTwo-Regular.ttf
+│   │   │   │   │       ├── OpenSauceTwo-SemiBold.ttf
+│   │   │   │   │       └── OpenSauceTwo-SemiBoldItalic.ttf
+│   │   │   │   └── USAGE_GUIDE.md
+│   │   │   └── Untitled design.svg
+│   │   ├── brand personality
+│   │   │   ├── Branded_Flow_Company_Creation_Kit.txt
+│   │   │   └── Branded_Flow_Company_Creation_Kit.zip
+│   │   ├── branded+flow brand sheet.pdf
+│   │   ├── forms
+│   │   │   └── .DS_Store
+│   │   ├── README.txt
+│   │   ├── RULES.md
+│   │   ├── Untitled design.png
+│   │   ├── Untitled design.svg
+│   │   └── website copy
+│   │       ├── .DS_Store
+│   │       └── sections
+│   │           ├── about.md
+│   │           ├── proof.md
+│   │           └── services.md
+│   ├── email-logs
+│   ├── finances
+│   ├── operations
+│   │   ├── .DS_Store
+│   │   ├── client-intake
+│   │   │   ├── automated-intake-process.md
+│   │   │   ├── CLIENT_WORKFLOW.md
+│   │   │   ├── client-workflow-app.html
+│   │   │   ├── complete-client-workflow.html
+│   │   │   ├── contract-form.html
+│   │   │   ├── intake-form.html
+│   │   │   ├── open-client-workflow.command
+│   │   │   ├── open-contract-form.command
+│   │   │   ├── open-intake-form.command
+│   │   │   ├── open-proposal-form.command
+│   │   │   ├── open-unified-form.command
+│   │   │   ├── proposal-form.html
+│   │   │   ├── quick-intake-template.md
+│   │   │   ├── unified-client-form.html
+│   │   │   └── WORKFLOW_APP_REVIEW.md
+│   │   ├── proposals
+│   │   │   ├── MODERN_PROPOSAL_WORKFLOW.md
+│   │   │   └── PROPOSAL_CREATION_PROCESS.md
+│   │   ├── README.txt
+│   │   ├── RULES.md
+│   │   ├── TECH_STACK.md
+│   │   ├── UPDATE_CHECKLIST.md
+│   │   └── website-creation
+│   │       ├── CLIENT_MEDIA_WORKFLOW.md
+│   │       ├── guides
+│   │       │   ├── ai-image-generation.md
+│   │       │   ├── cloudinary-setup.md
+│   │       │   ├── cloudinary-troubleshooting.md
+│   │       │   ├── deployment-setup.md
+│   │       │   ├── dns-domain-setup.md
+│   │       │   ├── git-workflow.md
+│   │       │   ├── markdown-preview.md
+│   │       │   ├── media-handling.md
+│   │       │   ├── README.md
+│   │       │   └── video-compression.md
+│   │       ├── HIGH_LEVEL_SUMMARY_AND_RECOMMENDATIONS.md
+│   │       ├── MASTER_AI_COLLABORATION_GUIDE.md
+│   │       ├── MEDIA_HANDLING_STANDARD.md
+│   │       ├── SEO_TOOL_RECOMMENDATION.md
+│   │       └── WEBSITE_CREATION_WORKFLOW.md
+│   ├── proposals
+│   │   └── Proposal template.pdf
+│   ├── README.txt
+│   ├── RULES.md
+│   ├── sales
+│   │   ├── PRICING_AND_SERVICES.md
+│   │   ├── README.txt
+│   │   └── RULES.md
+│   └── website
+│       ├── .cursorrules
+│       ├── .DS_Store
+│       ├── .gitignore
+│       ├── archive
+│       │   ├── .DS_Store
+│       │   ├── dist
+│       │   │   ├── .DS_Store
+│       │   │   ├── assets
+│       │   │   │   ├── index-CxghJbwN.css
+│       │   │   │   └── index-DJxF88JC.js
+│       │   │   ├── cursor_website
+│       │   │   │   ├── .DS_Store
+│       │   │   │   ├── about.html
+│       │   │   │   ├── contact.html
+│       │   │   │   ├── css
+│       │   │   │   │   └── style.css
+│       │   │   │   ├── images
+│       │   │   │   ├── index.html
+│       │   │   │   ├── js
+│       │   │   │   │   └── script.js
+│       │   │   │   ├── robots.txt
+│       │   │   │   ├── services.html
+│       │   │   │   └── sitemap.xml
+│       │   │   ├── index.html
+│       │   │   ├── Logosets
+│       │   │   │   ├── .DS_Store
+│       │   │   │   ├── Icon
+│       │   │   │   │   ├── Untitled design.png
+│       │   │   │   │   └── Untitled design.svg
+│       │   │   │   ├── logo_landscape
+│       │   │   │   │   ├── landscape_black_bg.png
+│       │   │   │   │   ├── landscape_transparent_white.png
+│       │   │   │   │   ├── landscape_transparent.png
+│       │   │   │   │   └── landscape_white_bg.png
+│       │   │   │   ├── logo_square
+│       │   │   │   │   ├── .DS_Store
+│       │   │   │   │   ├── square_black_bg.png
+│       │   │   │   │   ├── square_transparent_white.png
+│       │   │   │   │   ├── square_transparent.png
+│       │   │   │   │   └── square_white_bg.png
+│       │   │   │   ├── source
+│       │   │   │   │   └── logo_vector.svg
+│       │   │   │   └── USAGE_GUIDE.md
+│       │   │   └── vite.svg
+│       │   ├── portfolio.html
+│       │   ├── services.html
+│       │   ├── start-here.html
+│       │   └── Website Draft
+│       │       ├── about.html
+│       │       ├── BRANDED_FLOW_WEBSITE_BLUEPRINT.md
+│       │       ├── faq.html
+│       │       ├── index.html
+│       │       ├── main.js
+│       │       ├── package-lock.json
+│       │       ├── package.json
+│       │       └── style.css
+│       └── site
+│           ├── .cursorrules
+│           ├── .DS_Store
+│           ├── assets
+│           │   ├── index.html
+│           │   ├── logo-vector.svg
+│           │   ├── logo.png
+│           │   └── logo.svg
+│           ├── node_modules
+│           │   ├── .bin
+│           │   │   ├── esbuild -> ../esbuild/bin/esbuild
+│           │   │   ├── nanoid -> ../nanoid/bin/nanoid.cjs
+│           │   │   ├── rollup -> ../rollup/dist/bin/rollup
+│           │   │   └── vite -> ../vite/bin/vite.js
+│           │   ├── .DS_Store
+│           │   ├── .package-lock.json
+│           │   ├── .vite
+│           │   │   └── deps
+│           │   │       ├── _metadata.json
+│           │   │       └── package.json
+│           │   ├── @esbuild
+│           │   │   └── darwin-arm64
+│           │   │       ├── bin
+│           │   │       │   └── esbuild
+│           │   │       ├── package.json
+│           │   │       └── README.md
+│           │   ├── @rollup
+│           │   │   └── rollup-darwin-arm64
+│           │   │       ├── package.json
+│           │   │       ├── README.md
+│           │   │       └── rollup.darwin-arm64.node
+│           │   ├── @types
+│           │   │   └── estree
+│           │   │       ├── flow.d.ts
+│           │   │       ├── index.d.ts
+│           │   │       ├── LICENSE
+│           │   │       ├── package.json
+│           │   │       └── README.md
+│           │   ├── esbuild
+│           │   │   ├── .DS_Store
+│           │   │   ├── bin
+│           │   │   │   └── esbuild
+│           │   │   ├── install.js
+│           │   │   ├── lib
+│           │   │   │   ├── main.d.ts
+│           │   │   │   └── main.js
+│           │   │   ├── LICENSE.md
+│           │   │   ├── package.json
+│           │   │   └── README.md
+│           │   ├── fdir
+│           │   │   ├── dist
+│           │   │   │   ├── index.cjs
+│           │   │   │   ├── index.d.cts
+│           │   │   │   ├── index.d.mts
+│           │   │   │   └── index.mjs
+│           │   │   ├── LICENSE
+│           │   │   ├── package.json
+│           │   │   └── README.md
+│           │   ├── nanoid
+│           │   │   ├── .DS_Store
+│           │   │   ├── async
+│           │   │   │   ├── index.browser.cjs
+│           │   │   │   ├── index.browser.js
+│           │   │   │   ├── index.cjs
+│           │   │   │   ├── index.d.ts
+│           │   │   │   ├── index.js
+│           │   │   │   ├── index.native.js
+│           │   │   │   └── package.json
+│           │   │   ├── bin
+│           │   │   │   └── nanoid.cjs
+│           │   │   ├── index.browser.cjs
+│           │   │   ├── index.browser.js
+│           │   │   ├── index.cjs
+│           │   │   ├── index.d.cts
+│           │   │   ├── index.d.ts
+│           │   │   ├── index.js
+│           │   │   ├── LICENSE
+│           │   │   ├── nanoid.js
+│           │   │   ├── non-secure
+│           │   │   │   ├── index.cjs
+│           │   │   │   ├── index.d.ts
+│           │   │   │   ├── index.js
+│           │   │   │   └── package.json
+│           │   │   ├── package.json
+│           │   │   ├── README.md
+│           │   │   └── url-alphabet
+│           │   │       ├── index.cjs
+│           │   │       ├── index.js
+│           │   │       └── package.json
+│           │   ├── picocolors
+│           │   │   ├── LICENSE
+│           │   │   ├── package.json
+│           │   │   ├── picocolors.browser.js
+│           │   │   ├── picocolors.d.ts
+│           │   │   ├── picocolors.js
+│           │   │   ├── README.md
+│           │   │   └── types.d.ts
+│           │   ├── picomatch
+│           │   │   ├── index.js
+│           │   │   ├── lib
+│           │   │   │   ├── constants.js
+│           │   │   │   ├── parse.js
+│           │   │   │   ├── picomatch.js
+│           │   │   │   ├── scan.js
+│           │   │   │   └── utils.js
+│           │   │   ├── LICENSE
+│           │   │   ├── package.json
+│           │   │   ├── posix.js
+│           │   │   └── README.md
+│           │   ├── postcss
+│           │   │   ├── lib
+│           │   │   │   ├── at-rule.d.ts
+│           │   │   │   ├── at-rule.js
+│           │   │   │   ├── comment.d.ts
+│           │   │   │   ├── comment.js
+│           │   │   │   ├── container.d.ts
+│           │   │   │   ├── container.js
+│           │   │   │   ├── css-syntax-error.d.ts
+│           │   │   │   ├── css-syntax-error.js
+│           │   │   │   ├── declaration.d.ts
+│           │   │   │   ├── declaration.js
+│           │   │   │   ├── document.d.ts
+│           │   │   │   ├── document.js
+│           │   │   │   ├── fromJSON.d.ts
+│           │   │   │   ├── fromJSON.js
+│           │   │   │   ├── input.d.ts
+│           │   │   │   ├── input.js
+│           │   │   │   ├── lazy-result.d.ts
+│           │   │   │   ├── lazy-result.js
+│           │   │   │   ├── list.d.ts
+│           │   │   │   ├── list.js
+│           │   │   │   ├── map-generator.js
+│           │   │   │   ├── no-work-result.d.ts
+│           │   │   │   ├── no-work-result.js
+│           │   │   │   ├── node.d.ts
+│           │   │   │   ├── node.js
+│           │   │   │   ├── parse.d.ts
+│           │   │   │   ├── parse.js
+│           │   │   │   ├── parser.js
+│           │   │   │   ├── postcss.d.mts
+│           │   │   │   ├── postcss.d.ts
+│           │   │   │   ├── postcss.js
+│           │   │   │   ├── postcss.mjs
+│           │   │   │   ├── previous-map.d.ts
+│           │   │   │   ├── previous-map.js
+│           │   │   │   ├── processor.d.ts
+│           │   │   │   ├── processor.js
+│           │   │   │   ├── result.d.ts
+│           │   │   │   ├── result.js
+│           │   │   │   ├── root.d.ts
+│           │   │   │   ├── root.js
+│           │   │   │   ├── rule.d.ts
+│           │   │   │   ├── rule.js
+│           │   │   │   ├── stringifier.d.ts
+│           │   │   │   ├── stringifier.js
+│           │   │   │   ├── stringify.d.ts
+│           │   │   │   ├── stringify.js
+│           │   │   │   ├── symbols.js
+│           │   │   │   ├── terminal-highlight.js
+│           │   │   │   ├── tokenize.js
+│           │   │   │   ├── warn-once.js
+│           │   │   │   ├── warning.d.ts
+│           │   │   │   └── warning.js
+│           │   │   ├── LICENSE
+│           │   │   ├── package.json
+│           │   │   └── README.md
+│           │   ├── rollup
+│           │   │   ├── dist
+│           │   │   │   ├── bin
+│           │   │   │   │   └── rollup
+│           │   │   │   ├── es
+│           │   │   │   │   ├── getLogFilter.js
+│           │   │   │   │   ├── package.json
+│           │   │   │   │   ├── parseAst.js
+│           │   │   │   │   ├── rollup.js
+│           │   │   │   │   └── shared
+│           │   │   │   │       ├── node-entry.js
+│           │   │   │   │       ├── parseAst.js
+│           │   │   │   │       └── watch.js
+│           │   │   │   ├── getLogFilter.d.ts
+│           │   │   │   ├── getLogFilter.js
+│           │   │   │   ├── loadConfigFile.d.ts
+│           │   │   │   ├── loadConfigFile.js
+│           │   │   │   ├── native.js
+│           │   │   │   ├── parseAst.d.ts
+│           │   │   │   ├── parseAst.js
+│           │   │   │   ├── rollup.d.ts
+│           │   │   │   ├── rollup.js
+│           │   │   │   └── shared
+│           │   │   │       ├── fsevents-importer.js
+│           │   │   │       ├── index.js
+│           │   │   │       ├── loadConfigFile.js
+│           │   │   │       ├── parseAst.js
+│           │   │   │       ├── rollup.js
+│           │   │   │       ├── watch-cli.js
+│           │   │   │       └── watch.js
+│           │   │   ├── LICENSE.md
+│           │   │   ├── package.json
+│           │   │   └── README.md
+│           │   ├── source-map-js
+│           │   │   ├── lib
+│           │   │   │   ├── array-set.js
+│           │   │   │   ├── base64-vlq.js
+│           │   │   │   ├── base64.js
+│           │   │   │   ├── binary-search.js
+│           │   │   │   ├── mapping-list.js
+│           │   │   │   ├── quick-sort.js
+│           │   │   │   ├── source-map-consumer.d.ts
+│           │   │   │   ├── source-map-consumer.js
+│           │   │   │   ├── source-map-generator.d.ts
+│           │   │   │   ├── source-map-generator.js
+│           │   │   │   ├── source-node.d.ts
+│           │   │   │   ├── source-node.js
+│           │   │   │   └── util.js
+│           │   │   ├── LICENSE
+│           │   │   ├── package.json
+│           │   │   ├── README.md
+│           │   │   ├── source-map.d.ts
+│           │   │   └── source-map.js
+│           │   ├── tinyglobby
+│           │   │   ├── dist
+│           │   │   │   ├── index.cjs
+│           │   │   │   ├── index.d.cts
+│           │   │   │   ├── index.d.mts
+│           │   │   │   └── index.mjs
+│           │   │   ├── LICENSE
+│           │   │   ├── package.json
+│           │   │   └── README.md
+│           │   └── vite
+│           │       ├── .DS_Store
+│           │       ├── bin
+│           │       │   ├── openChrome.js
+│           │       │   └── vite.js
+│           │       ├── client.d.ts
+│           │       ├── dist
+│           │       │   ├── client
+│           │       │   │   ├── client.mjs
+│           │       │   │   └── env.mjs
+│           │       │   └── node
+│           │       │       ├── chunks
+│           │       │       │   ├── build.js
+│           │       │       │   ├── build2.js
+│           │       │       │   ├── chunk.js
+│           │       │       │   ├── config.js
+│           │       │       │   ├── config2.js
+│           │       │       │   ├── dist.js
+│           │       │       │   ├── lib.js
+│           │       │       │   ├── logger.js
+│           │       │       │   ├── moduleRunnerTransport.d.ts
+│           │       │       │   ├── optimizer.js
+│           │       │       │   ├── postcss-import.js
+│           │       │       │   ├── preview.js
+│           │       │       │   └── server.js
+│           │       │       ├── cli.js
+│           │       │       ├── index.d.ts
+│           │       │       ├── index.js
+│           │       │       ├── module-runner.d.ts
+│           │       │       └── module-runner.js
+│           │       ├── LICENSE.md
+│           │       ├── misc
+│           │       │   ├── false.js
+│           │       │   └── true.js
+│           │       ├── package.json
+│           │       ├── README.md
+│           │       └── types
+│           │           ├── customEvent.d.ts
+│           │           ├── hmrPayload.d.ts
+│           │           ├── hot.d.ts
+│           │           ├── import-meta.d.ts
+│           │           ├── importGlob.d.ts
+│           │           ├── importMeta.d.ts
+│           │           ├── internal
+│           │           │   ├── cssPreprocessorOptions.d.ts
+│           │           │   ├── lightningcssOptions.d.ts
+│           │           │   └── terserOptions.d.ts
+│           │           ├── metadata.d.ts
+│           │           └── package.json
+│           ├── public
+│           │   ├── .DS_Store
+│           │   ├── client-images
+│           │   │   ├── .DS_Store
+│           │   │   ├── BDBF199E-1220-4155-B62B-749A24C7C03A.webp
+│           │   │   ├── IMG_0463.webp
+│           │   │   ├── IMG_0464.webp
+│           │   │   ├── IMG_0465.webp
+│           │   │   ├── IMG_0466.webp
+│           │   │   ├── IMG_0467.webp
+│           │   │   ├── IMG_0468.webp
+│           │   │   ├── IMG_0469.webp
+│           │   │   ├── IMG_0470.webp
+│           │   │   ├── IMG_0471.webp
+│           │   │   ├── IMG_0472.webp
+│           │   │   ├── IMG_0473.webp
+│           │   │   ├── IMG_0474.webp
+│           │   │   ├── IMG_0475.webp
+│           │   │   ├── IMG_0476.webp
+│           │   │   ├── IMG_0477.webp
+│           │   │   ├── IMG_0478.webp
+│           │   │   ├── IMG_0479.webp
+│           │   │   ├── IMG_0480.webp
+│           │   │   ├── IMG_0481.webp
+│           │   │   ├── IMG_0482.webp
+│           │   │   ├── IMG_0483.webp
+│           │   │   ├── IMG_0484.webp
+│           │   │   ├── IMG_0485.webp
+│           │   │   ├── IMG_0486.webp
+│           │   │   ├── IMG_0487.webp
+│           │   │   ├── IMG_0488.webp
+│           │   │   ├── IMG_0489.webp
+│           │   │   ├── IMG_0491.webp
+│           │   │   ├── IMG_0492.webp
+│           │   │   ├── IMG_0493.webp
+│           │   │   ├── IMG_0494.webp
+│           │   │   ├── IMG_0560.webp
+│           │   │   ├── IMG_0563.webp
+│           │   │   ├── IMG_0564.webp
+│           │   │   ├── IMG_0566.webp
+│           │   │   ├── IMG_0571.webp
+│           │   │   ├── IMG_0572.webp
+│           │   │   ├── IMG_0573.webp
+│           │   │   └── IMG_0575.webp
+│           │   ├── fonts
+│           │   │   ├── OpenSauceSans-Bold.ttf
+│           │   │   ├── OpenSauceSans-Light.ttf
+│           │   │   └── OpenSauceSans-Regular.ttf
+│           │   ├── Logosets
+│           │   │   ├── .DS_Store
+│           │   │   ├── Icon
+│           │   │   │   ├── Untitled design.png
+│           │   │   │   └── Untitled design.svg
+│           │   │   ├── logo_landscape
+│           │   │   │   ├── landscape_black_bg.png
+│           │   │   │   ├── landscape_transparent_white.png
+│           │   │   │   ├── landscape_transparent.png
+│           │   │   │   └── landscape_white_bg.png
+│           │   │   ├── logo_square
+│           │   │   │   ├── .DS_Store
+│           │   │   │   ├── square_black_bg.png
+│           │   │   │   ├── square_transparent_white.png
+│           │   │   │   ├── square_transparent.png
+│           │   │   │   └── square_white_bg.png
+│           │   │   ├── source
+│           │   │   │   └── logo_vector.svg
+│           │   │   └── USAGE_GUIDE.md
+│           │   └── vite.svg
+│           ├── relume
+│           │   ├── .cursorrules
+│           │   ├── .DS_Store
+│           │   ├── about-us
+│           │   │   └── index.html
+│           │   ├── blog-post
+│           │   │   └── index.html
+│           │   ├── contact-us
+│           │   │   └── index.html
+│           │   ├── faq
+│           │   │   └── index.html
+│           │   ├── home
+│           │   │   └── index.html
+│           │   ├── portfolio
+│           │   │   └── index.html
+│           │   └── services
+│           │       └── index.html
+│           ├── src
+│           │   ├── counter.js
+│           │   ├── javascript.svg
+│           │   ├── main.js
+│           │   └── styles
+│           │       └── global.css
+│           └── style.css
+├── dailyops_error.log
+├── dailyops.log
+├── docs
+│   ├── .DS_Store
+│   ├── archive
+│   │   ├── AIRTABLE_PROJECT_BRIEF_SETUP.md
+│   │   ├── automation_branding_prompt_library.pdf
+│   │   ├── BRANDED_FLOW_MASTER_GUIDE.md
+│   │   ├── CHATGPT_INSTRUCTIONS.md
+│   │   ├── CLIENT_DELIVERY_CHECKLIST.md
+│   │   ├── DAILY_PRIORITIES_SHEET.md
+│   │   ├── DAILY_STARTUP_ROUTINE.md
+│   │   ├── FINANCIALS_WORKSHEET.md
+│   │   ├── PRICING_AND_SERVICES.md
+│   │   ├── README.txt
+│   │   ├── RULES.md
+│   │   └── WEEKLY_PLANNING_SESSION.md
+│   ├── automation-library
+│   │   ├── .DS_Store
+│   │   ├── client-mcps
+│   │   ├── internal-workflows
+│   │   ├── mcp-reference
+│   │   │   ├── MCP_COMPLETE_BREAKDOWN.md
+│   │   │   ├── MCP_INDEX.md
+│   │   │   ├── MCP_QUICK_REFERENCE.md
+│   │   │   └── MCP_USER_GUIDE.md
+│   │   ├── README.txt
+│   │   └── RULES.md
+│   ├── incoming
+│   ├── internal
+│   │   ├── AI_RULES.md
+│   │   ├── API_SETUP_STATUS_CHECK.md
+│   │   ├── AUTO_COMMIT_SETUP_COMPLETE.md
+│   │   ├── AUTO_COMMIT_SYSTEM.md
+│   │   ├── AUTOMATION_LIBRARY_FIX_COMPLETE.md
+│   │   ├── CLIENT_STATUS.md
+│   │   ├── COMMIT_ISSUE_DIAGNOSIS.md
+│   │   ├── COMMIT_SAFETY_EXPLANATION.md
+│   │   ├── COMPLETE_ENV_SETUP.md
+│   │   ├── COMPLETE_VISIBILITY_SYSTEM.md
+│   │   ├── COMPLETE_WORKFLOW_AUDIT.md
+│   │   ├── CONFLICT_DETECTION_AND_CHECKBOXES.md
+│   │   ├── CONTEXT.md
+│   │   ├── CRITICAL_FILES_EXPLANATION.md
+│   │   ├── CURSOR_COMMIT_PULL_ISSUE.md
+│   │   ├── CURSOR_FILE_REVIEW_EXPLANATION.md
+│   │   ├── DAILY_OPS_CODE_REVIEW.md
+│   │   ├── DAILY_OPS_COMPLETE_EXPLANATION.md
+│   │   ├── DAILY_OPS_DESKTOP_DISPLAY.md
+│   │   ├── DAILY_OPS_FULL_EXPLANATION.md
+│   │   ├── DASHBOARD_WHAT_YOU_SEE.md
+│   │   ├── DECISIONS_LOG (1).md
+│   │   ├── ENV_FILE_CREATED.md
+│   │   ├── ESSENTIAL_API_KEYS_FOR_YOUR_BUSINESS.md
+│   │   ├── FILE_CLEANUP_SYSTEM.md
+│   │   ├── FILE_UPDATE_CONCERNS.md
+│   │   ├── FILE_UPDATE_SAFETY.md
+│   │   ├── FOLDER_CLEANUP_COMPLETE.md
+│   │   ├── FOLDER_PURPOSES.md
+│   │   ├── FOLDER_STRUCTURE_AUDIT.md
+│   │   ├── FOLDER_STRUCTURE_CLEANUP_PLAN.md
+│   │   ├── FOLDER_STRUCTURE_ISSUES.md
+│   │   ├── FOUNDATIONAL_DOC_UPDATES.md
+│   │   ├── GIT_COMMIT_SYSTEM_EXPLAINED.md
+│   │   ├── GIT_COMMIT_SYSTEM.md
+│   │   ├── GITHUB_API_PERMISSIONS.md
+│   │   ├── HANDLING_CONFLICTING_CHATS.md
+│   │   ├── HOW_DAILY_OPS_WORKS.md
+│   │   ├── HOW_FILES_GET_UPDATED.md
+│   │   ├── HOW_TO_FIND_AIRTABLE_BASE_ID.md
+│   │   ├── HOW_TO_FIND_NETLIFY_SITE_ID.md
+│   │   ├── HOW_TO_GET_OUTLOOK_API.md
+│   │   ├── HOW_TO_GET_PANDADOC_API.md
+│   │   ├── HOW_TO_USE_MCP_SERVER_WITH_CURSOR.md
+│   │   ├── INIT (2).md
+│   │   ├── MASTER_RULES_EXPLANATION.md
+│   │   ├── MASTER_RULES_QUICK.md
+│   │   ├── MASTER_RULES.md
+│   │   ├── MCP_API_SETUP_GUIDE.md
+│   │   ├── MORNING_WORKFLOW.md
+│   │   ├── MY_UNREGULATED_RECOMMENDATIONS.md
+│   │   ├── NETLIFY_CMS_REQUIREMENT.md
+│   │   ├── NETLIFY_SITE_ID_QUICK_FIX.md
+│   │   ├── OUTLOOK_CLIENT_ID_EXPLANATION.md
+│   │   ├── OUTLOOK_DELEGATED_VS_APPLICATION_PERMISSIONS.md
+│   │   ├── OUTLOOK_REDIRECT_URI_TYPE.md
+│   │   ├── OUTLOOK_REFRESH_TOKEN_SCRIPT.md
+│   │   ├── PORT_4000_IN_USE_FIX.md
+│   │   ├── PROTECTED_FILES_SYSTEM.md
+│   │   ├── README.md
+│   │   ├── README.txt
+│   │   ├── RULES.md
+│   │   ├── SELF_ANNEALING_VISIBILITY.md
+│   │   ├── SERVER_ENV_VS_CLIENT_PROFILES.md
+│   │   ├── SYSTEMS_EXPLAINED.md
+│   │   ├── TEST_RESULTS.md
+│   │   ├── WALLPAPER_UPDATES.md
+│   │   ├── WHAT_JUST_HAPPENED.md
+│   │   ├── WHICH_SERVICES_NEED_API_KEYS.md
+│   │   ├── WHY_COMMIT_BUTTON_KEPT_SHOWING.md
+│   │   ├── WORLD_CLASS_AUDIT.md
+│   │   └── YOUR_WORKFLOW_CONFIRMED.md
+│   ├── processes
+│   │   ├── BRANDED_FLOW_OPERATIONS_MANUAL (2).md
+│   │   ├── CLAUDE_CODE_WEBSITE_PROMPTS.md
+│   │   ├── HOW_TO_USE_CLAUDE_CODE.md
+│   │   ├── README.txt
+│   │   ├── RULES.md
+│   │   ├── STATIC_WEBSITE_CREATION_GUIDE.md
+│   │   └── WEBSITE_DEPLOYMENT_STRUCTURE.md
+│   ├── README.txt
+│   ├── reference
+│   │   ├── AI_RULES_REFERENCE_ONLY.md
+│   │   ├── BRAND_DIRECTIVE.md
+│   │   ├── BRAND_PHILOSOPHY.md
+│   │   ├── GLOBAL_CONFIGURATION_STATUS.md
+│   │   ├── HOMEPAGE_COPY.md
+│   │   ├── MASTER_RULES_QUICK_REFERENCE_ONLY.md
+│   │   ├── MASTER_RULES_REFERENCE_ONLY.md
+│   │   ├── README.md
+│   │   └── UNIVERSAL_CLIENT_DIRECTIVE.md
+│   ├── RULES.md
+│   ├── tech-stack
+│   └── training
+│       ├── AI_WORKFLOW_GUIDE (1).md
+│       ├── EMPLOYEE_ONBOARDING.md
+│       ├── MASTER_BRAND_GUIDE.md
+│       ├── MULTI_USER_WORKFLOW.md
+│       ├── QUICK_STARTS.md
+│       ├── README.txt
+│       └── RULES.md
+├── structure.txt
+├── systems
+│   ├── .cursor
+│   ├── .cursorrules
+│   ├── .DS_Store
+│   ├── .vscode
+│   │   └── settings.json
+│   ├── automation-engine
+│   │   ├── .DS_Store
+│   │   ├── apply_updates.py
+│   │   ├── archive_cleanup.py
+│   │   ├── archive_manager.py
+│   │   ├── auto_commit.py
+│   │   ├── chat_ingest.py
+│   │   ├── chat_parser.py
+│   │   ├── client_activity.py
+│   │   ├── conflict_detector.py
+│   │   ├── context_builder.py
+│   │   ├── conversation_digest.py
+│   │   ├── daily_ops_engine.py
+│   │   ├── daily_summary.py
+│   │   ├── dashboard_builder.py
+│   │   ├── dashboard_utils.py
+│   │   ├── decision_extractor.py
+│   │   ├── decision_versioning.py
+│   │   ├── diff_utils.py
+│   │   ├── file_cleanup.py
+│   │   ├── file_router.py
+│   │   ├── file_utils.py
+│   │   ├── format_detector.py
+│   │   ├── foundational_doc_updater.py
+│   │   ├── git_commit_manager.py
+│   │   ├── git_simulator.py
+│   │   ├── health_check.py
+│   │   ├── inbox_processor.py
+│   │   ├── log_ingest.py
+│   │   ├── maintenance_agent.py
+│   │   ├── maintenance_config.json
+│   │   ├── metrics_collector.py
+│   │   ├── note_extractor.py
+│   │   ├── ops_config.py
+│   │   ├── priority_engine.py
+│   │   ├── protected_files.py
+│   │   ├── reminder_engine.py
+│   │   ├── RULES.md
+│   │   ├── run_daily.py
+│   │   ├── run_daily.sh
+│   │   ├── run_maintenance.py
+│   │   ├── run_weekly.sh
+│   │   ├── schedules
+│   │   │   ├── daily_runner.sh
+│   │   │   └── weekly_runner.sh
+│   │   ├── set_wallpaper.py
+│   │   ├── status_tracker.py
+│   │   ├── summary_engine.py
+│   │   ├── system_change_detector.py
+│   │   ├── task_extractor.py
+│   │   ├── text_normalizer.py
+│   │   ├── time_utils.py
+│   │   ├── unfinished_extractor.py
+│   │   ├── wallpaper_builder.py
+│   │   ├── weekly_summary.py
+│   │   ├── write_decisions.py
+│   │   ├── write_notes.py
+│   │   └── write_tasks.py
+│   ├── automation-system
+│   │   └── logs
+│   │       ├── morning.error.log
+│   │       └── morning.log
+│   ├── context-automation
+│   │   ├── check_context.sh
+│   │   ├── context_dashboard.html
+│   │   ├── context_manager.py
+│   │   ├── git-hooks
+│   │   │   └── pre-commit
+│   │   ├── prompt_checklist.sh
+│   │   ├── README.md
+│   │   ├── run.command
+│   │   ├── status.json
+│   │   └── update_and_open.sh
+│   ├── context-engine
+│   │   └── RULES.md
+│   ├── daily-accountability
+│   │   ├── .DS_Store
+│   │   ├── active_work.json
+│   │   ├── BRANDED_SYSTEM_COMPLETE.md
+│   │   ├── com.brandedflow.evening.plist
+│   │   ├── com.brandedflow.morning.plist
+│   │   ├── com.brandedflow.priority.plist
+│   │   ├── evening_shutdown.py
+│   │   ├── INSTALL.md
+│   │   ├── install.sh
+│   │   ├── morning_routine_v2.py
+│   │   ├── morning_routine.py
+│   │   ├── priority_suggester.py
+│   │   ├── priority_tracker.py
+│   │   ├── README.md
+│   │   ├── SCHEDULE_AND_TRIGGERS.md
+│   │   ├── UPDATES_V3.md
+│   │   ├── UPDATES.md
+│   │   └── V2_SMART_SUGGESTIONS.md
+│   ├── dashboard
+│   │   ├── .DS_Store
+│   │   ├── data
+│   │   │   ├── weekly_history.py
+│   │   │   └── weekly_trends.py
+│   │   ├── history
+│   │   ├── html
+│   │   │   ├── components.html
+│   │   │   ├── index.html
+│   │   │   ├── ops_components.html
+│   │   │   ├── ops_logic.js
+│   │   │   ├── render_dashboard.py
+│   │   │   ├── scripts.js
+│   │   │   ├── style.css
+│   │   │   └── weekly.html
+│   │   ├── ops_controller.py
+│   │   ├── README.txt
+│   │   ├── RULES.md
+│   │   └── wallpaper
+│   │       ├── build_wallpaper.py
+│   │       ├── full_wallpaper_builder.py
+│   │       ├── render_wallpaper.py
+│   │       ├── template.json
+│   │       ├── wallpaper_utils.py
+│   │       └── wallpaper.png
+│   ├── doe-engine
+│   │   ├── .DS_Store
+│   │   ├── AI_SELF_ANNEALING_RULES.md
+│   │   ├── AI_WORK_LOGGING_RULES.md
+│   │   ├── check-doe.sh
+│   │   ├── client-profile-system.md
+│   │   ├── conflict-resolution-guide.md
+│   │   ├── directives
+│   │   │   ├── .template.md
+│   │   │   ├── build-branded-flow-website.md
+│   │   │   ├── build-client-website.md
+│   │   │   ├── build-company-website.md
+│   │   │   ├── create-and-send-proposal.md
+│   │   │   ├── create-client-proposal.md
+│   │   │   ├── create-client-website-stepped.md
+│   │   │   ├── handle-client-videos.md
+│   │   │   ├── organize-documentation.md
+│   │   │   ├── setup-ai-receptionist.md
+│   │   │   ├── setup-client-onboarding.md
+│   │   │   ├── setup-crm-pipeline.md
+│   │   │   ├── setup-email-marketing.md
+│   │   │   └── setup-lead-magnet-automation.md
+│   │   ├── execution
+│   │   │   └── upload-videos-cloudinary.js
+│   │   ├── gemini.md
+│   │   ├── handling-variations.md
+│   │   ├── learning-and-evolution.md
+│   │   ├── log-self-annealing.js
+│   │   ├── mcp-decision-framework.md
+│   │   ├── mcp-file-structure.md
+│   │   ├── pre-flight.md
+│   │   ├── SELF_ANNEALING_PROCESS.md
+│   │   └── self-annealing-notification.md
+│   ├── flow-from-mortgage-leads
+│   │   ├── AUTOMATED_SETUP.md
+│   │   ├── QUICKSTART.md
+│   │   └── README.md
+│   ├── logs
+│   │   ├── maintenance_daily_error.log
+│   │   ├── maintenance_daily.log
+│   │   ├── maintenance_weekly_error.log
+│   │   └── maintenance_weekly.log
+│   ├── mcp-server
+│   │   ├── .DS_Store
+│   │   ├── .env
+│   │   ├── .gitignore
+│   │   ├── automations
+│   │   │   ├── copy-website-template.js
+│   │   │   ├── create-client-folder.js
+│   │   │   ├── extract-client-info.js
+│   │   │   ├── process-mortgage-lead.js
+│   │   │   └── setup-mortgage-lead-workflow.js
+│   │   ├── get-outlook-refresh-token.js
+│   │   ├── index.js
+│   │   ├── logs
+│   │   │   ├── dailyops_error.log
+│   │   │   ├── dailyops.log
+│   │   │   ├── evening.error.log
+│   │   │   ├── evening.log
+│   │   │   ├── maintenance_daily_error.log
+│   │   │   ├── maintenance_daily.log
+│   │   │   ├── maintenance_weekly_error.log
+│   │   │   ├── maintenance_weekly.log
+│   │   │   ├── morning.error.log
+│   │   │   ├── morning.log
+│   │   │   ├── priority.error.log
+│   │   │   └── priority.log
+│   │   ├── MORTGAGE_LEAD_SETUP.md
+│   │   ├── n8n-mortgage-lead-workflow.json
+│   │   ├── node_modules
+│   │   │   ├── .bin
+│   │   │   │   ├── mime -> ../mime/cli.js
+│   │   │   │   ├── nodemon -> ../nodemon/bin/nodemon.js
+│   │   │   │   ├── nodetouch -> ../touch/bin/nodetouch.js
+│   │   │   │   └── semver -> ../semver/bin/semver.js
+│   │   │   ├── .package-lock.json
+│   │   │   ├── accepts
+│   │   │   │   ├── HISTORY.md
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   └── README.md
+│   │   │   ├── anymatch
+│   │   │   │   ├── index.d.ts
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   └── README.md
+│   │   │   ├── array-flatten
+│   │   │   │   ├── array-flatten.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   └── README.md
+│   │   │   ├── asynckit
+│   │   │   │   ├── bench.js
+│   │   │   │   ├── index.js
+│   │   │   │   ├── lib
+│   │   │   │   │   ├── abort.js
+│   │   │   │   │   ├── async.js
+│   │   │   │   │   ├── defer.js
+│   │   │   │   │   ├── iterate.js
+│   │   │   │   │   ├── readable_asynckit.js
+│   │   │   │   │   ├── readable_parallel.js
+│   │   │   │   │   ├── readable_serial_ordered.js
+│   │   │   │   │   ├── readable_serial.js
+│   │   │   │   │   ├── state.js
+│   │   │   │   │   ├── streamify.js
+│   │   │   │   │   └── terminator.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   ├── parallel.js
+│   │   │   │   ├── README.md
+│   │   │   │   ├── serial.js
+│   │   │   │   ├── serialOrdered.js
+│   │   │   │   └── stream.js
+│   │   │   ├── axios
+│   │   │   │   ├── CHANGELOG.md
+│   │   │   │   ├── dist
+│   │   │   │   │   ├── axios.js
+│   │   │   │   │   ├── axios.js.map
+│   │   │   │   │   ├── axios.min.js
+│   │   │   │   │   ├── axios.min.js.map
+│   │   │   │   │   ├── browser
+│   │   │   │   │   │   ├── axios.cjs
+│   │   │   │   │   │   └── axios.cjs.map
+│   │   │   │   │   ├── esm
+│   │   │   │   │   │   ├── axios.js
+│   │   │   │   │   │   ├── axios.js.map
+│   │   │   │   │   │   ├── axios.min.js
+│   │   │   │   │   │   └── axios.min.js.map
+│   │   │   │   │   └── node
+│   │   │   │   │       ├── axios.cjs
+│   │   │   │   │       └── axios.cjs.map
+│   │   │   │   ├── index.d.cts
+│   │   │   │   ├── index.d.ts
+│   │   │   │   ├── index.js
+│   │   │   │   ├── lib
+│   │   │   │   │   ├── adapters
+│   │   │   │   │   │   ├── adapters.js
+│   │   │   │   │   │   ├── fetch.js
+│   │   │   │   │   │   ├── http.js
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   └── xhr.js
+│   │   │   │   │   ├── axios.js
+│   │   │   │   │   ├── cancel
+│   │   │   │   │   │   ├── CanceledError.js
+│   │   │   │   │   │   ├── CancelToken.js
+│   │   │   │   │   │   └── isCancel.js
+│   │   │   │   │   ├── core
+│   │   │   │   │   │   ├── Axios.js
+│   │   │   │   │   │   ├── AxiosError.js
+│   │   │   │   │   │   ├── AxiosHeaders.js
+│   │   │   │   │   │   ├── buildFullPath.js
+│   │   │   │   │   │   ├── dispatchRequest.js
+│   │   │   │   │   │   ├── InterceptorManager.js
+│   │   │   │   │   │   ├── mergeConfig.js
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   ├── settle.js
+│   │   │   │   │   │   └── transformData.js
+│   │   │   │   │   ├── defaults
+│   │   │   │   │   │   ├── index.js
+│   │   │   │   │   │   └── transitional.js
+│   │   │   │   │   ├── env
+│   │   │   │   │   │   ├── classes
+│   │   │   │   │   │   │   └── FormData.js
+│   │   │   │   │   │   ├── data.js
+│   │   │   │   │   │   └── README.md
+│   │   │   │   │   ├── helpers
+│   │   │   │   │   │   ├── AxiosTransformStream.js
+│   │   │   │   │   │   ├── AxiosURLSearchParams.js
+│   │   │   │   │   │   ├── bind.js
+│   │   │   │   │   │   ├── buildURL.js
+│   │   │   │   │   │   ├── callbackify.js
+│   │   │   │   │   │   ├── combineURLs.js
+│   │   │   │   │   │   ├── composeSignals.js
+│   │   │   │   │   │   ├── cookies.js
+│   │   │   │   │   │   ├── deprecatedMethod.js
+│   │   │   │   │   │   ├── estimateDataURLDecodedBytes.js
+│   │   │   │   │   │   ├── formDataToJSON.js
+│   │   │   │   │   │   ├── formDataToStream.js
+│   │   │   │   │   │   ├── fromDataURI.js
+│   │   │   │   │   │   ├── HttpStatusCode.js
+│   │   │   │   │   │   ├── isAbsoluteURL.js
+│   │   │   │   │   │   ├── isAxiosError.js
+│   │   │   │   │   │   ├── isURLSameOrigin.js
+│   │   │   │   │   │   ├── null.js
+│   │   │   │   │   │   ├── parseHeaders.js
+│   │   │   │   │   │   ├── parseProtocol.js
+│   │   │   │   │   │   ├── progressEventReducer.js
+│   │   │   │   │   │   ├── readBlob.js
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   ├── resolveConfig.js
+│   │   │   │   │   │   ├── speedometer.js
+│   │   │   │   │   │   ├── spread.js
+│   │   │   │   │   │   ├── throttle.js
+│   │   │   │   │   │   ├── toFormData.js
+│   │   │   │   │   │   ├── toURLEncodedForm.js
+│   │   │   │   │   │   ├── trackStream.js
+│   │   │   │   │   │   ├── validator.js
+│   │   │   │   │   │   └── ZlibHeaderTransformStream.js
+│   │   │   │   │   ├── platform
+│   │   │   │   │   │   ├── browser
+│   │   │   │   │   │   │   ├── classes
+│   │   │   │   │   │   │   │   ├── Blob.js
+│   │   │   │   │   │   │   │   ├── FormData.js
+│   │   │   │   │   │   │   │   └── URLSearchParams.js
+│   │   │   │   │   │   │   └── index.js
+│   │   │   │   │   │   ├── common
+│   │   │   │   │   │   │   └── utils.js
+│   │   │   │   │   │   ├── index.js
+│   │   │   │   │   │   └── node
+│   │   │   │   │   │       ├── classes
+│   │   │   │   │   │       │   ├── FormData.js
+│   │   │   │   │   │       │   └── URLSearchParams.js
+│   │   │   │   │   │       └── index.js
+│   │   │   │   │   └── utils.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── MIGRATION_GUIDE.md
+│   │   │   │   ├── package.json
+│   │   │   │   └── README.md
+│   │   │   ├── balanced-match
+│   │   │   │   ├── .github
+│   │   │   │   │   └── FUNDING.yml
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE.md
+│   │   │   │   ├── package.json
+│   │   │   │   └── README.md
+│   │   │   ├── binary-extensions
+│   │   │   │   ├── binary-extensions.json
+│   │   │   │   ├── binary-extensions.json.d.ts
+│   │   │   │   ├── index.d.ts
+│   │   │   │   ├── index.js
+│   │   │   │   ├── license
+│   │   │   │   ├── package.json
+│   │   │   │   └── readme.md
+│   │   │   ├── body-parser
+│   │   │   │   ├── HISTORY.md
+│   │   │   │   ├── index.js
+│   │   │   │   ├── lib
+│   │   │   │   │   ├── read.js
+│   │   │   │   │   └── types
+│   │   │   │   │       ├── json.js
+│   │   │   │   │       ├── raw.js
+│   │   │   │   │       ├── text.js
+│   │   │   │   │       └── urlencoded.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   └── README.md
+│   │   │   ├── brace-expansion
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   └── README.md
+│   │   │   ├── braces
+│   │   │   │   ├── index.js
+│   │   │   │   ├── lib
+│   │   │   │   │   ├── compile.js
+│   │   │   │   │   ├── constants.js
+│   │   │   │   │   ├── expand.js
+│   │   │   │   │   ├── parse.js
+│   │   │   │   │   ├── stringify.js
+│   │   │   │   │   └── utils.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   └── README.md
+│   │   │   ├── bytes
+│   │   │   │   ├── History.md
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   └── Readme.md
+│   │   │   ├── call-bind-apply-helpers
+│   │   │   │   ├── .eslintrc
+│   │   │   │   ├── .github
+│   │   │   │   │   └── FUNDING.yml
+│   │   │   │   ├── .nycrc
+│   │   │   │   ├── actualApply.d.ts
+│   │   │   │   ├── actualApply.js
+│   │   │   │   ├── applyBind.d.ts
+│   │   │   │   ├── applyBind.js
+│   │   │   │   ├── CHANGELOG.md
+│   │   │   │   ├── functionApply.d.ts
+│   │   │   │   ├── functionApply.js
+│   │   │   │   ├── functionCall.d.ts
+│   │   │   │   ├── functionCall.js
+│   │   │   │   ├── index.d.ts
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   ├── README.md
+│   │   │   │   ├── reflectApply.d.ts
+│   │   │   │   ├── reflectApply.js
+│   │   │   │   ├── test
+│   │   │   │   │   └── index.js
+│   │   │   │   └── tsconfig.json
+│   │   │   ├── call-bound
+│   │   │   │   ├── .eslintrc
+│   │   │   │   ├── .github
+│   │   │   │   │   └── FUNDING.yml
+│   │   │   │   ├── .nycrc
+│   │   │   │   ├── CHANGELOG.md
+│   │   │   │   ├── index.d.ts
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   ├── README.md
+│   │   │   │   ├── test
+│   │   │   │   │   └── index.js
+│   │   │   │   └── tsconfig.json
+│   │   │   ├── chokidar
+│   │   │   │   ├── index.js
+│   │   │   │   ├── lib
+│   │   │   │   │   ├── constants.js
+│   │   │   │   │   ├── fsevents-handler.js
+│   │   │   │   │   └── nodefs-handler.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   ├── README.md
+│   │   │   │   └── types
+│   │   │   │       └── index.d.ts
+│   │   │   ├── combined-stream
+│   │   │   │   ├── lib
+│   │   │   │   │   └── combined_stream.js
+│   │   │   │   ├── License
+│   │   │   │   ├── package.json
+│   │   │   │   ├── Readme.md
+│   │   │   │   └── yarn.lock
+│   │   │   ├── concat-map
+│   │   │   │   ├── .travis.yml
+│   │   │   │   ├── example
+│   │   │   │   │   └── map.js
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   ├── README.markdown
+│   │   │   │   └── test
+│   │   │   │       └── map.js
+│   │   │   ├── content-disposition
+│   │   │   │   ├── HISTORY.md
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   └── README.md
+│   │   │   ├── content-type
+│   │   │   │   ├── HISTORY.md
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   └── README.md
+│   │   │   ├── cookie
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   ├── README.md
+│   │   │   │   └── SECURITY.md
+│   │   │   ├── cookie-signature
+│   │   │   │   ├── History.md
+│   │   │   │   ├── index.js
+│   │   │   │   ├── package.json
+│   │   │   │   └── Readme.md
+│   │   │   ├── debug
+│   │   │   │   ├── .coveralls.yml
+│   │   │   │   ├── .eslintrc
+│   │   │   │   ├── .npmignore
+│   │   │   │   ├── .travis.yml
+│   │   │   │   ├── CHANGELOG.md
+│   │   │   │   ├── component.json
+│   │   │   │   ├── karma.conf.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── Makefile
+│   │   │   │   ├── node.js
+│   │   │   │   ├── package.json
+│   │   │   │   ├── README.md
+│   │   │   │   └── src
+│   │   │   │       ├── browser.js
+│   │   │   │       ├── debug.js
+│   │   │   │       ├── index.js
+│   │   │   │       ├── inspector-log.js
+│   │   │   │       └── node.js
+│   │   │   ├── delayed-stream
+│   │   │   │   ├── .npmignore
+│   │   │   │   ├── lib
+│   │   │   │   │   └── delayed_stream.js
+│   │   │   │   ├── License
+│   │   │   │   ├── Makefile
+│   │   │   │   ├── package.json
+│   │   │   │   └── Readme.md
+│   │   │   ├── depd
+│   │   │   │   ├── History.md
+│   │   │   │   ├── index.js
+│   │   │   │   ├── lib
+│   │   │   │   │   └── browser
+│   │   │   │   │       └── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   └── Readme.md
+│   │   │   ├── destroy
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   └── README.md
+│   │   │   ├── dotenv
+│   │   │   │   ├── CHANGELOG.md
+│   │   │   │   ├── config.d.ts
+│   │   │   │   ├── config.js
+│   │   │   │   ├── lib
+│   │   │   │   │   ├── cli-options.js
+│   │   │   │   │   ├── env-options.js
+│   │   │   │   │   ├── main.d.ts
+│   │   │   │   │   └── main.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   ├── README-es.md
+│   │   │   │   ├── README.md
+│   │   │   │   └── SECURITY.md
+│   │   │   ├── dunder-proto
+│   │   │   │   ├── .eslintrc
+│   │   │   │   ├── .github
+│   │   │   │   │   └── FUNDING.yml
+│   │   │   │   ├── .nycrc
+│   │   │   │   ├── CHANGELOG.md
+│   │   │   │   ├── get.d.ts
+│   │   │   │   ├── get.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   ├── README.md
+│   │   │   │   ├── set.d.ts
+│   │   │   │   ├── set.js
+│   │   │   │   ├── test
+│   │   │   │   │   ├── get.js
+│   │   │   │   │   ├── index.js
+│   │   │   │   │   └── set.js
+│   │   │   │   └── tsconfig.json
+│   │   │   ├── ee-first
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   └── README.md
+│   │   │   ├── encodeurl
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   └── README.md
+│   │   │   ├── es-define-property
+│   │   │   │   ├── .eslintrc
+│   │   │   │   ├── .github
+│   │   │   │   │   └── FUNDING.yml
+│   │   │   │   ├── .nycrc
+│   │   │   │   ├── CHANGELOG.md
+│   │   │   │   ├── index.d.ts
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   ├── README.md
+│   │   │   │   ├── test
+│   │   │   │   │   └── index.js
+│   │   │   │   └── tsconfig.json
+│   │   │   ├── es-errors
+│   │   │   │   ├── .eslintrc
+│   │   │   │   ├── .github
+│   │   │   │   │   └── FUNDING.yml
+│   │   │   │   ├── CHANGELOG.md
+│   │   │   │   ├── eval.d.ts
+│   │   │   │   ├── eval.js
+│   │   │   │   ├── index.d.ts
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   ├── range.d.ts
+│   │   │   │   ├── range.js
+│   │   │   │   ├── README.md
+│   │   │   │   ├── ref.d.ts
+│   │   │   │   ├── ref.js
+│   │   │   │   ├── syntax.d.ts
+│   │   │   │   ├── syntax.js
+│   │   │   │   ├── test
+│   │   │   │   │   └── index.js
+│   │   │   │   ├── tsconfig.json
+│   │   │   │   ├── type.d.ts
+│   │   │   │   ├── type.js
+│   │   │   │   ├── uri.d.ts
+│   │   │   │   └── uri.js
+│   │   │   ├── es-object-atoms
+│   │   │   │   ├── .eslintrc
+│   │   │   │   ├── .github
+│   │   │   │   │   └── FUNDING.yml
+│   │   │   │   ├── CHANGELOG.md
+│   │   │   │   ├── index.d.ts
+│   │   │   │   ├── index.js
+│   │   │   │   ├── isObject.d.ts
+│   │   │   │   ├── isObject.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   ├── README.md
+│   │   │   │   ├── RequireObjectCoercible.d.ts
+│   │   │   │   ├── RequireObjectCoercible.js
+│   │   │   │   ├── test
+│   │   │   │   │   └── index.js
+│   │   │   │   ├── ToObject.d.ts
+│   │   │   │   ├── ToObject.js
+│   │   │   │   └── tsconfig.json
+│   │   │   ├── es-set-tostringtag
+│   │   │   │   ├── .eslintrc
+│   │   │   │   ├── .nycrc
+│   │   │   │   ├── CHANGELOG.md
+│   │   │   │   ├── index.d.ts
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   ├── README.md
+│   │   │   │   ├── test
+│   │   │   │   │   └── index.js
+│   │   │   │   └── tsconfig.json
+│   │   │   ├── escape-html
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   └── Readme.md
+│   │   │   ├── etag
+│   │   │   │   ├── HISTORY.md
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   └── README.md
+│   │   │   ├── express
+│   │   │   │   ├── History.md
+│   │   │   │   ├── index.js
+│   │   │   │   ├── lib
+│   │   │   │   │   ├── application.js
+│   │   │   │   │   ├── express.js
+│   │   │   │   │   ├── middleware
+│   │   │   │   │   │   ├── init.js
+│   │   │   │   │   │   └── query.js
+│   │   │   │   │   ├── request.js
+│   │   │   │   │   ├── response.js
+│   │   │   │   │   ├── router
+│   │   │   │   │   │   ├── index.js
+│   │   │   │   │   │   ├── layer.js
+│   │   │   │   │   │   └── route.js
+│   │   │   │   │   ├── utils.js
+│   │   │   │   │   └── view.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   └── Readme.md
+│   │   │   ├── fill-range
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   └── README.md
+│   │   │   ├── finalhandler
+│   │   │   │   ├── HISTORY.md
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   ├── README.md
+│   │   │   │   └── SECURITY.md
+│   │   │   ├── follow-redirects
+│   │   │   │   ├── debug.js
+│   │   │   │   ├── http.js
+│   │   │   │   ├── https.js
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   └── README.md
+│   │   │   ├── form-data
+│   │   │   │   ├── CHANGELOG.md
+│   │   │   │   ├── index.d.ts
+│   │   │   │   ├── lib
+│   │   │   │   │   ├── browser.js
+│   │   │   │   │   ├── form_data.js
+│   │   │   │   │   └── populate.js
+│   │   │   │   ├── License
+│   │   │   │   ├── package.json
+│   │   │   │   └── README.md
+│   │   │   ├── forwarded
+│   │   │   │   ├── HISTORY.md
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   └── README.md
+│   │   │   ├── fresh
+│   │   │   │   ├── HISTORY.md
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   └── README.md
+│   │   │   ├── fs-extra
+│   │   │   │   ├── lib
+│   │   │   │   │   ├── copy
+│   │   │   │   │   │   ├── copy-sync.js
+│   │   │   │   │   │   ├── copy.js
+│   │   │   │   │   │   └── index.js
+│   │   │   │   │   ├── empty
+│   │   │   │   │   │   └── index.js
+│   │   │   │   │   ├── ensure
+│   │   │   │   │   │   ├── file.js
+│   │   │   │   │   │   ├── index.js
+│   │   │   │   │   │   ├── link.js
+│   │   │   │   │   │   ├── symlink-paths.js
+│   │   │   │   │   │   ├── symlink-type.js
+│   │   │   │   │   │   └── symlink.js
+│   │   │   │   │   ├── esm.mjs
+│   │   │   │   │   ├── fs
+│   │   │   │   │   │   └── index.js
+│   │   │   │   │   ├── index.js
+│   │   │   │   │   ├── json
+│   │   │   │   │   │   ├── index.js
+│   │   │   │   │   │   ├── jsonfile.js
+│   │   │   │   │   │   ├── output-json-sync.js
+│   │   │   │   │   │   └── output-json.js
+│   │   │   │   │   ├── mkdirs
+│   │   │   │   │   │   ├── index.js
+│   │   │   │   │   │   ├── make-dir.js
+│   │   │   │   │   │   └── utils.js
+│   │   │   │   │   ├── move
+│   │   │   │   │   │   ├── index.js
+│   │   │   │   │   │   ├── move-sync.js
+│   │   │   │   │   │   └── move.js
+│   │   │   │   │   ├── output-file
+│   │   │   │   │   │   └── index.js
+│   │   │   │   │   ├── path-exists
+│   │   │   │   │   │   └── index.js
+│   │   │   │   │   ├── remove
+│   │   │   │   │   │   └── index.js
+│   │   │   │   │   └── util
+│   │   │   │   │       ├── async.js
+│   │   │   │   │       ├── stat.js
+│   │   │   │   │       └── utimes.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   └── README.md
+│   │   │   ├── fsevents
+│   │   │   │   ├── fsevents.d.ts
+│   │   │   │   ├── fsevents.js
+│   │   │   │   ├── fsevents.node
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   └── README.md
+│   │   │   ├── function-bind
+│   │   │   │   ├── .eslintrc
+│   │   │   │   ├── .github
+│   │   │   │   │   ├── FUNDING.yml
+│   │   │   │   │   └── SECURITY.md
+│   │   │   │   ├── .nycrc
+│   │   │   │   ├── CHANGELOG.md
+│   │   │   │   ├── implementation.js
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   ├── README.md
+│   │   │   │   └── test
+│   │   │   │       ├── .eslintrc
+│   │   │   │       └── index.js
+│   │   │   ├── get-intrinsic
+│   │   │   │   ├── .eslintrc
+│   │   │   │   ├── .github
+│   │   │   │   │   └── FUNDING.yml
+│   │   │   │   ├── .nycrc
+│   │   │   │   ├── CHANGELOG.md
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   ├── README.md
+│   │   │   │   └── test
+│   │   │   │       └── GetIntrinsic.js
+│   │   │   ├── get-proto
+│   │   │   │   ├── .eslintrc
+│   │   │   │   ├── .github
+│   │   │   │   │   └── FUNDING.yml
+│   │   │   │   ├── .nycrc
+│   │   │   │   ├── CHANGELOG.md
+│   │   │   │   ├── index.d.ts
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── Object.getPrototypeOf.d.ts
+│   │   │   │   ├── Object.getPrototypeOf.js
+│   │   │   │   ├── package.json
+│   │   │   │   ├── README.md
+│   │   │   │   ├── Reflect.getPrototypeOf.d.ts
+│   │   │   │   ├── Reflect.getPrototypeOf.js
+│   │   │   │   ├── test
+│   │   │   │   │   └── index.js
+│   │   │   │   └── tsconfig.json
+│   │   │   ├── glob-parent
+│   │   │   │   ├── CHANGELOG.md
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   └── README.md
+│   │   │   ├── gopd
+│   │   │   │   ├── .eslintrc
+│   │   │   │   ├── .github
+│   │   │   │   │   └── FUNDING.yml
+│   │   │   │   ├── CHANGELOG.md
+│   │   │   │   ├── gOPD.d.ts
+│   │   │   │   ├── gOPD.js
+│   │   │   │   ├── index.d.ts
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   ├── README.md
+│   │   │   │   ├── test
+│   │   │   │   │   └── index.js
+│   │   │   │   └── tsconfig.json
+│   │   │   ├── graceful-fs
+│   │   │   │   ├── clone.js
+│   │   │   │   ├── graceful-fs.js
+│   │   │   │   ├── legacy-streams.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   ├── polyfills.js
+│   │   │   │   └── README.md
+│   │   │   ├── has-flag
+│   │   │   │   ├── index.js
+│   │   │   │   ├── license
+│   │   │   │   ├── package.json
+│   │   │   │   └── readme.md
+│   │   │   ├── has-symbols
+│   │   │   │   ├── .eslintrc
+│   │   │   │   ├── .github
+│   │   │   │   │   └── FUNDING.yml
+│   │   │   │   ├── .nycrc
+│   │   │   │   ├── CHANGELOG.md
+│   │   │   │   ├── index.d.ts
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   ├── README.md
+│   │   │   │   ├── shams.d.ts
+│   │   │   │   ├── shams.js
+│   │   │   │   ├── test
+│   │   │   │   │   ├── index.js
+│   │   │   │   │   ├── shams
+│   │   │   │   │   │   ├── core-js.js
+│   │   │   │   │   │   └── get-own-property-symbols.js
+│   │   │   │   │   └── tests.js
+│   │   │   │   └── tsconfig.json
+│   │   │   ├── has-tostringtag
+│   │   │   │   ├── .eslintrc
+│   │   │   │   ├── .github
+│   │   │   │   │   └── FUNDING.yml
+│   │   │   │   ├── .nycrc
+│   │   │   │   ├── CHANGELOG.md
+│   │   │   │   ├── index.d.ts
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   ├── README.md
+│   │   │   │   ├── shams.d.ts
+│   │   │   │   ├── shams.js
+│   │   │   │   ├── test
+│   │   │   │   │   ├── index.js
+│   │   │   │   │   ├── shams
+│   │   │   │   │   │   ├── core-js.js
+│   │   │   │   │   │   └── get-own-property-symbols.js
+│   │   │   │   │   └── tests.js
+│   │   │   │   └── tsconfig.json
+│   │   │   ├── hasown
+│   │   │   │   ├── .eslintrc
+│   │   │   │   ├── .github
+│   │   │   │   │   └── FUNDING.yml
+│   │   │   │   ├── .nycrc
+│   │   │   │   ├── CHANGELOG.md
+│   │   │   │   ├── index.d.ts
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   ├── README.md
+│   │   │   │   └── tsconfig.json
+│   │   │   ├── http-errors
+│   │   │   │   ├── HISTORY.md
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   └── README.md
+│   │   │   ├── iconv-lite
+│   │   │   │   ├── Changelog.md
+│   │   │   │   ├── encodings
+│   │   │   │   │   ├── dbcs-codec.js
+│   │   │   │   │   ├── dbcs-data.js
+│   │   │   │   │   ├── index.js
+│   │   │   │   │   ├── internal.js
+│   │   │   │   │   ├── sbcs-codec.js
+│   │   │   │   │   ├── sbcs-data-generated.js
+│   │   │   │   │   ├── sbcs-data.js
+│   │   │   │   │   ├── tables
+│   │   │   │   │   │   ├── big5-added.json
+│   │   │   │   │   │   ├── cp936.json
+│   │   │   │   │   │   ├── cp949.json
+│   │   │   │   │   │   ├── cp950.json
+│   │   │   │   │   │   ├── eucjp.json
+│   │   │   │   │   │   ├── gb18030-ranges.json
+│   │   │   │   │   │   ├── gbk-added.json
+│   │   │   │   │   │   └── shiftjis.json
+│   │   │   │   │   ├── utf16.js
+│   │   │   │   │   └── utf7.js
+│   │   │   │   ├── lib
+│   │   │   │   │   ├── bom-handling.js
+│   │   │   │   │   ├── extend-node.js
+│   │   │   │   │   ├── index.d.ts
+│   │   │   │   │   ├── index.js
+│   │   │   │   │   └── streams.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   └── README.md
+│   │   │   ├── ignore-by-default
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   └── README.md
+│   │   │   ├── inherits
+│   │   │   │   ├── inherits_browser.js
+│   │   │   │   ├── inherits.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   └── README.md
+│   │   │   ├── ipaddr.js
+│   │   │   │   ├── ipaddr.min.js
+│   │   │   │   ├── lib
+│   │   │   │   │   ├── ipaddr.js
+│   │   │   │   │   └── ipaddr.js.d.ts
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   └── README.md
+│   │   │   ├── is-binary-path
+│   │   │   │   ├── index.d.ts
+│   │   │   │   ├── index.js
+│   │   │   │   ├── license
+│   │   │   │   ├── package.json
+│   │   │   │   └── readme.md
+│   │   │   ├── is-extglob
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   └── README.md
+│   │   │   ├── is-glob
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   └── README.md
+│   │   │   ├── is-number
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   └── README.md
+│   │   │   ├── jsonfile
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   ├── README.md
+│   │   │   │   └── utils.js
+│   │   │   ├── math-intrinsics
+│   │   │   │   ├── .eslintrc
+│   │   │   │   ├── .github
+│   │   │   │   │   └── FUNDING.yml
+│   │   │   │   ├── abs.d.ts
+│   │   │   │   ├── abs.js
+│   │   │   │   ├── CHANGELOG.md
+│   │   │   │   ├── constants
+│   │   │   │   │   ├── maxArrayLength.d.ts
+│   │   │   │   │   ├── maxArrayLength.js
+│   │   │   │   │   ├── maxSafeInteger.d.ts
+│   │   │   │   │   ├── maxSafeInteger.js
+│   │   │   │   │   ├── maxValue.d.ts
+│   │   │   │   │   └── maxValue.js
+│   │   │   │   ├── floor.d.ts
+│   │   │   │   ├── floor.js
+│   │   │   │   ├── isFinite.d.ts
+│   │   │   │   ├── isFinite.js
+│   │   │   │   ├── isInteger.d.ts
+│   │   │   │   ├── isInteger.js
+│   │   │   │   ├── isNaN.d.ts
+│   │   │   │   ├── isNaN.js
+│   │   │   │   ├── isNegativeZero.d.ts
+│   │   │   │   ├── isNegativeZero.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── max.d.ts
+│   │   │   │   ├── max.js
+│   │   │   │   ├── min.d.ts
+│   │   │   │   ├── min.js
+│   │   │   │   ├── mod.d.ts
+│   │   │   │   ├── mod.js
+│   │   │   │   ├── package.json
+│   │   │   │   ├── pow.d.ts
+│   │   │   │   ├── pow.js
+│   │   │   │   ├── README.md
+│   │   │   │   ├── round.d.ts
+│   │   │   │   ├── round.js
+│   │   │   │   ├── sign.d.ts
+│   │   │   │   ├── sign.js
+│   │   │   │   ├── test
+│   │   │   │   │   └── index.js
+│   │   │   │   └── tsconfig.json
+│   │   │   ├── media-typer
+│   │   │   │   ├── HISTORY.md
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   └── README.md
+│   │   │   ├── merge-descriptors
+│   │   │   │   ├── HISTORY.md
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   └── README.md
+│   │   │   ├── methods
+│   │   │   │   ├── HISTORY.md
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   └── README.md
+│   │   │   ├── mime
+│   │   │   │   ├── .npmignore
+│   │   │   │   ├── CHANGELOG.md
+│   │   │   │   ├── cli.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── mime.js
+│   │   │   │   ├── package.json
+│   │   │   │   ├── README.md
+│   │   │   │   ├── src
+│   │   │   │   │   ├── build.js
+│   │   │   │   │   └── test.js
+│   │   │   │   └── types.json
+│   │   │   ├── mime-db
+│   │   │   │   ├── db.json
+│   │   │   │   ├── HISTORY.md
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   └── README.md
+│   │   │   ├── mime-types
+│   │   │   │   ├── HISTORY.md
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   └── README.md
+│   │   │   ├── minimatch
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── minimatch.js
+│   │   │   │   ├── package.json
+│   │   │   │   └── README.md
+│   │   │   ├── ms
+│   │   │   │   ├── index.js
+│   │   │   │   ├── license.md
+│   │   │   │   ├── package.json
+│   │   │   │   └── readme.md
+│   │   │   ├── negotiator
+│   │   │   │   ├── HISTORY.md
+│   │   │   │   ├── index.js
+│   │   │   │   ├── lib
+│   │   │   │   │   ├── charset.js
+│   │   │   │   │   ├── encoding.js
+│   │   │   │   │   ├── language.js
+│   │   │   │   │   └── mediaType.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   └── README.md
+│   │   │   ├── nodemailer
+│   │   │   │   ├── .gitattributes
+│   │   │   │   ├── .ncurc.js
+│   │   │   │   ├── .prettierrc.js
+│   │   │   │   ├── CHANGELOG.md
+│   │   │   │   ├── CODE_OF_CONDUCT.md
+│   │   │   │   ├── lib
+│   │   │   │   │   ├── addressparser
+│   │   │   │   │   │   └── index.js
+│   │   │   │   │   ├── base64
+│   │   │   │   │   │   └── index.js
+│   │   │   │   │   ├── dkim
+│   │   │   │   │   │   ├── index.js
+│   │   │   │   │   │   ├── message-parser.js
+│   │   │   │   │   │   ├── relaxed-body.js
+│   │   │   │   │   │   └── sign.js
+│   │   │   │   │   ├── fetch
+│   │   │   │   │   │   ├── cookies.js
+│   │   │   │   │   │   └── index.js
+│   │   │   │   │   ├── json-transport
+│   │   │   │   │   │   └── index.js
+│   │   │   │   │   ├── mail-composer
+│   │   │   │   │   │   └── index.js
+│   │   │   │   │   ├── mailer
+│   │   │   │   │   │   ├── index.js
+│   │   │   │   │   │   └── mail-message.js
+│   │   │   │   │   ├── mime-funcs
+│   │   │   │   │   │   ├── index.js
+│   │   │   │   │   │   └── mime-types.js
+│   │   │   │   │   ├── mime-node
+│   │   │   │   │   │   ├── index.js
+│   │   │   │   │   │   ├── last-newline.js
+│   │   │   │   │   │   ├── le-unix.js
+│   │   │   │   │   │   └── le-windows.js
+│   │   │   │   │   ├── nodemailer.js
+│   │   │   │   │   ├── punycode
+│   │   │   │   │   │   └── index.js
+│   │   │   │   │   ├── qp
+│   │   │   │   │   │   └── index.js
+│   │   │   │   │   ├── sendmail-transport
+│   │   │   │   │   │   └── index.js
+│   │   │   │   │   ├── ses-transport
+│   │   │   │   │   │   └── index.js
+│   │   │   │   │   ├── shared
+│   │   │   │   │   │   └── index.js
+│   │   │   │   │   ├── smtp-connection
+│   │   │   │   │   │   ├── data-stream.js
+│   │   │   │   │   │   ├── http-proxy-client.js
+│   │   │   │   │   │   └── index.js
+│   │   │   │   │   ├── smtp-pool
+│   │   │   │   │   │   ├── index.js
+│   │   │   │   │   │   └── pool-resource.js
+│   │   │   │   │   ├── smtp-transport
+│   │   │   │   │   │   └── index.js
+│   │   │   │   │   ├── stream-transport
+│   │   │   │   │   │   └── index.js
+│   │   │   │   │   ├── well-known
+│   │   │   │   │   │   ├── index.js
+│   │   │   │   │   │   └── services.json
+│   │   │   │   │   └── xoauth2
+│   │   │   │   │       └── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   ├── README.md
+│   │   │   │   └── SECURITY.txt
+│   │   │   ├── nodemon
+│   │   │   │   ├── .prettierrc.json
+│   │   │   │   ├── bin
+│   │   │   │   │   ├── nodemon.js
+│   │   │   │   │   └── windows-kill.exe
+│   │   │   │   ├── doc
+│   │   │   │   │   └── cli
+│   │   │   │   │       ├── authors.txt
+│   │   │   │   │       ├── config.txt
+│   │   │   │   │       ├── help.txt
+│   │   │   │   │       ├── logo.txt
+│   │   │   │   │       ├── options.txt
+│   │   │   │   │       ├── topics.txt
+│   │   │   │   │       ├── usage.txt
+│   │   │   │   │       └── whoami.txt
+│   │   │   │   ├── index.d.ts
+│   │   │   │   ├── jsconfig.json
+│   │   │   │   ├── lib
+│   │   │   │   │   ├── cli
+│   │   │   │   │   │   ├── index.js
+│   │   │   │   │   │   └── parse.js
+│   │   │   │   │   ├── config
+│   │   │   │   │   │   ├── command.js
+│   │   │   │   │   │   ├── defaults.js
+│   │   │   │   │   │   ├── exec.js
+│   │   │   │   │   │   ├── index.js
+│   │   │   │   │   │   └── load.js
+│   │   │   │   │   ├── help
+│   │   │   │   │   │   └── index.js
+│   │   │   │   │   ├── index.js
+│   │   │   │   │   ├── monitor
+│   │   │   │   │   │   ├── index.js
+│   │   │   │   │   │   ├── match.js
+│   │   │   │   │   │   ├── run.js
+│   │   │   │   │   │   ├── signals.js
+│   │   │   │   │   │   └── watch.js
+│   │   │   │   │   ├── nodemon.js
+│   │   │   │   │   ├── rules
+│   │   │   │   │   │   ├── add.js
+│   │   │   │   │   │   ├── index.js
+│   │   │   │   │   │   └── parse.js
+│   │   │   │   │   ├── spawn.js
+│   │   │   │   │   ├── utils
+│   │   │   │   │   │   ├── bus.js
+│   │   │   │   │   │   ├── clone.js
+│   │   │   │   │   │   ├── colour.js
+│   │   │   │   │   │   ├── index.js
+│   │   │   │   │   │   ├── log.js
+│   │   │   │   │   │   └── merge.js
+│   │   │   │   │   └── version.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── node_modules
+│   │   │   │   │   ├── debug
+│   │   │   │   │   │   ├── LICENSE
+│   │   │   │   │   │   ├── package.json
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   └── src
+│   │   │   │   │   │       ├── browser.js
+│   │   │   │   │   │       ├── common.js
+│   │   │   │   │   │       ├── index.js
+│   │   │   │   │   │       └── node.js
+│   │   │   │   │   └── ms
+│   │   │   │   │       ├── index.js
+│   │   │   │   │       ├── license.md
+│   │   │   │   │       ├── package.json
+│   │   │   │   │       └── readme.md
+│   │   │   │   ├── package.json
+│   │   │   │   └── README.md
+│   │   │   ├── normalize-path
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   └── README.md
+│   │   │   ├── object-inspect
+│   │   │   │   ├── .eslintrc
+│   │   │   │   ├── .github
+│   │   │   │   │   └── FUNDING.yml
+│   │   │   │   ├── .nycrc
+│   │   │   │   ├── CHANGELOG.md
+│   │   │   │   ├── example
+│   │   │   │   │   ├── all.js
+│   │   │   │   │   ├── circular.js
+│   │   │   │   │   ├── fn.js
+│   │   │   │   │   └── inspect.js
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package-support.json
+│   │   │   │   ├── package.json
+│   │   │   │   ├── readme.markdown
+│   │   │   │   ├── test
+│   │   │   │   │   ├── bigint.js
+│   │   │   │   │   ├── browser
+│   │   │   │   │   │   └── dom.js
+│   │   │   │   │   ├── circular.js
+│   │   │   │   │   ├── deep.js
+│   │   │   │   │   ├── element.js
+│   │   │   │   │   ├── err.js
+│   │   │   │   │   ├── fakes.js
+│   │   │   │   │   ├── fn.js
+│   │   │   │   │   ├── global.js
+│   │   │   │   │   ├── has.js
+│   │   │   │   │   ├── holes.js
+│   │   │   │   │   ├── indent-option.js
+│   │   │   │   │   ├── inspect.js
+│   │   │   │   │   ├── lowbyte.js
+│   │   │   │   │   ├── number.js
+│   │   │   │   │   ├── quoteStyle.js
+│   │   │   │   │   ├── toStringTag.js
+│   │   │   │   │   ├── undef.js
+│   │   │   │   │   └── values.js
+│   │   │   │   ├── test-core-js.js
+│   │   │   │   └── util.inspect.js
+│   │   │   ├── on-finished
+│   │   │   │   ├── HISTORY.md
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   └── README.md
+│   │   │   ├── parseurl
+│   │   │   │   ├── HISTORY.md
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   └── README.md
+│   │   │   ├── path
+│   │   │   │   ├── .npmignore
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   ├── path.js
+│   │   │   │   └── README.md
+│   │   │   ├── path-to-regexp
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   └── Readme.md
+│   │   │   ├── picomatch
+│   │   │   │   ├── CHANGELOG.md
+│   │   │   │   ├── index.js
+│   │   │   │   ├── lib
+│   │   │   │   │   ├── constants.js
+│   │   │   │   │   ├── parse.js
+│   │   │   │   │   ├── picomatch.js
+│   │   │   │   │   ├── scan.js
+│   │   │   │   │   └── utils.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   └── README.md
+│   │   │   ├── process
+│   │   │   │   ├── .eslintrc
+│   │   │   │   ├── browser.js
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   ├── README.md
+│   │   │   │   └── test.js
+│   │   │   ├── proxy-addr
+│   │   │   │   ├── HISTORY.md
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   └── README.md
+│   │   │   ├── proxy-from-env
+│   │   │   │   ├── .eslintrc
+│   │   │   │   ├── .travis.yml
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   ├── README.md
+│   │   │   │   └── test.js
+│   │   │   ├── pstree.remy
+│   │   │   │   ├── .travis.yml
+│   │   │   │   ├── lib
+│   │   │   │   │   ├── index.js
+│   │   │   │   │   ├── tree.js
+│   │   │   │   │   └── utils.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   ├── README.md
+│   │   │   │   └── tests
+│   │   │   │       ├── fixtures
+│   │   │   │       │   ├── index.js
+│   │   │   │       │   ├── out1
+│   │   │   │       │   └── out2
+│   │   │   │       └── index.test.js
+│   │   │   ├── qs
+│   │   │   │   ├── .editorconfig
+│   │   │   │   ├── .eslintrc
+│   │   │   │   ├── .github
+│   │   │   │   │   └── FUNDING.yml
+│   │   │   │   ├── .nycrc
+│   │   │   │   ├── CHANGELOG.md
+│   │   │   │   ├── dist
+│   │   │   │   │   └── qs.js
+│   │   │   │   ├── lib
+│   │   │   │   │   ├── formats.js
+│   │   │   │   │   ├── index.js
+│   │   │   │   │   ├── parse.js
+│   │   │   │   │   ├── stringify.js
+│   │   │   │   │   └── utils.js
+│   │   │   │   ├── LICENSE.md
+│   │   │   │   ├── package.json
+│   │   │   │   ├── README.md
+│   │   │   │   └── test
+│   │   │   │       ├── empty-keys-cases.js
+│   │   │   │       ├── parse.js
+│   │   │   │       ├── stringify.js
+│   │   │   │       └── utils.js
+│   │   │   ├── range-parser
+│   │   │   │   ├── HISTORY.md
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   └── README.md
+│   │   │   ├── raw-body
+│   │   │   │   ├── index.d.ts
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   └── README.md
+│   │   │   ├── readdirp
+│   │   │   │   ├── index.d.ts
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   └── README.md
+│   │   │   ├── safe-buffer
+│   │   │   │   ├── index.d.ts
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   └── README.md
+│   │   │   ├── safer-buffer
+│   │   │   │   ├── dangerous.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   ├── Porting-Buffer.md
+│   │   │   │   ├── Readme.md
+│   │   │   │   ├── safer.js
+│   │   │   │   └── tests.js
+│   │   │   ├── semver
+│   │   │   │   ├── bin
+│   │   │   │   │   └── semver.js
+│   │   │   │   ├── classes
+│   │   │   │   │   ├── comparator.js
+│   │   │   │   │   ├── index.js
+│   │   │   │   │   ├── range.js
+│   │   │   │   │   └── semver.js
+│   │   │   │   ├── functions
+│   │   │   │   │   ├── clean.js
+│   │   │   │   │   ├── cmp.js
+│   │   │   │   │   ├── coerce.js
+│   │   │   │   │   ├── compare-build.js
+│   │   │   │   │   ├── compare-loose.js
+│   │   │   │   │   ├── compare.js
+│   │   │   │   │   ├── diff.js
+│   │   │   │   │   ├── eq.js
+│   │   │   │   │   ├── gt.js
+│   │   │   │   │   ├── gte.js
+│   │   │   │   │   ├── inc.js
+│   │   │   │   │   ├── lt.js
+│   │   │   │   │   ├── lte.js
+│   │   │   │   │   ├── major.js
+│   │   │   │   │   ├── minor.js
+│   │   │   │   │   ├── neq.js
+│   │   │   │   │   ├── parse.js
+│   │   │   │   │   ├── patch.js
+│   │   │   │   │   ├── prerelease.js
+│   │   │   │   │   ├── rcompare.js
+│   │   │   │   │   ├── rsort.js
+│   │   │   │   │   ├── satisfies.js
+│   │   │   │   │   ├── sort.js
+│   │   │   │   │   └── valid.js
+│   │   │   │   ├── index.js
+│   │   │   │   ├── internal
+│   │   │   │   │   ├── constants.js
+│   │   │   │   │   ├── debug.js
+│   │   │   │   │   ├── identifiers.js
+│   │   │   │   │   ├── lrucache.js
+│   │   │   │   │   ├── parse-options.js
+│   │   │   │   │   └── re.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   ├── preload.js
+│   │   │   │   ├── range.bnf
+│   │   │   │   ├── ranges
+│   │   │   │   │   ├── gtr.js
+│   │   │   │   │   ├── intersects.js
+│   │   │   │   │   ├── ltr.js
+│   │   │   │   │   ├── max-satisfying.js
+│   │   │   │   │   ├── min-satisfying.js
+│   │   │   │   │   ├── min-version.js
+│   │   │   │   │   ├── outside.js
+│   │   │   │   │   ├── simplify.js
+│   │   │   │   │   ├── subset.js
+│   │   │   │   │   ├── to-comparators.js
+│   │   │   │   │   └── valid.js
+│   │   │   │   └── README.md
+│   │   │   ├── send
+│   │   │   │   ├── HISTORY.md
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── node_modules
+│   │   │   │   │   ├── http-errors
+│   │   │   │   │   │   ├── HISTORY.md
+│   │   │   │   │   │   ├── index.js
+│   │   │   │   │   │   ├── LICENSE
+│   │   │   │   │   │   ├── package.json
+│   │   │   │   │   │   └── README.md
+│   │   │   │   │   ├── ms
+│   │   │   │   │   │   ├── index.js
+│   │   │   │   │   │   ├── license.md
+│   │   │   │   │   │   ├── package.json
+│   │   │   │   │   │   └── readme.md
+│   │   │   │   │   └── statuses
+│   │   │   │   │       ├── codes.json
+│   │   │   │   │       ├── HISTORY.md
+│   │   │   │   │       ├── index.js
+│   │   │   │   │       ├── LICENSE
+│   │   │   │   │       ├── package.json
+│   │   │   │   │       └── README.md
+│   │   │   │   ├── package.json
+│   │   │   │   ├── README.md
+│   │   │   │   └── SECURITY.md
+│   │   │   ├── serve-static
+│   │   │   │   ├── HISTORY.md
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── node_modules
+│   │   │   │   │   ├── http-errors
+│   │   │   │   │   │   ├── HISTORY.md
+│   │   │   │   │   │   ├── index.js
+│   │   │   │   │   │   ├── LICENSE
+│   │   │   │   │   │   ├── package.json
+│   │   │   │   │   │   └── README.md
+│   │   │   │   │   ├── ms
+│   │   │   │   │   │   ├── index.js
+│   │   │   │   │   │   ├── license.md
+│   │   │   │   │   │   ├── package.json
+│   │   │   │   │   │   └── readme.md
+│   │   │   │   │   ├── send
+│   │   │   │   │   │   ├── HISTORY.md
+│   │   │   │   │   │   ├── index.js
+│   │   │   │   │   │   ├── LICENSE
+│   │   │   │   │   │   ├── node_modules
+│   │   │   │   │   │   │   └── encodeurl
+│   │   │   │   │   │   │       ├── HISTORY.md
+│   │   │   │   │   │   │       ├── index.js
+│   │   │   │   │   │   │       ├── LICENSE
+│   │   │   │   │   │   │       ├── package.json
+│   │   │   │   │   │   │       └── README.md
+│   │   │   │   │   │   ├── package.json
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   └── SECURITY.md
+│   │   │   │   │   └── statuses
+│   │   │   │   │       ├── codes.json
+│   │   │   │   │       ├── HISTORY.md
+│   │   │   │   │       ├── index.js
+│   │   │   │   │       ├── LICENSE
+│   │   │   │   │       ├── package.json
+│   │   │   │   │       └── README.md
+│   │   │   │   ├── package.json
+│   │   │   │   └── README.md
+│   │   │   ├── setprototypeof
+│   │   │   │   ├── index.d.ts
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   ├── README.md
+│   │   │   │   └── test
+│   │   │   │       └── index.js
+│   │   │   ├── side-channel
+│   │   │   │   ├── .editorconfig
+│   │   │   │   ├── .eslintrc
+│   │   │   │   ├── .github
+│   │   │   │   │   └── FUNDING.yml
+│   │   │   │   ├── .nycrc
+│   │   │   │   ├── CHANGELOG.md
+│   │   │   │   ├── index.d.ts
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   ├── README.md
+│   │   │   │   ├── test
+│   │   │   │   │   └── index.js
+│   │   │   │   └── tsconfig.json
+│   │   │   ├── side-channel-list
+│   │   │   │   ├── .editorconfig
+│   │   │   │   ├── .eslintrc
+│   │   │   │   ├── .github
+│   │   │   │   │   └── FUNDING.yml
+│   │   │   │   ├── .nycrc
+│   │   │   │   ├── CHANGELOG.md
+│   │   │   │   ├── index.d.ts
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── list.d.ts
+│   │   │   │   ├── package.json
+│   │   │   │   ├── README.md
+│   │   │   │   ├── test
+│   │   │   │   │   └── index.js
+│   │   │   │   └── tsconfig.json
+│   │   │   ├── side-channel-map
+│   │   │   │   ├── .editorconfig
+│   │   │   │   ├── .eslintrc
+│   │   │   │   ├── .github
+│   │   │   │   │   └── FUNDING.yml
+│   │   │   │   ├── .nycrc
+│   │   │   │   ├── CHANGELOG.md
+│   │   │   │   ├── index.d.ts
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   ├── README.md
+│   │   │   │   ├── test
+│   │   │   │   │   └── index.js
+│   │   │   │   └── tsconfig.json
+│   │   │   ├── side-channel-weakmap
+│   │   │   │   ├── .editorconfig
+│   │   │   │   ├── .eslintrc
+│   │   │   │   ├── .github
+│   │   │   │   │   └── FUNDING.yml
+│   │   │   │   ├── .nycrc
+│   │   │   │   ├── CHANGELOG.md
+│   │   │   │   ├── index.d.ts
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   ├── README.md
+│   │   │   │   ├── test
+│   │   │   │   │   └── index.js
+│   │   │   │   └── tsconfig.json
+│   │   │   ├── simple-update-notifier
+│   │   │   │   ├── build
+│   │   │   │   │   ├── index.d.ts
+│   │   │   │   │   └── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   ├── README.md
+│   │   │   │   └── src
+│   │   │   │       ├── borderedText.ts
+│   │   │   │       ├── cache.spec.ts
+│   │   │   │       ├── cache.ts
+│   │   │   │       ├── getDistVersion.spec.ts
+│   │   │   │       ├── getDistVersion.ts
+│   │   │   │       ├── hasNewVersion.spec.ts
+│   │   │   │       ├── hasNewVersion.ts
+│   │   │   │       ├── index.spec.ts
+│   │   │   │       ├── index.ts
+│   │   │   │       ├── isNpmOrYarn.ts
+│   │   │   │       └── types.ts
+│   │   │   ├── statuses
+│   │   │   │   ├── codes.json
+│   │   │   │   ├── HISTORY.md
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   └── README.md
+│   │   │   ├── supports-color
+│   │   │   │   ├── browser.js
+│   │   │   │   ├── index.js
+│   │   │   │   ├── license
+│   │   │   │   ├── package.json
+│   │   │   │   └── readme.md
+│   │   │   ├── to-regex-range
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   └── README.md
+│   │   │   ├── toidentifier
+│   │   │   │   ├── HISTORY.md
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   └── README.md
+│   │   │   ├── touch
+│   │   │   │   ├── bin
+│   │   │   │   │   └── nodetouch.js
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   └── README.md
+│   │   │   ├── type-is
+│   │   │   │   ├── HISTORY.md
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   └── README.md
+│   │   │   ├── undefsafe
+│   │   │   │   ├── .github
+│   │   │   │   │   └── workflows
+│   │   │   │   │       └── release.yml
+│   │   │   │   ├── .jscsrc
+│   │   │   │   ├── .jshintrc
+│   │   │   │   ├── .travis.yml
+│   │   │   │   ├── example.js
+│   │   │   │   ├── lib
+│   │   │   │   │   └── undefsafe.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   └── README.md
+│   │   │   ├── universalify
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   └── README.md
+│   │   │   ├── unpipe
+│   │   │   │   ├── HISTORY.md
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   └── README.md
+│   │   │   ├── util
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── node_modules
+│   │   │   │   │   └── inherits
+│   │   │   │   │       ├── inherits_browser.js
+│   │   │   │   │       ├── inherits.js
+│   │   │   │   │       ├── LICENSE
+│   │   │   │   │       ├── package.json
+│   │   │   │   │       └── README.md
+│   │   │   │   ├── package.json
+│   │   │   │   ├── README.md
+│   │   │   │   ├── support
+│   │   │   │   │   ├── isBuffer.js
+│   │   │   │   │   └── isBufferBrowser.js
+│   │   │   │   └── util.js
+│   │   │   ├── utils-merge
+│   │   │   │   ├── .npmignore
+│   │   │   │   ├── index.js
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── package.json
+│   │   │   │   └── README.md
+│   │   │   └── vary
+│   │   │       ├── HISTORY.md
+│   │   │       ├── index.js
+│   │   │       ├── LICENSE
+│   │   │       ├── package.json
+│   │   │       └── README.md
+│   │   ├── package-lock.json
+│   │   ├── package.json
+│   │   ├── README.md
+│   │   ├── RULES.md
+│   │   ├── server.py
+│   │   ├── setup-mortgage-flow.sh
+│   │   ├── setup.sh
+│   │   ├── test-mortgage-lead.sh
+│   │   └── validate-env.js
+│   ├── README.txt
+│   ├── RULES.md
+│   └── trackers
+│       ├── .DS_Store
+│       ├── 2025-11-25.txt
+│       ├── 2025-11-26.txt
+│       ├── 2025-11-27.txt
+│       ├── 2025-11-28.txt
+│       ├── 2025-11-29.txt
+│       ├── 2025-11-30.txt
+│       ├── 2025-12-01.txt
+│       ├── 2025-12-02.txt
+│       ├── 2025-12-03.txt
+│       ├── 2025-12-04.txt
+│       ├── archive
+│       │   ├── 2025-12-05
+│       │   │   ├── chat-2025-12-05.txt
+│       │   │   ├── test.txt
+│       │   │   ├── Untitled 2.rtfd
+│       │   │   │   ├── Attachment.png
+│       │   │   │   └── TXT.rtf
+│       │   │   └── Untitled 2.txt
+│       │   ├── README.txt
+│       │   └── superseded
+│       │       ├── superseded-2025-12-16.json
+│       │       ├── superseded-2025-12-17.json
+│       │       ├── superseded-2025-12-18.json
+│       │       ├── superseded-2025-12-19.json
+│       │       └── superseded-2025-12-20.json
+│       ├── cleanup-report.json
+│       ├── conflicts.md
+│       ├── conversations_to_process
+│       │   └── Processed
+│       ├── daily-summary.md
+│       ├── decision_versions.json
+│       ├── decisions-log.md
+│       ├── item_status.json
+│       ├── notes.md
+│       ├── README.txt
+│       ├── RULES.md
+│       ├── self_annealing_logs
+│       │   ├── Processed
+│       │   │   └── self-annealing-2025-12-08T21-53-38.txt
+│       │   └── summary.json
+│       ├── tasks.md
+│       ├── weekly-summary.md
+│       └── work_logs
+│           ├── Processed
+│           │   └── work-2025-12-08T21-59-30.txt
+│           └── summary.json
+└── templates
+    ├── .DS_Store
+    ├── client-website-template
+    ├── COPY_TO_PROJECT.sh
+    ├── crewai_agent_template.py
+    ├── demos
+    │   ├── .DS_Store
+    │   └── loan-engine-prototype
+    │       ├── .DS_Store
+    │       └── public
+    ├── ENFORCE_ALL_PROJECTS_NOW.sh
+    ├── enforce_rules_everywhere.sh
+    ├── gamma-templates
+    │   └── gamma
+    │       ├── Gamma_Site_Outline.md
+    │       └── themes
+    │           └── themeblock to drop in a theme
+    ├── GLOBAL_SETUP_GUIDE.md
+    ├── n8n_workflow_template.json
+    ├── project_config.md
+    ├── proposal-template-modern.html
+    ├── setup_new_project.sh
+    ├── verify_global_setup.sh
+    └── workflow_state.md
+
+711 directories, 2666 files

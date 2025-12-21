@@ -100,3 +100,5 @@ A website that can't respond, follow up, or run a system isn't a business tool.
 It's a digital pamphlet.
 
 I build business systems that *look like websites* — because that's what real professionalism is.
+
+
