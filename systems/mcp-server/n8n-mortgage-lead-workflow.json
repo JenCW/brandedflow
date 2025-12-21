@@ -1,0 +1,133 @@
+{
+  "name": "Mortgage Lead Processor",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "append",
+        "baseId": "YOUR_AIRTABLE_BASE_ID",
+        "table": "Mortgage Leads",
+        "options": {}
+      },
+      "name": "Airtable Trigger",
+      "type": "n8n-nodes-base.airtableTrigger",
+      "typeVersion": 1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://localhost:4000/run",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-API-Key",
+              "value": "YOUR_MCP_API_KEY"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": []
+        },
+        "jsonBody": "={\"automation\":\"process-mortgage-lead\",\"params\":{\"lead_name\":\"{{$json.fields.Name}}\",\"lead_phone\":\"{{$json.fields.Phone}}\",\"lead_email\":\"{{$json.fields.Email}}\",\"lead_city\":\"{{$json.fields.City}}\",\"lead_situation\":\"{{$json.fields.Situation}}\"},\"dryRun\":false}",
+        "options": {}
+      },
+      "name": "Call MCP Server",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [470, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{$json.ok}}",
+              "value2": true
+            }
+          ]
+        }
+      },
+      "name": "Check Success",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [690, 300]
+    },
+    {
+      "parameters": {
+        "message": "=✅ Mortgage lead processed successfully\n\nLead: {{$json.result.lead.name}}\nPhone: {{$json.result.lead.phone}}\nCity: {{$json.result.lead.city}}\n\nNotification sent to: {{$json.result.recipient}}",
+        "options": {}
+      },
+      "name": "Success Log",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [910, 190]
+    },
+    {
+      "parameters": {
+        "message": "=❌ Failed to process mortgage lead\n\nError: {{$json.error || 'Unknown error'}}",
+        "options": {}
+      },
+      "name": "Error Log",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [910, 410]
+    }
+  ],
+  "connections": {
+    "Airtable Trigger": {
+      "main": [
+        [
+          {
+            "node": "Call MCP Server",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call MCP Server": {
+      "main": [
+        [
+          {
+            "node": "Check Success",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Success": {
+      "main": [
+        [
+          {
+            "node": "Success Log",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Error Log",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {},
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-01-01T00:00:00.000Z",
+  "versionId": "1"
+}
+

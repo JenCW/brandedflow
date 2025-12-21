@@ -27,12 +27,13 @@
       "base_name": ".cursorrules",
       "files": [
         ".cursorrules",
+        "systems/.cursorrules",
         "company/.cursorrules",
         "company/website/.cursorrules",
         "company/website/site/.cursorrules",
         "company/website/site/relume/.cursorrules"
       ],
-      "count": 5
+      "count": 6
     },
     {
       "base_name": "readme",
@@ -71,6 +72,7 @@
         "docs/automation-library/README.txt",
         "docs/reference/README.md",
         "systems/README.txt",
+        "systems/flow-from-mortgage-leads/README.md",
         "systems/context-automation/README.md",
         "systems/daily-accountability/README.md",
         "systems/mcp-server/README.md",
@@ -83,7 +85,7 @@
         "company/operations/README.txt",
         "company/operations/website-creation/guides/README.md"
       ],
-      "count": 45
+      "count": 46
     },
     {
       "base_name": "rules",
@@ -153,5 +155,5 @@
     }
   ],
   "old_files_cleaned": [],
-  "timestamp": "2025-12-16T08:00:05.589985"
+  "timestamp": "2025-12-21T08:00:03.355047"
 }

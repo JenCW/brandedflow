@@ -1,0 +1,15 @@
+{
+  // Terminal Configuration
+  "terminal.integrated.showExitAlert": false,
+  "terminal.integrated.defaultProfile.osx": "zsh",
+  "workbench.panel.defaultLocation": "bottom",
+  "workbench.panel.opensMaximized": "never",
+
+  // Sidebar and Panel Visibility
+  "workbench.activityBar.visible": true,
+  "workbench.sideBar.location": "left",
+  "workbench.startupEditor": "none",
+
+  // Preserve workspace state
+  "window.restoreWindows": "all"
+}
