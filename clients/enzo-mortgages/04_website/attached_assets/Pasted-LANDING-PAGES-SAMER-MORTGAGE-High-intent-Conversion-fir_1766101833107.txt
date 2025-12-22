@@ -1,0 +1,188 @@
+LANDING PAGES — SAMER MORTGAGE
+
+(High-intent. Conversion-first.)
+
+⸻
+
+1️⃣ FOREIGN NATIONAL LANDING PAGE
+
+URL: /landing/foreign-national
+
+HERO
+
+Headline
+U.S. Property Financing — Handled Correctly
+
+Subheadline
+Specialized mortgage guidance for foreign nationals and international investors buying in the United States.
+
+Primary CTA
+Start a Foreign National Inquiry
+
+⸻
+
+BODY (Short, direct blocks)
+
+Buying property in the U.S. as a foreign national isn’t simple — and it shouldn’t be handled casually.
+
+Different documentation. Different income structures. Different lender rules.
+
+Samer Mahmoud specializes in foreign national and international investor loans. He understands what lenders actually require and how to structure files so they move forward smoothly.
+
+This is not a generic application.
+It’s a focused review handled by someone who knows these loans.
+
+⸻
+
+TRUST SIGNALS (Bullets)
+	•	Foreign national & international investor experience
+	•	High-value and complex transactions
+	•	Clear communication, start to finish
+	•	Discreet, professional handling
+
+⸻
+
+CTA (Repeat)
+
+Begin Your Foreign National Inquiry
+
+⸻
+
+2️⃣ REFINANCE LANDING PAGE
+
+URL: /landing/refinance
+
+HERO
+
+Headline
+Refinancing — Without Guesswork
+
+Subheadline
+A clear review of your current loan and whether refinancing actually makes sense.
+
+Primary CTA
+Review My Refinance Options
+
+⸻
+
+BODY
+
+Refinancing isn’t about chasing numbers — it’s about understanding outcomes.
+
+Lower payments. Better terms. Long-term flexibility.
+Or sometimes, confirming that refinancing isn’t the right move.
+
+Samer Mahmoud reviews your situation honestly and explains your options clearly — without pressure.
+
+If there’s a smart move, you’ll understand why.
+If there isn’t, you’ll know that too.
+
+⸻
+
+TRUST SIGNALS
+	•	Honest, strategy-first reviews
+	•	Clear explanations, no pressure
+	•	Long-term thinking, not quick wins
+
+⸻
+
+CTA
+
+Request a Refinance Review
+
+⸻
+
+3️⃣ CASH-OUT LANDING PAGE
+
+URL: /landing/cash-out
+
+HERO
+
+Headline
+Access Your Equity — Thoughtfully
+
+Subheadline
+Strategic cash-out refinance guidance for real financial needs.
+
+Primary CTA
+Explore Cash-Out Options
+
+⸻
+
+BODY
+
+Home equity can create flexibility — when it’s used intentionally.
+
+A cash-out refinance can support debt consolidation, major expenses, or transitions, but the details matter.
+
+Samer helps you understand costs, impact, and alternatives so you’re making a clear decision — not a reactive one.
+
+This is about control, not urgency.
+
+⸻
+
+TRUST SIGNALS
+	•	Strategic, not emotional decisions
+	•	Clear breakdown of impact
+	•	Calm, professional guidance
+
+⸻
+
+CTA
+
+Start a Cash-Out Review
+
+⸻
+
+4️⃣ EMERGENCY / LIFE-EVENT LANDING PAGE
+
+URL: /landing/emergency-cash
+
+HERO
+
+Headline
+When Timing Matters, Clarity Matters
+
+Subheadline
+Calm, focused mortgage guidance for urgent or unexpected situations.
+
+Primary CTA
+Get Help Now
+
+⸻
+
+BODY
+
+Life doesn’t always give you time to plan.
+
+Medical costs, family needs, job changes, or sudden financial pressure can require fast, clear decisions.
+
+Samer approaches these situations with discretion, urgency, and experience — without panic or judgment.
+
+The priority is understanding what’s possible and moving forward efficiently.
+
+⸻
+
+TRUST SIGNALS
+	•	Priority handling
+	•	Discreet communication
+	•	Clear next steps
+	•	No pressure, no shame
+
+⸻
+
+CTA
+
+Request Immediate Assistance
+
+⸻
+
+HOW TO USE THESE (IMPORTANT)
+
+For each landing page:
+	•	Replace all placeholder copy
+	•	Keep navigation minimal or hidden
+	•	Keep one form + one CTA
+	•	Do not add education blocks
+
+These pages exist to convert, not teach.
