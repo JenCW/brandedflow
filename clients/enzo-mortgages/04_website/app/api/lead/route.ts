@@ -14,7 +14,7 @@ export async function POST(request: NextRequest) {
 
     const airtableApiKey = process.env.AIRTABLE_API_KEY;
     const airtableBaseId = process.env.AIRTABLE_BASE_ID;
-    const airtableTableName = process.env.AIRTABLE_TABLE_NAME || "Leads";
+    const airtableTableName = process.env.AIRTABLE_TABLE_NAME || "leads";
 
     if (!airtableApiKey || !airtableBaseId) {
       return NextResponse.json(
@@ -40,11 +40,10 @@ export async function POST(request: NextRequest) {
             "Loan Type": loanType || "",
             Urgency: urgency || "",
             Source: source || "",
-            Address: address || "",
+            Location: address || "",
             "Property Type": propertyType || "",
-            Flags: flags ? JSON.stringify(flags) : "",
             Status: "New",
-            Timestamp: new Date().toISOString(),
+            Timestamp: new Date().toISOString().split('T')[0],
           },
         }),
       }
@@ -52,9 +51,15 @@ export async function POST(request: NextRequest) {
 
     if (!response.ok) {
       const errorData = await response.json();
-      console.error("Airtable error:", errorData);
+      console.error("Airtable API error:", {
+        status: response.status,
+        statusText: response.statusText,
+        error: errorData,
+        baseId: airtableBaseId,
+        tableName: airtableTableName
+      });
       return NextResponse.json(
-        { success: false, error: "Failed to save lead" },
+        { success: false, error: "Failed to save lead to Airtable", details: errorData },
         { status: 500 }
       );
     }

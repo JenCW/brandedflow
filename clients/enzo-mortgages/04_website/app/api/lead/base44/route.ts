@@ -28,7 +28,7 @@ export async function POST(request: NextRequest) {
 
     const airtableApiKey = process.env.AIRTABLE_API_KEY;
     const airtableBaseId = process.env.AIRTABLE_BASE_ID;
-    const airtableTableName = process.env.AIRTABLE_TABLE_NAME || "Leads";
+    const airtableTableName = process.env.AIRTABLE_TABLE_NAME || "leads";
 
     if (!airtableApiKey || !airtableBaseId) {
       console.log("Lead captured (Airtable not configured):", { email, name, phone, leadType, source });
@@ -38,18 +38,19 @@ export async function POST(request: NextRequest) {
       });
     }
 
-    const airtableFields: Record<string, string | number | null> = {
+    const airtableFields: Record<string, string | number | boolean | null> = {
       Email: email,
       Status: "New",
+      Timestamp: new Date().toISOString().split('T')[0],
     };
-    
+
     if (name) airtableFields.Name = name;
     if (phone) airtableFields.Phone = phone;
     if (leadType) airtableFields["Lead Type"] = leadType;
     if (loanType) airtableFields["Loan Type"] = loanType;
     if (urgency) airtableFields.Urgency = urgency;
     if (source) airtableFields.Source = source;
-    if (address) airtableFields.Address = address;
+    if (address) airtableFields.Location = address;
     if (propertyType) airtableFields["Property Type"] = propertyType;
     if (loanAmount) airtableFields["Loan Amount"] = loanAmount;
     if (creditScore) airtableFields["Credit Score"] = creditScore;
@@ -70,12 +71,19 @@ export async function POST(request: NextRequest) {
 
     if (!response.ok) {
       const errorData = await response.json();
-      console.error("Airtable error:", errorData);
-      console.log("Lead captured (Airtable error):", { email, name, phone, leadType, source });
-      return NextResponse.json({ 
-        success: true, 
-        message: "Lead received" 
+      console.error("Airtable API error:", {
+        status: response.status,
+        statusText: response.statusText,
+        error: errorData,
+        fields: airtableFields,
+        baseId: airtableBaseId,
+        tableName: airtableTableName
       });
+      return NextResponse.json({
+        success: false,
+        error: "Failed to save lead to Airtable",
+        details: errorData
+      }, { status: 500 });
     }
 
     return NextResponse.json({ success: true });

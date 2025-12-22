@@ -453,6 +453,14 @@ A detailed coding plan (Blueprint) is MANDATORY before any code generation. This
 - Commit frequently to maintain checkpoints
 - Use conventional commit format when possible
 
+### User Control Over Git Operations (MANDATORY)
+
+- **NEVER run git commit or git push automatically**
+- **ALWAYS prepare changes and inform the user what needs to be committed**
+- **WAIT for user to explicitly request commit/push operations**
+- The user controls when commits and pushes happen
+- Provide the exact commands the user should run, but don't run them
+
 # ============================================
 
 # VIII. NETLIFY DEPLOYMENT & OPTIMIZATION
