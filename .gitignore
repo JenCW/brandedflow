@@ -78,3 +78,4 @@ node_modules/
 # Log files (automatically generated - should not be in git)
 *.log
 automation-system/logs/
+clients/enzo-mortgages/04_website/.next/
