@@ -1,0 +1,205 @@
+SERVICES — SAMER MORTGAGE
+
+(Use this structure for every service page)
+
+Each page follows the same pattern so the site feels intentional and premium.
+
+⸻
+
+1️⃣ FOREIGN NATIONAL & INTERNATIONAL BUYERS
+
+URL: /services/foreign-national
+
+Headline
+
+Foreign National Mortgage Loans — Handled Correctly
+
+Subheadline
+
+Clear guidance for international buyers and investors purchasing property in the United States — even without U.S. income or residency.
+
+Body Copy
+
+Buying property in the U.S. as a foreign national comes with additional layers of complexity — documentation, income verification, currency considerations, and lender requirements that aren’t always clearly explained.
+
+Samer Mahmoud specializes in foreign national and international investor loans. He understands how these files are underwritten, what lenders actually look for, and how to structure applications so they move forward smoothly.
+
+This is not a one-size-fits-all process. The right approach depends on your residency status, income source, assets, and long-term goals. Sam works through those details carefully so you can invest with confidence.
+
+What This Covers
+	•	Foreign national purchase loans
+	•	International investor financing
+	•	ITIN / non-U.S. borrower scenarios
+	•	High-value and multi-property transactions
+
+CTA
+
+Start a Foreign National Inquiry
+
+⸻
+
+2️⃣ FIRST-TIME HOME BUYERS
+
+URL: /services/first-time-buyer
+
+Headline
+
+First-Time Home Buying — Without the Overwhelm
+
+Subheadline
+
+Clear, steady guidance from pre-approval to closing — so you can move forward with confidence.
+
+Body Copy
+
+Buying your first home is exciting, but it can also feel confusing and high-pressure. Between rates, paperwork, and competing advice, it’s easy to feel unsure about what actually matters.
+
+Sam works closely with first-time buyers to explain the process clearly, answer questions honestly, and keep things moving at a pace that makes sense. No rushed decisions. No unnecessary pressure.
+
+The goal is simple: help you understand your options so you can choose what’s right for you.
+
+What This Covers
+	•	First-time buyer loan programs
+	•	Down payment options
+	•	Pre-approval guidance
+	•	Step-by-step support through closing
+
+CTA
+
+Get Pre-Approved
+
+⸻
+
+3️⃣ VA LOANS
+
+URL: /services/va-loans
+
+Headline
+
+VA Loans — Knowledgeable, Respectful Guidance
+
+Subheadline
+
+Mortgage support for those who’ve served, handled with clarity and care.
+
+Body Copy
+
+VA loans offer powerful benefits, but the rules and details matter. Sam works with veterans and active-duty service members to ensure VA loans are structured correctly and efficiently.
+
+This includes understanding eligibility, property requirements, and timelines — without unnecessary complications or confusion.
+
+You’ve earned these benefits. The process should be handled professionally and with respect.
+
+What This Covers
+	•	VA purchase loans
+	•	VA refinance options
+	•	Eligibility review
+	•	Clear explanations of benefits
+
+CTA
+
+Explore VA Loan Options
+
+⸻
+
+4️⃣ REFINANCE
+
+URL: /services/refinance
+
+Headline
+
+Refinancing — With a Clear Strategy
+
+Subheadline
+
+A calm, honest review of your current loan and whether refinancing actually makes sense.
+
+Body Copy
+
+Refinancing isn’t always the right move — and Sam is upfront about that. Every refinance starts with a review of your current loan, your goals, and what you’re trying to accomplish.
+
+Whether you’re looking to lower your payment, adjust your loan term, or improve cash flow, Sam helps you understand the trade-offs so you can make an informed decision.
+
+No pressure. Just clarity.
+
+What This Covers
+	•	Rate-and-term refinances
+	•	Long-term planning reviews
+	•	Payment and cash-flow analysis
+
+CTA
+
+Review My Refinance Options
+
+⸻
+
+5️⃣ CASH-OUT REFINANCE
+
+URL: /services/cash-out-refinance
+
+Headline
+
+Accessing Home Equity — Done Thoughtfully
+
+Subheadline
+
+Strategic cash-out options designed to support real financial needs.
+
+Body Copy
+
+Home equity can be a powerful tool when used intentionally. A cash-out refinance can help consolidate debt, fund major expenses, or provide flexibility during transitions.
+
+Sam works through these options carefully — explaining costs, long-term impact, and alternatives — so you’re not guessing or reacting under pressure.
+
+The focus is on using equity responsibly and intelligently.
+
+What This Covers
+	•	Cash-out refinance strategies
+	•	Equity access planning
+	•	Long-term financial impact review
+
+CTA
+
+Explore Cash-Out Options
+
+⸻
+
+6️⃣ EMERGENCY / LIFE-EVENT LOANS
+
+URL: /services/emergency-cash
+
+Headline
+
+When Timing Matters, Experience Matters
+
+Subheadline
+
+Calm, focused mortgage guidance during urgent or unexpected situations.
+
+Body Copy
+
+Life doesn’t always give you time to plan. Job changes, medical expenses, family needs, or sudden financial pressure can require fast, clear decisions.
+
+Sam approaches these situations with discretion and urgency — without panic or judgment. The priority is understanding what’s possible and moving efficiently toward a solution.
+
+You don’t have to navigate it alone.
+
+What This Covers
+	•	Urgent equity access
+	•	Short-timeline solutions
+	•	Discreet, priority handling
+
+CTA
+
+Get Help Now
+
+⸻
+
+HOW TO USE THIS IN REPLIT (SAFE)
+
+For each service page:
+	1.	Open the page file (e.g. /services/foreign-national/page.tsx)
+	2.	Use Replit AI and prompt:
+Replace the placeholder content with the following service page copy: [paste the section]
+
+Do not change layout or components.

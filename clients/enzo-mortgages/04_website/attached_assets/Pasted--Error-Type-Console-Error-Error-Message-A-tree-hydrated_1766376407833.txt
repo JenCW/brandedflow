@@ -1,0 +1,146 @@
+## Error Type
+Console Error
+
+## Error Message
+A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <ErrorBoundary errorComponent={undefined} errorStyles={undefined} errorScripts={undefined}>
+      <LoadingBoundary name="/" loading={null}>
+        <HTTPAccessFallbackBoundary notFound={<SegmentViewNode>} forbidden={undefined} unauthorized={undefined}>
+          <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<SegmentViewNode>} forbidden={undefined} ...>
+            <RedirectBoundary>
+              <RedirectErrorBoundary router={{...}}>
+                <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:<Fragment>, ...}} segmentPath={[...]} ...>
+                  <SegmentViewNode type="page" pagePath="page.tsx">
+                    <SegmentTrieNode>
+                    <ClientPageRoot Component={function HomePage} serverProvidedParams={{...}}>
+                      <HomePage params={Promise} searchParams={Promise}>
+                        <ParallaxProvider>
+                          <FloatInObserver>
+                            <div ref={{current:null}} className="">
+                              <VideoModal>
+                              <section>
+                              <section
++                               className="relative bg-accent py-4 overflow-hidden"
+-                               className="relative bg-gradient-to-r from-primary via-primary to-amber-600 py-4 overfl..."
+                                data-testid="section-live-person-banner"
+                              >
+                                <div
++                                 className={"absolute inset-0 bg-[url('/images/noise.png')] opacity-5"}
+-                                 className={"absolute inset-0 bg-[url('/images/noise.png')] opacity-10"}
+                                >
+                                <LinkComponent href="tel:+19495..." className="relative z..." data-testid="link-call-...">
+                                  <a className="relative z..." data-testid="link-call-..." ref={function} ...>
+                                    <div className="flex items...">
+                                      <div className="relative">
+                                        <span
++                                         className="absolute inline-flex h-full w-full rounded-full bg-primary opacit..."
+-                                         className="absolute inline-flex h-full w-full rounded-full bg-white opacity-..."
+                                        >
+                                        <div
++                                         className="relative flex items-center justify-center w-10 h-10 bg-primary/20..."
+-                                         className="relative flex items-center justify-center w-10 h-10 bg-white/20 b..."
+                                        >
+                                          <Headphones className="w-5 h-5 te...">
+                                            <svg
+                                              ref={null}
+                                              xmlns="http://www.w3.org/2000/svg"
+                                              width={24}
+                                              height={24}
+                                              viewBox="0 0 24 24"
+                                              fill="none"
+                                              stroke="currentColor"
+                                              strokeWidth={2}
+                                              strokeLinecap="round"
+                                              strokeLinejoin="round"
++                                             className="lucide lucide-headphones w-5 h-5 text-primary"
+-                                             className="lucide lucide-headphones w-5 h-5 text-white"
+                                            >
+                                      <span
++                                       className="text-foreground font-bold text-lg md:text-xl uppercase tracking-wide"
+-                                       className="text-white font-bold text-lg md:text-xl uppercase tracking-wide"
+                                      >
++                                       Live Person 24/7
+                                    <div
++                                     className="hidden md:block w-px h-8 bg-foreground/20"
+-                                     className="hidden md:block w-px h-8 bg-white/30"
+                                    >
+                                    <p
++                                     className="text-foreground/80 text-center md:text-left text-sm md:text-base"
+-                                     className="text-white/90 text-center md:text-left text-sm md:text-base"
+                                    >
+                                      <span
++                                       className="font-semibold text-foreground"
+-                                       className="font-semibold"
+                                      >
++                                       Questions about the process?
+                                      ...
+                                    <div
++                                     className="flex items-center gap-2 bg-primary hover:bg-primary/90 transition-col..."
+-                                     className="flex items-center gap-2 bg-white/20 hover:bg-white/30 transition-colo..."
+                                    >
+                                      <Phone className="w-4 h-4 te...">
+                                        <svg
+                                          ref={null}
+                                          xmlns="http://www.w3.org/2000/svg"
+                                          width={24}
+                                          height={24}
+                                          viewBox="0 0 24 24"
+                                          fill="none"
+                                          stroke="currentColor"
+                                          strokeWidth={2}
+                                          strokeLinecap="round"
+                                          strokeLinejoin="round"
++                                         className="lucide lucide-phone w-4 h-4 text-primary-foreground"
+-                                         className="lucide lucide-phone w-4 h-4 text-white"
+                                        >
+                                      <span
++                                       className="text-primary-foreground font-semibold"
+-                                       className="text-white font-semibold"
+                                      >
++                                       Call Now
+                                      <ArrowRight className="w-4 h-4 te...">
+                                        <svg
+                                          ref={null}
+                                          xmlns="http://www.w3.org/2000/svg"
+                                          width={24}
+                                          height={24}
+                                          viewBox="0 0 24 24"
+                                          fill="none"
+                                          stroke="currentColor"
+                                          strokeWidth={2}
+                                          strokeLinecap="round"
+                                          strokeLinejoin="round"
++                                         className="lucide lucide-arrow-right w-4 h-4 text-primary-foreground group-h..."
+-                                         className="lucide lucide-arrow-right w-4 h-4 text-white group-hover:translat..."
+                                        >
+                              ...
+                  ...
+                ...
+
+
+
+    at div (unknown:0:0)
+    at HomePage (app/page.tsx:155:7)
+
+## Code Frame
+  153 |     {/* Live Person 24/7 Banner - Front Facing CTA */}
+  154 |     <section className="relative bg-gradient-to-r from-primary via-primary to-amber-600 py-4 overflow-hidden" data-testid="section-live-person-banner">
+> 155 |       <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-10" />
+      |       ^
+  156 |       <Link 
+  157 |         href="tel:+19495551234" 
+  158 |         className="relative z-10 w-full max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 group"
+
+Next.js version: 16.1.0 (Turbopack)
