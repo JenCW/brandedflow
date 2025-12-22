@@ -16,11 +16,17 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://enzomortgages.com"),
   title: {
     default: "Enzo Mortgages | The Ferrari of Home Loans | Orange County CA",
     template: "%s | Enzo Mortgages",
   },
   description: "Enzo Mortgages (NMLS #1984772) - Your trusted mortgage loan officer in Orange County, California. Specializing in home loans, refinancing, FHA, VA, conventional mortgages. Get pre-approved today with personalized service and competitive rates.",
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 5,
+  },
   keywords: [
     "mortgage loan officer Orange County",
     "home loans California",
@@ -40,7 +46,6 @@ export const metadata: Metadata = {
   authors: [{ name: "Enzo Mortgages" }],
   creator: "Enzo Mortgages",
   publisher: "Enzo Mortgages",
-  metadataBase: new URL("https://enzomortgages.com"),
   alternates: {
     canonical: "/",
   },
