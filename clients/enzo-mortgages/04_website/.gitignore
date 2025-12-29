@@ -1,0 +1,25 @@
+# Environment variables - NEVER commit these!
+.env
+.env.local
+.env.*.local
+
+# Next.js build output
+.next/
+out/
+
+# Production build
+dist/
+build/
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Local development
+.vercel
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+

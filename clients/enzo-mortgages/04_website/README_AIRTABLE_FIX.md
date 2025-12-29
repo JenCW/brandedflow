@@ -87,10 +87,12 @@ single-family, condo, townhome, multi-unit
 ## Environment Variables (Already Set in Netlify)
 
 ```
-AIRTABLE_API_KEY=patDoTRkptPexM9PV.b5aef171dc3af321693239bd98dad95593b127d94cb62530055a080f8329799a
-AIRTABLE_BASE_ID=appKXCMh5gJ1AvS6Z
+AIRTABLE_API_KEY=your_api_key_here
+AIRTABLE_BASE_ID=your_base_id_here
 AIRTABLE_TABLE_NAME=leads
 ```
+
+⚠️ **SECURITY NOTE**: Never commit API keys to git. Always use environment variables or Netlify's environment variable settings.
 
 ## Testing Workflow
 

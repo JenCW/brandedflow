@@ -3,11 +3,29 @@
 /**
  * Airtable Connection Test Script
  * This script tests the Airtable API connection and verifies field mapping
+ * 
+ * REQUIRES: .env file with AIRTABLE_API_KEY, AIRTABLE_BASE_ID, AIRTABLE_TABLE_NAME
  */
 
-const BASE_ID = "appKXCMh5gJ1AvS6Z";
-const TABLE_NAME = "leads";
-const API_TOKEN = "patDoTRkptPexM9PV.b5aef171dc3af321693239bd98dad95593b127d94cb62530055a080f8329799a";
+// Load environment variables
+// For local testing, set environment variables or use: dotenv -e .env node test-airtable.js
+const BASE_ID = process.env.AIRTABLE_BASE_ID || "appKXCMh5gJ1AvS6Z";
+const TABLE_NAME = process.env.AIRTABLE_TABLE_NAME || "leads";
+const API_TOKEN = process.env.AIRTABLE_API_KEY;
+
+if (!API_TOKEN) {
+  console.error("ERROR: AIRTABLE_API_KEY environment variable is not set!");
+  console.error("\nTo run this test locally, you can:");
+  console.error("  1. Set environment variables:");
+  console.error("     export AIRTABLE_API_KEY=your_api_key_here");
+  console.error("     export AIRTABLE_BASE_ID=your_base_id_here");
+  console.error("     export AIRTABLE_TABLE_NAME=leads");
+  console.error("  2. Or create a .env file and use dotenv-cli:");
+  console.error("     npm install -g dotenv-cli");
+  console.error("     dotenv -e .env node test-airtable.js");
+  console.error("\n⚠️  NEVER commit your .env file or API keys to git!");
+  process.exit(1);
+}
 
 async function testAirtableConnection() {
   console.log("Testing Airtable Connection...");
