@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Branded + Flow | Real Talk, Real Results - Professional Websites & Systems</title>
+    <meta name="description" content="Professional websites and systems built together. Real Talk, Real Results. Websites that behave professionally with automated response systems, integration, and automation.">
+    <meta name="keywords" content="website development, business automation, professional websites, response systems, integration, automation, Irvine California">
+    <meta name="author" content="Branded + Flow">
+    <link rel="canonical" href="https://brandedflow.com/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://brandedflow.com/">
+    <meta property="og:title" content="Branded + Flow | Real Talk, Real Results">
+    <meta property="og:description" content="Professional websites and systems built together. Websites that behave professionally with automated response systems.">
+    <meta property="og:image" content="https://brandedflow.com/assets/logo.png">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://brandedflow.com/">
+    <meta name="twitter:title" content="Branded + Flow | Real Talk, Real Results">
+    <meta name="twitter:description" content="Professional websites and systems built together. Websites that behave professionally with automated response systems.">
+    <meta name="twitter:image" content="https://brandedflow.com/assets/logo.png">
+    
+    <!-- Robots -->
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Branded + Flow",
+      "url": "https://brandedflow.com",
+      "logo": "https://brandedflow.com/assets/logo.png",
+      "description": "Professional websites and systems built together. Real Talk, Real Results.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Irvine",
+        "addressRegion": "CA",
+        "addressCountry": "US"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+1-714-788-4500",
+        "contactType": "Customer Service",
+        "email": "jen@brandedflow.com"
+      },
+      "sameAs": []
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&family=Forum&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Nunito Sans', sans-serif;
+            background: #0D1F3D;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 60px;
+            background: rgba(13, 31, 61, 0.95);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(162, 228, 235, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo img { height: 40px; }
+
+        nav ul {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover { color: #E8BD00; }
+
+        /* Sections */
+        section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 200px 80px;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 72px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 60px;
+        }
+
+        h2 {
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 60px;
+        }
+
+        p {
+            font-size: 20px;
+            line-height: 1.8;
+            opacity: 0.9;
+            margin-bottom: 40px;
+        }
+
+        .caption {
+            font-family: 'Forum', serif;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 12px;
+            color: #E8BD00;
+            margin-bottom: 40px;
+            display: block;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 60px 0;
+        }
+
+        ul li {
+            font-size: 20px;
+            line-height: 1.8;
+            opacity: 0.9;
+            margin-bottom: 20px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        ul li:before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: #E8BD00;
+        }
+
+        .cta {
+            display: inline-block;
+            padding: 18px 40px;
+            background: #E8BD00;
+            color: #0D1F3D;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 50px;
+            margin-top: 40px;
+            transition: transform 0.3s;
+        }
+
+        .cta:hover { transform: translateY(-3px); }
+
+        /* Hero */
+        .hero { background: linear-gradient(135deg, #0D1F3D, #0A1628); }
+        .hero .container { text-align: center; }
+
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 60px;
+            margin-top: 100px;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 60px;
+            border-radius: 0;
+            border: none;
+            border-left: 2px solid rgba(232, 189, 0, 0.3);
+        }
+
+        .service-card h3 {
+            font-size: 28px;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            margin-bottom: 0;
+        }
+
+        /* Contact */
+        .contact { background: #0A1628; }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 100px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(162, 228, 235, 0.1);
+            color: #fff;
+            border-radius: 0;
+            margin-bottom: 30px;
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 20px;
+            background: #E8BD00;
+            color: #0D1F3D;
+            border: none;
+            border-radius: 0;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Animation classes */
+        .anim { opacity: 0; transform: translateY(30%); }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#" class="logo"><img src="assets/logo.png" alt="Branded + Flow" loading="lazy" width="40" height="40"></a>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#work">Work</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container">
+            <h1 class="anim">Websites and systems are inseparable.</h1>
+            <p class="anim">Professionalism doesn't work without systems. Systems don't work without professionalism.</p>
+            <a href="#services" class="cta anim">See How It Works</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <span class="caption anim">The Core Belief</span>
+            <h2 class="anim">A professional website isn't real unless the business behind it works.</h2>
+            <p class="anim">A site that looks good but doesn't respond, follow up, or handle conversations isn't professional — it's misleading.</p>
+            <p class="anim">I don't build fronts and backs separately. I build the website and the systems that make it behave professionally.</p>
+            <p class="anim">Built together. Runs together.</p>
+        </div>
+    </section>
+
+    <section id="systems">
+        <div class="container">
+            <span class="caption anim">What "Systems" Actually Means Here</span>
+            <h2 class="anim">Systems are not dashboards, jargon, or tools you have to learn.</h2>
+            <p class="anim">They are the parts of the business that handle interest without relying on you.</p>
+            <p class="anim">That includes systems for:</p>
+            <ul class="anim">
+                <li>responding when someone fills out a form</li>
+                <li>answering calls or chats when you can't</li>
+                <li>following up when no one replies</li>
+                <li>routing leads so nothing gets lost</li>
+                <li>keeping conversations and next steps organized</li>
+            </ul>
+            <p class="anim">This is where automation, AI answering, and chat systems belong — quietly doing their job in the background.</p>
+            <p class="anim">You don't need to understand them. They just need to work.</p>
+        </div>
+    </section>
+
+    <section id="problem">
+        <div class="container">
+            <span class="caption anim">What This Solves</span>
+            <h2 class="anim">Most business owners aren't bad at sales or marketing.</h2>
+            <p class="anim">They're overwhelmed by:</p>
+            <ul class="anim">
+                <li>sales and marketing jargon</li>
+                <li>funnels, pipelines, CRMs</li>
+                <li>AI, agents, automations, workflows</li>
+                <li>the feeling that everything is changing faster than they can keep up</li>
+            </ul>
+            <p class="anim">They don't want to become experts in any of this. They want to know the business won't fall apart.</p>
+            <p class="anim">That's the gap I fill.</p>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <span class="caption anim">Services</span>
+            <h2 class="anim">What I Build</h2>
+            <div class="services-grid">
+                <div class="service-card anim">
+                    <h3>Professional Websites</h3>
+                    <p>Not just beautiful — they behave professionally.</p>
+                </div>
+                <div class="service-card anim">
+                    <h3>Response Systems</h3>
+                    <p>Automatic professional response when interest appears.</p>
+                </div>
+                <div class="service-card anim">
+                    <h3>Integration & Automation</h3>
+                    <p>Systems that reduce your cognitive load.</p>
+                </div>
+                <div class="service-card anim">
+                    <h3>Quick Starts</h3>
+                    <p>Start small, still professional.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div>
+                    <span class="caption anim">Contact</span>
+                    <h2 class="anim">Let's build something that actually runs</h2>
+                    <p class="anim">jen@brandedflow.com<br>714.788.4500<br>Irvine, California</p>
+                </div>
+                <form class="anim">
+                    <input type="text" placeholder="Name" required>
+                    <input type="email" placeholder="Email" required>
+                    <textarea placeholder="Message" rows="5" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Exact reference animation: opacity 0→1, y: 30%→0%, power1.inOut
+        gsap.utils.toArray('.anim').forEach((elem, i) => {
+            gsap.fromTo(elem,
+                { opacity: 0, y: '30%' },
+                {
+                    opacity: 1,
+                    y: '0%',
+                    duration: 0.4,
+                    ease: 'power1.inOut',
+                    delay: i * 0.1,
+                    scrollTrigger: {
+                        trigger: elem,
+                        start: 'top 80%',
+                        toggleActions: 'play none none none'
+                    }
+                }
+            );
+        });
+    </script>
+</body>
+</html>
