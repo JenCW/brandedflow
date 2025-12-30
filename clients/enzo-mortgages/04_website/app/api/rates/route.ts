@@ -16,6 +16,8 @@ interface RateData {
   rateFHA: number | null;
   rateVA: number | null;
   rateJumbo: number | null;
+  apr30yr: number | null; // Manually updated weekly
+  apr15yr: number | null; // Manually updated weekly
   lastUpdated: string;
   source: string;
   weeklyChange?: number;
@@ -55,6 +57,10 @@ async function fetchFromFRED(apiKey: string): Promise<RateData | null> {
 
     const weeklyChange = rate30yr && prevRate30yr ? rate30yr - prevRate30yr : undefined;
 
+    // APR is manually updated weekly via environment variable
+    const apr30yr = process.env.APR_30YR ? parseFloat(process.env.APR_30YR) : (rate30yr ? rate30yr + 0.35 : null);
+    const apr15yr = process.env.APR_15YR ? parseFloat(process.env.APR_15YR) : (rate15yr ? rate15yr + 0.30 : null);
+    
     return {
       rate30yr: rate30yr && !isNaN(rate30yr) ? rate30yr : null,
       rate15yr: rate15yr && !isNaN(rate15yr) ? rate15yr : null,
@@ -62,6 +68,8 @@ async function fetchFromFRED(apiKey: string): Promise<RateData | null> {
       rateFHA: rate30yr ? rate30yr - 0.25 : null,
       rateVA: rate30yr ? rate30yr - 0.375 : null,
       rateJumbo: rate30yr ? rate30yr + 0.25 : null,
+      apr30yr: apr30yr && !isNaN(apr30yr) ? apr30yr : null,
+      apr15yr: apr15yr && !isNaN(apr15yr) ? apr15yr : null,
       lastUpdated: data30yr.observations?.[0]?.date || new Date().toISOString(),
       source: "FRED (Freddie Mac Weekly)",
       weeklyChange
@@ -74,6 +82,11 @@ async function fetchFromFRED(apiKey: string): Promise<RateData | null> {
 
 function getEstimatedRates(): RateData {
   const baseRate = 6.85;
+  // APR is manually updated weekly via environment variable
+  // Default APR is typically 0.25-0.5% higher than interest rate
+  const apr30yr = process.env.APR_30YR ? parseFloat(process.env.APR_30YR) : baseRate + 0.35;
+  const apr15yr = process.env.APR_15YR ? parseFloat(process.env.APR_15YR) : (baseRate - 0.75) + 0.30;
+  
   return {
     rate30yr: baseRate,
     rate15yr: baseRate - 0.75,
@@ -81,6 +94,8 @@ function getEstimatedRates(): RateData {
     rateFHA: baseRate - 0.25,
     rateVA: baseRate - 0.375,
     rateJumbo: baseRate + 0.25,
+    apr30yr: apr30yr,
+    apr15yr: apr15yr,
     lastUpdated: new Date().toISOString(),
     source: "estimate"
   };

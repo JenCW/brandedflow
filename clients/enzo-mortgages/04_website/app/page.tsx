@@ -11,6 +11,7 @@ import FloatInObserver from "./components/FloatInObserver";
 import LoanFinderTool from "./components/LoanFinderTool";
 import AvailabilitySection from "./components/AvailabilitySection";
 import LiveRates from "./components/LiveRates";
+import LoanProcessFlow from "./components/LoanProcessFlow";
 import VerticalTestimonialSlider from "./components/VerticalTestimonialSlider";
 import ParallaxProvider from "./components/ParallaxProvider";
 import { VideoModal, VideoButton } from "./components/VideoModal";
@@ -95,7 +96,7 @@ export default function HomePage() {
     <VideoModal 
       isOpen={isVideoOpen} 
       onClose={() => setIsVideoOpen(false)} 
-      videoSrc="/videos/clientvids/IMG_6141.MOV.mov"
+      videoSrc="/videos/clientvids/IMG_6141.mp4"
     />
     {/* Hero Section */}
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -190,6 +191,9 @@ export default function HomePage() {
 
     {/* Live Mortgage Rates */}
     <LiveRates />
+
+    {/* Loan Process Flowchart */}
+    <LoanProcessFlow />
 
     {/* Interactive Loan Finder Tool */}
     <section className="relative bg-zinc-100 min-h-screen flex items-center py-24 overflow-hidden" data-testid="section-loan-finder">

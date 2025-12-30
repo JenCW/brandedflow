@@ -7,6 +7,8 @@ import Link from "next/link";
 interface RateData {
   rate30yr: number;
   rate15yr: number;
+  apr30yr?: number | null;
+  apr15yr?: number | null;
   lastUpdated: string;
   source: string;
   message?: string;
@@ -30,6 +32,8 @@ export default function LiveRates() {
       setRates({
         rate30yr: 6.85,
         rate15yr: 6.10,
+        apr30yr: 7.20,
+        apr15yr: 6.40,
         lastUpdated: new Date().toISOString(),
         source: "estimate"
       });
@@ -95,6 +99,11 @@ export default function LiveRates() {
                   </>
                 )}
               </div>
+              {rates?.apr30yr && (
+                <p className="text-zinc-500 text-xs mt-1">
+                  APR: <span className="text-zinc-300 font-semibold">{rates.apr30yr.toFixed(2)}%</span>
+                </p>
+              )}
             </div>
 
             <div className="w-px h-12 bg-zinc-700 hidden sm:block" />
@@ -113,6 +122,11 @@ export default function LiveRates() {
                   </>
                 )}
               </div>
+              {rates?.apr15yr && (
+                <p className="text-zinc-500 text-xs mt-1">
+                  APR: <span className="text-zinc-300 font-semibold">{rates.apr15yr.toFixed(2)}%</span>
+                </p>
+              )}
             </div>
 
             <div className="w-px h-12 bg-zinc-700 hidden lg:block" />

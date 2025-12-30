@@ -48,10 +48,31 @@ export function VideoModal({ isOpen, onClose, videoSrc }: VideoModalProps) {
           playsInline
           className="w-full h-full rounded-lg shadow-2xl"
           data-testid="video-player"
+          onError={(e) => {
+            console.error("Video failed to load:", videoSrc);
+            const target = e.target as HTMLVideoElement;
+            target.style.display = "none";
+            const errorDiv = target.parentElement?.querySelector(".video-error");
+            if (errorDiv) {
+              (errorDiv as HTMLElement).style.display = "flex";
+            }
+          }}
         >
           <source src={videoSrc} type="video/mp4" />
+          <source src={videoSrc.replace(/\.mov$/i, ".mp4")} type="video/mp4" />
+          <source src={videoSrc.replace(/\.MOV$/i, ".mp4")} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
+        <div className="video-error hidden absolute inset-0 bg-zinc-900 rounded-lg items-center justify-center flex-col gap-4 text-white">
+          <p className="text-xl font-semibold">Video unavailable</p>
+          <p className="text-zinc-400 text-sm">The video file could not be loaded.</p>
+          <button
+            onClick={onClose}
+            className="px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors"
+          >
+            Close
+          </button>
+        </div>
       </div>
     </div>
   );
