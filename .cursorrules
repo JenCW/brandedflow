@@ -11,9 +11,9 @@
 **BEFORE reading any code, making any changes, or taking any action, you MUST:**
 
 1. **Acknowledge Reading**: Explicitly state: "I have read and understood the .cursorrules file"
-2. **Confirm Understanding**: State the three mandatory phases (Blueprint → Construct → Execute)
-3. **Verify Blueprint Requirement**: Confirm you will NOT write code without an approved blueprint
-4. **State Current Phase**: Declare which phase you are starting in (always Phase 1: Blueprint)
+2. **Confirm Understanding**: State the three mandatory phases (Directive → Orchestration → Execution)
+3. **Verify Directive/Blueprint Requirement**: Confirm you will NOT write code without checking for directive or creating approved blueprint
+4. **State Current Phase**: Declare which phase you are starting in (Check Directive → Orchestrate → Execute)
 5. **Answer Verification Question**: What is the FIRST thing you must do before writing any code?
 
 **REQUIRED RESPONSE FORMAT (Copy and fill out exactly):**
@@ -21,19 +21,21 @@
 ```
 ✅ RULES ACKNOWLEDGMENT:
 RULES_ACKNOWLEDGED: YES
-BLUEPRINT_PHASE_UNDERSTOOD: YES
-CODE_WITHOUT_APPROVAL: FORBIDDEN
-CURRENT_PHASE: Phase 1 - Blueprint
+DIRECTIVE_METHOD_UNDERSTOOD: YES
+CODE_WITHOUT_DIRECTIVE_OR_BLUEPRINT: FORBIDDEN
+CURRENT_PHASE: Check Directive → Orchestrate → Execute
 
-VERIFICATION ANSWER: [Answer must include: "Create a blueprint and wait for approval"]
+VERIFICATION ANSWER: [Answer must include: "Check for directive, if coding work needed create blueprint in orchestration phase and wait for approval"]
 
 I understand the three mandatory phases:
-1. Blueprint → Research, plan, and WAIT for approval
-2. Construct → Implement only after approved blueprint
-3. Execute → Use deterministic scripts/MCP servers only
+1. Directive → Check for existing directive in systems/doe-engine/directives/
+2. Orchestration → If coding needed: create blueprint and WAIT for approval; If deterministic: use scripts/MCPs; Handle errors and self-anneal
+3. Execution → Implement according to approved blueprint or execute deterministic scripts/MCPs
 
-I will NOT write code without an approved blueprint.
-I am starting in Phase 1: Blueprint (Research & Planning).
+I will NOT write code without checking for directive or creating approved blueprint.
+I am starting in Phase 1: Check Directive (then Orchestrate, then Execute).
+
+⚠️ MANDATORY CHECKPOINT: This file is a checkpoint. You cannot proceed without acknowledging the directive-first method above.
 ```
 
 **IF YOU DO NOT PROVIDE THIS ACKNOWLEDGMENT IN THE EXACT FORMAT ABOVE, YOU ARE IN VIOLATION OF THE DIRECTIVE.**
@@ -54,64 +56,110 @@ I am starting in Phase 1: Blueprint (Research & Planning).
 
 # ============================================
 
-# I. FOUNDATIONAL STRATEGY: BLUEPRINT-FIRST APPROACH
+# I. FOUNDATIONAL STRATEGY: DIRECTIVE-FIRST APPROACH
 
 # ============================================
 
-## THE BLUEPRINT-FIRST DIRECTIVE (MANDATORY)
+## THE DIRECTIVE-FIRST METHOD (MANDATORY)
 
-A detailed coding plan (Blueprint) is MANDATORY before any code generation. This prevents chaotic, flawed output from unguided "vibe coding".
+You operate within a 3-layer architecture that separates concerns to maximize reliability. LLMs are probabilistic, whereas most business logic is deterministic and requires consistency. This system fixes that mismatch.
 
-### PHASE 1: BLUEPRINT (MANDATORY BEFORE ANY CODE)
+**Layer 1: Directive (What to do)**
+- SOPs written in Markdown, live in `systems/doe-engine/directives/`
+- Define goals, inputs, tools/scripts to use, outputs, and edge cases
+- Natural language instructions, like you'd give a mid-level employee
+- **All directives are centralized** - task-based, not folder-based
 
-⚠️ REMINDER: If you haven't completed the pre-flight check at the top of this file, STOP and go back.
+**Layer 2: Orchestration (Decision making)**
+- This is you. Your job: intelligent routing.
+- Read directives, call execution tools in the right order, handle errors, ask for clarification, update directives with learnings
+- You're the glue between intent and execution
 
-**STOP & THINK FIRST. You MUST:**
+**Layer 3: Execution (Doing the work)**
+- Deterministic Python scripts (or Shell/Node tools) in `systems/doe-engine/execution/`
+- Handle API calls, data processing, file operations, database interactions
+- Reliable, testable, fast. Use scripts instead of manual work.
 
-1. **Research Phase:**
-   - Read the ENTIRE codebase relevant to the task
-   - Review all specifications and documentation
-   - Check for existing `project_config.md` or `project_milestones.md` for stable, long-term context
-   - Review `workflow_state.md` or `Documentation.md` for current phase, task history, and learnings
-   - Check for directives in `.cursor/rules/*.mdc` files or directives folder
-   - Understand existing patterns and architecture
+**Why this works:** If you do everything yourself, errors compound. 90% accuracy per step = 59% success over 5 steps. The solution is push complexity into deterministic code. That way you just focus on decision-making.
 
-2. **Generate Detailed Implementation Plan:**
-   - Create a step-by-step implementation plan with:
-     - **Objectives**: Clear goals and expected outcomes
-     - **Proposed Changes**: Specific files and modifications
-     - **Logic/Edge Cases**: All scenarios to handle
-     - **FE/BE Separation**: Clear frontend/backend boundaries
-     - **Dependencies**: Required libraries, services, or data
-   - **EXPLICITLY WAIT FOR HUMAN CONFIRMATION** before proceeding to Phase 2
+**Reference:** See `systems/doe-engine/gemini.md` for complete architecture details.
 
-3. **Self-Annealing Check:**
-   - Review any error logs, constraints, or learnings from previous executions
-   - Update understanding based on past failures or edge cases
-
-### PHASE 2: CONSTRUCT (ONLY AFTER APPROVED BLUEPRINT)
+### PHASE 1: CHECK DIRECTIVE (MANDATORY FIRST STEP)
 
 ⚠️ REMINDER: If you haven't completed the pre-flight check at the top of this file, STOP and go back.
 
-**Adhere STRICTLY to the approved plan:**
+**BEFORE taking any action, you MUST:**
 
-1. **Implementation Strategy:**
-   - Implement changes in SMALL, GRANULAR chunks
-   - Use "Rewrite this entire component" instead of "Change this" to trigger full regeneration
-   - Avoid patchy edits that cause context pollution
-   - Maintain code integrity throughout
+1. **Check for Existing Directive:**
+   - Search for directive in `systems/doe-engine/directives/{task-name}.md`
+   - If directive exists: Read it fully before proceeding
+   - If no directive exists: Use 3-question test to determine if one should be created:
+     * Will I do this again? (Recurring)
+     * Is this complex? (Multiple steps, integrations)
+     * Does consistency matter? (Same quality every time)
+   - **If 2+ answers are "Yes" → Ask user if directive should be created**
+   - **If 0-1 answers are "Yes" → Skip directive, proceed to orchestration**
 
-2. **Code Generation Rules:**
-   - Follow all coding standards (see Code Quality section below)
-   - Maintain consistent structure and patterns
-   - Ensure type safety across frontend/backend boundaries
+2. **Check for Execution Scripts/MCPs:**
+   - Before writing code, check: `systems/doe-engine/execution/`
+   - Check: `automations/mcps/` for reusable MCPs
+   - Check: `systems/mcp-server/automations/` for alternative location
+   - If script/MCP exists: Use it (don't rewrite)
+   - If no script exists: Create one for deterministic operations
+
+### PHASE 2: ORCHESTRATION (DECISION MAKING)
+
+⚠️ REMINDER: If you haven't completed the pre-flight check at the top of this file, STOP and go back.
+
+**Your role: intelligent routing and decision-making**
+
+1. **If Directive Exists:**
+   - Read directive fully to understand goals, inputs, outputs, edge cases
+   - Follow directive's process steps
+   - Use execution scripts/MCPs referenced in directive
+   - **For coding/development work within directive:**
+     * Create detailed blueprint with:
+       - Objectives: Clear goals and expected outcomes
+       - Proposed Changes: Specific files and modifications
+       - Logic/Edge Cases: All scenarios to handle
+       - FE/BE Separation: Clear frontend/backend boundaries
+       - Dependencies: Required libraries, services, or data
+     * **EXPLICITLY WAIT FOR HUMAN CONFIRMATION** before proceeding to execution
+   - **For deterministic work:**
+     * Use existing execution scripts/MCPs
+     * Call scripts in correct order as specified in directive
+   - Handle errors and self-anneal (see Self-Annealing section below)
+
+2. **If No Directive Exists (Simple/One-off Tasks):**
+   - **For coding work:** Create blueprint → Get approval → Execute
+   - **For deterministic work:** Use existing scripts or create new ones
+   - **For exploratory work:** Proceed but note what directive could be created
+
+3. **Self-Annealing (MANDATORY):**
+   - **When errors occur:**
+     1. Read error message and stack trace carefully
+     2. Fix the execution script/MCP and test it again (unless it uses paid tokens/credits—check with user first)
+     3. Update the directive with what you learned (API limits, timing, edge cases, better approaches)
+     4. Document the fix in `workflow_state.md` or directive's "Learnings" section
+   - **When you discover improvements:**
+     * Update directive with new constraints, better approaches, common errors, timing expectations
+     * Directives are living documents - improve them over time
+     * **Ask permission before updating directives** (unless explicitly told not to)
+   - **Learning from Variations:**
+     * First time: Adapt process manually, document what you did
+     * Update directive: Add variation to edge cases section, document adaptation process
+     * Next time: Follow updated directive, process is now reliable
+     * Create new directive only if: Process is fundamentally different (not just parameters)
+   - **Self-Annealing Loop:**
+     * Errors are learning opportunities
+     * Fix it → Update the tool → Test tool → Update directive → System is now stronger
 
 ### PHASE 3: EXECUTION (DETERMINISTIC ONLY)
 
 **Execute ONLY deterministic scripts and MCP servers:**
 
 1. **Execution Layer:**
-   - Use deterministic Python scripts or MCP servers called by the plan
+   - Use deterministic Python scripts or MCP servers called by directive or blueprint
    - DO NOT attempt probabilistic execution for:
      - API calls
      - Data processing
@@ -121,9 +169,10 @@ A detailed coding plan (Blueprint) is MANDATORY before any code generation. This
 2. **Error Handling & Self-Annealing:**
    - If an error occurs (Execution failure, rate limit, bug):
      1. Read the error message and stack trace carefully
-     2. Fix and test the failing Execution script
-     3. Update the original Directive (SOP) with learned constraints or edge cases
-     4. Document the fix in workflow_state.md
+     2. Fix and test the failing Execution script/MCP
+     3. Update the original Directive with learned constraints or edge cases
+     4. Document the fix in `workflow_state.md` or directive's "Learnings" section
+     5. System is now stronger - same error won't happen again
 
 # ============================================
 
@@ -300,10 +349,10 @@ A detailed coding plan (Blueprint) is MANDATORY before any code generation. This
 
 ### Primary LLM (Orchestration/Reasoning)
 
-- **For Blueprint Phase**: Use high-reasoning models (GPT-4o, Claude Sonnet/Opus)
+- **For Directive/Blueprint Phase**: Use high-reasoning models (GPT-4o, Claude Sonnet/Opus)
 - **For Validation**: Use high-reasoning models for complex validation
 - **For Simple Implementation**: Lower cost/high speed models (GPT-4o-mini) for deterministic steps
-- **Rationale**: Blueprint and Validation need deep reasoning; simple implementation needs speed
+- **Rationale**: Directive reading, blueprint creation, and validation need deep reasoning; simple implementation needs speed
 
 ### Advanced Reasoning for Complex Problems
 
@@ -395,11 +444,14 @@ A detailed coding plan (Blueprint) is MANDATORY before any code generation. This
 ## MANDATORY WORKFLOW STEPS
 
 1. **READ FIRST**: Check for `project_config.md` and `workflow_state.md`
-2. **READ SECOND**: Review all `.cursor/rules/*.mdc` files and directives folder
-3. **PHASE 1 - BLUEPRINT**: Research, plan, and WAIT for approval
-4. **PHASE 2 - CONSTRUCT**: Implement strictly according to approved plan
-5. **PHASE 3 - EXECUTION**: Use deterministic scripts/MCP servers only
-6. **SELF-ANNEALING**: Update documentation and rules with learnings
+2. **READ SECOND**: Review all `.cursor/rules/*.mdc` files and directives in `systems/doe-engine/directives/`
+3. **PHASE 1 - CHECK DIRECTIVE**: Check for existing directive in `systems/doe-engine/directives/`
+4. **PHASE 2 - ORCHESTRATE**: 
+   - If directive exists: Follow it, create blueprint if coding work needed, get approval
+   - If no directive: Use 3-question test, create blueprint if coding, or use scripts if deterministic
+   - Handle errors and self-anneal (update directive with learnings)
+5. **PHASE 3 - EXECUTE**: Use deterministic scripts/MCP servers only
+6. **SELF-ANNEALING**: Update directive with learnings, update execution scripts, document in workflow_state.md
 7. **COMMIT**: Frequent Git commits to maintain checkpoints
 8. **CONTEXT ISOLATION**: Start new chat for unrelated topics
 
@@ -407,14 +459,15 @@ A detailed coding plan (Blueprint) is MANDATORY before any code generation. This
 
 ⚠️ REMINDER: If you haven't completed the pre-flight check at the top of this file, STOP and go back.
 
-- **NO CODE without approved Blueprint**
-- **NO probabilistic execution** - only deterministic
+- **NO CODE without checking directive or creating approved blueprint**
+- **NO probabilistic execution** - only deterministic scripts/MCPs
 - **NO context mixing** - new chats for new topics
 - **NO skipping documentation** - maintain project_config.md and workflow_state.md
 - **NO untyped code** - use shared schemas
 - **NO untested features** - unit tests are mandatory
 - **NO aesthetic compromises** - output must be beautiful and marketable
 - **NO skipping the pre-flight check** - acknowledgment is mandatory before any action
+- **NO skipping self-annealing** - always update directive with learnings when errors occur or improvements are discovered
 
 # ============================================
 
@@ -1062,3 +1115,51 @@ shared/
 - Time constraints
 
 **NO EXCEPTIONS. NO SHORTCUTS. QUALITY FIRST, ALWAYS.**
+
+# ============================================
+
+# XVII. DOE DISPATCHER ENFORCEMENT
+
+# ============================================
+
+## MANDATORY: Use DOE Dispatcher for Directive-Based Tasks
+
+**CRITICAL RULE**: All tasks that follow directives MUST use the DOE dispatcher system, NOT direct execution.
+
+### Required Pattern for Directive-Based Tasks
+
+**FORBIDDEN:**
+- Directly calling execution scripts: `python3 systems/doe-engine/execution/*.py`
+- Bypassing the dispatcher and worker queue
+- Skipping ACK token validation
+
+**REQUIRED:**
+- Use `node ./cursor/start-task.js <task_type> <project_id> <task_id> <actor_id> [payload_json]`
+- All directive-based work must go through the dispatcher
+- ACK tokens must be obtained and validated
+
+### When to Use Each System
+
+**Use Direct MCP Automations (`/run` endpoint):**
+- Simple utilities (create-client-folder, extract-client-info)
+- No directive required
+- Immediate execution needed
+
+**Use DOE Dispatcher (`cursor/start-task.js`):**
+- Any task that follows a directive
+- Tasks requiring ACK tokens
+- Tasks needing queuing, retry, or self-annealing
+- Python execution scripts
+
+### Enforcement
+
+If you need to execute a task that uses `systems/doe-engine/execution/*.py`:
+1. Check if it follows a directive (look in `systems/doe-engine/directives/`)
+2. If directive exists: MUST use `node ./cursor/start-task.js`
+3. Never bypass the dispatcher for directive-based tasks
+
+**This ensures:**
+- All directive-based work is tracked
+- ACK tokens are properly issued and validated
+- Self-annealing can occur when needed
+- Audit trail is maintained

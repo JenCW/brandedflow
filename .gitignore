@@ -79,3 +79,12 @@ node_modules/
 *.log
 automation-system/logs/
 clients/enzo-mortgages/04_website/.next/
+
+# Environment variables (contains secrets)
+.env
+
+# SQLite database (DOE dispatcher)
+db.sqlite
+db.sqlite-journal
+db.sqlite-wal
+db.sqlite-shm

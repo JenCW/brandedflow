@@ -1,0 +1,26 @@
+name: Check Direct Execution
+
+on:
+  pull_request:
+    branches: [ main, develop ]
+  push:
+    branches: [ main, develop ]
+
+jobs:
+  check-exec:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Check for direct execution violations
+        run: |
+          chmod +x scripts/check-no-direct-exec.sh
+          bash scripts/check-no-direct-exec.sh
+      
+      - name: Check .cursorrules enforcement
+        run: |
+          if grep -q "python3.*systems/doe-engine/execution" .cursorrules; then
+            echo "❌ .cursorrules contains direct execution pattern"
+            exit 1
+          fi
+          echo "✅ .cursorrules enforcement check passed"
