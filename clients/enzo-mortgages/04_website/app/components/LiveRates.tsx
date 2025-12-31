@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { TrendingDown, TrendingUp, RefreshCw, Info, ArrowRight } from "lucide-react";
 import Link from "next/link";
 
@@ -63,9 +64,14 @@ export default function LiveRates() {
     <section className="relative bg-zinc-950 py-12 border-b border-zinc-800 overflow-hidden" data-testid="section-live-rates">
       {/* Grayscale background image */}
       <div className="absolute inset-0 z-0">
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/images/location/IMG_6078.webp')" }}
+        <Image
+          src="/images/location/IMG_6078.webp"
+          alt=""
+          fill
+          loading="lazy"
+          quality={75}
+          className="object-cover"
+          sizes="100vw"
         />
         <div className="absolute inset-0 bg-zinc-950/95" />
       </div>

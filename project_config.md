@@ -51,10 +51,10 @@ BrandedFlow is a comprehensive business operations and client management system 
 ## Architecture Decisions
 
 ### DOE Method Framework
-The entire project follows the DOE (Design, Orchestrate, Execute) methodology:
-1. **Blueprint Phase**: Research, plan, and get approval before coding
-2. **Construct Phase**: Implement according to approved blueprint
-3. **Execute Phase**: Use deterministic scripts and MCP servers only
+The entire project follows the DOE (Directive, Orchestrate, Execute) methodology:
+1. **Check Directive Phase**: Check for existing directive in `systems/doe-engine/directives/`, create blueprint if coding work needed
+2. **Orchestration Phase**: Follow directive, get approval for blueprint, use scripts/MCPs for deterministic work
+3. **Execution Phase**: Implement according to approved blueprint or execute deterministic scripts/MCP servers
 
 ### Repository Structure (MANDATORY)
 Only these root-level folders are permitted:
@@ -153,7 +153,7 @@ brandedflow/
 ## Quality Assurance Standards
 
 ### Code Quality Requirements
-- **NO code without approved Blueprint**
+- **NO code without checking directive or creating approved blueprint**
 - **NO probabilistic execution** - only deterministic
 - **NO context mixing** - new chats for new topics
 - **NO skipping documentation** - maintain project_config.md and workflow_state.md
@@ -211,7 +211,7 @@ Each client folder must contain:
 ### DOE Method Enforcement
 - `.cursorrules` file is MANDATORY and auto-loaded
 - `systems/doe-engine/pre-flight.md` contains pre-flight checklist
-- Blueprint phase REQUIRED before any code generation
+- Directive check REQUIRED before any code generation (check for directive, create blueprint if coding work needed)
 - Approval REQUIRED before moving to Construct phase
 - Only deterministic execution in Execute phase
 
@@ -225,7 +225,7 @@ Each client folder must contain:
 ### Prohibited Actions
 - Creating root-level folders outside the 6 approved folders
 - Mixing contexts in single chat sessions
-- Skipping Blueprint phase for non-trivial tasks
+- Skipping directive check for non-trivial tasks
 - Using probabilistic methods in Execute phase
 - Adding dependencies without approval
 - Leaving placeholder content or incomplete features

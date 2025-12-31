@@ -6,7 +6,7 @@
 ```bash
 # Already done! Your code is in:
 # Repository: brandedflow
-# Branch: bootstrap/enzo-mortgages-20251221
+# Branch: main (primary branch)
 # Folder: clients/enzo-mortgages/04_website/
 ```
 
@@ -16,8 +16,7 @@
 2. Click **"Add new site" → "Import an existing project"**
 3. Choose **GitHub**
 4. Select repository: **brandedflow**
-5. Choose branch: **bootstrap/enzo-mortgages-20251221**
-   (Or merge to main first and use main)
+5. Choose branch: **main** (⚠️ IMPORTANT: Use main branch, not bootstrap branch)
 
 ### Step 3: Configure Build Settings
 
@@ -117,9 +116,18 @@ Netlify will:
 ## Current Deployment Status
 
 - **Repository**: `https://github.com/JenCW/brandedflow` (private)
-- **Branch**: `bootstrap/enzo-mortgages-20251221`
+- **Branch**: `main` ⚠️ **IMPORTANT: Use main branch, not bootstrap branch**
 - **Website Folder**: `clients/enzo-mortgages/04_website/`
 - **Ready to Deploy**: ✅ YES
+
+### ⚠️ Branch Configuration Note
+
+**If Netlify is currently configured to deploy from `bootstrap/enzo-mortgages-20251221`:**
+1. Go to Netlify Dashboard → Site Settings → Build & Deploy
+2. Change "Production branch" to `main`
+3. Save and trigger a new deploy
+
+The bootstrap branch is outdated and missing recent commits. Always use `main` branch for production deployments.
 
 ---
 

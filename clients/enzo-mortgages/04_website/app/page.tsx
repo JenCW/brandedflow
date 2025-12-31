@@ -102,11 +102,14 @@ export default function HomePage() {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with Ken Burns */}
       <div className="absolute inset-0" aria-hidden="true">
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat animate-ken-burns-right scale-110"
-          style={{ 
-            backgroundImage: "url('/images/hero/SMHero.png')"
-          }}
+        <Image
+          src="/images/hero/SMHero.png"
+          alt=""
+          fill
+          priority
+          quality={85}
+          className="object-cover animate-ken-burns-right scale-110"
+          sizes="100vw"
         />
       </div>
       {/* STRONG dark overlay for text contrast */}
@@ -204,7 +207,10 @@ export default function HomePage() {
             src="/images/context/IMG_6080.webp"
             alt=""
             fill
+            loading="lazy"
+            quality={75}
             className="object-cover grayscale opacity-25"
+            sizes="100vw"
           />
         </div>
       </div>
@@ -230,7 +236,10 @@ export default function HomePage() {
             src="/images/hero/IMG_6062.webp"
             alt=""
             fill
+            loading="lazy"
+            quality={75}
             className="object-cover grayscale opacity-25"
+            sizes="100vw"
           />
         </div>
       </div>

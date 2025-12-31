@@ -1,81 +1,191 @@
+# 🚫 STOP - DO NOT PROCEED UNTIL YOU COMPLETE THE CHECKPOINT BELOW 🚫
+
 # ============================================
+
+# MANDATORY PRE-FLIGHT CHECK - READ THIS FIRST
+
+# ============================================
+
+## ⚠️ CRITICAL: YOU MUST COMPLETE THIS CHECKPOINT BEFORE ANY OTHER ACTION ⚠️
+
+**BEFORE reading any code, making any changes, or taking any action, you MUST:**
+
+1. **Acknowledge Reading**: Explicitly state: "I have read and understood the .cursorrules file"
+2. **Confirm Understanding**: State the three mandatory phases (Directive → Orchestration → Execution)
+3. **Verify Directive/Blueprint Requirement**: Confirm you will NOT write code without checking for directive or creating approved blueprint
+4. **State Current Phase**: Declare which phase you are starting in (Check Directive → Orchestrate → Execute)
+5. **Answer Verification Question**: What is the FIRST thing you must do before writing any code?
+
+**REQUIRED RESPONSE FORMAT (Copy and fill out exactly):**
+
+```
+✅ RULES ACKNOWLEDGMENT:
+RULES_ACKNOWLEDGED: YES
+DIRECTIVE_METHOD_UNDERSTOOD: YES
+CODE_WITHOUT_DIRECTIVE_OR_BLUEPRINT: FORBIDDEN
+CURRENT_PHASE: Check Directive → Orchestrate → Execute
+
+VERIFICATION ANSWER: [Answer must include: "Check for directive, if coding work needed create blueprint in orchestration phase and wait for approval"]
+
+I understand the three mandatory phases:
+1. Directive → Check for existing directive in systems/doe-engine/directives/
+2. Orchestration → If coding needed: create blueprint and WAIT for approval; If deterministic: use scripts/MCPs; Handle errors and self-anneal
+3. Execution → Implement according to approved blueprint or execute deterministic scripts/MCPs
+
+I will NOT write code without checking for directive or creating approved blueprint.
+I am starting in Phase 1: Check Directive (then Orchestrate, then Execute).
+
+⚠️ MANDATORY CHECKPOINT: This file is a checkpoint. You cannot proceed without acknowledging the directive-first method above.
+```
+
+**IF YOU DO NOT PROVIDE THIS ACKNOWLEDGMENT IN THE EXACT FORMAT ABOVE, YOU ARE IN VIOLATION OF THE DIRECTIVE.**
+
+**ONLY AFTER providing this acknowledgment may you proceed to read the rest of the rules and begin work.**
+
+⚠️ REMINDER: If you haven't completed the pre-flight check above, STOP and go back to complete it now.
+
+# ============================================
+
 # GLOBAL FOUNDATIONAL RULES - DOE ARCHITECTURE
+
 # This file applies to ALL projects, workspaces, windows, chats, and models
+
 # MANDATORY ENFORCEMENT - NO EXCEPTIONS
-# ============================================
 
 # ============================================
-# I. FOUNDATIONAL STRATEGY: BLUEPRINT-FIRST APPROACH
+
 # ============================================
 
-## THE BLUEPRINT-FIRST DIRECTIVE (MANDATORY)
+# I. FOUNDATIONAL STRATEGY: DIRECTIVE-FIRST APPROACH
 
-A detailed coding plan (Blueprint) is MANDATORY before any code generation. This prevents chaotic, flawed output from unguided "vibe coding".
+# ============================================
 
-### PHASE 1: BLUEPRINT (MANDATORY BEFORE ANY CODE)
-**STOP & THINK FIRST. You MUST:**
+## THE DIRECTIVE-FIRST METHOD (MANDATORY)
 
-1. **Research Phase:**
-   - Read the ENTIRE codebase relevant to the task
-   - Review all specifications and documentation
-   - Check for existing `project_config.md` or `project_milestones.md` for stable, long-term context
-   - Review `workflow_state.md` or `Documentation.md` for current phase, task history, and learnings
-   - Check for directives in `.cursor/rules/*.mdc` files or directives folder
-   - Understand existing patterns and architecture
+You operate within a 3-layer architecture that separates concerns to maximize reliability. LLMs are probabilistic, whereas most business logic is deterministic and requires consistency. This system fixes that mismatch.
 
-2. **Generate Detailed Implementation Plan:**
-   - Create a step-by-step implementation plan with:
-     * **Objectives**: Clear goals and expected outcomes
-     * **Proposed Changes**: Specific files and modifications
-     * **Logic/Edge Cases**: All scenarios to handle
-     * **FE/BE Separation**: Clear frontend/backend boundaries
-     * **Dependencies**: Required libraries, services, or data
-   - **EXPLICITLY WAIT FOR HUMAN CONFIRMATION** before proceeding to Phase 2
+**Layer 1: Directive (What to do)**
+- SOPs written in Markdown, live in `systems/doe-engine/directives/`
+- Define goals, inputs, tools/scripts to use, outputs, and edge cases
+- Natural language instructions, like you'd give a mid-level employee
+- **All directives are centralized** - task-based, not folder-based
 
-3. **Self-Annealing Check:**
-   - Review any error logs, constraints, or learnings from previous executions
-   - Update understanding based on past failures or edge cases
+**Layer 2: Orchestration (Decision making)**
+- This is you. Your job: intelligent routing.
+- Read directives, call execution tools in the right order, handle errors, ask for clarification, update directives with learnings
+- You're the glue between intent and execution
 
-### PHASE 2: CONSTRUCT (ONLY AFTER APPROVED BLUEPRINT)
-**Adhere STRICTLY to the approved plan:**
+**Layer 3: Execution (Doing the work)**
+- Deterministic Python scripts (or Shell/Node tools) in `systems/doe-engine/execution/`
+- Handle API calls, data processing, file operations, database interactions
+- Reliable, testable, fast. Use scripts instead of manual work.
 
-1. **Implementation Strategy:**
-   - Implement changes in SMALL, GRANULAR chunks
-   - Use "Rewrite this entire component" instead of "Change this" to trigger full regeneration
-   - Avoid patchy edits that cause context pollution
-   - Maintain code integrity throughout
+**Why this works:** If you do everything yourself, errors compound. 90% accuracy per step = 59% success over 5 steps. The solution is push complexity into deterministic code. That way you just focus on decision-making.
 
-2. **Code Generation Rules:**
-   - Follow all coding standards (see Code Quality section below)
-   - Maintain consistent structure and patterns
-   - Ensure type safety across frontend/backend boundaries
+**Reference:** See `systems/doe-engine/gemini.md` for complete architecture details.
+
+### PHASE 1: CHECK DIRECTIVE (MANDATORY FIRST STEP)
+
+⚠️ REMINDER: If you haven't completed the pre-flight check at the top of this file, STOP and go back.
+
+**BEFORE taking any action, you MUST:**
+
+1. **Check for Existing Directive:**
+   - Search for directive in `systems/doe-engine/directives/{task-name}.md`
+   - If directive exists: Read it fully before proceeding
+   - If no directive exists: Use 3-question test to determine if one should be created:
+     * Will I do this again? (Recurring)
+     * Is this complex? (Multiple steps, integrations)
+     * Does consistency matter? (Same quality every time)
+   - **If 2+ answers are "Yes" → Ask user if directive should be created**
+   - **If 0-1 answers are "Yes" → Skip directive, proceed to orchestration**
+
+2. **Check for Execution Scripts/MCPs:**
+   - Before writing code, check: `systems/doe-engine/execution/`
+   - Check: `automations/mcps/` for reusable MCPs
+   - Check: `systems/mcp-server/automations/` for alternative location
+   - If script/MCP exists: Use it (don't rewrite)
+   - If no script exists: Create one for deterministic operations
+
+### PHASE 2: ORCHESTRATION (DECISION MAKING)
+
+⚠️ REMINDER: If you haven't completed the pre-flight check at the top of this file, STOP and go back.
+
+**Your role: intelligent routing and decision-making**
+
+1. **If Directive Exists:**
+   - Read directive fully to understand goals, inputs, outputs, edge cases
+   - Follow directive's process steps
+   - Use execution scripts/MCPs referenced in directive
+   - **For coding/development work within directive:**
+     * Create detailed blueprint with:
+       - Objectives: Clear goals and expected outcomes
+       - Proposed Changes: Specific files and modifications
+       - Logic/Edge Cases: All scenarios to handle
+       - FE/BE Separation: Clear frontend/backend boundaries
+       - Dependencies: Required libraries, services, or data
+     * **EXPLICITLY WAIT FOR HUMAN CONFIRMATION** before proceeding to execution
+   - **For deterministic work:**
+     * Use existing execution scripts/MCPs
+     * Call scripts in correct order as specified in directive
+   - Handle errors and self-anneal (see Self-Annealing section below)
+
+2. **If No Directive Exists (Simple/One-off Tasks):**
+   - **For coding work:** Create blueprint → Get approval → Execute
+   - **For deterministic work:** Use existing scripts or create new ones
+   - **For exploratory work:** Proceed but note what directive could be created
+
+3. **Self-Annealing (MANDATORY):**
+   - **When errors occur:**
+     1. Read error message and stack trace carefully
+     2. Fix the execution script/MCP and test it again (unless it uses paid tokens/credits—check with user first)
+     3. Update the directive with what you learned (API limits, timing, edge cases, better approaches)
+     4. Document the fix in `workflow_state.md` or directive's "Learnings" section
+   - **When you discover improvements:**
+     * Update directive with new constraints, better approaches, common errors, timing expectations
+     * Directives are living documents - improve them over time
+     * **Ask permission before updating directives** (unless explicitly told not to)
+   - **Learning from Variations:**
+     * First time: Adapt process manually, document what you did
+     * Update directive: Add variation to edge cases section, document adaptation process
+     * Next time: Follow updated directive, process is now reliable
+     * Create new directive only if: Process is fundamentally different (not just parameters)
+   - **Self-Annealing Loop:**
+     * Errors are learning opportunities
+     * Fix it → Update the tool → Test tool → Update directive → System is now stronger
 
 ### PHASE 3: EXECUTION (DETERMINISTIC ONLY)
+
 **Execute ONLY deterministic scripts and MCP servers:**
 
 1. **Execution Layer:**
-   - Use deterministic Python scripts or MCP servers called by the plan
+   - Use deterministic Python scripts or MCP servers called by directive or blueprint
    - DO NOT attempt probabilistic execution for:
-     * API calls
-     * Data processing
-     * Database interactions
+     - API calls
+     - Data processing
+     - Database interactions
    - All execution must be reliable and repeatable
 
 2. **Error Handling & Self-Annealing:**
    - If an error occurs (Execution failure, rate limit, bug):
      1. Read the error message and stack trace carefully
-     2. Fix and test the failing Execution script
-     3. Update the original Directive (SOP) with learned constraints or edge cases
-     4. Document the fix in workflow_state.md
+     2. Fix and test the failing Execution script/MCP
+     3. Update the original Directive with learned constraints or edge cases
+     4. Document the fix in `workflow_state.md` or directive's "Learnings" section
+     5. System is now stronger - same error won't happen again
 
 # ============================================
+
 # II. DOCUMENT MANAGEMENT AND CONTEXT CONTROL
+
 # ============================================
 
 ## REQUIRED DOCUMENTATION STRUCTURE
 
 ### 1. The Constitution (Stable Context)
+
 **File: `project_config.md` or `project_milestones.md`** (at project root)
+
 - Project goals and vision
 - Required technical stack
 - Main objectives and key features
@@ -84,7 +194,9 @@ A detailed coding plan (Blueprint) is MANDATORY before any code generation. This
 - **This is stable, long-term information**
 
 ### 2. The Dynamic Brain (Current State)
+
 **File: `workflow_state.md` or `Documentation.md`**
+
 - Current phase and active tasks
 - Task history and progress
 - Newly created schemas and file paths
@@ -93,36 +205,42 @@ A detailed coding plan (Blueprint) is MANDATORY before any code generation. This
 - **This tracks current, dynamic state**
 
 ### 3. Context Isolation Rules
+
 - **ALWAYS start a NEW chat session** for:
-  * Unrelated subprojects
-  * Major topic changes
-  * Different feature areas
+  - Unrelated subprojects
+  - Major topic changes
+  - Different feature areas
 - **Never mix contexts** - this prevents history pollution and context forgetfulness
 - Each session should have clear boundaries
 
 ### 4. Version Control Requirements
+
 - **Commit work frequently** using Git to establish robust checkpoints
 - The AI can be aggressive - frequent commits prevent:
-  * Loss of work
-  * Unnecessary dependencies being added
-  * Folder structure mismanagement
+  - Loss of work
+  - Unnecessary dependencies being added
+  - Folder structure mismanagement
 - Create meaningful commit messages describing changes
 
 # ============================================
+
 # III. CODE QUALITY AND STANDARDS ENFORCEMENT
+
 # ============================================
 
 ## A. CODE STYLE AND IDIOMACY
 
 ### Language-Specific Conventions
+
 - **TypeScript/JavaScript:**
-  * Use modern TypeScript conventions (avoid old React patterns)
-  * Prefer functional components and hooks
-  * Use async/await over promises
-  * Strict type checking - NO `any` types unless absolutely necessary
-  * Use const over let, never use var
+  - Use modern TypeScript conventions (avoid old React patterns)
+  - Prefer functional components and hooks
+  - Use async/await over promises
+  - Strict type checking - NO `any` types unless absolutely necessary
+  - Use const over let, never use var
 
 ### Naming Conventions
+
 - **File names**: Use kebab-case (e.g., `user-profile.tsx`, `api-client.ts`)
 - **Components**: PascalCase (e.g., `UserProfile`, `ApiClient`)
 - **Functions/Variables**: camelCase (e.g., `getUserData`, `userId`)
@@ -130,6 +248,7 @@ A detailed coding plan (Blueprint) is MANDATORY before any code generation. This
 - **Be consistent** with existing codebase patterns
 
 ### Prohibited Practices
+
 - **DO NOT** add third-party tools/libraries without approval
 - **DO NOT** use deprecated patterns or libraries
 - **DO NOT** create unnecessary abstractions
@@ -138,18 +257,21 @@ A detailed coding plan (Blueprint) is MANDATORY before any code generation. This
 ## B. STRUCTURE (FRONTEND/BACKEND SEPARATION)
 
 ### Frontend Structure
+
 - Components MUST be in `components/` folder (outside Next.js app directory if applicable)
 - Follow clear component hierarchy
 - Separate concerns: UI components, business logic, data fetching
 - Maintain clear component boundaries
 
 ### Backend Structure
+
 - **Route endpoints**: Clear RESTful or GraphQL structure
 - **Resource services**: Business logic layer
 - **Resource actions**: Specific operation handlers
 - Maintain clear separation between routes, services, and data access
 
 ### Full-Stack Consistency
+
 - Ensure frontend and backend structures are consistent
 - Document API contracts clearly
 - Maintain clear boundaries between layers
@@ -157,6 +279,7 @@ A detailed coding plan (Blueprint) is MANDATORY before any code generation. This
 ## C. TYPE SAFETY (CRITICAL)
 
 ### Shared Schema Requirements
+
 - **MANDATORY**: Use shared schema/package (e.g., Zod models or Pydantic)
 - Synchronize interfaces between backend and frontend
 - **NEVER** create duplicate type definitions
@@ -164,6 +287,7 @@ A detailed coding plan (Blueprint) is MANDATORY before any code generation. This
 - Ensure runtime validation matches compile-time types
 
 ### Type Enforcement
+
 - All API contracts must be typed
 - Frontend components must use typed props
 - Backend endpoints must validate against shared schemas
@@ -172,14 +296,16 @@ A detailed coding plan (Blueprint) is MANDATORY before any code generation. This
 ## D. UI/UX AESTHETICS
 
 ### Visual Standards (MANDATORY)
+
 - Follow UI/UX Guidelines within project rules:
-  * **Color palettes**: Use defined brand colors only
-  * **Typography**: Use specified fonts (e.g., Inter font) with correct weights
-  * **Responsiveness**: Mobile-first, ensure all breakpoints work
-  * **Visual composition**: Follow spacing, alignment, and layout guidelines
-  * **Accessibility**: WCAG compliance, proper ARIA labels, keyboard navigation
+  - **Color palettes**: Use defined brand colors only
+  - **Typography**: Use specified fonts (e.g., Inter font) with correct weights
+  - **Responsiveness**: Mobile-first, ensure all breakpoints work
+  - **Visual composition**: Follow spacing, alignment, and layout guidelines
+  - **Accessibility**: WCAG compliance, proper ARIA labels, keyboard navigation
 
 ### Quality Standards
+
 - Output MUST be aesthetically beautiful and marketable
 - No placeholder designs - everything must be polished
 - Consistent visual language across all components
@@ -188,15 +314,17 @@ A detailed coding plan (Blueprint) is MANDATORY before any code generation. This
 ## E. MANDATORY QUALITY ASSURANCE
 
 ### Testing Requirements
+
 - **MANDATORY**: Generate automated unit tests for new features
 - Use appropriate frameworks:
-  * **Python**: Pytest
-  * **JavaScript/TypeScript**: Jest or Vitest
-  * **React**: React Testing Library
+  - **Python**: Pytest
+  - **JavaScript/TypeScript**: Jest or Vitest
+  - **React**: React Testing Library
 - Test coverage should be meaningful and practical
 - Test edge cases and error scenarios
 
 ### Code Quality Checks
+
 - All code MUST pass linting (ESLint, Pylint, etc.)
 - All code MUST be formatted (Prettier, Black, etc.)
 - **Fix all auto-fixable issues automatically**
@@ -204,25 +332,30 @@ A detailed coding plan (Blueprint) is MANDATORY before any code generation. This
 - No commented-out code (remove or explain why kept)
 
 ### Re-indexing Requirements
+
 - Frequently re-index the codebase to prevent AI from:
-  * Referencing deleted files
-  * Using non-existent functions
-  * Following outdated patterns
+  - Referencing deleted files
+  - Using non-existent functions
+  - Following outdated patterns
 - Update context when significant refactoring occurs
 
 # ============================================
+
 # IV. ORCHESTRATION AND LLM UTILIZATION
+
 # ============================================
 
 ## A. LLM MODEL SELECTION STRATEGY
 
 ### Primary LLM (Orchestration/Reasoning)
-- **For Blueprint Phase**: Use high-reasoning models (GPT-4o, Claude Sonnet/Opus)
+
+- **For Directive/Blueprint Phase**: Use high-reasoning models (GPT-4o, Claude Sonnet/Opus)
 - **For Validation**: Use high-reasoning models for complex validation
 - **For Simple Implementation**: Lower cost/high speed models (GPT-4o-mini) for deterministic steps
-- **Rationale**: Blueprint and Validation need deep reasoning; simple implementation needs speed
+- **Rationale**: Directive reading, blueprint creation, and validation need deep reasoning; simple implementation needs speed
 
 ### Advanced Reasoning for Complex Problems
+
 - **MANDATORY for**: Refactoring, systematic bug hunting, architecture decisions
 - Use sequential-thinking Model Context Protocol (MCP) server
 - Transforms "black box" into transparent, auditable multi-step process
@@ -231,103 +364,126 @@ A detailed coding plan (Blueprint) is MANDATORY before any code generation. This
 ## B. AGENT FRAMEWORK INTEGRATION
 
 ### CrewAI for Subprojects (MANDATORY)
+
 - **Use CrewAI** for building complex, collaborative subprojects within Execution Layer
 - Provides deterministic execution with specialized agents:
-  * Planner agent
-  * Researcher agent
-  * Executor agents
+  - Planner agent
+  - Researcher agent
+  - Executor agents
 - All agents work toward structured, auditable goals
 
 ### CrewAI Configuration Requirements
+
 - **Process Control**: MUST set process type to `Process.sequential` for maximum reliability
 - **Structured Output**: MANDATORY use of Pydantic models or JSON schemas
-  * Use Pydantic AI framework for enforcement
-  * Ensures clean, consistent data handoffs to downstream systems
+  - Use Pydantic AI framework for enforcement
+  - Ensures clean, consistent data handoffs to downstream systems
 - **Agent Specialization**: Each agent should have clear, focused role
 
 ## C. ENTERPRISE INTEGRATION (OUTER LOOP)
 
 ### n8n as Enterprise Bus (MANDATORY)
+
 - **n8n is REQUIRED** for Outer Loop orchestration
 - Handles:
-  * Scheduling and task management
-  * Persistence and state management
-  * Comprehensive error handling
-  * External connectivity (CRM, databases, APIs)
+  - Scheduling and task management
+  - Persistence and state management
+  - Comprehensive error handling
+  - External connectivity (CRM, databases, APIs)
 - **CrewAI Execution**: Embed CrewAI agent execution as single, controllable step in n8n
 
 ### MCP Servers via n8n
+
 - Build custom MCP servers in n8n
 - Expose deterministic capabilities:
-  * Database access
-  * Utility scripts
-  * External API integrations
+  - Database access
+  - Utility scripts
+  - External API integrations
 - Bypass one-off API integrations in favor of reusable MCP servers
 
 ### No-Code Alternative (Optional/Supplemental)
+
 - GenFuse AI can be used for non-technical teams
 - **ONLY** for simpler, end-to-end automation workflows
 - **MUST NOT** replace core CrewAI/n8n architecture for complex code-based services
 
 # ============================================
+
 # V. HOSTING AND DEPLOYMENT STRATEGY
+
 # ============================================
 
 ## DEPLOYMENT ARCHITECTURE (SELF-HOSTED PREFERRED)
 
 ### Core Systems Hosting
+
 - **n8n and CrewAI**: Self-hosted (On-Premise or Private VPC)
-  * Maximum data privacy
-  * Control over security protocols
-  * Eliminates vendor lock-in for mission-critical IP
+  - Maximum data privacy
+  - Control over security protocols
+  - Eliminates vendor lock-in for mission-critical IP
 
 ### Development Environment
+
 - **Cursor IDE**: Local workstation
-  * Used for iterative "vibe coding" guided by DOE framework
-  * Rapid prototyping with AI assistance
+  - Used for iterative "vibe coding" guided by DOE framework
+  - Rapid prototyping with AI assistance
 
 ### Deployment Target
+
 - **Production**: Cloud-Native Architecture (Kubernetes/Cloud Run)
-  * CrewAI/AutoGen compatible with cloud-native
-  * Leverage Kubernetes for scaling and deployment efficiency
-  * Maintains flexibility while ensuring scalability
+  - CrewAI/AutoGen compatible with cloud-native
+  - Leverage Kubernetes for scaling and deployment efficiency
+  - Maintains flexibility while ensuring scalability
 
 # ============================================
+
 # VI. EXECUTION WORKFLOW SUMMARY
+
 # ============================================
 
 ## MANDATORY WORKFLOW STEPS
 
 1. **READ FIRST**: Check for `project_config.md` and `workflow_state.md`
-2. **READ SECOND**: Review all `.cursor/rules/*.mdc` files and directives folder
-3. **PHASE 1 - BLUEPRINT**: Research, plan, and WAIT for approval
-4. **PHASE 2 - CONSTRUCT**: Implement strictly according to approved plan
-5. **PHASE 3 - EXECUTION**: Use deterministic scripts/MCP servers only
-6. **SELF-ANNEALING**: Update documentation and rules with learnings
+2. **READ SECOND**: Review all `.cursor/rules/*.mdc` files and directives in `systems/doe-engine/directives/`
+3. **PHASE 1 - CHECK DIRECTIVE**: Check for existing directive in `systems/doe-engine/directives/`
+4. **PHASE 2 - ORCHESTRATE**: 
+   - If directive exists: Follow it, create blueprint if coding work needed, get approval
+   - If no directive: Use 3-question test, create blueprint if coding, or use scripts if deterministic
+   - Handle errors and self-anneal (update directive with learnings)
+5. **PHASE 3 - EXECUTE**: Use deterministic scripts/MCP servers only
+6. **SELF-ANNEALING**: Update directive with learnings, update execution scripts, document in workflow_state.md
 7. **COMMIT**: Frequent Git commits to maintain checkpoints
 8. **CONTEXT ISOLATION**: Start new chat for unrelated topics
 
 ## CRITICAL REMINDERS
 
-- **NO CODE without approved Blueprint**
-- **NO probabilistic execution** - only deterministic
+⚠️ REMINDER: If you haven't completed the pre-flight check at the top of this file, STOP and go back.
+
+- **NO CODE without checking directive or creating approved blueprint**
+- **NO probabilistic execution** - only deterministic scripts/MCPs
 - **NO context mixing** - new chats for new topics
 - **NO skipping documentation** - maintain project_config.md and workflow_state.md
 - **NO untyped code** - use shared schemas
 - **NO untested features** - unit tests are mandatory
 - **NO aesthetic compromises** - output must be beautiful and marketable
+- **NO skipping the pre-flight check** - acknowledgment is mandatory before any action
+- **NO skipping self-annealing** - always update directive with learnings when errors occur or improvements are discovered
 
 # ============================================
+
 # VII. CODE GENERATION BEST PRACTICES
+
 # ============================================
 
 ## Code Organization
+
 - Organize imports: external packages first, then internal imports
 - Group related functionality together
 - Clean up unused imports automatically
 - Follow existing project structure strictly
 
 ## Error Handling
+
 - Always include proper error handling
 - Use try/catch blocks appropriately
 - Never skip null checks or validation
@@ -335,6 +491,7 @@ A detailed coding plan (Blueprint) is MANDATORY before any code generation. This
 - Implement defensive programming techniques
 
 ## Code Explanation
+
 - Use descriptive variable names that explain intent
 - Break down complicated operations into smaller steps
 - Add comments explaining "why" not just "what"
@@ -342,19 +499,31 @@ A detailed coding plan (Blueprint) is MANDATORY before any code generation. This
 - Explain trade-offs in code comments when relevant
 
 ## Git Practices
+
 - Before modifying existing code, explain what it currently does
 - If making breaking changes, explain the impact
 - Write clear, descriptive commit messages
 - Commit frequently to maintain checkpoints
 - Use conventional commit format when possible
 
+### User Control Over Git Operations (MANDATORY)
+
+- **NEVER run git commit or git push automatically**
+- **ALWAYS prepare changes and inform the user what needs to be committed**
+- **WAIT for user to explicitly request commit/push operations**
+- The user controls when commits and pushes happen
+- Provide the exact commands the user should run, but don't run them
+
 # ============================================
+
 # VIII. NETLIFY DEPLOYMENT & OPTIMIZATION
+
 # ============================================
 
 ## NETLIFY DEPLOYMENT REQUIREMENTS (MANDATORY)
 
 ### Pre-Deployment Checklist
+
 - [ ] All environment variables configured in Netlify dashboard
 - [ ] Build command tested locally and succeeds
 - [ ] Publish directory correctly configured
@@ -364,7 +533,9 @@ A detailed coding plan (Blueprint) is MANDATORY before any code generation. This
 - [ ] Functions deployed and tested (if applicable)
 
 ### Netlify Configuration (netlify.toml)
+
 **MANDATORY** - Every project must have proper netlify.toml:
+
 ```toml
 [build]
   command = "npm run build"
@@ -389,6 +560,7 @@ A detailed coding plan (Blueprint) is MANDATORY before any code generation. This
 ```
 
 ### Build Optimization for Netlify
+
 - **Static Generation**: Use Next.js static generation where possible
 - **Image Optimization**: Use Next.js Image component with Netlify Image CDN
 - **Edge Functions**: Use Netlify Edge Functions for serverless needs
@@ -396,21 +568,25 @@ A detailed coding plan (Blueprint) is MANDATORY before any code generation. This
 - **Build Time**: Optimize dependencies to reduce build time
 
 ### Deployment Accuracy Verification
+
 - **Post-Deployment Checks**:
-  * Verify all pages load correctly
-  * Check all integrations are working
-  * Test all forms and interactive elements
-  * Verify API endpoints (if applicable)
-  * Check environment variables are accessible
-  * Verify analytics and tracking are active
+  - Verify all pages load correctly
+  - Check all integrations are working
+  - Test all forms and interactive elements
+  - Verify API endpoints (if applicable)
+  - Check environment variables are accessible
+  - Verify analytics and tracking are active
 
 # ============================================
+
 # IX. SEO & SERP OPTIMIZATION (MANDATORY)
+
 # ============================================
 
 ## TECHNICAL SEO REQUIREMENTS
 
 ### Meta Tags (MANDATORY for every page)
+
 - **Title Tag**: 50-60 characters, include primary keyword, unique per page
 - **Meta Description**: 150-160 characters, compelling, include keyword
 - **Open Graph Tags**: og:title, og:description, og:image, og:url, og:type
@@ -419,7 +595,9 @@ A detailed coding plan (Blueprint) is MANDATORY before any code generation. This
 - **Robots Meta**: Control indexing behavior appropriately
 
 ### Structured Data (Schema.org JSON-LD)
+
 **MANDATORY** - All pages should have appropriate structured data:
+
 - Organization schema (homepage)
 - Article schema (blog posts)
 - Product schema (if applicable)
@@ -428,6 +606,7 @@ A detailed coding plan (Blueprint) is MANDATORY before any code generation. This
 - Review/Rating schema (if applicable)
 
 ### Technical SEO Implementation
+
 - **XML Sitemap**: Auto-generated and submitted to Google Search Console
 - **Robots.txt**: Properly configured to allow/disallow appropriately
 - **URL Structure**: Clean, descriptive URLs with keywords
@@ -436,27 +615,30 @@ A detailed coding plan (Blueprint) is MANDATORY before any code generation. This
 - **Site Speed**: Pagespeed must meet targets (see Performance section)
 
 ### Keyword Research & Implementation
+
 - **Primary Keywords**: Research and identify 3-5 primary keywords per page
 - **Long-Tail Keywords**: Include relevant long-tail variations
 - **Keyword Placement**:
-  * H1 tag (one per page, include primary keyword)
-  * First 100 words of content
-  * URL slug
-  * Image alt text
-  * Internal links anchor text
+  - H1 tag (one per page, include primary keyword)
+  - First 100 words of content
+  - URL slug
+  - Image alt text
+  - Internal links anchor text
 - **Keyword Density**: Natural integration, avoid keyword stuffing
 
 ### Content SEO
+
 - **Semantic HTML**: Proper use of H1-H6 hierarchy
 - **Internal Linking**: Strategic internal links with descriptive anchor text
 - **External Links**: Link to authoritative sources when relevant
 - **Image Optimization**:
-  * Descriptive alt text with keywords
-  * Proper file names (descriptive, use hyphens)
-  * Appropriate image sizes
+  - Descriptive alt text with keywords
+  - Proper file names (descriptive, use hyphens)
+  - Appropriate image sizes
 - **Content Quality**: Unique, valuable, comprehensive content
 
 ### SERP Considerations
+
 - **Featured Snippets**: Structure content to answer questions clearly
 - **Rich Snippets**: Use structured data to enable rich results
 - **Local SEO**: Include location data if applicable
@@ -464,12 +646,15 @@ A detailed coding plan (Blueprint) is MANDATORY before any code generation. This
 - **User Experience Signals**: Low bounce rate, high engagement, fast load times
 
 # ============================================
+
 # X. PAGESPEED & PERFORMANCE OPTIMIZATION
+
 # ============================================
 
 ## PERFORMANCE TARGETS (MANDATORY)
 
 ### Core Web Vitals (Lighthouse)
+
 - **LCP (Largest Contentful Paint)**: < 2.5 seconds
 - **FID (First Input Delay)**: < 100 milliseconds
 - **CLS (Cumulative Layout Shift)**: < 0.1
@@ -479,6 +664,7 @@ A detailed coding plan (Blueprint) is MANDATORY before any code generation. This
 - **Speed Index**: < 3.4 seconds
 
 ### Lighthouse Scores (MANDATORY)
+
 - **Performance**: ≥ 90
 - **Accessibility**: ≥ 90
 - **Best Practices**: ≥ 90
@@ -487,6 +673,7 @@ A detailed coding plan (Blueprint) is MANDATORY before any code generation. This
 ### Performance Optimization Strategies
 
 #### Code Optimization
+
 - **Tree Shaking**: Remove unused code
 - **Code Splitting**: Split code by route/feature
 - **Lazy Loading**: Load components and images on demand
@@ -495,6 +682,7 @@ A detailed coding plan (Blueprint) is MANDATORY before any code generation. This
 - **Compression**: Gzip/Brotli compression enabled
 
 #### Image Optimization
+
 - **Format**: Use WebP with fallbacks (JPEG/PNG)
 - **Responsive Images**: Use srcset and sizes attributes
 - **Lazy Loading**: Native lazy loading or intersection observer
@@ -502,30 +690,36 @@ A detailed coding plan (Blueprint) is MANDATORY before any code generation. This
 - **CDN**: Serve images from CDN (Netlify Image CDN)
 
 #### Font Optimization
+
 - **Font Display**: Use `font-display: swap` or `optional`
 - **Font Subsetting**: Load only needed characters
 - **Preload**: Preload critical fonts
 - **System Fonts**: Consider system font stack for performance
 
 #### Caching Strategy
+
 - **Static Assets**: Long-term caching (1 year)
 - **HTML**: Short-term caching or no cache
 - **API Responses**: Appropriate cache headers
 - **Service Worker**: Implement for offline capability (if applicable)
 
 #### Third-Party Scripts
+
 - **Defer/Async**: Load non-critical scripts asynchronously
 - **Minimize**: Reduce number of third-party scripts
 - **Lazy Load**: Load analytics/tracking after page load
 - **CDN**: Use CDN for libraries when possible
 
 # ============================================
+
 # XI. FILE & FOLDER STRUCTURE STANDARDS
+
 # ============================================
 
 ## MANDATORY STRUCTURE ORGANIZATION
 
 ### Frontend Structure (Next.js/React)
+
 ```
 project-root/
 ├── app/                          # Next.js app directory
@@ -558,6 +752,7 @@ project-root/
 ```
 
 ### Backend Structure (FastAPI/Express)
+
 ```
 backend/
 ├── app/
@@ -576,6 +771,7 @@ backend/
 ```
 
 ### Shared Structure
+
 ```
 shared/
 ├── schemas/                    # Zod/Pydantic shared schemas
@@ -586,6 +782,7 @@ shared/
 ```
 
 ### File Naming Conventions (MANDATORY)
+
 - **Components**: PascalCase (UserProfile.tsx)
 - **Utilities/Hooks**: camelCase (useAuth.ts, formatDate.ts)
 - **Pages/Routes**: lowercase with hyphens (user-profile/page.tsx)
@@ -594,6 +791,7 @@ shared/
 - **Constants**: UPPER_SNAKE_CASE for constants, camelCase for files
 
 ### Organization Rules
+
 - **One component per file** (except barrel exports)
 - **Co-locate** related files (component + test + types)
 - **Barrel exports** (index.ts) for cleaner imports
@@ -602,12 +800,15 @@ shared/
 - **Shared folder** for truly reusable code
 
 # ============================================
+
 # XII. INTEGRATION ACCURACY & RELIABILITY
+
 # ============================================
 
 ## INTEGRATION REQUIREMENTS (MANDATORY)
 
 ### Integration Best Practices
+
 - **API Documentation**: Review API docs thoroughly before integration
 - **Authentication**: Implement secure authentication (API keys, OAuth, etc.)
 - **Error Handling**: Comprehensive error handling for all API calls
@@ -617,6 +818,7 @@ shared/
 - **Type Safety**: Use TypeScript types for all API contracts
 
 ### Integration Testing
+
 - **Unit Tests**: Test integration logic in isolation
 - **Integration Tests**: Test full integration flows
 - **Mock Services**: Use mocks for external services in tests
@@ -624,6 +826,7 @@ shared/
 - **Error Scenarios**: Test error cases (network failures, API errors, etc.)
 
 ### Common Integration Patterns
+
 - **API Client**: Create reusable API client with error handling
 - **Service Layer**: Wrap integrations in service layer
 - **Retry Logic**: Implement exponential backoff for retries
@@ -632,6 +835,7 @@ shared/
 - **Webhooks**: Handle webhooks securely with verification
 
 ### Integration Checklist
+
 - [ ] API authentication implemented correctly
 - [ ] Error handling covers all failure scenarios
 - [ ] Rate limiting respected
@@ -644,25 +848,30 @@ shared/
 - [ ] Documentation updated
 
 # ============================================
+
 # XIII. FRAMEWORK & ARCHITECTURE SELECTION
+
 # ============================================
 
 ## CORRECT TECHNOLOGY SELECTION (MANDATORY)
 
 ### Frontend Framework Selection
+
 - **Next.js**: Required for SSR/SSG, SEO, optimal performance
-  * Use App Router (not Pages Router) for new projects
-  * Leverage static generation where possible
-  * Use Server Components by default
+  - Use App Router (not Pages Router) for new projects
+  - Leverage static generation where possible
+  - Use Server Components by default
 - **React**: When Next.js isn't applicable, use React with Vite
 - **TypeScript**: MANDATORY for all frontend code (no JavaScript)
 
 ### Backend Framework Selection
+
 - **FastAPI** (Python): Preferred for APIs, high performance, async support
 - **Express.js** (Node.js): When Node.js ecosystem alignment needed
 - **TypeScript**: MANDATORY for Node.js backends
 
 ### Styling Framework & Dependencies
+
 - **Tailwind CSS**: Primary styling framework (utility-first)
 - **Shadcn/ui**: Component library (copy-paste, customizable)
 - **Radix UI**: Headless components for complex UI (used by Shadcn)
@@ -673,55 +882,65 @@ shared/
 - **clsx**: Conditional className utility
 
 ### State Management
+
 - **React Context + useState/useReducer**: For simple state
 - **Zustand**: For complex global state (lightweight)
 - **TanStack Query (React Query)**: For server state (caching, sync)
 - **Avoid Redux**: Unless absolutely necessary for complex apps
 
 ### Form Handling
+
 - **React Hook Form**: Form state management
 - **Zod**: Schema validation (shared with backend)
 - **@hookform/resolvers**: Connect React Hook Form with Zod
 
 ### Database & ORM
+
 - **PostgreSQL**: Preferred relational database
 - **Prisma**: ORM for TypeScript/Node.js
 - **SQLAlchemy**: ORM for Python/FastAPI
 - **MongoDB**: Only when document database is appropriate
 
 ### Build Tools
+
 - **Vite**: Fast build tool (when not using Next.js)
 - **Turbopack**: Next.js's new bundler (use when stable)
 - **ESBuild**: Fast bundler/transpiler
 
 ### Architecture Patterns
+
 - **Layered Architecture**: Clear separation (routes → services → data)
 - **Feature-Based**: Organize by features, not by file type
 - **API-First**: Design APIs before implementation
 - **Microservices**: When scale requires it (not prematurely)
 
 # ============================================
+
 # XIV. PEAK PERFORMANCE STANDARDS
+
 # ============================================
 
 ## PERFORMANCE REQUIREMENTS (MANDATORY)
 
 ### Runtime Performance
+
 - **JavaScript Execution**: Minimize main thread blocking
 - **Memory Usage**: Monitor and optimize memory leaks
 - **Re-renders**: Minimize unnecessary React re-renders (use React.memo, useMemo, useCallback)
 - **Bundle Size**:
-  * Initial bundle < 200KB (gzipped)
-  * Total bundle < 500KB (gzipped)
-  * Code split by route/feature
+  - Initial bundle < 200KB (gzipped)
+  - Total bundle < 500KB (gzipped)
+  - Code split by route/feature
 
 ### Database Performance
+
 - **Query Optimization**: Optimize database queries (avoid N+1)
 - **Indexing**: Proper database indexes on frequently queried fields
 - **Connection Pooling**: Use connection pooling for database connections
 - **Caching**: Cache frequently accessed data (Redis, in-memory)
 
 ### API Performance
+
 - **Response Times**: API endpoints < 200ms (p95)
 - **Pagination**: Implement pagination for list endpoints
 - **Filtering**: Allow filtering to reduce data transfer
@@ -729,21 +948,26 @@ shared/
 - **Caching**: Cache API responses when appropriate
 
 ### Monitoring & Optimization
+
 - **Performance Monitoring**: Use tools (Sentry, LogRocket, etc.)
 - **Real User Monitoring (RUM)**: Track actual user performance
 - **Regular Audits**: Run Lighthouse audits regularly
 - **Performance Budgets**: Set and enforce performance budgets
 
 # ============================================
+
 # XV. STYLE & DESIGN EXCELLENCE
+
 # ============================================
 
 ## DESIGN SYSTEM REQUIREMENTS (MANDATORY)
 
 ### Brand Identity & Aesthetics
+
 **Style Personality**: Modern, Editorial, On-Brand, Raw, Edgy, Professional, Stylish
 
 ### Typography
+
 - **Primary Font**: Inter (variable weight, modern, professional)
 - **Secondary Font**: [Brand-specific font if applicable]
 - **Font Weights**: Use 400 (regular), 500 (medium), 600 (semibold), 700 (bold)
@@ -752,6 +976,7 @@ shared/
 - **Letter Spacing**: Slightly negative for headings, normal for body
 
 ### Color System
+
 - **Primary Colors**: Brand-specific primary palette
 - **Neutral Colors**: Gray scale (50-900) for text, backgrounds
 - **Semantic Colors**: Success, error, warning, info
@@ -759,28 +984,32 @@ shared/
 - **Accessibility**: WCAG AA contrast ratios (4.5:1 for text, 3:1 for UI)
 
 ### Spacing & Layout
+
 - **Spacing Scale**: 4px base unit (4, 8, 12, 16, 20, 24, 32, 48, 64, 96, 128)
 - **Container Max Width**: Consistent max-widths (1280px for desktop)
 - **Grid System**: Use CSS Grid or Flexbox (no Bootstrap grid)
 - **Responsive Breakpoints**: sm (640px), md (768px), lg (1024px), xl (1280px), 2xl (1536px)
 
 ### Component Design
+
 - **Shadcn/ui Components**: Base component library (customizable, accessible)
 - **Custom Components**: Build on Shadcn foundation, maintain consistency
 - **Component Variants**: Use CVA for component variants (size, variant, state)
 - **Accessibility**: ARIA labels, keyboard navigation, focus management
 
 ### Animation & Motion
+
 - **Framer Motion**: Primary animation library
 - **Animation Principles**:
-  * Subtle and purposeful
-  * 200-300ms for micro-interactions
-  * Easing: ease-out for entrances, ease-in for exits
-  * Respect prefers-reduced-motion
+  - Subtle and purposeful
+  - 200-300ms for micro-interactions
+  - Easing: ease-out for entrances, ease-in for exits
+  - Respect prefers-reduced-motion
 - **Transitions**: Smooth transitions for state changes
 - **Loading States**: Skeleton loaders, progressive loading
 
 ### Visual Design Principles
+
 - **Whitespace**: Generous whitespace for breathing room
 - **Visual Hierarchy**: Clear hierarchy through size, weight, color
 - **Consistency**: Consistent spacing, sizing, colors throughout
@@ -788,6 +1017,7 @@ shared/
 - **Polish**: No placeholders, everything must be production-ready
 
 ### Style Dependencies (Required)
+
 ```json
 {
   "dependencies": {
@@ -803,6 +1033,7 @@ shared/
 ```
 
 ### Design Checklist
+
 - [ ] Typography system implemented
 - [ ] Color system with dark mode
 - [ ] Spacing scale consistent
@@ -815,12 +1046,15 @@ shared/
 - [ ] No placeholder content
 
 # ============================================
+
 # XVI. AUTOMATION RELIABILITY & VALIDATION
+
 # ============================================
 
 ## AUTOMATION REQUIREMENTS (MANDATORY)
 
 ### Automation Design Principles
+
 - **Deterministic**: All automations must be deterministic (same input = same output)
 - **Idempotent**: Running multiple times should produce same result
 - **Error Handling**: Comprehensive error handling and recovery
@@ -829,6 +1063,7 @@ shared/
 - **Testing**: Test automations thoroughly before deployment
 
 ### Pre-Deployment Validation
+
 - **Unit Tests**: Test individual automation components
 - **Integration Tests**: Test full automation workflows
 - **Edge Case Testing**: Test error scenarios, rate limits, timeouts
@@ -836,6 +1071,7 @@ shared/
 - **Rollback Plan**: Have rollback procedure documented
 
 ### Runtime Monitoring
+
 - **Error Tracking**: Monitor for errors (Sentry, custom logging)
 - **Performance Monitoring**: Track execution time and resource usage
 - **Alerting**: Set up alerts for failures or anomalies
@@ -843,6 +1079,7 @@ shared/
 - **Metrics**: Track key metrics (success rate, execution time, etc.)
 
 ### Client-Facing Automation Checks
+
 - **Accuracy**: Verify automations perform correctly
 - **Reliability**: Ensure consistent performance
 - **Data Integrity**: Verify data accuracy and consistency
@@ -850,6 +1087,7 @@ shared/
 - **Error Recovery**: Graceful error handling visible to users
 
 ### Automation Testing Checklist
+
 - [ ] All code paths tested
 - [ ] Error scenarios handled
 - [ ] Rate limits respected
@@ -862,10 +1100,13 @@ shared/
 - [ ] Staging environment tested
 
 # ============================================
+
 # END OF GLOBAL FOUNDATIONAL RULES
+
 # ============================================
 
 **These rules are MANDATORY and apply to ALL code generation, regardless of:**
+
 - Project type
 - Workspace location
 - Chat session

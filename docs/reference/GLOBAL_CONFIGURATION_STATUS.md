@@ -79,7 +79,7 @@
 
 ### Across All Projects:
 ✅ Same code quality standards
-✅ Same Blueprint-First approach
+✅ Same Directive-First approach (Directive → Orchestration → Execution)
 ✅ Same SEO/performance requirements
 ✅ Same styling guidelines
 ✅ Same file structure standards

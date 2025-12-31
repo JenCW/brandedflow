@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
@@ -21,9 +22,14 @@ export default function CalculatorSection() {
     <section className="relative bg-zinc-950 py-24 border-y border-zinc-800 overflow-hidden" data-testid="section-calculator">
       {/* Grayscale background image - better framing */}
       <div className="absolute inset-0 z-0">
-        <div 
-          className="absolute inset-0 bg-cover bg-bottom grayscale"
-          style={{ backgroundImage: "url('/images/context/IMG_6080.webp')" }}
+        <Image
+          src="/images/context/IMG_6080.webp"
+          alt=""
+          fill
+          loading="lazy"
+          quality={75}
+          className="object-cover object-bottom grayscale"
+          sizes="100vw"
         />
         <div className="absolute inset-0 bg-zinc-950/70" />
       </div>

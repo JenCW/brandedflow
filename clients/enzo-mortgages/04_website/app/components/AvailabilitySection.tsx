@@ -9,9 +9,14 @@ export default function AvailabilitySection() {
     <section className="relative bg-gradient-to-br from-zinc-950 via-zinc-900 to-zinc-950 py-24 overflow-hidden border-y border-zinc-800" data-testid="section-availability">
       {/* Grayscale background image - more visible */}
       <div className="absolute inset-0 z-0">
-        <div 
-          className="absolute inset-0 bg-cover bg-center grayscale"
-          style={{ backgroundImage: "url('/images/trust/IMG_6105.webp')" }}
+        <Image
+          src="/images/trust/IMG_6105.webp"
+          alt=""
+          fill
+          loading="lazy"
+          quality={75}
+          className="object-cover grayscale"
+          sizes="100vw"
         />
         <div className="absolute inset-0 bg-zinc-950/70" />
       </div>

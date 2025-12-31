@@ -49,6 +49,26 @@
 
 ## Recently Completed
 
+### 2025-01-XX - Deployment Configuration Verification & Branch Cleanup
+- **What was completed**: 
+  - Investigated and fixed Netlify deployment configuration for Enzo Mortgages website
+  - Identified that Netlify was deploying from outdated `bootstrap/enzo-mortgages-20251221` branch instead of `main`
+  - Updated Netlify to deploy from `main` branch
+  - Deleted outdated bootstrap branches (`bootstrap/enzo-mortgages-20251221` and `bootstrap/habibi-20251221`)
+- **Files created**:
+  - `clients/enzo-mortgages/04_website/BRANCH_ANALYSIS.md` - Analysis of branch structure
+  - `clients/enzo-mortgages/04_website/NETLIFY_VERIFICATION_CHECKLIST.md` - Verification steps
+  - `clients/enzo-mortgages/04_website/BRANCH_CLEANUP.md` - Branch cleanup guide
+  - `systems/doe-engine/directives/verify-deployment-configuration.md` - New directive for this process
+- **Files updated**:
+  - `clients/enzo-mortgages/DEPLOYMENT_GUIDE.md` - Updated to reference `main` branch
+- **Learnings**: 
+  - Bootstrap branches should be deleted immediately after merge to prevent deployment confusion
+  - Netlify doesn't automatically update branch configuration after merges
+  - Always verify deployment branch matches primary branch after merges
+  - Created directive to prevent this issue in future
+- **Issues encountered**: None - clean investigation and fix
+
 ### 2025-12-21 - Daily Operating System Removal
 - **What was completed**: Complete removal of daily accountability and operations system
 - **Files deleted**:
@@ -247,6 +267,18 @@ None
 ## Self-Annealing Updates
 
 ### Rules/Directives Updated
+
+- **Date**: 2025-01-XX
+- **Directive Created**: `verify-deployment-configuration.md`
+- **Reason**: Discovered recurring issue where Netlify was deploying from outdated bootstrap branches instead of `main`
+- **Change**: Created comprehensive directive for verifying and fixing deployment configuration, including branch management and cleanup
+- **Learnings Documented**:
+  - Always use `main` branch for production deployments
+  - Delete bootstrap branches immediately after merge
+  - Verify Netlify branch configuration after merges
+  - Regular verification prevents missing commits in production
+- **Prevention**: Directive includes verification checklist and best practices to prevent future occurrences
+
 - **Date**: 2025-12-21
 - **Rule Updated**: Repository structure compliance verified
 - **Reason**: Ensure DOE Method can function properly with required documentation
@@ -256,9 +288,12 @@ None
 - **Always audit repository structure before major work**: Prevents accumulation of violations
 - **Remove systems completely when deprecating**: Don't leave orphaned files or LaunchAgents
 - **Document everything in workflow_state.md**: Critical for context preservation across sessions
+- **Verify deployment configuration after branch merges**: Netlify doesn't auto-update branch settings
+- **Delete bootstrap branches immediately after merge**: Prevents confusion and deployment from wrong branch
+- **Create directives for recurring processes**: Branch management and deployment verification is now documented
 
 ---
 
-**Last Updated**: 2025-12-21 19:00 PST
-**Updated By**: Claude Code
-**Next Review**: 2025-12-22 (or when starting new significant work)
+**Last Updated**: 2025-01-XX
+**Updated By**: AI Assistant (Auto)
+**Next Review**: When starting new significant work or deployment verification needed

@@ -152,10 +152,11 @@ Is it MULTI-STEP and needs SCHEDULING?
 #### Option 3: Build New Feature for Client
 - **Tool**: Work in Cursor with DOE Method
 - **Steps**:
-  1. **BLUEPRINT**: Research and plan (get client approval)
-  2. **CONSTRUCT**: Build according to plan
-  3. **EXECUTE**: Use automation tools if needed
+  1. **CHECK DIRECTIVE**: Check for existing directive in `systems/doe-engine/directives/`
+  2. **ORCHESTRATE**: If coding needed, create blueprint and get approval; If deterministic, use scripts/MCPs
+  3. **EXECUTE**: Implement according to approved blueprint or execute deterministic scripts/MCPs
   4. Deploy and test
+  5. **SELF-ANNEAL**: Update directive with learnings
 
 ---
 
@@ -164,35 +165,35 @@ Is it MULTI-STEP and needs SCHEDULING?
 ### Three Phases (MANDATORY)
 
 ```
-PHASE 1: BLUEPRINT
-├─ Research what needs to be done
-├─ Read existing code/files
-├─ Create implementation plan
-├─ GET APPROVAL (from client or yourself)
-└─ DO NOT write code yet
+PHASE 1: CHECK DIRECTIVE
+├─ Check for existing directive in systems/doe-engine/directives/
+├─ If directive exists: Read it fully
+├─ If no directive: Use 3-question test (recurring? complex? consistency matters?)
+└─ Check for execution scripts/MCPs before writing code
 
-PHASE 2: CONSTRUCT
-├─ Implement according to approved blueprint
-├─ Follow coding standards
-├─ Make small, incremental changes
-└─ Test as you go
+PHASE 2: ORCHESTRATE
+├─ If directive exists: Follow it, create blueprint if coding work needed
+├─ If no directive: Create blueprint for coding work, get approval
+├─ For deterministic work: Use existing scripts/MCPs
+├─ Handle errors and self-anneal
+└─ WAIT FOR APPROVAL before executing coding work
 
 PHASE 3: EXECUTE
-├─ Use deterministic scripts/automations
-├─ Deploy to production
-├─ Monitor for errors
-└─ Self-anneal if issues occur
+├─ Implement according to approved blueprint
+├─ Or execute deterministic scripts/MCPs
+├─ Verify outputs
+└─ Self-anneal: Update directive with learnings
 ```
 
 ### When to Use Each Phase
 
-**Blueprint Phase** (ALWAYS start here for):
+**Check Directive Phase** (ALWAYS start here for):
 - New client websites
 - New features or automations
 - Complex changes
 - Anything you're not 100% sure how to do
 
-**Skip Blueprint ONLY for:**
+**Skip Directive Check ONLY for:**
 - Tiny text changes (fixing typos)
 - Updating prices or contact info
 - Simple, obvious fixes
