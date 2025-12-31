@@ -88,3 +88,10 @@ db.sqlite
 db.sqlite-journal
 db.sqlite-wal
 db.sqlite-shm
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
