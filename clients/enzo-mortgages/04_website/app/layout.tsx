@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
@@ -26,11 +26,6 @@ export const metadata: Metadata = {
     template: "%s | Enzo Mortgages",
   },
   description: "Enzo Mortgages (NMLS #1984772) - Your trusted mortgage loan officer in Orange County, California. Specializing in home loans, refinancing, FHA, VA, conventional mortgages. Get pre-approved today with personalized service and competitive rates.",
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 5,
-  },
   keywords: [
     "mortgage loan officer Orange County",
     "home loans California",
@@ -80,6 +75,12 @@ export const metadata: Metadata = {
   verification: {
     google: "your-google-verification-code",
   },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
 };
 
 export default function RootLayout({
