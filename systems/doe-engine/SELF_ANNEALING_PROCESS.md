@@ -239,12 +239,12 @@ When something breaks or a variation is encountered:
 **Every time I self-anneal, I MUST:**
 1. **Call `log-self-annealing` MCP** to log the action
 2. **Include all details:** What broke, how fixed, what was learned
-3. **Create log file** that Daily Ops Engine can process
+3. **Create log file** in `systems/trackers/self_annealing_logs/`
 4. **Ensure transparency** - you see what was fixed
 
 **The log file will:**
-- Be processed by Daily Ops Engine
-- Appear in your dashboard
+- Be stored in `systems/trackers/self_annealing_logs/`
+- Be available for review and reference
 - Show what was fixed/updated
 - Track learnings over time
 

@@ -100,7 +100,7 @@ When something breaks OR you encounter a variation:
 
 **Key principle**: Custom requirements don't mean losing reliability. Make directives flexible to handle variations, document learnings, system gets better.
 
-**Transparency**: All self-annealing actions are logged and appear in dashboard. See `systems/doe-engine/AI_SELF_ANNEALING_RULES.md` for details.
+**Transparency**: All self-annealing actions are logged and stored in `systems/trackers/self_annealing_logs/` for reference. See `systems/doe-engine/AI_SELF_ANNEALING_RULES.md` for details.
 
 ### Step 6: Log All Work (MANDATORY)
 **Every time you create, update, or complete work, you MUST log it:**
@@ -110,7 +110,7 @@ When something breaks OR you encounter a variation:
 4. **After creating/completing tasks** → Call `log-work-action` MCP
 5. **After creating/updating important files** → Call `log-work-action` MCP
 
-**All work is automatically logged and appears in dashboard. User only needs to add external chats manually.**
+**All work is automatically logged and stored in `systems/trackers/work_logs/` for reference. Logs serve as historical record.**
 
 **See:** `systems/doe-engine/AI_WORK_LOGGING_RULES.md` for complete guide
 

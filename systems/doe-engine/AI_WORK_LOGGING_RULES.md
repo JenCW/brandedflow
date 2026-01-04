@@ -73,8 +73,8 @@ Call the `log-work-action` MCP with:
 ```
 
 ### Step 3: Verify Log Created
-- Check that log file was created
-- Verify it will be processed by Daily Ops Engine
+- Check that log file was created in `systems/trackers/work_logs/`
+- Verify log file exists and contains correct information
 
 ---
 
@@ -238,7 +238,7 @@ The log file will contain:
 **Log files:**
 - Location: `systems/trackers/work_logs/`
 - Format: `work-{timestamp}.txt`
-- Processed by: Daily Ops Engine (same as chat files)
+- Stored for reference (not processed)
 
 **Summary log:**
 - Location: `systems/trackers/work_logs/summary.json`
@@ -247,16 +247,16 @@ The log file will contain:
 
 ---
 
-## Integration with Daily Ops Engine
+## Log Storage
 
 **The log files:**
-- Are formatted like chat files
-- Use "decision:", "task:", "note:" markers
-- Are processed by Daily Ops Engine
-- Appear in dashboard
+- Are stored in `systems/trackers/work_logs/`
+- Serve as historical record
+- Can be reviewed manually if needed
+- Use "decision:", "task:", "note:" markers for structure
 - Show what was done
 
-**User sees:**
+**Logs contain:**
 - What was created/updated
 - Decisions made
 - Tasks created/completed
@@ -268,14 +268,14 @@ The log file will contain:
 ## Why This Matters
 
 **Without logging:**
-- ❌ User doesn't know what was done
-- ❌ Dashboard doesn't get updated
+- ❌ No record of what was done
 - ❌ No visibility into work
 - ❌ Can't track progress
+- ❌ Work is not documented
 
 **With logging:**
-- ✅ User sees all work
-- ✅ Dashboard shows everything
+- ✅ Historical record of all work
+- ✅ Can review what was done
 - ✅ Full transparency
 - ✅ Track progress over time
 - ✅ Accountability for work

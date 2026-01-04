@@ -20,17 +20,13 @@ When I fix an error, update a directive, or handle a variation:
 - **Location:** `systems/trackers/self_annealing_logs/`
 - **Format:** `self-annealing-{timestamp}.txt`
 - **Content:** What broke, how fixed, what was learned
-- **Format:** Matches chat file format (for Daily Ops Engine)
+- **Stored:** Log files stored for reference
 
-### 3. Daily Ops Engine Processes It
-- **Next run:** Daily Ops Engine reads self-annealing logs
-- **Processes:** Same as chat files (extracts decisions/tasks/notes)
-- **Dashboard:** Shows what was fixed/updated
-
-### 4. You See It
-- **Dashboard:** Shows self-annealing actions
-- **Summary Log:** `systems/trackers/self_annealing_logs/summary.json`
+### 3. Logs Available for Review
+- **Location:** `systems/trackers/self_annealing_logs/`
+- **Summary Log:** `systems/trackers/self_annealing_logs/summary.json` (last 100 entries)
 - **Individual Logs:** Timestamped files for each action
+- **Review:** Can be reviewed manually if needed
 
 ---
 
@@ -62,20 +58,14 @@ Learning: Always validate and normalize client names before processing
 Context: Client "test client" caused error, now handled automatically
 
 ---
-This log entry will be processed by Daily Ops Engine and appear in your dashboard.
+This log entry is stored in systems/trackers/self_annealing_logs/ for reference.
 ```
 
 ---
 
 ## How to View
 
-### Option 1: Dashboard (Automatic)
-1. Run Daily Ops Engine (desktop button or Cursor)
-2. Self-annealing logs are processed
-3. Appear in dashboard as decisions/tasks/notes
-4. You see what was fixed
-
-### Option 2: Summary Log (Manual)
+### Option 1: Summary Log (Manual)
 - **Location:** `systems/trackers/self_annealing_logs/summary.json`
 - **Contains:** Last 100 self-annealing actions
 - **Format:** JSON for easy reading
@@ -91,9 +81,9 @@ This log entry will be processed by Daily Ops Engine and appear in your dashboar
 
 ✅ **MCP Created:** `log-self-annealing` MCP is active
 ✅ **Log Directory:** Created and ready
-✅ **Daily Ops Integration:** Updated to process self-annealing logs
 ✅ **Rules Updated:** MASTER_RULES.md includes mandatory logging
 ✅ **Documentation:** Complete guide created
+✅ **Status:** Logs stored for reference
 
 ---
 
@@ -117,20 +107,19 @@ curl -X POST http://localhost:4000/run \
 # Check log file
 cat systems/trackers/self_annealing_logs/self-annealing-*.txt
 
-# Run Daily Ops Engine
-# Log will be processed and appear in dashboard
+# Review log file
+cat systems/trackers/self_annealing_logs/self-annealing-*.txt
 ```
 
 ---
 
 ## Benefits
 
-✅ **Transparency** - You see every fix/update
-✅ **Accountability** - All changes are logged
+✅ **Transparency** - All fixes/updates are logged
+✅ **Accountability** - All changes are documented
 ✅ **Learning** - Track improvements over time
-✅ **Dashboard Integration** - Appears automatically
 ✅ **History** - Can review what was fixed when
-✅ **No Silent Changes** - Everything is visible
+✅ **No Silent Changes** - Everything is logged
 
 ---
 

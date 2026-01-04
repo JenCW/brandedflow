@@ -28,9 +28,13 @@ npm install
 ```
 
 This installs:
-- `better-sqlite3` - SQLite database
+- `sqlite3` - SQLite database (cross-platform compatible)
 - `jsonwebtoken` - JWT token signing
 - Existing dependencies (express, fs-extra, etc.)
+
+**Note for Mac/Linux users**: `sqlite3` should install without issues. If you encounter build errors, ensure you have Python and build tools installed:
+- macOS: `xcode-select --install`
+- Linux: Install `build-essential` or equivalent
 
 ### 2. Environment Variables
 

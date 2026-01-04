@@ -1,12 +1,5 @@
 # Self-Annealing Notification System
 
-## The Problem
-
-When the AI self-anneals (fixes errors, updates directives, documents learnings), you don't know about it because:
-- No chat file is created
-- Dashboard doesn't get updated
-- Changes happen silently
-
 ## The Solution
 
 ### Automatic Logging
@@ -14,16 +7,7 @@ When the AI self-anneals (fixes errors, updates directives, documents learnings)
 **Every time I self-anneal, I will:**
 1. **Log the action** using `log-self-annealing` MCP
 2. **Create a log file** in `systems/trackers/self_annealing_logs/`
-3. **Format it** so Daily Ops Engine can process it
-4. **Include details:** What broke, how fixed, what was learned
-
-### Daily Ops Engine Integration
-
-**The Daily Ops Engine will:**
-1. **Process self-annealing logs** along with chat files
-2. **Extract decisions/tasks** from self-annealing actions
-3. **Show in dashboard** what was fixed/updated
-4. **Track learnings** over time
+3. **Include details:** What broke, how fixed, what was learned
 
 ---
 
@@ -40,16 +24,14 @@ I Call: log-self-annealing MCP
     ↓
 Log File Created: systems/trackers/self_annealing_logs/self-annealing-{timestamp}.txt
     ↓
-Daily Ops Engine Processes It (next run)
+Log Stored for Reference
     ↓
-Appears in Dashboard
-    ↓
-You See What Was Fixed
+Available for Manual Review
 ```
 
 ### Log File Format
 
-The log files are formatted like chat files so Daily Ops Engine can process them:
+The log files are structured for easy reading:
 
 ```
 SELF-ANNEALING ACTION LOG
@@ -62,6 +44,8 @@ Directive Updated: build-client-website.md
 MCP Updated: create-client-folder.js
 Learning: Always validate client names before processing
 Context: Client "test client" caused error, now handled automatically
+---
+This log entry is stored in systems/trackers/self_annealing_logs/ for reference.
 ```
 
 ---
@@ -76,109 +60,40 @@ Context: Client "test client" caused error, now handled automatically
 4. **mcp_updated** - MCP was fixed or improved
 5. **learning_documented** - New learning was documented
 
-### Information Captured
-
-- **What broke** - The error or variation
-- **How fixed** - The solution
-- **Directive updated** - Which directive (if any)
-- **MCP updated** - Which MCP (if any)
-- **Learning** - What was learned
-- **Context** - Additional details
-
 ---
 
-## How to View Self-Annealing Actions
+## How to View
 
-### Option 1: Dashboard (Automatic)
-- Run Daily Ops Engine
-- Self-annealing logs are processed
-- Appear in dashboard as decisions/tasks/notes
-- You see what was fixed
+### Option 1: Summary Log (Manual)
+- **Location:** `systems/trackers/self_annealing_logs/summary.json`
+- **Contains:** Last 100 self-annealing actions
+- **Format:** JSON for easy reading
 
-### Option 2: Summary Log (Manual)
-- Location: `systems/trackers/self_annealing_logs/summary.json`
-- Contains last 100 self-annealing actions
-- JSON format for easy reading
-
-### Option 3: Individual Log Files
-- Location: `systems/trackers/self_annealing_logs/`
-- One file per self-annealing action
-- Timestamped for easy tracking
-
----
-
-## Example Workflow
-
-### Scenario: MCP Breaks
-
-**1. Error Occurs:**
-```
-You: "Create client folder for test client"
-Me: [MCP fails - spaces in name cause error]
-```
-
-**2. I Self-Anneal:**
-```
-Me: [Fixes MCP to handle spaces]
-Me: [Calls log-self-annealing MCP]
-```
-
-**3. Log Created:**
-```
-File: systems/trackers/self_annealing_logs/self-annealing-2024-12-08T21-00-00.txt
-Content: Error fix logged with details
-```
-
-**4. You See It:**
-```
-Next Daily Ops Run → Dashboard shows:
-"Fixed: MCP now handles spaces in client names"
-```
-
----
-
-## Integration with Daily Ops Engine
-
-### Current Process
-```
-Chat Files → Daily Ops Engine → Dashboard
-```
-
-### With Self-Annealing Logs
-```
-Chat Files → Daily Ops Engine → Dashboard
-Self-Annealing Logs → Daily Ops Engine → Dashboard
-```
-
-**Both are processed the same way!**
-
----
-
-## Benefits
-
-✅ **Transparency** - You see what was fixed
-✅ **Accountability** - All changes are logged
-✅ **Learning** - Track improvements over time
-✅ **Dashboard Integration** - Appears automatically
-✅ **History** - Can review what was fixed when
+### Option 2: Individual Log Files
+- **Location:** `systems/trackers/self_annealing_logs/`
+- **Format:** One file per action, timestamped
+- **Review:** Open files manually to see details
 
 ---
 
 ## Status
 
-**Implementation:**
-- ✅ `log-self-annealing` MCP created
-- ✅ Log directory structure set up
-- ✅ Format matches Daily Ops Engine processing
-- ⚠️ Daily Ops Engine needs to process self-annealing logs (may need update)
-
-**Next Steps:**
-1. Test the logging MCP
-2. Verify Daily Ops Engine processes the logs
-3. Update Daily Ops Engine if needed to handle self-annealing logs
+✅ **MCP Created:** `log-self-annealing` MCP is active
+✅ **Log Directory:** Created and ready
+✅ **Rules Updated:** Logging is mandatory
+✅ **Documentation:** Complete guide available
 
 ---
 
-**Last Updated:** December 8, 2024
-**Status:** Active
+## Benefits
 
+✅ **Transparency** - Logs record every fix/update
+✅ **Accountability** - All changes are documented
+✅ **Learning** - Track improvements over time
+✅ **History** - Can review what was fixed when
+✅ **No Silent Changes** - Everything is logged
+
+---
+
+**Last Updated:** January 4, 2026
+**Status:** Active - Logs stored for reference

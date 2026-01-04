@@ -91,13 +91,29 @@ Build and deploy a high-performance, modern, bright, editorial website for Brand
 - **Dynamic features**: Requires modern JavaScript framework
 
 ## 7. LEARNINGS
+
+### Build Process
 - Company website is completely different from client websites
 - Uses Vite/React, not static HTML
 - Modern, bright design vs dark, luxury client design
 - Custom build, not template-based
 
+### Import/Update Process
+- **For importing files from external sources** (getmocha.com, exports), see `import-company-website-files.md`
+- getmocha.com exports React/TypeScript/Vite apps with Cloudflare Workers
+- Requires `npm run cf-typegen` before build
+- Build outputs to `dist/client/` (not just `dist/`)
+- May need `--legacy-peer-deps` for dependency conflicts
+- Always preserve: `.cursorrules`, `DEPLOYMENT_GUIDE.md`, `netlify.toml`, `robots.txt`, `sitemap.xml`
+
+### Critical Process Rule
+- **ALWAYS check for directives FIRST** before starting any task (DOE method)
+- Even when user provides a plan, check directives and update plan if directive exists
+- This prevents missing important process steps and ensures consistency
+
 ---
-**Last Updated:** December 7, 2024
-**Status:** Draft - For Review
+**Last Updated:** January 4, 2026
+**Status:** Active
 **Created By:** AI Assistant
+**Related Directives:** `import-company-website-files.md`
 

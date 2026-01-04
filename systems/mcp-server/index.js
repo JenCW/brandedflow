@@ -10,7 +10,7 @@ const express = require('express');
 const fs = require('fs-extra');
 const path = require('path');
 const jwt = require('jsonwebtoken');
-const Database = require('better-sqlite3');
+const Database = require('./db-helper');
 
 const app = express();
 app.use(express.json());
@@ -177,8 +177,10 @@ function initDatabase() {
   
   db = new Database(dbPath);
   
-  // Create tables
-  db.exec(`
+  // Create tables (async)
+  (async () => {
+    try {
+      await db.exec(`
     CREATE TABLE IF NOT EXISTS directives (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       task_type TEXT NOT NULL,
@@ -256,9 +258,13 @@ function initDatabase() {
     CREATE INDEX IF NOT EXISTS idx_tasks_status ON tasks(status);
     CREATE INDEX IF NOT EXISTS idx_acks_token ON acks(token_string);
     CREATE INDEX IF NOT EXISTS idx_acks_expires ON acks(expires_at);
-  `);
-  
-  console.log('✅ Database initialized');
+      `);
+      console.log('✅ Database initialized');
+    } catch (error) {
+      console.error('❌ Database initialization error:', error);
+      process.exit(1);
+    }
+  })();
 }
 
 // Parse front-matter from directive markdown
@@ -330,7 +336,7 @@ async function seedDirectives() {
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
       `);
       
-      stmt.run(
+      await stmt.run(
         frontMatter.task_type,
         frontMatter.project_id || 'brandedflow',
         frontMatter.version || 1,
@@ -354,7 +360,7 @@ async function seedDirectives() {
 // ============================================
 
 // POST /tasks - Create task, return directive
-app.post('/tasks', validateApiKey, (req, res) => {
+app.post('/tasks', validateApiKey, async (req, res) => {
   const { task_type, project_id, task_id, actor_id, payload_json } = req.body;
   
   if (!task_type || !project_id || !task_id || !actor_id) {
@@ -364,28 +370,29 @@ app.post('/tasks', validateApiKey, (req, res) => {
     });
   }
   
-  // Look up directive
-  const directive = db.prepare(`
-    SELECT * FROM directives 
-    WHERE task_type = ? AND project_id = ?
-    ORDER BY version DESC LIMIT 1
-  `).get(task_type, project_id);
-  
-  if (!directive) {
-    return res.status(404).json({
-      ok: false,
-      error: `Directive not found for task_type: ${task_type}, project_id: ${project_id}`
-    });
-  }
-  
-  // Create task
-  const insertTask = db.prepare(`
-    INSERT INTO tasks (id, task_type, project_id, directive_id, status, payload_json)
-    VALUES (?, ?, ?, ?, 'pending', ?)
-  `);
-  
   try {
-    insertTask.run(task_id, task_type, project_id, directive.id, payload_json || null);
+    // Look up directive
+    const directiveStmt = db.prepare(`
+      SELECT * FROM directives 
+      WHERE task_type = ? AND project_id = ?
+      ORDER BY version DESC LIMIT 1
+    `);
+    const directive = await directiveStmt.get(task_type, project_id);
+    
+    if (!directive) {
+      return res.status(404).json({
+        ok: false,
+        error: `Directive not found for task_type: ${task_type}, project_id: ${project_id}`
+      });
+    }
+    
+    // Create task
+    const insertTask = db.prepare(`
+      INSERT INTO tasks (id, task_type, project_id, directive_id, status, payload_json)
+      VALUES (?, ?, ?, ?, 'pending', ?)
+    `);
+    
+    await insertTask.run(task_id, task_type, project_id, directive.id, payload_json || null);
     
     res.json({
       ok: true,
@@ -413,7 +420,7 @@ app.post('/tasks', validateApiKey, (req, res) => {
 });
 
 // POST /mcp/acknowledge - Create ACK, issue token
-app.post('/mcp/acknowledge', validateApiKey, (req, res) => {
+app.post('/mcp/acknowledge', validateApiKey, async (req, res) => {
   const { task_id, actor_id, answers_json } = req.body;
   
   if (!task_id || !actor_id) {
@@ -423,16 +430,19 @@ app.post('/mcp/acknowledge', validateApiKey, (req, res) => {
     });
   }
   
-  // Get task and directive
-  const task = db.prepare('SELECT * FROM tasks WHERE id = ?').get(task_id);
-  if (!task) {
-    return res.status(404).json({ ok: false, error: 'Task not found' });
-  }
-  
-  const directive = db.prepare('SELECT * FROM directives WHERE id = ?').get(task.directive_id);
-  if (!directive) {
-    return res.status(404).json({ ok: false, error: 'Directive not found' });
-  }
+  try {
+    // Get task and directive
+    const taskStmt = db.prepare('SELECT * FROM tasks WHERE id = ?');
+    const task = await taskStmt.get(task_id);
+    if (!task) {
+      return res.status(404).json({ ok: false, error: 'Task not found' });
+    }
+    
+    const directiveStmt = db.prepare('SELECT * FROM directives WHERE id = ?');
+    const directive = await directiveStmt.get(task.directive_id);
+    if (!directive) {
+      return res.status(404).json({ ok: false, error: 'Directive not found' });
+    }
   
   // Generate JWT token (TTL 15 minutes)
   const expiresAt = new Date(Date.now() + 15 * 60 * 1000);
@@ -452,29 +462,33 @@ app.post('/mcp/acknowledge', validateApiKey, (req, res) => {
     VALUES (?, ?, ?, ?, ?, ?, ?)
   `);
   
-  const ackResult = insertAck.run(
-    task_id,
-    actor_id,
-    ack_token,
-    ack_token, // Store token string for validation
-    directive.version,
-    answers_json ? JSON.stringify(answers_json) : null,
-    expiresAt.toISOString()
-  );
-  
-  // Update task status to queued
-  db.prepare('UPDATE tasks SET status = ?, ack_id = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?')
-    .run('queued', ackResult.lastInsertRowid, task_id);
-  
-  res.json({
-    ok: true,
-    ack_token,
-    expires_at: expiresAt.toISOString()
-  });
+    const ackResult = await insertAck.run(
+      task_id,
+      actor_id,
+      ack_token,
+      ack_token, // Store token string for validation
+      directive.version,
+      answers_json ? JSON.stringify(answers_json) : null,
+      expiresAt.toISOString()
+    );
+    
+    // Update task status to queued
+    const updateTask = db.prepare('UPDATE tasks SET status = ?, ack_id = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?');
+    await updateTask.run('queued', ackResult.lastInsertRowid, task_id);
+    
+    res.json({
+      ok: true,
+      ack_token,
+      expires_at: expiresAt.toISOString()
+    });
+  } catch (error) {
+    console.error('Error in /mcp/acknowledge:', error);
+    res.status(500).json({ ok: false, error: error.message });
+  }
 });
 
 // GET /mcp/validate-ack - Validate token
-app.get('/mcp/validate-ack', (req, res) => {
+app.get('/mcp/validate-ack', async (req, res) => {
   const { ack_token } = req.query;
   
   if (!ack_token) {
@@ -489,13 +503,14 @@ app.get('/mcp/validate-ack', (req, res) => {
     const decoded = jwt.verify(ack_token, MCP_SECRET);
     
     // Check database record
-    const ack = db.prepare(`
+    const ackStmt = db.prepare(`
       SELECT a.*, d.version as directive_version 
       FROM acks a
       JOIN tasks t ON a.task_id = t.id
       JOIN directives d ON t.directive_id = d.id
       WHERE a.token_string = ? AND a.expires_at > datetime('now')
-    `).get(ack_token);
+    `);
+    const ack = await ackStmt.get(ack_token);
     
     if (!ack) {
       return res.status(401).json({
@@ -530,32 +545,39 @@ app.get('/mcp/validate-ack', (req, res) => {
 });
 
 // GET /tasks/:id/status - Get task status and logs
-app.get('/tasks/:id/status', validateApiKey, (req, res) => {
+app.get('/tasks/:id/status', validateApiKey, async (req, res) => {
   const { id } = req.params;
   
-  const task = db.prepare('SELECT * FROM tasks WHERE id = ?').get(id);
-  if (!task) {
-    return res.status(404).json({ ok: false, error: 'Task not found' });
+  try {
+    const taskStmt = db.prepare('SELECT * FROM tasks WHERE id = ?');
+    const task = await taskStmt.get(id);
+    if (!task) {
+      return res.status(404).json({ ok: false, error: 'Task not found' });
+    }
+    
+    const logsStmt = db.prepare('SELECT * FROM task_logs WHERE task_id = ? ORDER BY timestamp ASC');
+    const logs = await logsStmt.all(id);
+  
+    res.json({
+      ok: true,
+      task: {
+        id: task.id,
+        task_type: task.task_type,
+        status: task.status,
+        attempts: task.attempts,
+        created_at: task.created_at,
+        updated_at: task.updated_at
+      },
+      logs
+    });
+  } catch (error) {
+    console.error('Error in /tasks/:id/status:', error);
+    res.status(500).json({ ok: false, error: error.message });
   }
-  
-  const logs = db.prepare('SELECT * FROM task_logs WHERE task_id = ? ORDER BY timestamp ASC').all(id);
-  
-  res.json({
-    ok: true,
-    task: {
-      id: task.id,
-      task_type: task.task_type,
-      status: task.status,
-      attempts: task.attempts,
-      created_at: task.created_at,
-      updated_at: task.updated_at
-    },
-    logs
-  });
 });
 
 // POST /tasks/:id/failure - Record failure, create anneal bundle
-app.post('/tasks/:id/failure', validateApiKey, (req, res) => {
+app.post('/tasks/:id/failure', validateApiKey, async (req, res) => {
   const { id } = req.params;
   const { error_type, classification, stdout, stderr, attempts } = req.body;
   
@@ -566,17 +588,20 @@ app.post('/tasks/:id/failure', validateApiKey, (req, res) => {
     });
   }
   
-  // Record failure
-  const insertFailure = db.prepare(`
-    INSERT INTO failures (task_id, error_type, classification, stdout, stderr, attempts)
-    VALUES (?, ?, ?, ?, ?, ?)
-  `);
-  
-  insertFailure.run(id, error_type, classification, stdout || null, stderr || null, attempts || 0);
-  
-  // Get task and directive for anneal bundle
-  const task = db.prepare('SELECT * FROM tasks WHERE id = ?').get(id);
-  const directive = db.prepare('SELECT * FROM directives WHERE id = ?').get(task.directive_id);
+  try {
+    // Record failure
+    const insertFailure = db.prepare(`
+      INSERT INTO failures (task_id, error_type, classification, stdout, stderr, attempts)
+      VALUES (?, ?, ?, ?, ?, ?)
+    `);
+    
+    await insertFailure.run(id, error_type, classification, stdout || null, stderr || null, attempts || 0);
+    
+    // Get task and directive for anneal bundle
+    const taskStmt = db.prepare('SELECT * FROM tasks WHERE id = ?');
+    const task = await taskStmt.get(id);
+    const directiveStmt = db.prepare('SELECT * FROM directives WHERE id = ?');
+    const directive = await directiveStmt.get(task.directive_id);
   
   // Create anneal bundle
   const aid = `anneal_${Date.now()}_${id}`;
@@ -614,10 +639,11 @@ app.post('/tasks/:id/failure', validateApiKey, (req, res) => {
       }
       
       // Create anneal task record
-      db.prepare(`
+      const insertAnneal = db.prepare(`
         INSERT INTO anneal_tasks (task_id, aid, status)
         VALUES (?, ?, 'pending')
-      `).run(id, aid);
+      `);
+      await insertAnneal.run(id, aid);
       
       console.log(`📦 Created anneal bundle: ${aid}`);
     } catch (error) {
@@ -626,35 +652,45 @@ app.post('/tasks/:id/failure', validateApiKey, (req, res) => {
   })();
   
   // Update task status
-  db.prepare('UPDATE tasks SET status = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?')
-    .run('needs_anneal', id);
+  const updateTask = db.prepare('UPDATE tasks SET status = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?');
+  await updateTask.run('needs_anneal', id);
   
   res.json({
     ok: true,
     aid,
     message: 'Failure recorded and anneal bundle created'
   });
+  } catch (error) {
+    console.error('Error in /tasks/:id/failure:', error);
+    res.status(500).json({ ok: false, error: error.message });
+  }
 });
 
 // POST /tasks/:id/anneal-complete - Mark anneal done, requeue
-app.post('/tasks/:id/anneal-complete', validateApiKey, (req, res) => {
+app.post('/tasks/:id/anneal-complete', validateApiKey, async (req, res) => {
   const { id } = req.params;
   
-  // Update anneal task status
-  db.prepare(`
-    UPDATE anneal_tasks 
-    SET status = 'completed', completed_at = CURRENT_TIMESTAMP
-    WHERE task_id = ?
-  `).run(id);
-  
-  // Requeue task
-  db.prepare('UPDATE tasks SET status = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?')
-    .run('queued', id);
-  
-  res.json({
-    ok: true,
-    message: 'Anneal marked complete, task requeued'
-  });
+  try {
+    // Update anneal task status
+    const updateAnneal = db.prepare(`
+      UPDATE anneal_tasks 
+      SET status = 'completed', completed_at = CURRENT_TIMESTAMP
+      WHERE task_id = ?
+    `);
+    await updateAnneal.run(id);
+    
+    // Requeue task
+    const updateTask = db.prepare('UPDATE tasks SET status = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?');
+    await updateTask.run('queued', id);
+    
+    res.json({
+      ok: true,
+      message: 'Anneal marked complete, task requeued'
+    });
+  } catch (error) {
+    console.error('Error in /tasks/:id/anneal-complete:', error);
+    res.status(500).json({ ok: false, error: error.message });
+  }
 });
 
 // ============================================

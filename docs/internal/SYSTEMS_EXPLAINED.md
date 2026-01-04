@@ -1,28 +1,8 @@
 # Branded + Flow Systems Explained
 
-## Two Separate Systems
+## Systems
 
-### 1. Daily Ops Engine (Python)
-**Purpose:** Internal operations, dashboard building, task extraction
-
-**What it does:**
-- Extracts decisions/tasks from chat files
-- Builds "Daily Ops Package" for your approval
-- Runs maintenance tasks
-- Builds dashboards
-- Runs on schedule (daily/weekly)
-
-**Location:** `systems/automation-engine/`
-
-**When it runs:**
-- Scheduled (daily/weekly)
-- Or manually: `python3 systems/automation-engine/run_daily.py`
-
-**Not part of:** MCP Server or DOE method
-
----
-
-### 2. MCP Server (Node.js)
+### 1. MCP Server (Node.js)
 **Purpose:** Execution layer for DOE method
 
 **What it does:**
@@ -40,22 +20,7 @@
 
 ---
 
-## How They Work Together
-
-### Daily Ops Engine
-```
-Runs on schedule
-    ↓
-Extracts tasks/decisions from chats
-    ↓
-Builds dashboard
-    ↓
-Opens dashboard for your approval
-```
-
-**Independent system** - doesn't need MCP server
-
----
+## How It Works
 
 ### MCP Server
 ```
@@ -76,24 +41,18 @@ Result returned to Cursor
 
 | System | Language | Purpose | When Used |
 |--------|----------|---------|-----------|
-| **Daily Ops Engine** | Python | Internal ops, dashboards | Scheduled/daily |
 | **MCP Server** | Node.js | Execute MCPs for Cursor | When Cursor needs it |
-
-**They are separate and serve different purposes.**
 
 ---
 
 ## Quick Reference
 
-**Daily Ops Engine:**
-- Internal operations
-- Dashboard building
-- Task extraction
-- Runs on schedule
-
 **MCP Server:**
 - Execution layer for DOE
 - Runs MCPs for Cursor
 - Always running
+- Part of DOE method (Execution layer)
+
+**Note:** Daily Ops Engine was removed. Logs are stored in `systems/trackers/` for reference only.
 - Called by Cursor when needed
 

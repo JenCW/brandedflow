@@ -1,6 +1,6 @@
 /**
  * Log Self-Annealing Actions
- * Creates a log entry that gets processed by Daily Ops Engine
+ * Creates a log entry stored in systems/trackers/self_annealing_logs/ for reference
  */
 
 const fs = require('fs-extra');
@@ -66,12 +66,12 @@ module.exports = {
     const selfAnnealingLogDir = path.join(trackersPath, 'self_annealing_logs');
     await fs.ensureDir(selfAnnealingLogDir);
 
-    // Create a timestamped log file (format that Daily Ops Engine can process)
+    // Create a timestamped log file
     const timestamp = new Date().toISOString().replace(/:/g, '-').split('.')[0];
     const logFileName = `self-annealing-${timestamp}.txt`;
     const logFilePath = path.join(selfAnnealingLogDir, logFileName);
 
-    // Format as a chat-like entry that Daily Ops Engine can process
+    // Format as a structured log entry
     const logContent = `SELF-ANNEALING ACTION LOG
 Timestamp: ${new Date().toISOString()}
 Action Type: ${action_type}
@@ -84,7 +84,7 @@ ${learning ? `Learning: ${learning}\n` : ''}
 ${context ? `Context: ${context}\n` : ''}
 
 ---
-This log entry will be processed by Daily Ops Engine and appear in your dashboard.
+This log entry is stored in systems/trackers/self_annealing_logs/ for reference.
 `;
 
     await fs.writeFile(logFilePath, logContent);
@@ -125,7 +125,7 @@ This log entry will be processed by Daily Ops Engine and appear in your dashboar
       log_file: logFileName,
       log_path: logFilePath,
       summary_entries: summary.length,
-      note: 'This log will be processed by Daily Ops Engine and appear in your dashboard'
+      note: 'This log is stored in systems/trackers/self_annealing_logs/ for reference'
     };
   }
 };

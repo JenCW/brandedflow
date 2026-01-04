@@ -43,8 +43,8 @@ Call the `log-self-annealing` MCP with:
 ```
 
 ### Step 3: Verify Log Created
-- Check that log file was created
-- Verify it will be processed by Daily Ops Engine
+- Check that log file was created in `systems/trackers/self_annealing_logs/`
+- Verify log file exists and contains correct information
 
 ---
 
@@ -138,7 +138,7 @@ The log file will contain:
 **Log files:**
 - Location: `systems/trackers/self_annealing_logs/`
 - Format: `self-annealing-{timestamp}.txt`
-- Processed by: Daily Ops Engine (same as chat files)
+- Stored for reference (not processed)
 
 **Summary log:**
 - Location: `systems/trackers/self_annealing_logs/summary.json`
@@ -150,14 +150,14 @@ The log file will contain:
 ## Why This Matters
 
 **Without logging:**
-- ❌ User doesn't know what was fixed
-- ❌ Dashboard doesn't get updated
+- ❌ No record of what was fixed
 - ❌ No visibility into improvements
 - ❌ Can't track system evolution
+- ❌ Learnings are lost
 
 **With logging:**
-- ✅ User sees what was fixed
-- ✅ Dashboard shows improvements
+- ✅ Historical record of fixes
+- ✅ Can review improvements
 - ✅ Full transparency
 - ✅ Track system evolution
 - ✅ Accountability for changes
@@ -174,16 +174,16 @@ The log file will contain:
 
 ---
 
-## Integration
+## Log Storage
 
 **The log files:**
-- Are formatted like chat files
-- Are processed by Daily Ops Engine
-- Appear in dashboard
+- Are stored in `systems/trackers/self_annealing_logs/`
+- Serve as historical record
+- Can be reviewed manually if needed
 - Show what was fixed/updated
 - Track learnings over time
 
-**User sees:**
+**Logs contain:**
 - What was fixed
 - When it was fixed
 - What was learned

@@ -2,7 +2,7 @@
 
 ## Overview
 
-**Everything is now automatically logged and appears in your dashboard.**
+**Everything is automatically logged and stored for reference.**
 
 ---
 
@@ -17,20 +17,13 @@
 - **Self-annealing actions** → Logged automatically
 - **All significant work** → Logged automatically
 
-### 📥 External Chats (Manual)
-- **ChatGPT conversations** → You add to folder
-- **Claude Web conversations** → You add to folder
-- **Other platform chats** → You add to folder
-- **Any external conversations** → You add to folder
-
 ---
 
 ## Your Responsibility
 
 ### ✅ You Only Need To:
-1. **Copy/paste external chats** to `systems/trackers/conversations_to_process/`
-2. **Run Daily Ops Engine** (desktop button or Cursor)
-3. **Review dashboard** - See everything that happened
+- Review logs manually if needed
+- Logs are stored automatically
 
 ### ❌ You Don't Need To:
 - ❌ Manually track Cursor work (automatic)
@@ -53,25 +46,12 @@ I automatically call: log-work-action MCP
     ↓
 Log file created: systems/trackers/work_logs/work-{timestamp}.txt
     ↓
-Daily Ops Engine processes it (next run)
-    ↓
-Appears in Dashboard ✅
-```
-
-### External Chats Flow
-```
-You have conversation in ChatGPT/Claude Web/etc.
-    ↓
-You copy/paste to: systems/trackers/conversations_to_process/
-    ↓
-Daily Ops Engine processes it (next run)
-    ↓
-Appears in Dashboard ✅
+Log stored for reference ✅
 ```
 
 ---
 
-## What You See in Dashboard
+## What Gets Stored
 
 ### From Cursor (Automatic)
 - ✅ All directives created/updated
@@ -80,73 +60,23 @@ Appears in Dashboard ✅
 - ✅ All tasks created/completed
 - ✅ All files created/updated
 - ✅ All self-annealing actions
-- ✅ Everything I do
 
-### From External Chats (Manual)
-- ✅ Decisions extracted from chats
-- ✅ Tasks extracted from chats
-- ✅ Notes extracted from chats
-- ✅ Everything from external platforms
+### Log Locations
+- **Work logs:** `systems/trackers/work_logs/`
+- **Self-annealing logs:** `systems/trackers/self_annealing_logs/`
+- **Summary files:** JSON files with last 100-200 entries
 
 ---
 
-## Complete Visibility
+## Benefits
 
-**You see:**
-- ✅ Everything done in Cursor (automatic)
-- ✅ Everything from external chats (manual)
-- ✅ All decisions made
-- ✅ All tasks created/completed
-- ✅ All directives/MCPs created/updated
-- ✅ All self-annealing fixes
-- ✅ Complete work history
-
-**You only need to:**
-- ✅ Add external chats to folder
-- ✅ Run Daily Ops Engine
-- ✅ Review dashboard
+✅ **Transparency** - All work is logged
+✅ **Accountability** - Everything is documented
+✅ **History** - Can review what was done when
+✅ **Learning** - Track improvements over time
+✅ **No Lost Work** - Everything is recorded
 
 ---
 
-## Log Locations
-
-### Work Logs (Cursor - Automatic)
-- **Location:** `systems/trackers/work_logs/`
-- **Format:** `work-{timestamp}.txt`
-- **Contains:** All Cursor work (directives, MCPs, decisions, tasks, etc.)
-
-### Self-Annealing Logs (Cursor - Automatic)
-- **Location:** `systems/trackers/self_annealing_logs/`
-- **Format:** `self-annealing-{timestamp}.txt`
-- **Contains:** All self-annealing actions (fixes, updates)
-
-### Chat Files (External - Manual)
-- **Location:** `systems/trackers/conversations_to_process/`
-- **Format:** Any text file
-- **Contains:** External chat conversations
-
-**All are processed by Daily Ops Engine and appear in dashboard!**
-
----
-
-## Summary
-
-### Before
-- ❌ Had to manually track everything
-- ❌ Cursor work was invisible
-- ❌ No automatic logging
-- ❌ Dashboard only showed external chats
-
-### After
-- ✅ Cursor work automatically logged
-- ✅ Everything visible in dashboard
-- ✅ Complete transparency
-- ✅ You only add external chats
-
-**Your only responsibility: Add external chats to the folder. Everything else is automatic!**
-
----
-
-**Last Updated:** December 8, 2024
-**Status:** Active and Working
-
+**Last Updated:** January 4, 2026
+**Status:** Active - Logs stored automatically

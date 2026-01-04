@@ -1,6 +1,6 @@
 [build]
-  publish = "."
-  command = ""
+  publish = "dist/client"
+  command = "npm install --legacy-peer-deps && npm run cf-typegen && npm run build"
 
 [build.environment]
   NODE_VERSION = "18"
