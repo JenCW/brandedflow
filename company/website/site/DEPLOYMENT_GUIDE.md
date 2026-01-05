@@ -1,6 +1,14 @@
 # Branded + Flow Company Website - Netlify Deployment Guide
 
-## Quick Deploy to Netlify
+## ⚠️ Important: This is a Vite/React App
+
+This website is built with **Vite + React**, which means it **must be built** before deployment. 
+
+**Netlify Drop will NOT work** because it only accepts pre-built static files. You must use **Git-based deployment** (recommended) or build locally first.
+
+---
+
+## Quick Deploy to Netlify (Git-based - Recommended)
 
 ### Step 1: Push to GitHub
 
@@ -26,11 +34,16 @@ Your website code is located in: `company/website/site/`
 
 **Base directory:** `company/website/site`
 
-**Build command:** (leave empty - this is a static HTML site)
+**Build command:** (Netlify will automatically use the command from `netlify.toml`):
+```
+npm install --legacy-peer-deps && npm run cf-typegen && npm run build
+```
 
-**Publish directory:** `.` (current directory)
+**Publish directory:** `dist/client` (as specified in netlify.toml)
 
 **Node version:** `18` (set in netlify.toml)
+
+⚠️ **Note:** Your `netlify.toml` file already contains these settings, so Netlify should auto-detect them. You can leave the build settings as-is or verify they match above.
 
 ### Step 4: Deploy!
 
@@ -38,8 +51,11 @@ Click **"Deploy site"**
 
 Netlify will:
 1. Pull your code from GitHub
-2. Deploy the static files
-3. Provide a URL like: `https://random-name-12345.netlify.app`
+2. Install dependencies (`npm install --legacy-peer-deps`)
+3. Run type generation (`npm run cf-typegen`)
+4. Build the site (`npm run build`)
+5. Deploy the built files from `dist/client`
+6. Provide a URL like: `https://random-name-12345.netlify.app`
 
 ### Step 5: Add Custom Domain (Optional)
 
@@ -105,9 +121,25 @@ company/website/site/
 ## Troubleshooting
 
 ### Build Fails
-- Check build logs in Netlify dashboard
+- Check build logs in Netlify dashboard for specific error messages
 - Verify base directory is set to `company/website/site`
 - Ensure all file paths are correct (relative paths)
+- Verify Node.js version is set to 18
+- Check that `netlify.toml` build command matches: `npm install --legacy-peer-deps && npm run cf-typegen && npm run build`
+- Ensure publish directory is set to `dist/client`
+
+### Netlify Drop Failed
+**Why Drop Doesn't Work:** Netlify Drop only accepts pre-built static files. This is a Vite/React app that must be built first.
+
+**Solutions:**
+1. **Use Git-based deployment (recommended)** - Connect your GitHub repo and let Netlify build automatically
+2. **Build locally first, then drop:** 
+   ```bash
+   cd company/website/site
+   npm install --legacy-peer-deps
+   npm run build
+   # Then drag and drop the dist/client folder to Netlify Drop
+   ```
 
 ### Images Don't Load
 - Verify asset paths are relative (e.g., `assets/logo.png`)

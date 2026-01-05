@@ -88,24 +88,40 @@ You operate within a 3-layer architecture that separates concerns to maximize re
 
 ⚠️ REMINDER: If you haven't completed the pre-flight check at the top of this file, STOP and go back.
 
-**BEFORE taking any action, you MUST:**
+**🚫 HARD-STOP ENFORCEMENT: BEFORE ANY WORK, YOU MUST EXPLICITLY REPORT DIRECTIVE SEARCH RESULTS 🚫**
 
-1. **Check for Existing Directive:**
-   - Search for directive in `systems/doe-engine/directives/{task-name}.md`
-   - If directive exists: Read it fully before proceeding
-   - If no directive exists: Use 3-question test to determine if one should be created:
+**BEFORE taking ANY action (reading code, making changes, writing files, running commands), you MUST:**
+
+1. **FIRST: Search Directives Directory:**
+   - **MANDATORY FIRST ACTION**: Search `systems/doe-engine/directives/` for relevant directives
+   - Use `list_dir` or `glob_file_search` to examine the directives folder
+   - Search for directive files matching the task (e.g., `systems/doe-engine/directives/{task-name}.md`)
+
+2. **REPORT SEARCH RESULTS (EXPLICIT STATEMENT REQUIRED):**
+   - **YOU MUST EXPLICITLY STATE ONE OF THE FOLLOWING:**
+     * `"✅ DIRECTIVE SEARCH RESULT: Found directive: systems/doe-engine/directives/[name].md"` (with exact filename)
+     * `"✅ DIRECTIVE SEARCH RESULT: Found multiple directives: [list all names]"`
+     * `"✅ DIRECTIVE SEARCH RESULT: No directive found for this task"`
+   - **YOU CANNOT PROCEED** until you have explicitly stated this result
+   - **NO EXCEPTIONS** - this is a hard-stop checkpoint
+
+3. **After Reporting Search Results:**
+   - **If directive exists:** Read it fully before proceeding
+   - **If no directive exists:** Use 3-question test to determine if one should be created:
      * Will I do this again? (Recurring)
      * Is this complex? (Multiple steps, integrations)
      * Does consistency matter? (Same quality every time)
    - **If 2+ answers are "Yes" → Ask user if directive should be created**
    - **If 0-1 answers are "Yes" → Skip directive, proceed to orchestration**
 
-2. **Check for Execution Scripts/MCPs:**
+4. **Check for Execution Scripts/MCPs:**
    - Before writing code, check: `systems/doe-engine/execution/`
    - Check: `automations/mcps/` for reusable MCPs
    - Check: `systems/mcp-server/automations/` for alternative location
    - If script/MCP exists: Use it (don't rewrite)
    - If no script exists: Create one for deterministic operations
+
+**VIOLATION OF THIS RULE:** If you proceed with any work without explicitly reporting the directive search result, you are in violation of the directive-first method.
 
 ### PHASE 2: ORCHESTRATION (DECISION MAKING)
 
