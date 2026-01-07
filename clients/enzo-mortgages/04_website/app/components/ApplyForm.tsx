@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { CheckCircle, ArrowRight } from "lucide-react";
 
 type LoanGoal = "purchase" | "refinance" | "";
 
@@ -12,6 +13,7 @@ interface FormData {
   downPayment: string;
   loanBalance: string;
   firstName: string;
+  lastName: string;
   email: string;
   phone: string;
 }
@@ -20,6 +22,8 @@ export default function ApplyForm() {
   const [step, setStep] = useState(1);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
   const [formData, setFormData] = useState<FormData>({
     loanGoal: "",
     loanType: "",
@@ -28,6 +32,7 @@ export default function ApplyForm() {
     downPayment: "",
     loanBalance: "",
     firstName: "",
+    lastName: "",
     email: "",
     phone: "",
   });
@@ -70,6 +75,7 @@ export default function ApplyForm() {
 
     if (currentStep === 3) {
       if (!formData.firstName.trim()) newErrors.firstName = "Required";
+      if (!formData.lastName.trim()) newErrors.lastName = "Required";
       if (!formData.email.trim()) newErrors.email = "Required";
       if (!formData.phone.trim()) newErrors.phone = "Required";
     }
@@ -88,10 +94,43 @@ export default function ApplyForm() {
     setStep((prev) => prev - 1);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (validateStep(3)) {
-      setSubmitted(true);
+    if (!validateStep(3)) return;
+
+    setIsSubmitting(true);
+    setSubmitError("");
+
+    try {
+      const response = await fetch("/api/lead/base44", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          phone: formData.phone,
+          leadType: formData.loanGoal === "purchase" ? "Purchase" : "Refinance",
+          loanType: formData.loanType,
+          source: "Apply Page",
+          urgency: "High",
+          purchasePrice: formData.purchasePrice || undefined,
+          homeValue: formData.homeValue || undefined,
+          downPayment: formData.downPayment || undefined,
+          loanBalance: formData.loanBalance || undefined,
+        }),
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+      } else {
+        setSubmitError("Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error submitting application:", error);
+      setSubmitError("Network error. Please try again.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -106,28 +145,61 @@ export default function ApplyForm() {
   }
 
   const inputClass =
-    "w-full px-4 py-3 bg-zinc-800 border border-zinc-700  text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-primary";
+    "w-full px-4 py-3 bg-zinc-800 border border-zinc-700 text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-primary rounded-lg transition-colors";
   const selectClass =
-    "w-full px-4 py-3 bg-zinc-800 border border-zinc-700  text-zinc-100 focus:outline-none focus:border-primary";
+    "w-full px-4 py-3 bg-zinc-800 border border-zinc-700 text-zinc-100 focus:outline-none focus:border-primary rounded-lg transition-colors";
   const labelClass = "block text-sm font-medium text-zinc-300 mb-2";
   const errorClass = "text-sm text-red-400 mt-1";
 
+  const totalSteps = 3;
+  const progress = (step / totalSteps) * 100;
+
   return (
-    <div className="bg-zinc-900 p-8 " data-testid="form-apply">
-      <div className="flex items-center justify-center gap-2 mb-8">
+    <div data-testid="form-apply">
+      {/* Progress Bar */}
+      <div className="mb-8">
+        <div className="flex items-center justify-between mb-2">
+          <span className="text-sm font-medium text-zinc-400">
+            Step {step} of {totalSteps}
+          </span>
+          <span className="text-sm font-medium text-primary">
+            {Math.round(progress)}% Complete
+          </span>
+        </div>
+        <div className="w-full h-2 bg-zinc-800 rounded-full overflow-hidden">
+          <div
+            className="h-full bg-primary transition-all duration-300"
+            style={{ width: `${progress}%` }}
+          />
+        </div>
+      </div>
+
+      {/* Step Indicators */}
+      <div className="flex items-center justify-between mb-8">
         {[1, 2, 3].map((s) => (
           <div
             key={s}
-            className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-medium ${
-              s === step
-                ? "bg-primary text-primary-foreground"
-                : s < step
-                ? "bg-primary/70 text-primary-foreground"
-                : "bg-zinc-700 text-zinc-400"
-            }`}
-            data-testid={`step-indicator-${s}`}
+            className={`flex-1 flex items-center ${s < totalSteps ? "mr-2" : ""}`}
           >
-            {s}
+            <div
+              className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-medium transition-all ${
+                s === step
+                  ? "bg-primary text-primary-foreground scale-110"
+                  : s < step
+                  ? "bg-primary/70 text-primary-foreground"
+                  : "bg-zinc-800 text-zinc-500"
+              }`}
+              data-testid={`step-indicator-${s}`}
+            >
+              {s < step ? <CheckCircle className="w-5 h-5" /> : s}
+            </div>
+            {s < totalSteps && (
+              <div
+                className={`flex-1 h-1 mx-2 ${
+                  s < step ? "bg-primary" : "bg-zinc-800"
+                }`}
+              />
+            )}
           </div>
         ))}
       </div>
@@ -293,6 +365,22 @@ export default function ApplyForm() {
             </div>
 
             <div>
+              <label htmlFor="lastName" className={labelClass}>
+                Last Name
+              </label>
+              <input
+                type="text"
+                id="lastName"
+                name="lastName"
+                value={formData.lastName}
+                onChange={handleChange}
+                className={inputClass}
+                data-testid="input-last-name"
+              />
+              {errors.lastName && <p className={errorClass} data-testid="error-last-name">{errors.lastName}</p>}
+            </div>
+
+            <div>
               <label htmlFor="email" className={labelClass}>
                 Email
               </label>
@@ -326,12 +414,12 @@ export default function ApplyForm() {
           </div>
         )}
 
-        <div className="flex justify-between pt-4">
+        <div className="flex justify-between pt-6 border-t border-zinc-800">
           {step > 1 ? (
             <button
               type="button"
               onClick={handleBack}
-              className="px-6 py-3 bg-zinc-700 text-zinc-200  font-medium"
+              className="px-6 py-3 bg-zinc-800 text-zinc-200 font-medium rounded hover:bg-zinc-700 transition-colors"
               data-testid="button-back"
             >
               Back
@@ -344,21 +432,33 @@ export default function ApplyForm() {
             <button
               type="button"
               onClick={handleNext}
-              className="px-6 py-3 bg-primary text-primary-foreground font-medium"
+              className="px-8 py-3 bg-primary text-primary-foreground font-semibold rounded hover:bg-primary/90 transition-colors flex items-center gap-2"
               data-testid="button-next"
             >
-              Next
+              Continue <ArrowRight className="w-5 h-5" />
             </button>
           ) : (
-            <button
-              type="submit"
-              className="px-6 py-3 bg-primary text-primary-foreground font-medium"
-              data-testid="button-submit"
-            >
-              Submit Application
-            </button>
+            <>
+              {submitError && (
+                <p className="text-red-400 text-sm text-center w-full mb-4" data-testid="submit-error">
+                  {submitError}
+                </p>
+              )}
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="px-8 py-3 bg-primary text-primary-foreground font-semibold rounded hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                data-testid="button-submit"
+              >
+                {isSubmitting ? "Submitting..." : "Submit Application"}
+              </button>
+            </>
           )}
         </div>
+
+        <p className="text-center text-zinc-500 text-xs mt-6">
+          No credit check required. No obligation. We respect your privacy.
+        </p>
       </form>
     </div>
   );

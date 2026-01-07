@@ -15,7 +15,7 @@ Build and deploy a professional, conversion-optimized website for a client (stat
 
 ### Step 2: Use Profile Variations
 - **Design style**: From profile (or detect if new)
-- **Tech stack**: From profile (website, email, CRM)
+- **Tech stack**: From profile (website, CRM)
 - **Existing tools**: From profile
 - **Target market**: From profile
 - **Custom requirements**: From profile
@@ -46,18 +46,10 @@ Build and deploy a professional, conversion-optimized website for a client (stat
   - Default: "cursor-direct" (unless user specifies otherwise)
   - **Action**: Follow appropriate build/import process
 - **Website Type**: 
-  - Options: "static-html" (simple HTML/CSS/JS), "nextjs" (Next.js framework), "react-vite" (React/Vite), "wix", "wordpress"
+  - Options: "static-html" (simple HTML/CSS/JS), "nextjs" (Next.js framework), "react-vite" (React/Vite)
   - Default: "static-html" (unless framework needed for complex features)
   - Detection: Check imported files (package.json) or user preference
   - **Action**: Adapt process for chosen type
-- **Platform-Specific**: 
-  - Options: "wix", "wordpress" (if client uses these platforms)
-  - Detection: Check intake file for "Website: Wix" or similar
-  - **Action**: Skip build, create platform-specific setup
-- **Email**: 
-  - Options: "outlook" (default), "gmail", "custom"
-  - Detection: Check intake file for email provider
-  - **Action**: Configure integrations for chosen email
 - **CRM**: 
   - Options: "airtable" (default), "existing-{name}", "none"
   - Detection: Check intake file for "Uses CRM: HubSpot" or similar
@@ -82,34 +74,35 @@ Build and deploy a professional, conversion-optimized website for a client (stat
    - If profile doesn't exist: Detect variations, create profile
 
 2. **Determine build method** (from profile or user)
-   - **If "cursor-direct"**: Build directly in Cursor (proceed to Phase 2)
-   - **If "replit-import" or "getmocha-import"**: User builds in platform, then import (see `import-company-website-files.md` directive)
-   - **If Wix/WordPress**: Skip build, create platform-specific setup
+   - **If "cursor-direct"**: Build directly in Cursor (proceed to Step 3)
+   - **If "replit-import" or "getmocha-import"**: User builds in platform, then import (skip to Phase 2: Import section)
 
-3. **Verify client folder exists**
+3. **Verify client folder exists** (for cursor-direct builds only)
    - Location: `clients/{client-name}/03_website/` (or `04_website/` if client uses that structure)
    - If not: Create it (ask user to confirm client name first)
    - Use MCP: `create-client-folder`
 
-4. **Check profile for website status**
+4. **Check profile for website status** (for cursor-direct builds only)
    - If profile shows `automations.website.status: "not_needed"`: Skip website build, inform user
    - If profile shows `automations.website.status: "completed"`: Check if update needed
    - If profile shows no website status: Proceed with build
 
-5. **For Cursor Direct Build: Select template or custom build** (based on profile)
+5. **Select template or custom build** (for cursor-direct builds only, based on profile)
    - **From profile**: `variations.design_style` and `variations.tech_stack.website`
    - **If design style matches AQ template** (dark/luxury): Use `aq-remodeling` template
    - **If design style matches Branded+Flow** (modern/bright): Use `branded-flow` template
    - **If design style is custom**: Build from scratch
    - Use MCP: `copy-website-template` (if using template) or custom build
 
-6. **Gather client information**
+6. **Gather client information** (for cursor-direct builds only)
    - Read: `clients/{client-name}/01_intake/*.txt`
    - Read: `clients/{client-name}/02_brand/*.txt`
    - Extract: Business name, services, contact info, brand colors, tagline
    - Use script: `execution/extract-client-info.py` (if exists)
 
 ### Phase 2: Build or Import
+
+**Note:** If build method is "replit-import" or "getmocha-import", skip to "If Replit/GetMocha Import" section below.
 
 **If Cursor Direct Build:**
 1. **Build website** (static HTML or framework-based)
@@ -185,8 +178,11 @@ Build and deploy a professional, conversion-optimized website for a client (stat
    - Use script: `execution/validate-website-structure.py` (if exists)
 
 2. **Test locally**
-   - **Static HTML**: Open index.html in browser or use local server
-   - **Framework-based**: Run `npm run dev` and test at localhost
+   - **Static HTML**: Open index.html in browser or use local server (`python3 -m http.server 8000`)
+   - **Framework-based**: 
+     - Next.js: Run `npm run dev` (starts dev server, usually on localhost:3000)
+     - React/Vite: Run `npm run dev` (starts dev server, usually on localhost:5173)
+     - Note: `npm run dev` is for development, `npm run build` is for production
    - Check all links/pages work
    - Verify responsive design (mobile, tablet, desktop)
    - Check forms and interactive elements
@@ -205,7 +201,6 @@ Build and deploy a professional, conversion-optimized website for a client (stat
 
 ## 4. OUTPUTS
 - Complete website in: `clients/{client-name}/03_website/` (or `04_website/`)
-- OR: Platform-specific setup (if Wix/WordPress)
 
 **For Static HTML:**
 - Files:
@@ -236,7 +231,7 @@ Build and deploy a professional, conversion-optimized website for a client (stat
 - Client Profile Updated:
   - `clients/{client-name}/client-profile.json` updated with website status
   - Portal updated with website information
-- Ready for deployment (Netlify for static, or platform-specific)
+- Ready for deployment to Netlify
 
 ## 5. EXECUTION (MCPs to Use)
 
@@ -250,8 +245,6 @@ Build and deploy a professional, conversion-optimized website for a client (stat
 - `extract-client-info` - Extracts info from intake/brand files
 - `customize-website-content` - Updates content (if static HTML)
 - `update-website-styling` - Updates styling (if static HTML)
-- `create-wix-setup` - Creates Wix setup (if Wix)
-- `create-wordpress-setup` - Creates WordPress setup (if WordPress)
 
 ### Import MCPs (for Replit/GetMocha imports)
 - Follow `import-company-website-files.md` directive for import process
@@ -275,13 +268,6 @@ Build and deploy a professional, conversion-optimized website for a client (stat
   - Skip Airtable creation
   - Integrate with existing CRM instead
   - Use MCP: `integrate-existing-crm` with CRM type parameter
-- **Client uses Gmail instead of Outlook**:
-  - Configure email integrations for Gmail
-  - Update automation workflows for Gmail API
-- **Client uses Wix/WordPress**:
-  - Skip build
-  - Create platform-specific setup instead
-  - Use platform-specific MCPs
 - **Website built in Replit/GetMocha**:
   - User builds in vibe coding platform
   - Import using `import-company-website-files.md` directive
@@ -326,7 +312,6 @@ Build and deploy a professional, conversion-optimized website for a client (stat
 - Client profile carries variations through all automations
 - Support both static HTML and framework-based websites
 - Support both direct Cursor builds and imports from Replit/GetMocha
-- If client uses Wix/WordPress, skip build, create platform-specific setup
 - If client has existing website, check if changes needed
 - Always update profile after completing automation
 - Portal should reflect current client state
