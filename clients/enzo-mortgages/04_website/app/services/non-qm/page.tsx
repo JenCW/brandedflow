@@ -195,7 +195,7 @@ export default function NonQMPage() {
             </Link>
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center gap-2 border-2 border-zinc-600 text-white px-10 py-4 text-lg font-medium hover:border-primary hover:bg-primary/10 transition-all duration-300 rounded-lg"
+              className="inline-flex items-center justify-center gap-2 border-2 border-zinc-600 text-white px-10 py-4 text-lg font-medium hover:border-primary hover:bg-primary/10 transition-all duration-300 rounded"
               data-testid="button-contact-non-qm"
             >
               Schedule Consultation

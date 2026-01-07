@@ -12,7 +12,8 @@ interface LeadMagnetProps {
 
 export default function LeadMagnet({ title, description, magnetType, source }: LeadMagnetProps) {
   const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [phone, setPhone] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -28,7 +29,8 @@ export default function LeadMagnet({ title, description, magnetType, source }: L
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          name,
+          firstName,
+          lastName,
           email,
           phone,
           leadType: "Lead Magnet",
@@ -98,12 +100,24 @@ export default function LeadMagnet({ title, description, magnetType, source }: L
         <div>
           <input
             type="text"
-            placeholder="Your Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            placeholder="First Name"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
             required
             className="w-full bg-zinc-900 border border-zinc-600 text-white px-4 py-3 placeholder-zinc-500 focus:border-primary focus:outline-none transition-colors"
-            data-testid="input-lead-name"
+            data-testid="input-lead-first-name"
+          />
+        </div>
+
+        <div>
+          <input
+            type="text"
+            placeholder="Last Name"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            required
+            className="w-full bg-zinc-900 border border-zinc-600 text-white px-4 py-3 placeholder-zinc-500 focus:border-primary focus:outline-none transition-colors"
+            data-testid="input-lead-last-name"
           />
         </div>
 

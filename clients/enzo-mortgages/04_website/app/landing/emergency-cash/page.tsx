@@ -1,5 +1,6 @@
 import QuickLeadForm from "@/app/components/QuickLeadForm";
 import EnzoLogo from "@/app/components/EnzoLogo";
+import HiddenValuationForm from "@/app/components/HiddenValuationForm";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -75,6 +76,8 @@ export default function EmergencyCashLandingPage() {
           </div>
         </div>
       </section>
+
+      <HiddenValuationForm source="Emergency Cash Landing Page" />
     </div>
   );
 }

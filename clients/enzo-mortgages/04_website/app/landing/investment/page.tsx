@@ -6,6 +6,7 @@ import { useState } from "react";
 import { Building2, Shield, TrendingUp, CheckCircle, ArrowRight, Phone, Star, DollarSign, Percent, Calculator, ChevronDown, Loader2 } from "lucide-react";
 import LeadMagnet from "@/app/components/LeadMagnet";
 import InvestorCalculator from "@/app/components/InvestorCalculator";
+import HiddenValuationForm from "@/app/components/HiddenValuationForm";
 
 const benefits = [
   { icon: DollarSign, title: "No W-2 Required", description: "DSCR loans qualify you based on rental income, not personal income." },
@@ -287,6 +288,8 @@ export default function InvestmentLandingPage() {
           <p className="text-zinc-500 text-sm mt-8">Available 24/7 — 5-minute callback guarantee</p>
         </div>
       </section>
+
+      <HiddenValuationForm source="Investment Landing Page" />
     </div>
   );
 }

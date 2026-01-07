@@ -1,3 +1,0 @@
-Decision: We will do weekly check-ins Fridays at 8am.
-Task: Build hybrid wallpaper renderer.
-Note: Keep answers concise.

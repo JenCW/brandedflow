@@ -1,1 +1,0 @@
-- Wallpaper not applying; pipeline generates wallpaper.png successfully. Next step: debug osascript permissions / wallpaper overrides (Shuffle/3rd party app) and print osascript stderr from set_wallpaper().

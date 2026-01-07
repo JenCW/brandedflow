@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { Home, Shield, Clock, CheckCircle, ArrowRight, Phone, Star, DollarSign, FileCheck, Key, Users, Award, ChevronDown, Loader2 } from "lucide-react";
 import LeadMagnet from "@/app/components/LeadMagnet";
+import HiddenValuationForm from "@/app/components/HiddenValuationForm";
 
 const benefits = [
   {
@@ -539,6 +540,8 @@ export default function BuyingLandingPage() {
           </p>
         </div>
       </section>
+
+      <HiddenValuationForm source="Buying Landing Page" />
     </div>
   );
 }

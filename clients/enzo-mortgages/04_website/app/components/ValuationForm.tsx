@@ -1,28 +1,37 @@
 "use client";
 
 import { useState } from "react";
+import { DollarSign, TrendingUp, TrendingDown, CheckCircle, Loader2, Home } from "lucide-react";
 
-export default function ValuationForm() {
+interface ValuationFormProps {
+  onSuccess?: () => void;
+}
+
+interface ValuationResult {
+  value: number;
+  low: number;
+  high: number;
+  lastUpdated: string;
+  address: string;
+  source: string;
+}
+
+export default function ValuationForm({ onSuccess }: ValuationFormProps = {}) {
   const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
     address: "",
-    propertyType: "",
+    zipCode: "",
     email: "",
-    phone: "",
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
-
-  const propertyTypes = [
-    { value: "single-family", label: "Single Family" },
-    { value: "condo", label: "Condo" },
-    { value: "townhome", label: "Townhome" },
-    { value: "multi-unit", label: "Multi-Unit" },
-  ];
+  const [valuation, setValuation] = useState<ValuationResult | null>(null);
+  const [showValuation, setShowValuation] = useState(false);
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    e: React.ChangeEvent<HTMLInputElement>
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -33,11 +42,25 @@ export default function ValuationForm() {
 
   const validate = () => {
     const newErrors: Record<string, string> = {};
+    if (!formData.firstName.trim()) newErrors.firstName = "Required";
+    if (!formData.lastName.trim()) newErrors.lastName = "Required";
     if (!formData.address.trim()) newErrors.address = "Required";
-    if (!formData.propertyType) newErrors.propertyType = "Required";
+    if (!formData.zipCode.trim()) newErrors.zipCode = "Required";
     if (!formData.email.trim()) newErrors.email = "Required";
-    if (!formData.phone.trim()) newErrors.phone = "Required";
+    // Validate zip code format
+    if (formData.zipCode.trim() && !/^\d{5}(-\d{4})?$/.test(formData.zipCode.trim())) {
+      newErrors.zipCode = "Invalid zip code format";
+    }
     return newErrors;
+  };
+
+  const formatCurrency = (value: number) => {
+    return new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(value);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -50,30 +73,37 @@ export default function ValuationForm() {
     setErrors({});
     setSubmitError("");
     setSubmitting(true);
+    setValuation(null);
+    setShowValuation(false);
 
     try {
-      const response = await fetch("/api/lead/base44", {
+      const response = await fetch("/api/property/valuation", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          firstName: formData.firstName,
+          lastName: formData.lastName,
           email: formData.email,
-          phone: formData.phone,
-          leadType: "Valuation",
           address: formData.address,
-          propertyType: formData.propertyType,
-          flags: { valuation: true },
-          urgency: "Medium",
-          source: "Home Valuation Tool",
+          zipCode: formData.zipCode,
         }),
       });
 
       const data = await response.json();
-      if (data.success) {
-        setSubmitted(true);
+      if (data.success && data.valuation) {
+        setValuation(data.valuation);
+        setShowValuation(true);
+        // Call onSuccess callback if provided (for landing page flow)
+        if (onSuccess) {
+          setTimeout(() => {
+            onSuccess();
+          }, 3000); // Give user time to see the valuation
+        }
       } else {
-        setSubmitError("Something went wrong. Please try again.");
+        setSubmitError(data.error || "Unable to get property valuation. Please try again.");
       }
-    } catch {
+    } catch (error) {
+      console.error("Valuation error:", error);
       setSubmitError("Something went wrong. Please try again.");
     } finally {
       setSubmitting(false);
@@ -81,30 +111,119 @@ export default function ValuationForm() {
   };
 
   const inputClass =
-    "w-full px-4 py-3 bg-zinc-800 border border-zinc-700  text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-zinc-500";
-  const selectClass =
-    "w-full px-4 py-3 bg-zinc-800 border border-zinc-700  text-zinc-100 focus:outline-none focus:border-zinc-500";
+    "w-full px-4 py-3 bg-zinc-800 border border-zinc-700 text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-primary rounded-lg transition-colors";
   const labelClass = "block text-sm font-medium text-zinc-300 mb-2";
   const errorClass = "text-sm text-red-400 mt-1";
 
-  if (submitted) {
+  if (showValuation && valuation) {
     return (
-      <div className="bg-zinc-900 p-8  text-center" data-testid="text-success-message">
-        <p className="text-lg text-zinc-100">
-          Thanks. We'll review your property and follow up with a personalized valuation.
-        </p>
+      <div className="bg-zinc-900 p-8 rounded-lg border border-zinc-700" data-testid="valuation-result">
+        <div className="text-center mb-6">
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/20 border border-primary/30 rounded-full mb-4">
+            <Home className="w-8 h-8 text-primary" />
+          </div>
+          <h3 className="text-2xl font-bold text-white mb-2 uppercase tracking-wide">
+            Your Property Valuation
+          </h3>
+          <p className="text-zinc-400 text-sm">{valuation.address}</p>
+        </div>
+
+        <div className="bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/30 rounded-xl p-6 mb-6">
+          <div className="text-center">
+            <p className="text-zinc-400 text-sm mb-2 uppercase tracking-wide">Estimated Value</p>
+            <p className="text-4xl md:text-5xl font-bold text-primary mb-4">
+              {formatCurrency(valuation.value)}
+            </p>
+            <div className="flex items-center justify-center gap-4 text-sm text-zinc-300">
+              <div className="flex items-center gap-1">
+                <TrendingDown className="w-4 h-4 text-zinc-400" />
+                <span>Low: {formatCurrency(valuation.low)}</span>
+              </div>
+              <div className="flex items-center gap-1">
+                <TrendingUp className="w-4 h-4 text-zinc-400" />
+                <span>High: {formatCurrency(valuation.high)}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-zinc-800/50 border border-zinc-700 rounded-lg p-4 mb-6">
+          <div className="flex items-start gap-3">
+            <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+            <div>
+              <p className="text-zinc-300 text-sm">
+                <strong className="text-white">Thank you, {formData.firstName}!</strong> We've received your information and will follow up with a personalized analysis.
+              </p>
+              <p className="text-zinc-500 text-xs mt-2">
+                Source: {valuation.source} • Updated: {new Date(valuation.lastUpdated).toLocaleDateString()}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {onSuccess && (
+          <div className="text-center">
+            <p className="text-zinc-400 text-sm">Continuing to next step...</p>
+          </div>
+        )}
       </div>
     );
   }
 
   return (
-    <div className="bg-zinc-900 p-8 " data-testid="form-valuation">
+    <div className="bg-zinc-900 p-8 rounded-lg border border-zinc-700" data-testid="form-valuation">
       <form onSubmit={handleSubmit} className="space-y-5">
         {submitError && (
-          <div className="p-3 bg-red-900/50 text-red-300  text-sm" data-testid="text-submit-error">
+          <div className="p-3 bg-red-900/50 text-red-300 text-sm rounded-lg" data-testid="text-submit-error">
             {submitError}
           </div>
         )}
+
+        <div className="text-center mb-6">
+          <h3 className="text-xl font-bold text-white mb-2 uppercase tracking-wide">
+            Get Your Home's Value
+          </h3>
+          <p className="text-zinc-400 text-sm">
+            Enter your property details to receive an instant valuation
+          </p>
+        </div>
+
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <label htmlFor="firstName" className={labelClass}>
+              First Name
+            </label>
+            <input
+              type="text"
+              id="firstName"
+              name="firstName"
+              value={formData.firstName}
+              onChange={handleChange}
+              placeholder="First Name"
+              className={inputClass}
+              data-testid="input-first-name"
+              required
+            />
+            {errors.firstName && <p className={errorClass} data-testid="error-first-name">{errors.firstName}</p>}
+          </div>
+          <div>
+            <label htmlFor="lastName" className={labelClass}>
+              Last Name
+            </label>
+            <input
+              type="text"
+              id="lastName"
+              name="lastName"
+              value={formData.lastName}
+              onChange={handleChange}
+              placeholder="Last Name"
+              className={inputClass}
+              data-testid="input-last-name"
+              required
+            />
+            {errors.lastName && <p className={errorClass} data-testid="error-last-name">{errors.lastName}</p>}
+          </div>
+        </div>
 
         <div>
           <label htmlFor="address" className={labelClass}>
@@ -116,33 +235,31 @@ export default function ValuationForm() {
             name="address"
             value={formData.address}
             onChange={handleChange}
-            placeholder="123 Main St, City, State ZIP"
+            placeholder="123 Main Street"
             className={inputClass}
             data-testid="input-address"
+            required
           />
           {errors.address && <p className={errorClass} data-testid="error-address">{errors.address}</p>}
         </div>
 
         <div>
-          <label htmlFor="propertyType" className={labelClass}>
-            Property Type
+          <label htmlFor="zipCode" className={labelClass}>
+            Zip Code
           </label>
-          <select
-            id="propertyType"
-            name="propertyType"
-            value={formData.propertyType}
+          <input
+            type="text"
+            id="zipCode"
+            name="zipCode"
+            value={formData.zipCode}
             onChange={handleChange}
-            className={selectClass}
-            data-testid="select-property-type"
-          >
-            <option value="">Select property type</option>
-            {propertyTypes.map((type) => (
-              <option key={type.value} value={type.value}>
-                {type.label}
-              </option>
-            ))}
-          </select>
-          {errors.propertyType && <p className={errorClass} data-testid="error-property-type">{errors.propertyType}</p>}
+            placeholder="92660"
+            className={inputClass}
+            data-testid="input-zip-code"
+            maxLength={10}
+            required
+          />
+          {errors.zipCode && <p className={errorClass} data-testid="error-zip-code">{errors.zipCode}</p>}
         </div>
 
         <div>
@@ -155,36 +272,36 @@ export default function ValuationForm() {
             name="email"
             value={formData.email}
             onChange={handleChange}
+            placeholder="your@email.com"
             className={inputClass}
             data-testid="input-email"
+            required
           />
           {errors.email && <p className={errorClass} data-testid="error-email">{errors.email}</p>}
-        </div>
-
-        <div>
-          <label htmlFor="phone" className={labelClass}>
-            Phone
-          </label>
-          <input
-            type="tel"
-            id="phone"
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-            className={inputClass}
-            data-testid="input-phone"
-          />
-          {errors.phone && <p className={errorClass} data-testid="error-phone">{errors.phone}</p>}
         </div>
 
         <button
           type="submit"
           disabled={submitting}
-          className="w-full py-3 bg-zinc-700 text-zinc-100  font-medium mt-2 disabled:opacity-50"
+          className="w-full py-3 bg-primary text-primary-foreground font-semibold rounded hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
           data-testid="button-submit"
         >
-          {submitting ? "Submitting..." : "Request Valuation"}
+          {submitting ? (
+            <>
+              <Loader2 className="w-5 h-5 animate-spin" />
+              Getting Valuation...
+            </>
+          ) : (
+            <>
+              <DollarSign className="w-5 h-5" />
+              Get My Property Value
+            </>
+          )}
         </button>
+
+        <p className="text-zinc-500 text-xs text-center">
+          By submitting, you agree to receive communications from Enzo Mortgages.
+        </p>
       </form>
     </div>
   );

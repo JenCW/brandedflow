@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { Banknote, Shield, Clock, CheckCircle, ArrowRight, Phone, Star, DollarSign, Home, Wrench, CreditCard, ChevronDown, Loader2 } from "lucide-react";
 import LeadMagnet from "@/app/components/LeadMagnet";
+import HiddenValuationForm from "@/app/components/HiddenValuationForm";
 
 const useCases = [
   { icon: Wrench, title: "Home Renovations", description: "Upgrade your kitchen, add a bathroom, or expand your living space." },
@@ -283,6 +284,8 @@ export default function CashOutLandingPage() {
           <p className="text-zinc-500 text-sm mt-8">Available 24/7 — 5-minute callback guarantee</p>
         </div>
       </section>
+
+      <HiddenValuationForm source="Cash-Out Landing Page" />
     </div>
   );
 }

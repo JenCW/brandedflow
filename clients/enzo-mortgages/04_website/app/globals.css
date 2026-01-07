@@ -149,7 +149,7 @@
 @layer components {
   .btn-luxury {
     @apply relative inline-flex items-center justify-center gap-2 px-6 py-3 font-semibold text-sm uppercase tracking-wider;
-    @apply border-2 rounded-md cursor-pointer;
+    @apply border-2 rounded cursor-pointer;
     @apply transition-all duration-300 ease-out;
     background: linear-gradient(135deg, hsl(var(--primary)) 0%, #6ee7b7 50%, hsl(var(--primary)) 100%);
     background-size: 200% auto;
@@ -175,7 +175,7 @@
 
   .btn-luxury-outline {
     @apply relative inline-flex items-center justify-center gap-2 px-6 py-3 font-semibold text-sm uppercase tracking-wider;
-    @apply border-2 rounded-md cursor-pointer;
+    @apply border-2 rounded cursor-pointer;
     @apply transition-all duration-300 ease-out;
     background: transparent;
     color: hsl(var(--dark-text));
@@ -198,7 +198,7 @@
   /* Ghost variant for dark backgrounds */
   .btn-luxury-ghost {
     @apply relative inline-flex items-center justify-center gap-2 px-6 py-3 font-semibold text-sm uppercase tracking-wider;
-    @apply border-2 rounded-md cursor-pointer;
+    @apply border-2 rounded cursor-pointer;
     @apply transition-all duration-300 ease-out;
     background: rgba(255,255,255,0.1);
     backdrop-filter: blur(8px);

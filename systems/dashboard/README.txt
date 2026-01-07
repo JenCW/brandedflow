@@ -1,1 +1,0 @@
-Your daily dashboard + wallpaper. Generated files only.

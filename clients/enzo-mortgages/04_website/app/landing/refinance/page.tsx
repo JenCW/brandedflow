@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { RefreshCw, Shield, Clock, CheckCircle, ArrowRight, Phone, Star, DollarSign, TrendingDown, Award, ChevronDown, Loader2 } from "lucide-react";
 import LeadMagnet from "@/app/components/LeadMagnet";
+import HiddenValuationForm from "@/app/components/HiddenValuationForm";
 
 const benefits = [
   { icon: TrendingDown, title: "Lower Your Rate", description: "Lock in a lower interest rate and reduce your monthly payment." },
@@ -299,6 +300,8 @@ export default function RefinanceLandingPage() {
           <p className="text-zinc-500 text-sm mt-8">Available 24/7 — 5-minute callback guarantee</p>
         </div>
       </section>
+
+      <HiddenValuationForm source="Refinance Landing Page" />
     </div>
   );
 }

@@ -9,6 +9,7 @@ interface QuickLeadFormProps {
 export default function QuickLeadForm({ source }: QuickLeadFormProps) {
   const [formData, setFormData] = useState({
     firstName: "",
+    lastName: "",
     email: "",
     phone: "",
     loanType: "",
@@ -42,6 +43,7 @@ export default function QuickLeadForm({ source }: QuickLeadFormProps) {
   const validate = () => {
     const newErrors: Record<string, string> = {};
     if (!formData.firstName.trim()) newErrors.firstName = "Required";
+    if (!formData.lastName.trim()) newErrors.lastName = "Required";
     if (!formData.email.trim()) newErrors.email = "Required";
     if (!formData.phone.trim()) newErrors.phone = "Required";
     if (!formData.loanType) newErrors.loanType = "Required";
@@ -65,7 +67,8 @@ export default function QuickLeadForm({ source }: QuickLeadFormProps) {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          name: formData.firstName,
+          firstName: formData.firstName,
+          lastName: formData.lastName,
           email: formData.email,
           phone: formData.phone,
           leadType: "Quick Lead",
@@ -131,6 +134,24 @@ export default function QuickLeadForm({ source }: QuickLeadFormProps) {
         />
         {errors.firstName && (
           <p className="text-sm text-red-500 mt-1" data-testid="error-first-name">{errors.firstName}</p>
+        )}
+      </div>
+
+      <div>
+        <label htmlFor="lastName" className="block text-sm font-medium text-foreground mb-1">
+          Last Name
+        </label>
+        <input
+          type="text"
+          id="lastName"
+          name="lastName"
+          value={formData.lastName}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-border  bg-background text-foreground"
+          data-testid="input-last-name"
+        />
+        {errors.lastName && (
+          <p className="text-sm text-red-500 mt-1" data-testid="error-last-name">{errors.lastName}</p>
         )}
       </div>
 
