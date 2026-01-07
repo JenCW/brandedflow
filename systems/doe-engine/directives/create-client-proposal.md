@@ -1,7 +1,7 @@
-# Create Client Proposal - Directive
+# DIRECTIVE: Create Client Proposal
 
-## Purpose
-Create a conversion-focused, personalized proposal that gets clients to say yes. This directive captures the proven process for creating proposals that work.
+## 1. GOAL
+Create and send a conversion-focused, personalized proposal that gets clients to say yes. This directive covers both proposal creation and delivery to the client.
 
 ## When to Use
 - Client needs a proposal for services
@@ -309,7 +309,16 @@ This MCP generates the HTML proposal following this directive.
 2. Call `create-modern-proposal` MCP with data
 3. Review generated HTML
 4. Deploy to Netlify (drag `05_deliverables` folder)
-5. Send link to client
+5. Send link to client via email
+
+### Sending the Proposal
+- Deploy proposal HTML to Netlify (drag-and-drop or Git-based)
+- Get public URL from Netlify
+- Send email to client with:
+  - Personal message
+  - Link to proposal
+  - Clear next steps
+  - No pressure, just invitation to review
 
 ### Template Location
 `templates/proposal-template-modern.html` (reference only - code generates from this directive)

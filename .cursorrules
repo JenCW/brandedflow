@@ -1,3 +1,16 @@
+
+# 🚨 HARD STOP — MCP ENFORCEMENT 🚨
+
+Before responding to ANY request:
+
+1. Call `systems/mcp-server/enforce-directive-check.js`
+2. If status === "BLOCKED", you MUST:
+   - Search `systems/doe-engine/directives/`
+   - Explicitly report results
+   - Wait for user confirmation
+3. You may NOT proceed until status is cleared
+
+
 # 🚫 STOP - DO NOT PROCEED UNTIL YOU COMPLETE THE CHECKPOINT BELOW 🚫
 
 # ============================================

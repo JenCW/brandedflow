@@ -1,7 +1,7 @@
 # DIRECTIVE: Build Client Website
 
 ## 1. GOAL
-Build and deploy a professional, conversion-optimized static website for a client, following Branded+Flow standards and tech stack.
+Build and deploy a professional, conversion-optimized website for a client (static HTML or framework-based), following Branded+Flow standards. Supports both direct Cursor builds and imports from vibe coding platforms (Replit/GetMocha).
 
 ## 2. INPUTS & CLIENT PROFILE
 
@@ -41,10 +41,19 @@ Build and deploy a professional, conversion-optimized static website for a clien
 - **Action**: If design style doesn't match template, use custom build or appropriate template
 
 **Tech Stack:**
-- **Website**: 
-  - Options: "static-html" (default), "wix", "wordpress", "custom"
+- **Website Build Method**: 
+  - Options: "cursor-direct" (build directly in Cursor), "replit-import" (build in Replit, import to Cursor), "getmocha-import" (build in GetMocha, import to Cursor)
+  - Default: "cursor-direct" (unless user specifies otherwise)
+  - **Action**: Follow appropriate build/import process
+- **Website Type**: 
+  - Options: "static-html" (simple HTML/CSS/JS), "nextjs" (Next.js framework), "react-vite" (React/Vite), "wix", "wordpress"
+  - Default: "static-html" (unless framework needed for complex features)
+  - Detection: Check imported files (package.json) or user preference
+  - **Action**: Adapt process for chosen type
+- **Platform-Specific**: 
+  - Options: "wix", "wordpress" (if client uses these platforms)
   - Detection: Check intake file for "Website: Wix" or similar
-  - **Action**: Adapt process for chosen platform
+  - **Action**: Skip build, create platform-specific setup
 - **Email**: 
   - Options: "outlook" (default), "gmail", "custom"
   - Detection: Check intake file for email provider
@@ -72,52 +81,73 @@ Build and deploy a professional, conversion-optimized static website for a clien
    - If profile exists: Use variations from profile
    - If profile doesn't exist: Detect variations, create profile
 
-2. **Verify client folder exists**
-   - Location: `clients/{client-name}/03_website/`
+2. **Determine build method** (from profile or user)
+   - **If "cursor-direct"**: Build directly in Cursor (proceed to Phase 2)
+   - **If "replit-import" or "getmocha-import"**: User builds in platform, then import (see `import-company-website-files.md` directive)
+   - **If Wix/WordPress**: Skip build, create platform-specific setup
+
+3. **Verify client folder exists**
+   - Location: `clients/{client-name}/03_website/` (or `04_website/` if client uses that structure)
    - If not: Create it (ask user to confirm client name first)
    - Use MCP: `create-client-folder`
 
-3. **Check profile for website status**
+4. **Check profile for website status**
    - If profile shows `automations.website.status: "not_needed"`: Skip website build, inform user
    - If profile shows `automations.website.status: "completed"`: Check if update needed
    - If profile shows no website status: Proceed with build
 
-4. **Select template or custom build** (based on profile)
+5. **For Cursor Direct Build: Select template or custom build** (based on profile)
    - **From profile**: `variations.design_style` and `variations.tech_stack.website`
-   - **If Wix/WordPress**: Skip template, create platform-specific setup
    - **If design style matches AQ template** (dark/luxury): Use `aq-remodeling` template
    - **If design style matches Branded+Flow** (modern/bright): Use `branded-flow` template
    - **If design style is custom**: Build from scratch
    - Use MCP: `copy-website-template` (if using template) or custom build
 
-3. **Gather client information**
+6. **Gather client information**
    - Read: `clients/{client-name}/01_intake/*.txt`
    - Read: `clients/{client-name}/02_brand/*.txt`
    - Extract: Business name, services, contact info, brand colors, tagline
    - Use script: `execution/extract-client-info.py` (if exists)
 
-### Phase 2: Content Customization
-1. **Update HTML content**
-   - Update all pages: Business name, services, descriptions
+### Phase 2: Build or Import
+
+**If Cursor Direct Build:**
+1. **Build website** (static HTML or framework-based)
+   - **Static HTML**: Create HTML/CSS/JS files directly
+   - **Framework-based**: Create Next.js/React structure with components
+   - Apply design style from profile
+   - Focus on UI design, animations, visual excellence
+
+**If Replit/GetMocha Import:**
+1. **Follow import process** (see `import-company-website-files.md` directive)
+   - User provides ZIP or extracted files
+   - Extract and identify framework type (check package.json)
+   - Import to client folder, preserve structure
+   - Adapt for Netlify deployment
+
+### Phase 3: Content Customization
+1. **Update content** (for static HTML) OR **Update components** (for framework-based)
+   - Update all pages/components: Business name, services, descriptions
    - Update meta tags: Title, description, keywords (SEO)
    - Update contact information: Phone, email, address
    - Update forms: Contact form setup for Netlify Forms
-   - Use script: `execution/customize-website-content.py` (if exists)
+   - Use script: `execution/customize-website-content.py` (if exists and applicable)
 
-2. **Update CSS styling**
-   - Apply brand colors (if provided in brand file)
+2. **Update styling**
+   - **Static HTML**: Update CSS files, apply brand colors
+   - **Framework-based**: Update Tailwind/CSS modules, apply brand colors
    - Update typography if specified
    - Maintain responsive design
-   - Use script: `execution/update-website-styling.py` (if exists)
+   - Use script: `execution/update-website-styling.py` (if exists and applicable)
 
 3. **Update SEO elements**
    - Meta tags (title, description, keywords)
    - Open Graph tags (social sharing)
    - Schema.org markup (LocalBusiness, etc.)
-   - robots.txt and sitemap.xml
-   - Use script: `execution/update-seo-elements.py` (if exists)
+   - robots.txt and sitemap.xml (or dynamic generation for frameworks)
+   - Use script: `execution/update-seo-elements.py` (if exists and applicable)
 
-### Phase 3: Integration Setup
+### Phase 4: Integration Setup
 1. **Form integration**
    - Ensure forms have `data-netlify="true"` attribute
    - Add `name="contact"` and `method="POST"` attributes
@@ -147,7 +177,7 @@ Build and deploy a professional, conversion-optimized static website for a clien
    - Document Git Gateway setup in Netlify dashboard
    - Note: Requires Netlify Identity + Git Gateway enabled
 
-### Phase 4: Validation & Testing
+### Phase 5: Validation & Testing
 1. **Validate structure**
    - Check: All required files exist
    - Check: Folder structure follows rules (no root violations)
@@ -155,42 +185,51 @@ Build and deploy a professional, conversion-optimized static website for a clien
    - Use script: `execution/validate-website-structure.py` (if exists)
 
 2. **Test locally**
-   - Open index.html in browser
-   - Check all links work
+   - **Static HTML**: Open index.html in browser or use local server
+   - **Framework-based**: Run `npm run dev` and test at localhost
+   - Check all links/pages work
    - Verify responsive design (mobile, tablet, desktop)
-   - Check forms are properly structured
+   - Check forms and interactive elements
 
 3. **Prepare for deployment**
-   - Ensure: `robots.txt` exists
-   - Ensure: `sitemap.xml` exists
-   - Ensure: Forms have `data-netlify="true"` attribute
-   - Ensure: `netlify.toml` has build command and environment variable notes
-   - Ensure: `build.js` exists and processes all HTML files
-   - Ensure: `.netlifyignore` excludes dev files but includes `build.js`
+   - Ensure: `robots.txt` exists (or is generated)
+   - Ensure: `sitemap.xml` exists (or is generated)
+   - Ensure: `netlify.toml` is properly configured:
+     - **Static HTML**: Build command (if needed), publish directory
+     - **Framework-based**: Build command (`npm run build`), publish directory (`.next` for Next.js, `dist` for Vite)
+   - Ensure: Forms have `data-netlify="true"` attribute (for static HTML) or proper Netlify Forms setup (for frameworks)
+   - Ensure: Environment variables documented
    - Ensure: All images are optimized (if possible)
    - Create: `docs/NETLIFY_SETUP.md` with environment variable setup instructions
-   - Use script: `execution/prepare-netlify-deployment.py` (if exists)
+   - Use script: `execution/prepare-netlify-deployment.py` (if exists and applicable)
 
 ## 4. OUTPUTS
-- Complete website in: `clients/{client-name}/03_website/` (if built)
+- Complete website in: `clients/{client-name}/03_website/` (or `04_website/`)
 - OR: Platform-specific setup (if Wix/WordPress)
+
+**For Static HTML:**
 - Files:
-  - `index.html` (home page) - if static HTML
-  - `about.html` (about page) - if static HTML
-  - `services.html` or service-specific pages - if static HTML
-  - `portfolio.html` or `gallery.html` - if static HTML
-  - `contact.html` (contact page) - if static HTML
-  - `faq.html` (if applicable) - if static HTML
-  - `css/style.css` (all styling) - if static HTML
-  - `js/script.js` (if needed) - if static HTML
+  - `index.html` (home page)
+  - `about.html`, `services.html`, `contact.html`, etc.
+  - `css/style.css` (all styling)
+  - `js/script.js` (if needed)
   - `robots.txt` (SEO)
   - `sitemap.xml` (SEO)
+
+**For Framework-based (Next.js/React):**
+- Files:
+  - `package.json` (with dependencies)
+  - `app/` or `src/` directory (framework structure)
+  - Framework config files (`next.config.mjs`, `vite.config.ts`, etc.)
+  - `public/` directory (static assets)
+  - `robots.txt` (or dynamic generation)
+  - `sitemap.xml` (or dynamic generation)
 - Documentation:
   - `README.md` (deployment instructions, form setup, etc.)
   - `docs/NETLIFY_SETUP.md` (environment variables, integrations setup)
 - Build Files:
-  - `build.js` (replaces environment variable placeholders during build)
   - `netlify.toml` (build settings, redirects, environment variable notes)
+  - `build.js` (if needed for static HTML - replaces environment variable placeholders)
 - Integration Files:
   - `netlify/functions/submit-to-base44.js` (if Base44 integration needed)
   - `admin/config.yml` and `admin/index.html` (if Netlify CMS needed)
@@ -214,6 +253,9 @@ Build and deploy a professional, conversion-optimized static website for a clien
 - `create-wix-setup` - Creates Wix setup (if Wix)
 - `create-wordpress-setup` - Creates WordPress setup (if WordPress)
 
+### Import MCPs (for Replit/GetMocha imports)
+- Follow `import-company-website-files.md` directive for import process
+
 ### Portal MCPs
 - `update-base44-portal` - Updates portal with client profile and automation status
 
@@ -236,10 +278,18 @@ Build and deploy a professional, conversion-optimized static website for a clien
 - **Client uses Gmail instead of Outlook**:
   - Configure email integrations for Gmail
   - Update automation workflows for Gmail API
-- **Client uses Wix/WordPress instead of static HTML**:
-  - Skip static HTML build
-  - Create Wix/WordPress setup instead
+- **Client uses Wix/WordPress**:
+  - Skip build
+  - Create platform-specific setup instead
   - Use platform-specific MCPs
+- **Website built in Replit/GetMocha**:
+  - User builds in vibe coding platform
+  - Import using `import-company-website-files.md` directive
+  - Then proceed with integration setup (Phase 4)
+- **Framework-based vs Static HTML**:
+  - Use static HTML for simple brochure sites (faster, easier)
+  - Use framework-based (Next.js/React) for complex features, calculators, multi-step forms
+  - Both work with Netlify deployment
 - **Client already has website**:
   - Ask if they want to replace or enhance
   - If enhance: Create enhancement plan, don't overwrite
@@ -274,7 +324,9 @@ Build and deploy a professional, conversion-optimized static website for a clien
 ### General Learnings:
 - Always check client profile first (may have variations already detected)
 - Client profile carries variations through all automations
-- If client uses Wix/WordPress, skip static HTML build
+- Support both static HTML and framework-based websites
+- Support both direct Cursor builds and imports from Replit/GetMocha
+- If client uses Wix/WordPress, skip build, create platform-specific setup
 - If client has existing website, check if changes needed
 - Always update profile after completing automation
 - Portal should reflect current client state
