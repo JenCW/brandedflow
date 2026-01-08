@@ -13,11 +13,6 @@ const nextConfig = {
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     minimumCacheTTL: 60,
   },
-  turbopack: {
-    resolveAlias: {
-      '@assets': path.join(__dirname, 'attached_assets'),
-    },
-  },
   webpack: (config) => {
     config.resolve.alias['@assets'] = path.join(__dirname, 'attached_assets');
     return config;

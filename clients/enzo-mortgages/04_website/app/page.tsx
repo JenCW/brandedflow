@@ -156,7 +156,10 @@ export default function HomePage() {
 
     {/* Live Person 24/7 Banner - Front Facing CTA */}
     <section className="relative bg-gradient-to-r from-primary via-primary to-amber-600 py-4 overflow-hidden" data-testid="section-live-person-banner" suppressHydrationWarning>
-      <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-10" suppressHydrationWarning />
+      <div
+        className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.6)_1px,transparent_0)] bg-[size:6px_6px]"
+        suppressHydrationWarning
+      />
       <Link 
         href="tel:+19495551234" 
         className="relative z-10 w-full max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 group"

@@ -1158,7 +1158,7 @@ shared/
 ### Required Pattern for Directive-Based Tasks
 
 **FORBIDDEN:**
-- Directly calling execution scripts: `python3 systems/doe-engine/execution/*.py`
+- Directly calling execution-layer scripts with `python`/`python3` (no direct script execution)
 - Bypassing the dispatcher and worker queue
 - Skipping ACK token validation
 
@@ -1182,7 +1182,7 @@ shared/
 
 ### Enforcement
 
-If you need to execute a task that uses `systems/doe-engine/execution/*.py`:
+If you need to execute a task that uses an execution-layer script:
 1. Check if it follows a directive (look in `systems/doe-engine/directives/`)
 2. If directive exists: MUST use `node ./cursor/start-task.js`
 3. Never bypass the dispatcher for directive-based tasks

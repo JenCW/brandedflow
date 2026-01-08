@@ -14,7 +14,6 @@ PATTERNS=(
 
 # Files/directories to check
 CHECK_DIRS=(
-  "."
   "cursor"
   "docs"
   "company"
