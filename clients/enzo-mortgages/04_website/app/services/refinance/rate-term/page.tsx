@@ -70,7 +70,7 @@ export default function RateTermRefinancePage() {
           <div className="text-center">
             <Link
               href="/apply"
-              className="inline-flex items-center justify-center bg-primary text-primary-foreground px-10 py-4 text-lg font-medium hover:bg-primary/90 transition-colors"
+              className="btn-luxury"
               data-testid="button-apply-rate-term"
             >
               Check My Rate

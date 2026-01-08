@@ -142,7 +142,7 @@ export default function RatesPage() {
               />
               <button
                 type="submit"
-                className="w-full bg-primary hover:bg-primary/90 px-6 py-4 text-lg font-medium text-primary-foreground transition-all"
+                className="btn-luxury w-full"
                 data-testid="button-rate-alert-submit"
               >
                 <Mail className="w-5 h-5 inline mr-2" />

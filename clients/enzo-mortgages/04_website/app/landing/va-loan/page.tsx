@@ -613,13 +613,13 @@ export default function LoanOfficerLandingPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/apply"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary text-primary-foreground font-semibold rounded hover:bg-primary/90 transition-colors"
+              className="btn-luxury"
             >
               Apply Now <ArrowRight className="w-5 h-5" />
             </Link>
             <a
               href="tel:+19495551234"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-zinc-800 text-white font-semibold rounded hover:bg-zinc-700 transition-colors"
+              className="btn-luxury-outline"
             >
               <Phone className="w-5 h-5" />
               (949) 555-1234

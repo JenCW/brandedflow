@@ -86,14 +86,6 @@ export default function Header() {
             >
               About
             </Link>
-            
-            <Link
-              href="/loan-officer"
-              className="px-4 py-2 text-sm font-medium uppercase tracking-wide text-zinc-300 hover:text-primary transition-colors"
-              data-testid="link-nav-loan-officer"
-            >
-              Loan Officer
-            </Link>
           </nav>
           
           <div className="flex items-center gap-4">

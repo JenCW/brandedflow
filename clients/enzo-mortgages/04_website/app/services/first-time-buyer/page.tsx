@@ -75,7 +75,7 @@ export default function FirstTimeBuyerPage() {
           <div className="text-center">
             <Link
               href="/apply"
-              className="inline-flex items-center justify-center bg-primary hover:bg-primary/90 px-10 py-4 text-lg font-medium text-primary-foreground transition-all duration-300"
+              className="btn-luxury"
               data-testid="button-apply-now"
             >
               Get Pre-Approved

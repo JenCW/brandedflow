@@ -1,5 +1,29 @@
 # Enzo Mortgages - Netlify Deployment Guide
 
+## ⚠️ IMPORTANT: Running Locally
+
+**This project has TWO apps:**
+- Vite client app (`client/` folder) - `npm run dev` runs this (NOT the site)
+- Next.js Enzo Mortgages site (`app/` folder) - **This is the actual website**
+
+**To run the Enzo Mortgages site locally:**
+
+**Option 1: Quick script (recommended)**
+```bash
+cd clients/enzo-mortgages/04_website
+./dev.sh
+```
+
+**Option 2: Manual command**
+```bash
+cd clients/enzo-mortgages/04_website
+npx next dev -p 3000
+```
+
+**DO NOT use:** `npm run dev` - this runs the Vite client app, not the website.
+
+---
+
 ## Quick Deploy to Netlify
 
 ### Step 1: Push to GitHub

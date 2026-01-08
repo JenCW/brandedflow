@@ -43,7 +43,7 @@ export default function CalculatorClient() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/apply"
-              className="inline-flex items-center justify-center bg-primary hover:bg-primary/90 px-10 py-4 text-lg font-medium text-primary-foreground transition-all"
+              className="btn-luxury"
               data-testid="button-calculator-apply"
             >
               Start Your Application

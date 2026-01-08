@@ -168,7 +168,7 @@ export default function MobileMenu() {
             <Link
               href="/apply"
               onClick={() => setIsOpen(false)}
-              className="block w-full bg-primary hover:bg-primary/90 text-center py-4 text-primary-foreground font-medium transition-colors"
+              className="btn-luxury w-full"
               data-testid="button-mobile-apply"
             >
               Start Your Application

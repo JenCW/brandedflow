@@ -1,103 +1,104 @@
 import Link from "next/link";
-import { CheckCircle, ArrowLeft, Shield } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import type { Metadata } from "next";
+import { FAQSchema } from "@/app/components/Schema";
 
 export const metadata: Metadata = {
   title: "VA Loans | Enzo Mortgages",
-  description: "VA loans for veterans and active military with zero down payment and no PMI. Honor your service with the home you deserve.",
+  description: "Mortgage support for those who've served, handled with clarity and care. Knowledgeable, respectful guidance for VA loans.",
 };
+
+const faqs = [
+  { question: "Do VA loans require a down payment?", answer: "No, VA loans offer 100% financing with no down payment required for eligible veterans and service members." },
+  { question: "Is private mortgage insurance required on VA loans?", answer: "No, VA loans do not require private mortgage insurance (PMI), which can result in significant monthly savings." },
+  { question: "Who is eligible for a VA loan?", answer: "Veterans, active-duty service members, National Guard members, and eligible surviving spouses may qualify for VA loans." },
+];
 
 export default function VALoansPage() {
   return (
-    <div className="min-h-screen bg-background">
-      <section className="bg-zinc-900 py-24">
-        <div className="w-full max-w-4xl mx-auto px-6">
+    <div className="min-h-screen bg-zinc-950">
+      <FAQSchema faqs={faqs} />
+      
+      {/* Hero Section */}
+      <section className="py-24 px-6">
+        <div className="max-w-4xl mx-auto">
           <Link href="/services/buying" className="inline-flex items-center text-primary mb-6 hover:underline">
             <ArrowLeft className="w-4 h-4 mr-2" /> Back to Buying
           </Link>
-          <p className="text-primary font-semibold mb-4 tracking-widest uppercase">Home Buying</p>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 uppercase tracking-wide">
-            VA Loans
+          <h1 
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 uppercase tracking-wide"
+            data-testid="text-service-title"
+          >
+            VA Loans — Knowledgeable, Respectful Guidance
           </h1>
-          <p className="text-xl text-zinc-300 max-w-2xl">
-            Exclusive benefits for veterans and active-duty military including zero down payment options and no PMI.
+          <p className="text-xl md:text-2xl text-zinc-300 mb-12 leading-relaxed">
+            Mortgage support for those who've served, handled with clarity and care.
           </p>
         </div>
       </section>
 
-      <section className="bg-white py-24">
-        <div className="w-full max-w-4xl mx-auto px-6">
-          <div className="bg-primary/10 p-6 mb-12 flex items-start gap-4">
-            <Shield className="w-8 h-8 text-primary flex-shrink-0" />
-            <div>
-              <h3 className="font-bold text-zinc-900 mb-2">Thank You for Your Service</h3>
-              <p className="text-zinc-600">VA loans are our way of honoring those who served. We're committed to making the process as smooth as possible.</p>
-            </div>
+      {/* Body Content */}
+      <section className="pb-16 px-6">
+        <div className="max-w-4xl mx-auto">
+          <div className="prose prose-lg prose-invert max-w-none">
+            <p className="text-zinc-300 text-lg leading-relaxed mb-6">
+              VA loans offer powerful benefits, but the rules and details matter. We work with veterans and active-duty service members to ensure VA loans are structured correctly and efficiently.
+            </p>
+            <p className="text-zinc-300 text-lg leading-relaxed mb-6">
+              This includes understanding eligibility, property requirements, and timelines — without unnecessary complications or confusion.
+            </p>
+            <p className="text-zinc-300 text-lg leading-relaxed mb-12">
+              You've earned these benefits. The process should be handled professionally and with respect.
+            </p>
           </div>
 
-          <h2 className="text-2xl font-bold text-zinc-900 mb-8 uppercase tracking-wide">Key Benefits</h2>
-          <div className="grid md:grid-cols-2 gap-6 mb-12">
-            <div className="flex items-start gap-4">
-              <CheckCircle className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
-              <div>
-                <h3 className="font-bold text-zinc-900 mb-1">No Down Payment</h3>
-                <p className="text-zinc-600">100% financing available for qualified veterans</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-4">
-              <CheckCircle className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
-              <div>
-                <h3 className="font-bold text-zinc-900 mb-1">No PMI</h3>
-                <p className="text-zinc-600">Save hundreds monthly with no private mortgage insurance</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-4">
-              <CheckCircle className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
-              <div>
-                <h3 className="font-bold text-zinc-900 mb-1">Competitive Rates</h3>
-                <p className="text-zinc-600">Often lower rates than conventional loans</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-4">
-              <CheckCircle className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
-              <div>
-                <h3 className="font-bold text-zinc-900 mb-1">Flexible Credit</h3>
-                <p className="text-zinc-600">More lenient credit requirements</p>
-              </div>
-            </div>
+          {/* What This Covers */}
+          <div className="bg-zinc-900 p-8 mb-12">
+            <h2 className="text-2xl font-bold text-white mb-6 uppercase tracking-wide">What This Covers</h2>
+            <ul className="space-y-4 text-zinc-300">
+              <li className="flex items-start gap-3">
+                <span className="text-primary mt-1">•</span>
+                VA purchase loans
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-primary mt-1">•</span>
+                VA refinance options
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-primary mt-1">•</span>
+                Eligibility review
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-primary mt-1">•</span>
+                Clear explanations of benefits
+              </li>
+            </ul>
           </div>
 
-          <h2 className="text-2xl font-bold text-zinc-900 mb-6 uppercase tracking-wide">Eligibility</h2>
-          <ul className="space-y-3 text-zinc-600 mb-12">
-            <li className="flex items-start gap-3">
-              <span className="text-primary">•</span>
-              Active-duty service members with 90 days of service
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="text-primary">•</span>
-              Veterans with honorable discharge
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="text-primary">•</span>
-              National Guard and Reserve members with 6+ years of service
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="text-primary">•</span>
-              Surviving spouses of veterans who died in service or from service-related disability
-            </li>
-          </ul>
-
+          {/* CTA */}
           <div className="text-center">
             <Link
               href="/apply"
-              className="inline-flex items-center justify-center bg-primary text-primary-foreground px-10 py-4 text-lg font-medium hover:bg-primary/90 transition-colors"
+              className="btn-luxury"
               data-testid="button-apply-va"
             >
-              Apply for VA Loan
+              Explore VA Loan Options
             </Link>
           </div>
         </div>
       </section>
+
+      {/* Back Link */}
+      <div className="py-8 px-6 border-t border-zinc-800">
+        <div className="max-w-4xl mx-auto">
+          <Link 
+            href="/services/buying" 
+            className="inline-flex items-center text-zinc-400 hover:text-white text-sm transition-colors"
+          >
+            <ArrowLeft className="w-4 h-4 mr-2" /> Back to Buying
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }

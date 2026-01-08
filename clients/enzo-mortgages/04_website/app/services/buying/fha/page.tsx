@@ -82,7 +82,7 @@ export default function FHALoansPage() {
           <div className="text-center">
             <Link
               href="/apply"
-              className="inline-flex items-center justify-center bg-primary text-primary-foreground px-10 py-4 text-lg font-medium hover:bg-primary/90 transition-colors"
+              className="btn-luxury"
               data-testid="button-apply-fha"
             >
               Apply for FHA Loan

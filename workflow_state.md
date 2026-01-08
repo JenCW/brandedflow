@@ -291,9 +291,10 @@ None
 - **Verify deployment configuration after branch merges**: Netlify doesn't auto-update branch settings
 - **Delete bootstrap branches immediately after merge**: Prevents confusion and deployment from wrong branch
 - **Create directives for recurring processes**: Branch management and deployment verification is now documented
+- **Check for multiple apps in project**: Enzo Mortgages has both Vite client (`client/`) and Next.js app (`app/`). Use `next dev` not `npm run dev` to run the actual site. `npm run dev` runs the Vite server which serves the wrong app.
 
 ---
 
-**Last Updated**: 2025-01-XX
+**Last Updated**: 2025-01-08
 **Updated By**: AI Assistant (Auto)
 **Next Review**: When starting new significant work or deployment verification needed

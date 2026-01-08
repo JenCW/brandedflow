@@ -1,7 +1,7 @@
 "use client";
 
 import { X, Play } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 interface VideoModalProps {
   isOpen: boolean;
@@ -10,6 +10,8 @@ interface VideoModalProps {
 }
 
 export function VideoModal({ isOpen, onClose, videoSrc }: VideoModalProps) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -20,6 +22,48 @@ export function VideoModal({ isOpen, onClose, videoSrc }: VideoModalProps) {
       document.body.style.overflow = "";
     };
   }, [isOpen]);
+
+  // Force video to reload when videoSrc changes or modal opens
+  useEffect(() => {
+    if (!isOpen || !videoSrc) return;
+    
+    const video = videoRef.current;
+    if (!video) return;
+    
+    // Reset and load video when modal opens or source changes
+    const loadAndPlay = () => {
+      video.currentTime = 0;
+      video.load();
+      
+      // Wait for video to be ready, then play
+      const tryPlay = () => {
+        if (video.readyState >= 2) { // HAVE_CURRENT_DATA or higher
+          const playPromise = video.play();
+          if (playPromise !== undefined) {
+            playPromise
+              .then(() => {
+                console.log("Video playing successfully");
+              })
+              .catch((error) => {
+                console.error("Video autoplay failed:", error);
+                // User can click play button on controls
+              });
+          }
+        } else {
+          // Wait a bit more for video to load
+          setTimeout(tryPlay, 100);
+        }
+      };
+      
+      // Start trying to play after a short delay
+      setTimeout(tryPlay, 200);
+    };
+    
+    // Small delay to ensure video element is fully mounted
+    const timer = setTimeout(loadAndPlay, 100);
+    
+    return () => clearTimeout(timer);
+  }, [isOpen, videoSrc]);
 
   if (!isOpen) return null;
 
@@ -43,14 +87,42 @@ export function VideoModal({ isOpen, onClose, videoSrc }: VideoModalProps) {
         onClick={(e) => e.stopPropagation()}
       >
         <video
+          ref={videoRef}
+          key={videoSrc}
           autoPlay
+          muted
           controls
           playsInline
+          preload="auto"
           className="w-full h-full rounded-lg shadow-2xl"
           data-testid="video-player"
+          onLoadedMetadata={() => {
+            console.log("Video metadata loaded:", videoSrc);
+          }}
+          onLoadedData={() => {
+            // Video data loaded, try to play
+            if (videoRef.current) {
+              videoRef.current.play().catch((error) => {
+                console.error("Video play failed after load:", error);
+              });
+            }
+          }}
+          onCanPlay={() => {
+            // Video is ready to play
+            if (videoRef.current) {
+              videoRef.current.play().catch((error) => {
+                console.error("Video play failed on canPlay:", error);
+              });
+            }
+          }}
           onError={(e) => {
             console.error("Video failed to load:", videoSrc);
+            console.error("Video error details:", e);
             const target = e.target as HTMLVideoElement;
+            if (target.error) {
+              console.error("Video error code:", target.error.code);
+              console.error("Video error message:", target.error.message);
+            }
             target.style.display = "none";
             const errorDiv = target.parentElement?.querySelector(".video-error");
             if (errorDiv) {
@@ -66,6 +138,7 @@ export function VideoModal({ isOpen, onClose, videoSrc }: VideoModalProps) {
         <div className="video-error hidden absolute inset-0 bg-zinc-900 rounded-lg items-center justify-center flex-col gap-4 text-white">
           <p className="text-xl font-semibold">Video unavailable</p>
           <p className="text-zinc-400 text-sm">The video file could not be loaded.</p>
+          <p className="text-zinc-500 text-xs mt-2">Path: {videoSrc}</p>
           <button
             onClick={onClose}
             className="px-6 py-2 bg-primary text-white rounded hover:bg-primary/90 transition-colors"

@@ -97,7 +97,7 @@ export default function DownPaymentPage() {
           <p className="text-xl text-zinc-300 max-w-2xl mx-auto mb-8">
             You may qualify for thousands in free grants or low-interest loans to help with your down payment. Let's find out what's available for you.
           </p>
-          <Link href="/apply" className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 px-8 py-4 text-lg font-medium text-primary-foreground transition-all" data-testid="button-dpa-apply">
+          <Link href="/apply" className="btn-luxury" data-testid="button-dpa-apply">
             Check My Eligibility <ArrowRight className="w-5 h-5" />
           </Link>
         </div>
@@ -199,7 +199,7 @@ export default function DownPaymentPage() {
             Many buyers leave money on the table. A quick conversation can reveal programs you didn't know existed.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/apply" className="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 px-10 py-4 text-lg font-medium text-primary-foreground transition-all" data-testid="button-dpa-start">
+            <Link href="/apply" className="btn-luxury" data-testid="button-dpa-start">
               Start Your Application
             </Link>
             <a href="tel:+19495551234" className="inline-flex items-center justify-center gap-2 border border-zinc-600 bg-transparent px-10 py-4 text-lg font-medium text-white transition-all hover:bg-zinc-800" data-testid="button-dpa-call">
