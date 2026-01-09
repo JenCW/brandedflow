@@ -1,0 +1,59 @@
+{
+  "name": "Daily Digest + Speed-to-Lead Alerts",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            { "field": "hours", "hoursInterval": 1 }
+          ]
+        }
+      },
+      "name": "Cron_EveryHour",
+      "type": "n8n-nodes-base.cron",
+      "typeVersion": 1,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "operation": "list",
+        "baseId": "REPLACE_WITH_BASE_ID",
+        "table": "Leads",
+        "options": {}
+      },
+      "name": "Airtable_ListNewLeads",
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2,
+      "position": [470, 300]
+    },
+    {
+      "parameters": {
+        "mode": "passThrough"
+      },
+      "name": "ComposeDigest",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [700, 300]
+    }
+  ],
+  "connections": {
+    "Cron_EveryHour": {
+      "main": [
+        [
+          { "node": "Airtable_ListNewLeads", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Airtable_ListNewLeads": {
+      "main": [
+        [
+          { "node": "ComposeDigest", "type": "main", "index": 0 }
+        ]
+      ]
+    }
+  },
+  "settings": {},
+  "staticData": null,
+  "tags": []
+}
+

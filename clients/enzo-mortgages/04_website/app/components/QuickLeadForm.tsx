@@ -63,7 +63,7 @@ export default function QuickLeadForm({ source }: QuickLeadFormProps) {
     setSubmitting(true);
 
     try {
-      const response = await fetch("/api/lead/base44", {
+      const response = await fetch("/api/lead/intake", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -73,7 +73,7 @@ export default function QuickLeadForm({ source }: QuickLeadFormProps) {
           phone: formData.phone,
           leadType: "Quick Lead",
           loanType: formData.loanType,
-          urgency: "Low",
+          timeline: formData.timeline, // Qualification factor: how soon
           source: source || "Unknown",
         }),
       });

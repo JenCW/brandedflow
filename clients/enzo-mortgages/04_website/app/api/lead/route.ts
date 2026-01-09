@@ -1,5 +1,20 @@
 import { NextRequest, NextResponse } from "next/server";
 
+// CORS headers helper
+function getCorsHeaders() {
+  return {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type, Authorization",
+    "Access-Control-Max-Age": "86400",
+  };
+}
+
+// Handle preflight OPTIONS requests
+export async function OPTIONS() {
+  return NextResponse.json({}, { headers: getCorsHeaders() });
+}
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
@@ -8,7 +23,7 @@ export async function POST(request: NextRequest) {
     if (!email || !phone || !leadType) {
       return NextResponse.json(
         { success: false, error: "Missing required fields" },
-        { status: 400 }
+        { status: 400, headers: getCorsHeaders() }
       );
     }
 
@@ -19,7 +34,7 @@ export async function POST(request: NextRequest) {
     if (!airtableApiKey || !airtableBaseId) {
       return NextResponse.json(
         { success: false, error: "Airtable not configured" },
-        { status: 500 }
+        { status: 500, headers: getCorsHeaders() }
       );
     }
 
@@ -60,16 +75,16 @@ export async function POST(request: NextRequest) {
       });
       return NextResponse.json(
         { success: false, error: "Failed to save lead to Airtable", details: errorData },
-        { status: 500 }
+        { status: 500, headers: getCorsHeaders() }
       );
     }
 
-    return NextResponse.json({ success: true });
+    return NextResponse.json({ success: true }, { headers: getCorsHeaders() });
   } catch (error) {
     console.error("Lead API error:", error);
     return NextResponse.json(
       { success: false, error: "Server error" },
-      { status: 500 }
+      { status: 500, headers: getCorsHeaders() }
     );
   }
 }

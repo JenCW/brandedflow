@@ -117,7 +117,7 @@ export default function BuyingLandingPage() {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("/api/lead/base44", {
+      const response = await fetch("/api/lead/intake", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -125,7 +125,7 @@ export default function BuyingLandingPage() {
           leadType: "Home Purchase",
           loanType: "Purchase",
           source: "Landing Page",
-          urgency: formData.purchaseTimeline,
+          timeline: formData.purchaseTimeline, // Qualification factor: how soon
         }),
       });
 

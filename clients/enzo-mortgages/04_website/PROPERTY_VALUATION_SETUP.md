@@ -60,7 +60,7 @@ NEXT_PUBLIC_BASE_URL=https://yourdomain.com
    - Email
 
 2. Form submission triggers:
-   - Lead capture (saves to Airtable via `/api/lead/base44`)
+   - Lead capture (saves to Airtable via `/api/lead/intake`)
    - Property valuation API call (fetches from Zillow)
    - Displays valuation result to user
 

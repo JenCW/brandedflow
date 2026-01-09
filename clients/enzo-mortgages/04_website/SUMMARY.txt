@@ -27,7 +27,7 @@ ISSUES FOUND AND FIXED:
 
 FILES MODIFIED:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  app/api/lead/base44/route.ts    [Main endpoint - used by all forms]
+  app/api/lead/intake/route.ts    [Main endpoint - used by all forms]
   app/api/lead/route.ts            [Backup endpoint]
   .env.example                     [Updated default table name]
 

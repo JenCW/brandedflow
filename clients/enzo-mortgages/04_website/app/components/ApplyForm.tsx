@@ -102,7 +102,12 @@ export default function ApplyForm() {
     setSubmitError("");
 
     try {
-      const response = await fetch("/api/lead/base44", {
+      // Calculate effective loan amount for qualification
+      const effectiveLoanAmount = formData.loanGoal === "purchase" 
+        ? formData.purchasePrice 
+        : formData.homeValue || formData.loanBalance;
+
+      const response = await fetch("/api/lead/intake", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -113,11 +118,12 @@ export default function ApplyForm() {
           leadType: formData.loanGoal === "purchase" ? "Purchase" : "Refinance",
           loanType: formData.loanType,
           source: "Apply Page",
-          urgency: "High",
+          timeline: "asap", // Apply page implies immediate interest
           purchasePrice: formData.purchasePrice || undefined,
           homeValue: formData.homeValue || undefined,
           downPayment: formData.downPayment || undefined,
           loanBalance: formData.loanBalance || undefined,
+          loanAmount: effectiveLoanAmount || undefined,
         }),
       });
 

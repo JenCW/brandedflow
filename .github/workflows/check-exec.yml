@@ -16,6 +16,16 @@ jobs:
         run: |
           chmod +x scripts/check-no-direct-exec.sh
           bash scripts/check-no-direct-exec.sh
+
+      - name: Check repo hygiene (structure + sources of truth)
+        run: |
+          chmod +x scripts/check-repo-hygiene.sh
+          bash scripts/check-repo-hygiene.sh
+
+      - name: Check documentation accuracy (no dead-path guidance)
+        run: |
+          chmod +x scripts/check-doc-accuracy.sh
+          bash scripts/check-doc-accuracy.sh
       
       - name: Check .cursorrules enforcement
         run: |

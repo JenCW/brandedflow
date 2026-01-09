@@ -1,5 +1,20 @@
 import { NextResponse } from "next/server";
 
+// CORS headers helper
+function getCorsHeaders() {
+  return {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type, Authorization",
+    "Access-Control-Max-Age": "86400",
+  };
+}
+
+// Handle preflight OPTIONS requests
+export async function OPTIONS() {
+  return NextResponse.json({}, { headers: getCorsHeaders() });
+}
+
 interface FREDObservation {
   date: string;
   value: string;
@@ -104,7 +119,7 @@ function getEstimatedRates(): RateData {
 export async function GET() {
   try {
     if (cachedData && Date.now() - cacheTimestamp < CACHE_DURATION) {
-      return NextResponse.json(cachedData);
+      return NextResponse.json(cachedData, { headers: getCorsHeaders() });
     }
 
     const fredApiKey = process.env.FRED_API_KEY;
@@ -122,10 +137,10 @@ export async function GET() {
     cachedData = rateData;
     cacheTimestamp = Date.now();
 
-    return NextResponse.json(rateData);
+    return NextResponse.json(rateData, { headers: getCorsHeaders() });
   } catch (error) {
     console.error("Rate API error:", error);
     
-    return NextResponse.json(getEstimatedRates());
+    return NextResponse.json(getEstimatedRates(), { headers: getCorsHeaders() });
   }
 }

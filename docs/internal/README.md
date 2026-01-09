@@ -9,7 +9,7 @@ Intelligence-powered branding & automation agency for overwhelmed solopreneurs.
 
 **Before creating or modifying ANYTHING:**
 1. **Read [AI_RULES.md](AI_RULES.md)** - MANDATORY folder structure and naming rules
-2. **Read [docs/CONTEXT.md](docs/CONTEXT.md)** - Current project state
+2. **Read [docs/internal/CONTEXT.md](docs/internal/CONTEXT.md)** - Current project state
 3. **Read [company/operations/UPDATE_CHECKLIST.md](company/operations/UPDATE_CHECKLIST.md)** - What to update when
 
 **These rules prevent you from creating files in wrong locations or breaking the folder structure.**
@@ -21,53 +21,30 @@ Intelligence-powered branding & automation agency for overwhelmed solopreneurs.
 **New to this project? Start here:**
 
 1. Read [AI_RULES.md](AI_RULES.md) - **MANDATORY** before creating anything
-2. Read [docs/CONTEXT.md](docs/CONTEXT.md) - Master context file (auto-loaded by Cursor)
-3. Read [docs/INIT.md](docs/INIT.md) - Session initialization guide
-4. Check [docs/CLIENT_STATUS.md](docs/CLIENT_STATUS.md) - Current client status
-5. Review [docs/QUICK_STARTS.md](docs/QUICK_STARTS.md) - Our 15 service offerings
+2. Read [docs/internal/CONTEXT.md](docs/internal/CONTEXT.md) - Master context file
+3. Read [project_config.md](project_config.md) - Stable “constitution” and repo rules
+4. Read [workflow_state.md](workflow_state.md) - Current phase + active work
+5. Check [docs/internal/CLIENT_STATUS.md](docs/internal/CLIENT_STATUS.md) - Current client status
+6. Review [docs/training/QUICK_STARTS.md](docs/training/QUICK_STARTS.md) - Service offerings
 
 ---
 
 ## 📁 PROJECT STRUCTURE
 
+This is the **canonical root structure** (details: `project_config.md`):
+
 ```
 brandedflow/
-├── clients/              # Client projects & deliverables
-│   ├── aq-remodeling/   # ✅ LIVE on Netlify (website template)
-│   ├── luxe-fine-dining/ # 🔥 URGENT - Pitch tomorrow morning
-│   ├── dental-bunny/    # Proposal stage
-│   └── ianswering-ai/   # Partnership work
-│
-├── company/             # YOUR business operations
-│   ├── website/         # brandedandflow.com (to be built)
-│   ├── templates/       # Proposals, contracts, agreements
-│   ├── accounting/      # Daily accounting, financial tracking
-│   ├── email-logs/      # Email communication logs
-│   ├── sales/           # Sales playbook, outreach scripts
-│   └── operations/      # Day-to-day operations
-│
-├── docs/                # Strategic business documentation
-│   ├── CONTEXT.md       # 🎯 START HERE - Master context
-│   ├── INIT.md          # Session initialization
-│   ├── OPERATIONS_MANUAL.md  # How to run the business
-│   ├── DECISIONS_LOG.md # Decision history
-│   ├── TECH_STACK.md    # Complete tech stack
-│   ├── CLIENT_STATUS.md # Current client tracking
-│   ├── QUICK_STARTS.md  # 15 Quick Start services
-│   ├── MASTER_BRAND_GUIDE.md  # Brand voice & identity
-│   └── archive/         # Outdated/reference docs
-│
-├── automations/         # Reusable automation code
-│   ├── mcps/            # Reusable MCP code
-│   ├── workflows/       # Reusable n8n workflows
-│   └── prompts/         # Reusable AI prompts
-│
-├── systems/             # Active running systems
-│   └── daily-accountability/  # ⚡ Morning/evening popups (ACTIVE)
-│
-└── templates/           # Reusable website templates
-    ├── client-website-template/  # Based on AQR site
-    └── gamma-templates/          # Presentation templates
+├── clients/       # Client projects (each has numbered sections like 01_admin..)
+├── company/       # Internal ops (including company website)
+├── docs/          # Documentation (canonical “current” docs live in docs/internal/)
+├── automations/   # Scripts, MCPs, workflows (reusable)
+├── systems/       # DOE engine, MCP server runtime, execution scripts
+├── templates/     # Reusable templates (websites, proposals, etc.)
+├── cursor/        # Dispatcher entrypoints (task routing)
+├── scripts/       # Repo guardrails (deterministic checks)
+├── project_config.md
+└── workflow_state.md
 ```
 
 ---
@@ -75,29 +52,21 @@ brandedflow/
 ## 📚 KEY DOCUMENTATION
 
 ### Business Strategy
-- [CONTEXT.md](docs/CONTEXT.md) - Current status, priorities, decisions
-- [OPERATIONS_MANUAL.md](docs/OPERATIONS_MANUAL.md) - How to run the business day-to-day
-- [DECISIONS_LOG.md](docs/DECISIONS_LOG.md) - Why decisions were made
-- [MASTER_BRAND_GUIDE.md](docs/MASTER_BRAND_GUIDE.md) - Brand voice, positioning, identity
+- [CONTEXT.md](docs/internal/CONTEXT.md) - Current status, priorities, decisions
+- [workflow_state.md](workflow_state.md) - Current phase, tasks, learnings
+- [MASTER_BRAND_GUIDE.md](docs/training/MASTER_BRAND_GUIDE.md) - Brand voice, positioning, identity
+- [BRAND_STYLE_GUIDE.md](company/website/site/BRAND_STYLE_GUIDE.md) - Company visual system
 
 ### Services & Clients
-- [QUICK_STARTS.md](docs/QUICK_STARTS.md) - 15 Quick Start service definitions
-- [CLIENT_STATUS.md](docs/CLIENT_STATUS.md) - Active clients and pipeline
-- [TECH_STACK.md](docs/TECH_STACK.md) - Complete technology stack
+- [QUICK_STARTS.md](docs/training/QUICK_STARTS.md) - Service definitions
+- [CLIENT_STATUS.md](docs/internal/CLIENT_STATUS.md) - Active clients and pipeline
+- [TECH_STACK.md](company/operations/TECH_STACK.md) - Complete technology stack
 
 ### Technical
-- [AI_WORKFLOW_GUIDE.md](docs/AI_WORKFLOW_GUIDE.md) - Which AI tool for what task
-- [MCP Documentation](docs/automation-library/mcp-reference/) - MCP guides and references (note: actual MCP code is in `automations/mcps/`)
+- MCP server runtime: `systems/mcp-server/`
+- Reusable MCP code: `automations/mcps/`
 
----
-
-## 🎯 CURRENT PRIORITIES
-
-1. **URGENT:** Luxe Fine Dining pitch presentation (tomorrow morning)
-2. Phase 1: Clean folder structure ✅ COMPLETE
-3. Phase 2: Prep Luxe pitch (tonight)
-4. Phase 3: Document company operating system
-5. Phase 4: Build 15 Quick Start MCPs
+**Current priorities always live in:** `workflow_state.md`
 
 ---
 
@@ -114,7 +83,7 @@ Overwhelmed solopreneurs ($75K-$250K annual revenue)
 - Managed: ~$1,200 setup + ~$350/mo (we build AND manage)
 
 **Services:**
-15 Quick Start automations (see [QUICK_STARTS.md](docs/QUICK_STARTS.md))
+15 Quick Start automations (see [QUICK_STARTS.md](docs/training/QUICK_STARTS.md))
 
 ---
 
@@ -126,22 +95,18 @@ Overwhelmed solopreneurs ($75K-$250K annual revenue)
 **AI Tools:** ChatGPT Pro, Claude Code, Cursor, NotebookLM
 **Design:** Gamma, Canva Pro
 
-See [TECH_STACK.md](docs/TECH_STACK.md) for complete breakdown.
+See [TECH_STACK.md](company/operations/TECH_STACK.md) for complete breakdown.
 
 ---
 
 ## 🚨 ACTIVE SYSTEMS
 
-### Daily Accountability System
-**Location:** [systems/daily-accountability/](systems/daily-accountability/)
-**Status:** ⚡ ACTIVE - Do not modify without testing
-**What it does:**
-- Morning routine popups
-- Daily priority tracking
-- Evening shutdown reminders
-- Completion rate tracking
+### DOE + MCP Runtime (Active)
+**DOE directives:** `systems/doe-engine/directives/`  
+**MCP server runtime:** `systems/mcp-server/`  
+**Status:** ACTIVE - changes must remain deterministic and tested
 
-**Important:** This system is currently running via macOS launchd agents. Changes to folder paths require updating config files.
+**Note:** The legacy `systems/daily-accountability/` system has been removed (see `workflow_state.md`).
 
 ---
 
@@ -159,14 +124,14 @@ See [TECH_STACK.md](docs/TECH_STACK.md) for complete breakdown.
 ### Partnerships
 - **iAnswering.ai** - AI receptionist partnership in discussion
 
-See [CLIENT_STATUS.md](docs/CLIENT_STATUS.md) for details.
+See [CLIENT_STATUS.md](docs/internal/CLIENT_STATUS.md) for details.
 
 ---
 
 ## 📖 HOW TO USE THIS PROJECT
 
 ### Starting a New Cursor Session
-1. Cursor auto-loads [docs/CONTEXT.md](docs/CONTEXT.md)
+1. Cursor uses repo root `/.cursorrules` for enforcement and DOE gating
 2. You have full context about current status
 3. Reference other docs as needed from the `/docs/` folder
 
@@ -181,9 +146,9 @@ See [CLIENT_STATUS.md](docs/CLIENT_STATUS.md) for details.
 3. Each MCP will be its own project
 
 ### Updating Documentation
-1. Update [CONTEXT.md](docs/CONTEXT.md) when priorities change
-2. Update [CLIENT_STATUS.md](docs/CLIENT_STATUS.md) when client status changes
-3. Update [DECISIONS_LOG.md](docs/DECISIONS_LOG.md) when making major decisions
+1. Update [CONTEXT.md](docs/internal/CONTEXT.md) when priorities change
+2. Update [CLIENT_STATUS.md](docs/internal/CLIENT_STATUS.md) when client status changes
+3. Update [DECISIONS_LOG.md](docs/internal/DECISIONS_LOG.md) when making major decisions
 
 ---
 
@@ -209,14 +174,14 @@ See [CLIENT_STATUS.md](docs/CLIENT_STATUS.md) for details.
 ## 🆘 NEED HELP?
 
 **Documentation:**
-- Start with [CONTEXT.md](docs/CONTEXT.md)
-- Check [OPERATIONS_MANUAL.md](docs/OPERATIONS_MANUAL.md)
-- Review [AI_WORKFLOW_GUIDE.md](docs/AI_WORKFLOW_GUIDE.md)
+- Start with [CONTEXT.md](docs/internal/CONTEXT.md)
+- Check [OPERATIONS_MANUAL.md](company/operations/OPERATIONS_MANUAL.md)
+- Review [AI_WORKFLOW_GUIDE.md](docs/training/AI_WORKFLOW_GUIDE.md)
 
 **Common Tasks:**
-- New client? See [CLIENT_STATUS.md](docs/CLIENT_STATUS.md)
-- Tech question? See [TECH_STACK.md](docs/TECH_STACK.md)
-- Service question? See [QUICK_STARTS.md](docs/QUICK_STARTS.md)
+- New client? See [CLIENT_STATUS.md](docs/internal/CLIENT_STATUS.md)
+- Tech question? See [TECH_STACK.md](company/operations/TECH_STACK.md)
+- Service question? See [QUICK_STARTS.md](docs/training/QUICK_STARTS.md)
 
 ---
 

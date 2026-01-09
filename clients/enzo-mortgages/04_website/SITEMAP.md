@@ -22,7 +22,7 @@ enzomortgages.com
 │   └── Company story, team, values
 │
 ├── APPLY (/apply)
-│   └── Lead capture form → Base44 CRM
+│   └── Lead capture form → Airtable (master base)
 │
 ├── CONTACT (/contact)
 │   └── Contact information & form
@@ -187,8 +187,8 @@ Services → Apply
 
 | Location | Form Type | Destination |
 |----------|-----------|-------------|
-| `/apply` | Full application | Base44 CRM |
-| Landing pages | Lead magnet | Base44 + Airtable fallback |
+| `/apply` | Full application | Airtable (master base) |
+| Landing pages | Lead magnet | Airtable (master base) |
 | Calculator | CTA buttons | → `/apply` |
 | All service pages | "Get Started" CTA | → `/apply` |
 | Availability Section | Phone/callback | Direct contact |

@@ -46,10 +46,16 @@ export default function RefinanceLandingPage() {
     e.preventDefault();
     setIsSubmitting(true);
     try {
-      const response = await fetch("/api/lead/base44", {
+      const response = await fetch("/api/lead/intake", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...formData, leadType: "Refinance", loanType: "Rate & Term Refi", source: "Landing Page", urgency: "Hot" }),
+        body: JSON.stringify({ 
+          ...formData, 
+          leadType: "Refinance", 
+          loanType: "Rate & Term Refi", 
+          source: "Landing Page", 
+          timeline: "asap", // Landing pages imply immediate interest
+        }),
       });
       if (response.ok) setSubmitted(true);
     } catch (error) {

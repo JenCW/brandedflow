@@ -1,5 +1,14 @@
 # Folder Structure Audit
 
+> ⚠️ **ARCHIVED / HISTORICAL**
+>
+> This audit references folders and files that no longer exist (e.g. `systems/daily-accountability/`, legacy `03_website/`, etc.).
+> Do **not** use this document as instructions.
+>
+> **Canonical structure now lives in:**
+> - `project_config.md` (repo constitution)
+> - `docs/internal/REPO_HYGIENE_REPORT.md` (current hygiene + drift plan)
+
 ## Expected Structure (Per Rules)
 
 **Only 6 folders at root level:**

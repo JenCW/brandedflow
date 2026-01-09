@@ -1,0 +1,79 @@
+{
+  "name": "Mortgage Lead Intake (Webhook → Airtable → Follow-up)",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "lead/intake",
+        "httpMethod": "POST",
+        "responseMode": "onReceived",
+        "responseData": "={\"ok\": true}"
+      },
+      "name": "Webhook_LeadIntake",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "mode": "passThrough"
+      },
+      "name": "NormalizePayload",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "baseId": "REPLACE_WITH_BASE_ID",
+        "table": "Leads",
+        "options": {
+          "upsertField": "Email"
+        }
+      },
+      "name": "Airtable_UpsertLead",
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2,
+      "position": [690, 300]
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "baseId": "REPLACE_WITH_BASE_ID",
+        "table": "Activities",
+        "options": {}
+      },
+      "name": "Airtable_CreateActivity",
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2,
+      "position": [920, 300]
+    }
+  ],
+  "connections": {
+    "Webhook_LeadIntake": {
+      "main": [
+        [
+          { "node": "NormalizePayload", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "NormalizePayload": {
+      "main": [
+        [
+          { "node": "Airtable_UpsertLead", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Airtable_UpsertLead": {
+      "main": [
+        [
+          { "node": "Airtable_CreateActivity", "type": "main", "index": 0 }
+        ]
+      ]
+    }
+  },
+  "settings": {},
+  "staticData": null,
+  "tags": []
+}
+

@@ -1,10 +1,17 @@
 #!/usr/bin/env python3
-import argparse, datetime, os, re, subprocess, sys
+import argparse, datetime, json, os, re, shutil, sys
 from pathlib import Path
 
 FOLDERS = [
-  "01_admin", "02_intake", "03_brand_assets", "04_website",
-  "05_forms", "06_automations", "07_delivery"
+  "01_admin",
+  "02_intake",
+  "02_brand",
+  "03_brand_assets",
+  "04_website",
+  "05_forms",
+  "06_automations",
+  "07_delivery",
+  "99_archive",
 ]
 
 LINKS_MD = """# {client_name} — Links
@@ -41,26 +48,33 @@ DOE_MD = """# DOE — {client_name}
 - Handoff checklist:
 """
 
-def run(cmd, cwd=None):
-  subprocess.run(cmd, cwd=cwd, check=True)
-
 def slug(s):
   s = s.strip().lower()
   s = re.sub(r"[^a-z0-9\-]", "-", s)
   s = re.sub(r"-+", "-", s).strip("-")
   return s
 
+def copy_template(repo_root: Path, template: str, dest: Path):
+  if template == "none":
+    return
+  template_dir = repo_root / "templates" / ("client-website-nextjs" if template == "nextjs" else "client-website-static")
+  if not template_dir.exists():
+    raise FileNotFoundError(f"Template folder not found: {template_dir}")
+  if dest.exists() and any(dest.iterdir()):
+    raise FileExistsError(f"Destination already has files: {dest}")
+  shutil.copytree(template_dir, dest, dirs_exist_ok=True)
+
 def main():
   ap = argparse.ArgumentParser()
   ap.add_argument("client_code")
   ap.add_argument("--name", required=True, help="Client display name")
   ap.add_argument("--base", default="clients", help="Base folder (default: clients)")
+  ap.add_argument("--website-template", choices=["static", "nextjs", "none"], default="static")
+  ap.add_argument("--industry", default="", help="Optional industry label (e.g. Mortgage, Catering)")
   args = ap.parse_args()
 
   client_code = slug(args.client_code)
   client_name = args.name.strip()
-  today = datetime.date.today().strftime("%Y%m%d")
-  branch = f"bootstrap/{client_code}-{today}"
 
   repo_root = Path.cwd()
   client_root = repo_root / args.base / client_code
@@ -75,46 +89,44 @@ def main():
   (client_root / "00_links.md").write_text(LINKS_MD.format(client_name=client_name), encoding="utf-8")
   (client_root / "DOE_directive.md").write_text(DOE_MD.format(client_name=client_name), encoding="utf-8")
 
-  # Git workflow
-  try:
-    run(["git", "checkout", "-b", branch])
-  except subprocess.CalledProcessError:
-    print(f"❌ Error: Failed to create git branch '{branch}'")
-    print("   Make sure you're in a git repository and the branch doesn't already exist.")
-    sys.exit(1)
+  # Create client-profile.json (single source of truth)
+  profile_path = client_root / "client-profile.json"
+  if not profile_path.exists():
+    profile = {
+      "client_id": client_code,
+      "display_name": client_name,
+      "industry": args.industry.strip() or None,
+      "paths": {
+        "brand": f"clients/{client_code}/02_brand/",
+        "brand_assets": f"clients/{client_code}/03_brand_assets/",
+        "website": f"clients/{client_code}/04_website/",
+        "automations": f"clients/{client_code}/06_automations/"
+      },
+      "website": {
+        "template": args.website_template,
+        "netlify_site_id": None,
+        "url": None
+      },
+      "lead_intake": {
+        "airtable_base_id": None,
+        "airtable_table": "Leads"
+      }
+    }
+    profile_path.write_text(json.dumps(profile, indent=2) + "\n", encoding="utf-8")
 
-  try:
-    run(["git", "add", str(client_root)])
-  except subprocess.CalledProcessError:
-    print(f"❌ Error: Failed to stage files in {client_root}")
-    sys.exit(1)
+  # Optional: copy website template into 04_website
+  website_dir = client_root / "04_website"
+  copy_template(repo_root, args.website_template, website_dir)
 
-  try:
-    run(["git", "commit", "-m", f"Bootstrap client: {client_code}"])
-  except subprocess.CalledProcessError:
-    print(f"❌ Error: Failed to commit changes")
-    print("   There may be no changes to commit, or git is not properly configured.")
-    sys.exit(1)
-
-  try:
-    run(["git", "push", "-u", "origin", branch])
-  except subprocess.CalledProcessError:
-    print(f"❌ Error: Failed to push branch '{branch}' to origin")
-    print("   Check your git remote configuration and network connection.")
-    sys.exit(1)
-
-  # Open PR via gh (recommended)
-  try:
-    run(["gh", "pr", "create",
-         "--title", f"Bootstrap client: {client_code}",
-         "--body", f"Creates standard folder skeleton + DOE files for {client_name}.",
-         "--base", "main"])
-    print("✅ PR opened.")
-  except subprocess.CalledProcessError:
-    print("⚠️ Couldn't run `gh pr create`. Install/login to gh, or open PR manually in GitHub.")
-    print("   Install: brew install gh")
-    print("   Login:   gh auth login")
-    sys.exit(1)
+  print("✅ Client bootstrap complete (no git actions were performed).")
+  print(f"- Client folder: {client_root}")
+  print(f"- Website template: {args.website_template} → {website_dir}")
+  print("")
+  print("Next steps:")
+  print("1) Add client brand guide: clients/<client>/02_brand/")
+  print("2) Add logos/assets: clients/<client>/03_brand_assets/")
+  print("3) Set Netlify env vars (see template ENV_VARS.md if using nextjs)")
+  print("4) Commit when ready (manual): git add -A && git commit -m \"Bootstrap client: <client>\"")
 
 if __name__ == "__main__":
   main()

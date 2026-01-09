@@ -8,7 +8,7 @@
 ## ⚠️ STOP AND READ FIRST
 
 Before creating ANY file, folder, or making changes:
-1. Read [docs/CONTEXT.md](docs/CONTEXT.md) to understand current state
+1. Read [docs/internal/CONTEXT.md](docs/internal/CONTEXT.md) to understand current state
 2. Follow the folder structure rules below
 3. Follow the naming conventions below
 4. Update documentation per [company/operations/UPDATE_CHECKLIST.md](company/operations/UPDATE_CHECKLIST.md)
@@ -23,9 +23,9 @@ Before creating ANY file, folder, or making changes:
 
 **For CLIENT work:**
 - `clients/{client-name}/` - All client deliverables, proposals, assets
-- `clients/{client-name}/website/` - Website files for Netlify deployment (HTML, CSS, JS)
+- `clients/{client-name}/04_website/` - Website files for Netlify deployment (Next.js or static)
 - Example: `clients/luxe-fine-dining/pitch-deck.pdf` (deliverable)
-- Example: `clients/luxe-fine-dining/website/index.html` (website file)
+- Example: `clients/luxe-fine-dining/04_website/index.html` (website file)
 
 **For COMPANY operations:**
 - `company/accounting/` - Financial tracking, invoices
@@ -45,8 +45,7 @@ Before creating ANY file, folder, or making changes:
 - `automations/prompts/` - Reusable AI prompts and templates
 
 **For SYSTEMS:**
-- `systems/daily-accountability/` - Daily task system (LIVE - don't break!)
-- `systems/{system-name}/` - Other operational systems
+- `systems/{system-name}/` - Operational systems, deterministic tooling (MCP server, DOE engine, etc.)
 
 **For TEMPLATES:**
 - `templates/gamma-templates/` - Gamma presentation templates
@@ -54,7 +53,7 @@ Before creating ANY file, folder, or making changes:
 
 ### ❌ NEVER Create These
 
-- ❌ Folders in project root (except the 6 main folders above)
+- ❌ Random folders in project root (only the approved root folders in `project_config.md` are allowed)
 - ❌ Folders with CAPS names (use lowercase-kebab-case)
 - ❌ Folders with spaces or underscores (use hyphens)
 - ❌ `automation-system/` (deleted - don't recreate)
@@ -120,14 +119,14 @@ ls -la systems/  # See existing systems
 **You MUST update documentation immediately:**
 
 ### Always Update:
-1. **docs/CONTEXT.md** - If affects current priorities or status
-2. **docs/DECISIONS_LOG.md** - If you made a significant decision about what to create
+1. **docs/internal/CONTEXT.md** - If it affects current priorities or status
+2. **docs/internal/DECISIONS_LOG.md** - If you made a significant decision about what to create
 3. **Git commit** - Commit with clear message about what was created and why
 
 ### Update If Relevant:
-- **docs/CLIENT_STATUS.md** - If related to client work
-- **docs/TECH_STACK.md** - If added new tools
-- **docs/QUICK_STARTS.md** - If affects service delivery
+- **docs/internal/CLIENT_STATUS.md** - If related to client work
+- **company/operations/TECH_STACK.md** - If you added/changed tools
+- **docs/training/QUICK_STARTS.md** - If it affects service delivery
 - **company/operations/UPDATE_CHECKLIST.md** - If changes how things get updated
 
 See [company/operations/UPDATE_CHECKLIST.md](company/operations/UPDATE_CHECKLIST.md) for complete guide.
@@ -142,7 +141,7 @@ Creating new folder at root: /brandedflow/new-feature/
 Creating automation-system/ (already deleted)
 Creating files with CAPS_AND_UNDERSCORES.md
 Creating files in random locations
-Forgetting to update docs/CONTEXT.md
+Forgetting to update docs/internal/CONTEXT.md
 ```
 
 ### ✅ DO THIS INSTEAD:
@@ -164,7 +163,7 @@ Check if it already exists first
 - **Don't create entire systems** - Without discussing structure first
 
 ### Claude Code
-- **Read docs/CONTEXT.md** - Every session start
+- **Read docs/internal/CONTEXT.md** - Every session start
 - **Follow existing patterns** - Look at similar files first
 - **Update docs immediately** - Don't defer to "later"
 
@@ -178,12 +177,12 @@ Check if it already exists first
 ## 🔍 QUICK CHECKLIST
 
 Before creating anything, verify:
-- [ ] I read docs/CONTEXT.md to understand current state
+- [ ] I read docs/internal/CONTEXT.md to understand current state
 - [ ] I checked if this already exists
 - [ ] I know which of the 6 main folders this belongs in
 - [ ] I'm using lowercase-kebab-case naming
-- [ ] I will update docs/CONTEXT.md after creating
-- [ ] I will update docs/DECISIONS_LOG.md if this is a new system/feature
+- [ ] I will update docs/internal/CONTEXT.md after creating
+- [ ] I will update docs/internal/DECISIONS_LOG.md if this is a new system/feature
 - [ ] I will commit to git with clear message
 
 **If you can't check all boxes, STOP and ask the user first.**

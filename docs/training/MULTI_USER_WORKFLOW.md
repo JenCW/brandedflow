@@ -26,7 +26,7 @@ How multiple people can work on Branded + Flow projects simultaneously without c
 
 ### 4. Communication is Key
 - Document decisions
-- Update CONTEXT.md with current state
+- Update `docs/internal/CONTEXT.md` with current state
 - Coordinate on same clients
 
 ---
@@ -40,14 +40,14 @@ How multiple people can work on Branded + Flow projects simultaneously without c
    git pull origin main
    ```
 
-2. **Check CONTEXT.md**
+2. **Check `docs/internal/CONTEXT.md`**
    - See current priorities
    - See what others are working on
    - Understand current state
 
-3. **Check active work**
-   - `systems/daily-accountability/active_work.json`
-   - See what's in progress
+3. **Check current work**
+   - `workflow_state.md`
+   - See what’s in progress
    - Avoid duplicate work
 
 ### Working on a Task
@@ -64,7 +64,7 @@ How multiple people can work on Branded + Flow projects simultaneously without c
 
 3. **Update as you go**
    - Update profile when you discover new variations
-   - Update CONTEXT.md if affects priorities
+   - Update `docs/internal/CONTEXT.md` if it affects priorities
    - Commit frequently
 
 ### Ending Your Day
@@ -98,10 +98,10 @@ How multiple people can work on Branded + Flow projects simultaneously without c
 - Uses profile variations automatically
 
 **Option 2: Parallel (If Different Areas)**
-- Person A: Works on `03_website/`
-- Person B: Works on `04_automation/`
+- Person A: Works on `04_website/`
+- Person B: Works on `06_automations/`
 - Both update profile (additive, not overwriting)
-- Coordinate via CONTEXT.md or chat
+ - Coordinate via `docs/internal/CONTEXT.md` (or `workflow_state.md`) or chat
 
 ### Profile Updates
 
@@ -170,7 +170,7 @@ How multiple people can work on Branded + Flow projects simultaneously without c
 
 **Where:**
 - `docs/internal/CONTEXT.md` (current priorities)
-- `systems/daily-accountability/active_work.json` (active work)
+- `workflow_state.md` (active work / current phase)
 - Git commit messages (what changed)
 
 ### Documenting Decisions
@@ -245,9 +245,9 @@ git push           # Share changes
 
 ## 📊 Tracking Work
 
-### Active Work File
+### Active Work
 
-**Location:** `systems/daily-accountability/active_work.json`
+**Location:** `workflow_state.md`
 
 **Contains:**
 - What's in progress

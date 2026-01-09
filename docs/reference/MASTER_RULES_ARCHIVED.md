@@ -1,15 +1,22 @@
 # MASTER RULES FOR BRANDED + FLOW
 **Applies to:** All AI assistants (Claude, Cursor, ChatGPT, NotebookLM, etc.)
 **Last Updated:** December 7, 2024
-**Status:** SINGLE SOURCE OF TRUTH - Use this file for all AI platforms
+**Status:** REFERENCE ONLY (historical)
+
+**Canonical enforcement lives in:**
+- `/.cursorrules` (hard-stop DOE enforcement)
+- `project_config.md` (repo constitution)
+- `workflow_state.md` (current dynamic state)
+- `docs/internal/AI_RULES.md` (human-readable rules aligned to current structure)
 
 ---
 
 ## 📋 HOW TO USE THIS FILE
 
 ### For Cursor / Claude Code:
-- This file is auto-loaded via `.cursorrules` and `.claude_code_rules`
-- No action needed - rules are automatically applied
+- **Do not assume this file is auto-loaded.**
+- Cursor enforcement is via `/.cursorrules`.
+- If you are using a web AI tool, treat this file as reference and prefer the canonical sources above.
 
 ### For ChatGPT / Claude Web / NotebookLM / Other AIs:
 **Copy and paste this entire file into your first message:**

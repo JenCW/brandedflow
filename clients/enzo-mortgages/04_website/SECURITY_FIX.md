@@ -18,7 +18,7 @@ The Airtable API key was hardcoded in test files and exposed in documentation fi
 
 ### ✅ Verified Secure
 - **app/api/lead/route.ts** - Already correctly uses `process.env.AIRTABLE_API_KEY` ✅
-- **app/api/lead/base44/route.ts** - Already correctly uses `process.env.AIRTABLE_API_KEY` ✅
+- **app/api/lead/intake/route.ts** - Already correctly uses `process.env.AIRTABLE_API_KEY` ✅
 
 ## Deployment Instructions
 

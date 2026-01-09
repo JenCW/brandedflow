@@ -80,7 +80,7 @@ single-family, condo, townhome, multi-unit
 
 ## Files Modified
 
-- `/app/api/lead/base44/route.ts` - Main endpoint (all forms use this)
+- `/app/api/lead/intake/route.ts` - Main endpoint (all forms use this)
 - `/app/api/lead/route.ts` - Backup endpoint
 - `/.env.example` - Updated default table name
 

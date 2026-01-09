@@ -184,17 +184,16 @@ export default function LoanOfficerLandingPage() {
 
     setIsSubmitting(true);
     try {
-      const response = await fetch("/api/lead/base44", {
+      const response = await fetch("/api/lead/intake", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...formData,
           leadType: formData.loanGoal === "purchase" ? "Home Purchase" : "Refinance",
           loanType: formData.loanType,
-          urgency: formData.timeline,
+          timeline: formData.timeline, // Qualification factor: how soon
           source: "VA Loan Landing Page",
-          flags: { valuation: true },
-          location: "California",
+          state: "CA", // Qualification factor: licensed area (California)
         }),
       });
 

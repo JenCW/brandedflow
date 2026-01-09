@@ -50,7 +50,7 @@ export default function ContactPage() {
     setSubmitting(true);
 
     try {
-      const response = await fetch("/api/lead/base44", {
+      const response = await fetch("/api/lead/intake", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -60,7 +60,7 @@ export default function ContactPage() {
           phone: formData.phone,
           leadType: "Contact Form",
           source: "Contact Page",
-          urgency: "Medium",
+          timeline: "1-3months", // Contact forms are typically exploratory
           message: formData.message,
         }),
       });

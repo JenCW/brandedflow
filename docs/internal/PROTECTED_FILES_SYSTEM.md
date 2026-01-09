@@ -11,13 +11,15 @@
 ### Critical Files (Always Protected)
 
 **Root Level:**
-- `MASTER_RULES.md` - Single source of truth for all rules
-- `AI_RULES.md` - AI assistant rules
+- `project_config.md` - Repo constitution (stable context)
+- `workflow_state.md` - Dynamic brain (current state)
 
 **Core Documentation:**
 - `docs/internal/CONTEXT.md` - Current project state
 - `docs/internal/DECISIONS_LOG.md` - Decision history
 - `docs/internal/AI_RULES.md` - AI rules
+- `docs/training/MASTER_BRAND_GUIDE.md` - Brand voice anchor (company default)
+- `company/website/site/BRAND_STYLE_GUIDE.md` - Company visual system (defaults)
 
 **DOE Engine:**
 - `systems/doe-engine/gemini.md` - DOE architecture
@@ -25,7 +27,6 @@
 
 **Configuration Files:**
 - `.cursorrules` - Cursor rules
-- `.claude_code_rules` - Claude Code rules
 - `systems/mcp-server/.env` - MCP server config
 - `systems/mcp-server/package.json` - MCP dependencies
 
@@ -33,7 +34,6 @@
 - `clients/*/client-profile.json` - Client profiles
 - `systems/trackers/item_status.json` - Item status
 - `systems/trackers/decision_versions.json` - Decision versions
-- `systems/daily-accountability/active_work.json` - Active work
 
 **Core System Files:**
 - `systems/automation-engine/maintenance_agent.py` - Daily ops engine
@@ -67,7 +67,6 @@
 - `automations/mcps/` - All MCPs
 - `systems/mcp-server/` - MCP server
 - `systems/automation-engine/` - Automation engine
-- `systems/daily-accountability/` - Daily accountability
 - `systems/dashboard/` - Dashboard
 
 ---

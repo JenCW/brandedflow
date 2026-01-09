@@ -1,0 +1,79 @@
+{
+  "name": "iAnswering.ai Activity Ingest (Webhook → Airtable Activities)",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "ianswering/events",
+        "httpMethod": "POST",
+        "responseMode": "onReceived",
+        "responseData": "={\"ok\": true}"
+      },
+      "name": "Webhook_iAnswering",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "mode": "passThrough"
+      },
+      "name": "NormalizeEvent",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [470, 300]
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "baseId": "REPLACE_WITH_BASE_ID",
+        "table": "Leads",
+        "options": {
+          "upsertField": "Phone"
+        }
+      },
+      "name": "Airtable_UpsertLead",
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2,
+      "position": [700, 300]
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "baseId": "REPLACE_WITH_BASE_ID",
+        "table": "Activities",
+        "options": {}
+      },
+      "name": "Airtable_CreateActivity",
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2,
+      "position": [930, 300]
+    }
+  ],
+  "connections": {
+    "Webhook_iAnswering": {
+      "main": [
+        [
+          { "node": "NormalizeEvent", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "NormalizeEvent": {
+      "main": [
+        [
+          { "node": "Airtable_UpsertLead", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Airtable_UpsertLead": {
+      "main": [
+        [
+          { "node": "Airtable_CreateActivity", "type": "main", "index": 0 }
+        ]
+      ]
+    }
+  },
+  "settings": {},
+  "staticData": null,
+  "tags": []
+}
+

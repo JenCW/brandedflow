@@ -1,5 +1,20 @@
 import { NextRequest, NextResponse } from "next/server";
 
+// CORS headers helper
+function getCorsHeaders() {
+  return {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type, Authorization",
+    "Access-Control-Max-Age": "86400",
+  };
+}
+
+// Handle preflight OPTIONS requests
+export async function OPTIONS() {
+  return NextResponse.json({}, { headers: getCorsHeaders() });
+}
+
 interface ValuationRequest {
   address: string;
   zipCode: string;
@@ -37,13 +52,13 @@ export async function POST(request: NextRequest) {
     if (!address || !zipCode || !email || !firstName || !lastName) {
       return NextResponse.json(
         { success: false, error: "All fields are required" },
-        { status: 400 }
+        { status: 400, headers: getCorsHeaders() }
       );
     }
 
     // First, capture the lead info in the background (non-blocking)
     // Use internal API call - don't wait for it
-    fetch(`${process.env.NEXT_PUBLIC_BASE_URL || process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000"}/api/lead/base44`, {
+    fetch(`${process.env.NEXT_PUBLIC_BASE_URL || process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000"}/api/lead/intake`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -53,7 +68,7 @@ export async function POST(request: NextRequest) {
         address: `${address}, ${zipCode}`,
         leadType: "Property Valuation",
         source: "Home Valuation Tool",
-        urgency: "Medium",
+        timeline: "exploring", // Valuation tools are typically exploratory
       }),
     }).catch((error) => {
       // Don't fail the valuation if lead capture fails
@@ -72,7 +87,7 @@ export async function POST(request: NextRequest) {
         valuation: mockValuation,
         source: "mock",
         message: "Zillow API key not configured. Showing mock data.",
-      });
+      }, { headers: getCorsHeaders() });
     }
 
     // Call Zillow API via RapidAPI or direct API
@@ -112,7 +127,7 @@ export async function POST(request: NextRequest) {
               success: true,
               valuation,
               source: "zillow",
-            });
+            }, { headers: getCorsHeaders() });
           }
         }
       } catch (error) {
@@ -155,7 +170,7 @@ export async function POST(request: NextRequest) {
             success: true,
             valuation,
             source: "zillow",
-          });
+          }, { headers: getCorsHeaders() });
         }
       } catch (error) {
         console.error("Zillow Zestimate API error:", error);
@@ -169,13 +184,13 @@ export async function POST(request: NextRequest) {
       valuation: mockValuation,
       source: "mock",
       message: "Unable to fetch from Zillow API. Showing estimated valuation.",
-    });
+    }, { headers: getCorsHeaders() });
 
   } catch (error) {
     console.error("Valuation API error:", error);
     return NextResponse.json(
       { success: false, error: "Server error" },
-      { status: 500 }
+      { status: 500, headers: getCorsHeaders() }
     );
   }
 }

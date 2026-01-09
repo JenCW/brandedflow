@@ -6,7 +6,7 @@
 **Problem:** The API code was using `Address` but your Airtable table has a field called `Location`.
 
 **Fix Applied:**
-- Changed line 53 in `/app/api/lead/base44/route.ts` from `Address` to `Location`
+- Changed line 53 in `/app/api/lead/intake/route.ts` from `Address` to `Location`
 - Changed line 43 in `/app/api/lead/route.ts` from `Address` to `Location`
 
 ### 2. Date Format Error (CRITICAL)
@@ -24,7 +24,7 @@
 - This ensures it works even if AIRTABLE_TABLE_NAME env var is not set
 
 ### 4. Error Swallowing (CRITICAL)
-**Problem:** Lines 71-78 of base44/route.ts were catching Airtable errors but returning `success: true` anyway. This made forms show "Lead received" even when nothing was saved to Airtable!
+**Problem:** Lines 71-78 of intake/route.ts were catching Airtable errors but returning `success: true` anyway. This made forms show "Lead received" even when nothing was saved to Airtable!
 
 **Fix Applied:**
 - Now properly returns error responses with HTTP 500 status
@@ -51,7 +51,7 @@ INVALID_MULTIPLE_CHOICE_OPTIONS: Insufficient permissions to create new select o
 ## Code Changes Made
 
 ### Files Modified:
-1. `/app/api/lead/base44/route.ts` - Main API endpoint (used by all forms)
+1. `/app/api/lead/intake/route.ts` - Main API endpoint (used by all forms)
 2. `/app/api/lead/route.ts` - Backup endpoint (currently unused)
 3. `/.env.example` - Updated default table name
 

@@ -25,7 +25,7 @@ export default function LeadMagnet({ title, description, magnetType, source }: L
     setError("");
 
     try {
-      const response = await fetch("/api/lead/base44", {
+      const response = await fetch("/api/lead/intake", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -36,7 +36,7 @@ export default function LeadMagnet({ title, description, magnetType, source }: L
           leadType: "Lead Magnet",
           loanType: magnetType,
           source: source,
-          urgency: "Nurture",
+          timeline: "exploring", // Lead magnets are typically exploratory
         }),
       });
 

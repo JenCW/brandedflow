@@ -8,7 +8,7 @@ Forms were showing "Lead received" but nothing appeared in Airtable.
 
 ### Issue #1: Error Swallowing (Most Critical)
 ```typescript
-// BEFORE (Line 71-78 of base44/route.ts)
+// BEFORE (Line 71-78 of intake/route.ts)
 if (!response.ok) {
   console.error("Airtable error:", errorData);
   return NextResponse.json({
@@ -151,7 +151,7 @@ Visit https://enzomortgages.com and submit:
 ## Files Changed
 
 ### Modified
-1. `/app/api/lead/base44/route.ts` - Fixed all issues
+1. `/app/api/lead/intake/route.ts` - Fixed all issues
 2. `/app/api/lead/route.ts` - Fixed all issues (backup endpoint)
 3. `/.env.example` - Updated default table name
 

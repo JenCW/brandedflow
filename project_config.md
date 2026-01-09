@@ -64,6 +64,12 @@ Only these root-level folders are permitted:
 - `automations/` - Automation scripts, workflows, MCPs, integrations
 - `systems/` - Core systems (automation-engine, doe-engine, trackers, etc.)
 - `templates/` - Reusable templates for clients and projects
+- `cursor/` - DOE dispatcher entrypoints (Node) for task routing
+  - Note: this is intentionally root-level (called by humans/CI/agents)
+  - No client deliverables should be placed here
+  - This folder is treated as a system entrypoint
+  - Keep minimal and stable
+- `scripts/` - Repo guardrails + deterministic checks (shell scripts)
 
 ### Key Architectural Patterns
 - **Separation of Concerns**: Clients, company, documentation, automation, and systems strictly separated
@@ -143,6 +149,8 @@ brandedflow/
 │   ├── client-website-template/
 │   ├── demos/
 │   └── gamma-templates/
+├── cursor/               # DOE dispatcher entrypoints (task routing)
+├── scripts/              # Repo guardrails (deterministic checks)
 ├── .cursorrules          # Enforcement rules (DOE Method)
 ├── project_config.md     # This file (stable context)
 └── workflow_state.md     # Dynamic state tracking

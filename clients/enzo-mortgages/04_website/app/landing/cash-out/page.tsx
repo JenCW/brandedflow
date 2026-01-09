@@ -38,10 +38,17 @@ export default function CashOutLandingPage() {
     e.preventDefault();
     setIsSubmitting(true);
     try {
-      const response = await fetch("/api/lead/base44", {
+      const response = await fetch("/api/lead/intake", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...formData, leadType: "Cash-Out Refinance", loanType: "Cash-Out", source: "Landing Page", urgency: "Hot" }),
+        body: JSON.stringify({ 
+          ...formData, 
+          leadType: "Cash-Out Refinance", 
+          loanType: "Cash-Out", 
+          source: "Landing Page", 
+          timeline: "asap", // Landing pages imply immediate interest
+          homeValue: formData.homeValue, // Qualification factor: loan amount/price range
+        }),
       });
       if (response.ok) setSubmitted(true);
     } catch (error) {

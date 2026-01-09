@@ -37,7 +37,7 @@
 
 ```
 clients/{client-name}/
-├── website/                    # ← Deploy THIS folder to Netlify
+├── 04_website/                 # ← Website project (static OR Next.js)
 │   ├── index.html
 │   ├── about.html
 │   ├── css/
@@ -59,7 +59,7 @@ clients/{client-name}/
 ### Why This Structure?
 
 **✅ Benefits:**
-1. **Clean Deployments:** Drag `website/` folder to Netlify - no filtering needed
+1. **Clean Deployments:** Deploy `04_website/` consistently across clients
 2. **Automation Ready:** Scripts know exactly what to deploy
 3. **Netlify CMS Compatible:** CMS works best with dedicated website folders
 4. **Base44 Integration:** Deliverables stay separate, go in client portal
@@ -73,10 +73,13 @@ clients/{client-name}/
 
 **Website Deployment Automation:**
 ```bash
-# Deploy website folder
-netlify deploy --dir=clients/{client-name}/website
+# Deploy website folder (static sites)
+netlify deploy --dir=clients/{client-name}/04_website
 
-# Or drag website/ folder to Netlify UI
+# Next.js sites are configured via netlify.toml inside 04_website/
+# and deployed via Git push (recommended).
+
+# Or drag 04_website/ folder to Netlify UI (static sites)
 ```
 
 **Client Portal (Base44) Automation:**
@@ -86,7 +89,7 @@ netlify deploy --dir=clients/{client-name}/website
 
 **Netlify CMS (Decap CMS):**
 - CMS stores content in markdown files
-- These go in `website/` folder (part of the site)
+- These go in `04_website/` (part of the site)
 - Different from client deliverables
 
 ---
@@ -107,7 +110,7 @@ clients/luxe-fine-dining/
 **After:**
 ```
 clients/luxe-fine-dining/
-├── website/            # ← All website files here
+├── 04_website/         # ← All website files here
 │   ├── index.html
 │   └── css/
 ├── 01_Proposal.pdf     # Deliverables stay in root
@@ -115,10 +118,16 @@ clients/luxe-fine-dining/
 ```
 
 **Migration Steps:**
-1. Create `website/` folder
-2. Move HTML, CSS, JS, images to `website/`
+1. Create `04_website/` folder
+2. Move HTML, CSS, JS, images to `04_website/`
 3. Keep PDFs, proposals, docs in root
 4. Update any internal links/references
+
+---
+
+## ⚠️ Legacy Note
+
+Some older clients may still use `clients/{client-name}/website/`. Treat that as legacy and migrate to `04_website/` when you touch the site.
 
 ---
 
@@ -127,11 +136,11 @@ clients/luxe-fine-dining/
 When creating a new client project:
 
 - [ ] Create `clients/{client-name}/` folder
-- [ ] Create `clients/{client-name}/website/` subfolder
-- [ ] Put all website files (HTML, CSS, JS) in `website/`
+- [ ] Create `clients/{client-name}/04_website/` folder
+- [ ] Put all website files (HTML, CSS, JS) in `04_website/` (or use the Next.js template)
 - [ ] Put deliverables (PDFs, proposals) in root `clients/{client-name}/`
-- [ ] Add `website/README.md` explaining deployment
-- [ ] Document in `docs/CLIENT_STATUS.md`
+- [ ] Add a deployment note in the client `00_links.md` (or a README in `04_website/`)
+- [ ] Document in `docs/internal/CLIENT_STATUS.md`
 
 ---
 
@@ -140,7 +149,7 @@ When creating a new client project:
 **Current Structure:**
 ```
 clients/luxe-fine-dining/
-├── website/                    # ← Deploy this to Netlify
+├── 04_website/                 # ← Deploy this to Netlify
 │   ├── index.html
 │   ├── css/
 │   ├── js/

@@ -1,13 +1,13 @@
 /**
  * Copy Website Template
- * Copies the AQ Remodeling website template to a new client
+ * Copies a canonical website template into a client folder
  */
 
 const fs = require('fs-extra');
 const path = require('path');
 
 module.exports = {
-  description: 'Copies AQ Remodeling website template to a new client folder',
+  description: 'Copies a website template from /templates into clients/<client>/04_website',
   
   params: {
     client_name: {
@@ -15,27 +15,31 @@ module.exports = {
       required: true,
       description: 'Client name in lowercase-kebab-case'
     },
-    source_template: {
+    template: {
       type: 'string',
       required: false,
-      default: 'aq-remodeling',
-      description: 'Source template client name (default: aq-remodeling)'
+      default: 'static',
+      description: 'Template to use: "static" or "nextjs"'
     }
   },
 
   async execute(params, { PROJECT_ROOT }) {
-    const { client_name, source_template = 'aq-remodeling' } = params;
+    const { client_name, template = 'static' } = params;
 
     if (!client_name) {
       throw new Error('client_name is required');
     }
 
-    const sourceDir = path.join(PROJECT_ROOT, 'clients', source_template, '03_website');
-    const targetDir = path.join(PROJECT_ROOT, 'clients', client_name, '03_website');
+    const templateDir =
+      template === 'nextjs'
+        ? path.join(PROJECT_ROOT, 'templates', 'client-website-nextjs')
+        : path.join(PROJECT_ROOT, 'templates', 'client-website-static');
+
+    const targetDir = path.join(PROJECT_ROOT, 'clients', client_name, '04_website');
 
     // Check if source exists
-    if (!await fs.pathExists(sourceDir)) {
-      throw new Error(`Source template not found: ${sourceDir}`);
+    if (!await fs.pathExists(templateDir)) {
+      throw new Error(`Template not found: ${templateDir}`);
     }
 
     // Check if target already exists
@@ -50,15 +54,15 @@ module.exports = {
     }
 
     // Copy entire directory
-    await fs.copy(sourceDir, targetDir);
+    await fs.copy(templateDir, targetDir);
 
     return {
       success: true,
       client_name,
-      source_template,
-      source_path: sourceDir,
+      template,
+      source_path: templateDir,
       target_path: targetDir,
-      message: `Copied website template from ${source_template} to ${client_name}`
+      message: `Copied website template (${template}) to ${client_name}`
     };
   }
 };

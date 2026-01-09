@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Client Website (Static Template)</title>
+    <meta name="description" content="Branded+Flow static client website template." />
+  </head>
+  <body>
+    <main style="max-width: 860px; margin: 0 auto; padding: 24px;">
+      <h1>Static Client Website Template</h1>
+      <p>Replace with client-specific content. Netlify form below writes leads.</p>
+
+      <section style="border: 1px solid #e5e5e5; border-radius: 12px; padding: 16px; margin-top: 24px;">
+        <h2>Contact</h2>
+        <form name="lead" method="POST" data-netlify="true">
+          <input type="hidden" name="form-name" value="lead" />
+          <input type="hidden" name="client_id" value="client-slug-here" />
+          <input type="hidden" name="lead_type" value="contact" />
+          <p><input name="name" placeholder="Name" required /></p>
+          <p><input name="email" placeholder="Email" type="email" required /></p>
+          <p><input name="phone" placeholder="Phone" /></p>
+          <p><textarea name="message" placeholder="Message"></textarea></p>
+          <button type="submit">Submit</button>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>
+
