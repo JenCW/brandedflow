@@ -26,12 +26,18 @@ Deploy the transformed BrandedFlow company website to Netlify with all award-win
 
 ## Build Requirements
 
-### Required npm flags:
-```bash
-npm install --legacy-peer-deps
+### Required .npmrc file:
+**Location:** `company/website/site/.npmrc`
+**Content:**
+```
+legacy-peer-deps=true
 ```
 
-**Why:** @react-three/fiber doesn't yet support React 19, requires legacy peer deps
+**Why:**
+- @react-three/fiber and @react-three/drei don't yet support React 19
+- Netlify runs `npm install` BEFORE your build command
+- The .npmrc ensures ALL npm installs use --legacy-peer-deps
+- Without this file, Netlify install fails with ERESOLVE errors
 
 ### Build command:
 ```bash

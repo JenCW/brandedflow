@@ -6,3 +6,11 @@
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+[functions]
+  # Disable legacy prerendering (deprecated)
+  node_bundler = "esbuild"
+
+# Next.js runtime configuration
+[context.production]
+  environment = { NEXT_RUNTIME = "edge" }
