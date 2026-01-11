@@ -425,7 +425,7 @@ export default function ApplyForm() {
             <button
               type="button"
               onClick={handleBack}
-              className="px-6 py-3 bg-zinc-800 text-zinc-200 font-medium rounded hover:bg-zinc-700 transition-colors"
+              className="btn-luxury-outline"
               data-testid="button-back"
             >
               Back
@@ -438,7 +438,7 @@ export default function ApplyForm() {
             <button
               type="button"
               onClick={handleNext}
-              className="px-8 py-3 bg-primary text-primary-foreground font-semibold rounded hover:bg-primary/90 transition-colors flex items-center gap-2"
+              className="btn-luxury flex items-center gap-2"
               data-testid="button-next"
             >
               Continue <ArrowRight className="w-5 h-5" />
@@ -453,7 +453,7 @@ export default function ApplyForm() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="px-8 py-3 bg-primary text-primary-foreground font-semibold rounded hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="btn-luxury disabled:opacity-50 disabled:cursor-not-allowed"
                 data-testid="button-submit"
               >
                 {isSubmitting ? "Submitting..." : "Submit Application"}

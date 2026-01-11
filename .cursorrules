@@ -1,14 +1,25 @@
 
 # 🚨 HARD STOP — MCP ENFORCEMENT 🚨
 
-Before responding to ANY request:
+**MANDATORY FIRST ACTION IN EVERY CONVERSATION:**
 
-1. Call `systems/mcp-server/enforce-directive-check.js`
-2. If status === "BLOCKED", you MUST:
-   - Search `systems/doe-engine/directives/`
-   - Explicitly report results
+Before responding to ANY request, you MUST:
+
+1. **FIRST TOOL CALL**: Read `systems/mcp-server/DOE-ENFORCEMENT-CHECKLIST.md`
+2. **SECOND TOOL CALL**: Call `systems/mcp-server/enforce-directive-check.js` with task description
+3. **If status === "BLOCKED"**, you MUST:
+   - Search `systems/doe-engine/directives/` using `list_dir` or `glob_file_search`
+   - Explicitly report results: "✅ DIRECTIVE FOUND: [filename]" OR "✅ NO DIRECTIVE FOUND"
+   - If no directive: Determine if one should be created (recurring? complex? consistency matters?)
    - Wait for user confirmation
-3. You may NOT proceed until status is cleared
+4. **You may NOT proceed** until status is cleared
+5. **VIOLATION**: If you skip steps 1-2, you are in violation. Stop immediately and correct.
+
+**ENFORCEMENT**: The first two tool calls in EVERY conversation MUST be:
+1. `read_file` → `systems/mcp-server/DOE-ENFORCEMENT-CHECKLIST.md`
+2. `run_terminal_cmd` → `node systems/mcp-server/enforce-directive-check.js [task_description]`
+
+**NO EXCEPTIONS. NO SHORTCUTS.**
 
 
 # 🚫 STOP - DO NOT PROCEED UNTIL YOU COMPLETE THE CHECKPOINT BELOW 🚫

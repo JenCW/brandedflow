@@ -250,7 +250,7 @@ export default function LoanOfficerLandingPage() {
     name: "Enzo Mortgages - VA Loan Officer",
     description: "Trusted VA loan officer providing zero down payment mortgages, competitive rates, and fast approval for veterans in Orange County, California.",
     url: "https://enzomortgages.com/landing/va-loan",
-    telephone: "(949) 555-1234",
+    telephone: "(949) 522-0606",
     areaServed: {
       "@type": "State",
       name: "California",
@@ -617,11 +617,11 @@ export default function LoanOfficerLandingPage() {
               Apply Now <ArrowRight className="w-5 h-5" />
             </Link>
             <a
-              href="tel:+19495551234"
+              href="tel:+19495220606"
               className="btn-luxury-outline"
             >
               <Phone className="w-5 h-5" />
-              (949) 555-1234
+              (949) 522-0606
             </a>
           </div>
         </div>

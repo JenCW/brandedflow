@@ -115,19 +115,19 @@ export default function ToolsPage() {
             Quick Access
           </h2>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link href="/tools/calculator" className="px-6 py-3 bg-zinc-800 border border-zinc-700 text-white hover:border-primary/50 transition-colors" data-testid="link-quick-payment-calculator">
+            <Link href="/tools/calculator" className="btn-luxury-outline" data-testid="link-quick-payment-calculator">
               Payment Calculator
             </Link>
-            <Link href="/tools/calculator" className="px-6 py-3 bg-zinc-800 border border-zinc-700 text-white hover:border-primary/50 transition-colors" data-testid="link-quick-affordability">
+            <Link href="/tools/calculator" className="btn-luxury-outline" data-testid="link-quick-affordability">
               Affordability Tool
             </Link>
-            <Link href="/tools/down-payment" className="px-6 py-3 bg-zinc-800 border border-zinc-700 text-white hover:border-primary/50 transition-colors" data-testid="link-quick-down-payment">
+            <Link href="/tools/down-payment" className="btn-luxury-outline" data-testid="link-quick-down-payment">
               Down Payment Help
             </Link>
-            <Link href="/landing/investment#calculator" className="px-6 py-3 bg-zinc-800 border border-zinc-700 text-white hover:border-primary/50 transition-colors" data-testid="link-quick-dscr">
+            <Link href="/landing/investment#calculator" className="btn-luxury-outline" data-testid="link-quick-dscr">
               DSCR Calculator
             </Link>
-            <Link href="/tools/home-valuation" className="px-6 py-3 bg-zinc-800 border border-zinc-700 text-white hover:border-primary/50 transition-colors" data-testid="link-quick-home-valuation">
+            <Link href="/tools/home-valuation" className="btn-luxury-outline" data-testid="link-quick-home-valuation">
               Home Valuation
             </Link>
           </div>
@@ -154,7 +154,7 @@ export default function ToolsPage() {
             </Link>
             <Link
               href="/tools/book"
-              className="inline-flex items-center justify-center border border-zinc-600 bg-transparent px-10 py-4 text-lg font-medium text-white transition-all hover:bg-zinc-800 btn-luxury-outline"
+              className="btn-luxury-outline"
               data-testid="button-tools-book"
             >
               Book A Consultation

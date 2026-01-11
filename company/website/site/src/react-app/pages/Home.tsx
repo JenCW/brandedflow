@@ -110,9 +110,9 @@ export default function Home() {
               </div>
               
               <h1 className="text-8xl md:text-9xl lg:text-[10rem] xl:text-[12rem] leading-tight font-black tracking-tight" style={{ textShadow: '4px 4px 0px rgba(0,0,0,0.15)' }}>
-                <span className="font-sans">branded</span>
+                <span className="font-sans text-6xl md:text-7xl lg:text-8xl xl:text-9xl">branded</span>
                 <span className="font-script text-teal-500">+</span>
-                <span className="font-script text-teal-500 italic">flow</span>
+                <span className="font-script text-teal-500 italic">FLOW</span>
               </h1>
               
               {/* Tagline */}

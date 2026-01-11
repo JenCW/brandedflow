@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Phone, Clock } from "lucide-react";
+import { Phone, Clock, Mail } from "lucide-react";
 import { SiInstagram, SiGoogle } from "react-icons/si";
 import EnzoLogo from "./EnzoLogo";
 
@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <footer className="border-t border-border bg-zinc-900 text-zinc-300 py-16">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-6 gap-8 mb-12">
           <div className="col-span-2 md:col-span-1">
             <EnzoLogo size="md" showTagline />
             <p className="mt-4 text-sm text-zinc-400">
@@ -49,7 +49,11 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-2 text-sm">
                 <Phone className="w-4 h-4 text-primary" />
-                <a href="tel:+19495551234" className="text-white hover:text-primary transition-colors">(949) 555-1234</a>
+                <a href="tel:+19495220606" className="text-white hover:text-primary transition-colors">(949) 522-0606</a>
+              </div>
+              <div className="flex items-center gap-2 text-sm mt-2">
+                <Mail className="w-4 h-4 text-primary" />
+                <a href="mailto:smahmoud@emortgagecapital.com" className="text-white hover:text-primary transition-colors">smahmoud@emortgagecapital.com</a>
               </div>
               <p className="text-zinc-500 text-xs mt-1">Always speak to a real person</p>
             </div>
@@ -91,12 +95,25 @@ export default function Footer() {
           </div>
 
           <div>
+            <h4 className="font-semibold text-white mb-4 uppercase tracking-wide text-sm">Loan Guides</h4>
+            <ul className="space-y-2 text-sm">
+              <li><Link href="/landing/refinance" className="hover:text-primary transition-colors">Refinance</Link></li>
+              <li><Link href="/landing/buying" className="hover:text-primary transition-colors">Buying</Link></li>
+              <li><Link href="/landing/cash-out" className="hover:text-primary transition-colors">Cash-Out</Link></li>
+              <li><Link href="/landing/investment" className="hover:text-primary transition-colors">Investment</Link></li>
+              <li><Link href="/landing/va-loan" className="hover:text-primary transition-colors">VA Loan</Link></li>
+              <li><Link href="/landing/first-time-buyer" className="hover:text-primary transition-colors">First-Time Buyer</Link></li>
+              <li><Link href="/landing/foreign-national" className="hover:text-primary transition-colors">Foreign National</Link></li>
+              <li><Link href="/landing/emergency-cash" className="hover:text-primary transition-colors">Emergency Cash</Link></li>
+            </ul>
+          </div>
+
+          <div>
             <h4 className="font-semibold text-white mb-4 uppercase tracking-wide text-sm">Resources</h4>
             <ul className="space-y-2 text-sm">
               <li><Link href="/tools" className="hover:text-primary transition-colors">All Tools</Link></li>
               <li><Link href="/tools/calculator" className="hover:text-primary transition-colors">Mortgage Calculator</Link></li>
               <li><Link href="/tools/home-valuation" className="hover:text-primary transition-colors">Home Valuation</Link></li>
-              <li><Link href="/landing/emergency-cash" className="hover:text-primary transition-colors">Emergency Cash</Link></li>
               <li><Link href="/about" className="hover:text-primary transition-colors">About Enzo</Link></li>
               <li><Link href="/contact" className="hover:text-primary transition-colors">Contact</Link></li>
               <li><Link href="/apply" className="hover:text-primary transition-colors">Apply Now</Link></li>

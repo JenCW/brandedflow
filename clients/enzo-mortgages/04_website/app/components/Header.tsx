@@ -71,6 +71,78 @@ export default function Header() {
               </div>
             ))}
             
+            <div className="relative group">
+              <Link
+                href="/landing"
+                className="flex items-center gap-1 px-4 py-2 text-sm font-medium uppercase tracking-wide text-zinc-300 hover:text-primary transition-colors"
+                data-testid="link-nav-landing"
+              >
+                Loan Guides
+                <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
+              </Link>
+              
+              <div className="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                <div className="bg-zinc-900 border border-zinc-700 shadow-xl p-4 min-w-[220px]">
+                  <Link
+                    href="/landing/refinance"
+                    className="block px-3 py-2 text-sm text-zinc-400 hover:text-primary hover:bg-zinc-800 transition-colors"
+                    data-testid="link-nav-refinance-landing"
+                  >
+                    Refinance
+                  </Link>
+                  <Link
+                    href="/landing/buying"
+                    className="block px-3 py-2 text-sm text-zinc-400 hover:text-primary hover:bg-zinc-800 transition-colors"
+                    data-testid="link-nav-buying-landing"
+                  >
+                    Buying
+                  </Link>
+                  <Link
+                    href="/landing/cash-out"
+                    className="block px-3 py-2 text-sm text-zinc-400 hover:text-primary hover:bg-zinc-800 transition-colors"
+                    data-testid="link-nav-cash-out-landing"
+                  >
+                    Cash-Out
+                  </Link>
+                  <Link
+                    href="/landing/investment"
+                    className="block px-3 py-2 text-sm text-zinc-400 hover:text-primary hover:bg-zinc-800 transition-colors"
+                    data-testid="link-nav-investment-landing"
+                  >
+                    Investment
+                  </Link>
+                  <Link
+                    href="/landing/va-loan"
+                    className="block px-3 py-2 text-sm text-zinc-400 hover:text-primary hover:bg-zinc-800 transition-colors"
+                    data-testid="link-nav-va-loan-landing"
+                  >
+                    VA Loan
+                  </Link>
+                  <Link
+                    href="/landing/first-time-buyer"
+                    className="block px-3 py-2 text-sm text-zinc-400 hover:text-primary hover:bg-zinc-800 transition-colors"
+                    data-testid="link-nav-first-time-landing"
+                  >
+                    First-Time Buyer
+                  </Link>
+                  <Link
+                    href="/landing/foreign-national"
+                    className="block px-3 py-2 text-sm text-zinc-400 hover:text-primary hover:bg-zinc-800 transition-colors"
+                    data-testid="link-nav-foreign-national-landing"
+                  >
+                    Foreign National
+                  </Link>
+                  <Link
+                    href="/landing/emergency-cash"
+                    className="block px-3 py-2 text-sm text-zinc-400 hover:text-primary hover:bg-zinc-800 transition-colors"
+                    data-testid="link-nav-emergency-cash-landing"
+                  >
+                    Emergency Cash
+                  </Link>
+                </div>
+              </div>
+            </div>
+            
             <Link
               href="/tools"
               className="px-4 py-2 text-sm font-medium uppercase tracking-wide text-zinc-300 hover:text-primary transition-colors"
@@ -85,6 +157,14 @@ export default function Header() {
               data-testid="link-nav-about"
             >
               About
+            </Link>
+            
+            <Link
+              href="/contact"
+              className="px-4 py-2 text-sm font-medium uppercase tracking-wide text-zinc-300 hover:text-primary transition-colors"
+              data-testid="link-nav-contact"
+            >
+              Contact
             </Link>
           </nav>
           

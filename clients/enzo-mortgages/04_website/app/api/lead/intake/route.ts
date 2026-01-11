@@ -1,4 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
+import { rateLimit, RateLimitPresets } from "../../lib/rate-limit";
+import { calculateQualificationUrgency, extractStateFromAddress } from "./qualification";
+import { leadIntakeSchema, validateInput } from "../../../lib/validation";
+import { ZodError } from "zod";
 
 // CORS headers helper
 function getCorsHeaders() {
@@ -16,20 +20,68 @@ export async function OPTIONS() {
 }
 
 export async function POST(request: NextRequest) {
+  // Apply rate limiting: 5 requests per minute per IP
+  const rateLimitResponse = await rateLimit(request, RateLimitPresets.STRICT);
+  if (rateLimitResponse) {
+    // Add CORS headers to rate limit response
+    const headers = new Headers(rateLimitResponse.headers);
+    Object.entries(getCorsHeaders()).forEach(([key, value]) => {
+      headers.set(key, value);
+    });
+    return new NextResponse(rateLimitResponse.body, {
+      status: rateLimitResponse.status,
+      statusText: rateLimitResponse.statusText,
+      headers,
+    });
+  }
+
   try {
     const body = await request.json();
-    const { 
-      // Client Code Basic (Universal - all clients)
+
+    // Validate and sanitize input data
+    let validatedData;
+    try {
+      validatedData = leadIntakeSchema.parse(body);
+    } catch (error) {
+      if (error instanceof ZodError) {
+        const errorMessages = error.errors.map(e => `${e.path.join('.')}: ${e.message}`).join(', ');
+        console.warn('Validation error:', errorMessages, 'Data:', body);
+        return NextResponse.json(
+          {
+            success: false,
+            error: "Invalid input data",
+            details: error.errors
+          },
+          { status: 400, headers: getCorsHeaders() }
+        );
+      }
+      throw error;
+    }
+
+    // Check for suspicious content in text fields
+    try {
+      if (validatedData.message) validateInput(validatedData.message, 'message');
+      if (validatedData.firstName) validateInput(validatedData.firstName, 'firstName');
+      if (validatedData.lastName) validateInput(validatedData.lastName, 'lastName');
+    } catch (error) {
+      console.error('Security validation failed:', error);
+      return NextResponse.json(
+        { success: false, error: "Invalid input detected" },
+        { status: 400, headers: getCorsHeaders() }
+      );
+    }
+
+    const {
+      email,
       firstName,
       lastName,
-      email, 
+      name,
       phone,
       address,
-      // Client Code 2 (Industry-specific - mortgage)
-      leadType, 
-      loanType, 
-      urgency, // Legacy - will be calculated from qualification factors
-      source, 
+      leadType,
+      loanType,
+      urgency,
+      source,
       propertyType,
       loanAmount,
       creditScore,
@@ -41,20 +93,10 @@ export async function POST(request: NextRequest) {
       homeValue,
       loanBalance,
       message,
-      // Qualification factors (replaces urgency-only logic)
-      timeline, // how soon: "asap", "1-3months", "3-6months", "6plus", "exploring"
-      state, // licensed area (extracted from address or provided)
-      income, // annual income or income band
-      // Legacy support (if name comes as single field)
-      name,
-    } = body;
-
-    if (!email) {
-      return NextResponse.json(
-        { success: false, error: "Email is required" },
-        { status: 400, headers: getCorsHeaders() }
-      );
-    }
+      timeline,
+      state,
+      income,
+    } = validatedData;
 
     const airtableApiKey = process.env.AIRTABLE_API_KEY;
     const airtableBaseId = process.env.AIRTABLE_BASE_ID;
@@ -78,96 +120,22 @@ export async function POST(request: NextRequest) {
     }
 
     // Extract state from address if not provided
-    let finalState = state;
-    if (!finalState && address) {
-      // Try to extract state from address (e.g., "123 Main St, Los Angeles, CA 90210")
-      const stateMatch = address.match(/\b([A-Z]{2})\s+\d{5}/);
-      if (stateMatch) {
-        finalState = stateMatch[1];
-      }
-    }
+    const finalState = state || extractStateFromAddress(address);
 
-    // Calculate qualification urgency based on multiple factors (not just timeline)
-    // Factors: timeline, loan amount/price range, state (licensed area), credit/income, purchase vs refinance
-    let calculatedUrgency = urgency; // Fallback to provided urgency if calculation fails
-    
-    if (timeline || finalState || creditScore || loanAmount || purchasePrice || homeValue || leadType) {
-      let urgencyScore = 0;
-      
-      // Timeline factor (0-3 points)
-      if (timeline === "asap") urgencyScore += 3;
-      else if (timeline === "1-3months") urgencyScore += 2;
-      else if (timeline === "3-6months") urgencyScore += 1;
-      else if (timeline === "exploring") urgencyScore -= 1;
-      
-      // Loan amount/price range factor (0-2 points)
-      const effectiveLoanAmount = loanAmount || purchasePrice || homeValue || loanBalance;
-      if (effectiveLoanAmount) {
-        const amount = typeof effectiveLoanAmount === 'string' ? parseFloat(effectiveLoanAmount.replace(/[^0-9.]/g, '')) : effectiveLoanAmount;
-        if (amount >= 500000) urgencyScore += 2; // High-value loans
-        else if (amount >= 200000) urgencyScore += 1; // Medium-value loans
-      }
-      
-      // State/licensed area factor (0-1 point) - CA is primary market
-      if (finalState === "CA" || finalState === "California") urgencyScore += 1;
-      
-      // Credit score factor (0-2 points)
-      if (creditScore) {
-        const score = typeof creditScore === 'string' ? parseFloat(creditScore) : creditScore;
-        if (score >= 740) urgencyScore += 2; // Excellent credit
-        else if (score >= 680) urgencyScore += 1; // Good credit
-        else if (score < 620) urgencyScore -= 1; // Poor credit (may need special handling)
-      }
-      
-      // Purchase vs refinance factor (0-1 point)
-      if (leadType === "Purchase" || leadType === "Home Purchase") urgencyScore += 1; // Purchases often more time-sensitive
-      
-      // Down payment / LTV factor (0-2 points) - Higher down payment = lower risk
-      if (downPayment && (purchasePrice || homeValue)) {
-        const downPaymentNum = typeof downPayment === 'string' ? parseFloat(downPayment.replace(/[^0-9.]/g, '')) : downPayment;
-        const propertyValueNum = typeof (purchasePrice || homeValue) === 'string' ? parseFloat((purchasePrice || homeValue).toString().replace(/[^0-9.]/g, '')) : (purchasePrice || homeValue);
-        if (propertyValueNum > 0) {
-          const downPaymentPercent = (downPaymentNum / propertyValueNum) * 100;
-          if (downPaymentPercent >= 20) urgencyScore += 2; // 20%+ down = conventional, lower risk
-          else if (downPaymentPercent >= 10) urgencyScore += 1; // 10-20% down = FHA/VA territory
-          else if (downPaymentPercent < 5) urgencyScore -= 1; // <5% down = higher risk, may need special programs
-        }
-      }
-      
-      // Property type factor (0-1 point) - Primary residence preferred
-      if (propertyType) {
-        const propType = propertyType.toLowerCase();
-        if (propType.includes("primary") || propType.includes("owner") || propType.includes("residence")) {
-          urgencyScore += 1; // Primary residence = lower risk
-        } else if (propType.includes("investment") || propType.includes("rental")) {
-          urgencyScore -= 0.5; // Investment properties = higher risk, different programs
-        }
-      }
-      
-      // Loan-to-value (LTV) factor for refinances (0-1 point)
-      if (leadType && (leadType.includes("Refinance") || leadType.includes("Refi")) && homeValue && loanBalance) {
-        const homeValueNum = typeof homeValue === 'string' ? parseFloat(homeValue.replace(/[^0-9.]/g, '')) : homeValue;
-        const loanBalanceNum = typeof loanBalance === 'string' ? parseFloat(loanBalance.replace(/[^0-9.]/g, '')) : loanBalance;
-        if (homeValueNum > 0) {
-          const ltv = (loanBalanceNum / homeValueNum) * 100;
-          if (ltv <= 80) urgencyScore += 1; // LTV ≤80% = conventional refi, lower risk
-          else if (ltv > 95) urgencyScore -= 1; // LTV >95% = underwater, may need special handling
-        }
-      }
-      
-      // Income/DTI indicator (0-1 point) - If income provided, it shows serious intent
-      if (income) {
-        const incomeNum = typeof income === 'string' ? parseFloat(income.replace(/[^0-9.]/g, '')) : income;
-        if (incomeNum >= 100000) urgencyScore += 1; // Higher income = better qualification potential
-      }
-      
-      // Convert score to urgency level
-      if (urgencyScore >= 5) calculatedUrgency = "Hot";
-      else if (urgencyScore >= 3) calculatedUrgency = "High";
-      else if (urgencyScore >= 1) calculatedUrgency = "Medium";
-      else if (urgencyScore >= 0) calculatedUrgency = "Low";
-      else calculatedUrgency = "Nurture";
-    }
+    // Calculate qualification urgency using the tested algorithm
+    const calculatedUrgency = urgency || calculateQualificationUrgency({
+      timeline,
+      loanAmount,
+      purchasePrice,
+      homeValue,
+      loanBalance,
+      state: finalState,
+      creditScore,
+      leadType,
+      downPayment,
+      propertyType,
+      income,
+    });
 
     // Client Code Basic - Universal fields (all clients)
     const airtableFields: Record<string, string | number | boolean | null> = {

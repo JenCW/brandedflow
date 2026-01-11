@@ -27,15 +27,6 @@ enzomortgages.com
 ├── CONTACT (/contact)
 │   └── Contact information & form
 │
-├── LOAN OFFICER (/loan-officer)
-│   ├── What Does a Loan Officer Do
-│   ├── Mortgage Process Steps (1-6)
-│   ├── Core Responsibilities
-│   ├── Mortgage Options Guide
-│   ├── Documentation Checklist
-│   ├── Why Work With Enzo
-│   └── FAQs
-│
 ├── SERVICES (/services)
 │   │
 │   ├── BUYING (/services/buying)
@@ -95,7 +86,6 @@ enzomortgages.com
 | About | `/about` | Company story, Enzo's background, trust building |
 | Apply | `/apply` | Lead capture form, pre-qualification |
 | Contact | `/contact` | Contact info, inquiry form |
-| Loan Officer | `/loan-officer` | Educational content about working with Enzo |
 
 ### Service Pages (3 Categories, 12 Sub-pages)
 

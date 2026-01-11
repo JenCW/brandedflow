@@ -7,7 +7,7 @@ export function LocalBusinessSchema() {
     description: "The Ferrari of Home Loans. Orange County mortgage experts providing premium home financing solutions.",
     url: "https://enzomortgages.com",
     telephone: "(714) 555-0100",
-    email: "info@enzomortgages.com",
+    email: "smahmoud@emortgagecapital.com",
     address: {
       "@type": "PostalAddress",
       streetAddress: "Orange County",

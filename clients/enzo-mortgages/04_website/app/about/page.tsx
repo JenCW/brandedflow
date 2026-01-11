@@ -44,7 +44,7 @@ export default function AboutPage() {
                   Work With Me
                 </Link>
                 <a
-                  href="tel:+19495551234"
+                  href="tel:+19495220606"
                   className="inline-flex items-center justify-center gap-2 border border-zinc-600 bg-transparent px-8 py-4 text-lg font-medium text-white transition-all hover:bg-zinc-800"
                   data-testid="button-about-call"
                 >
@@ -216,18 +216,18 @@ export default function AboutPage() {
             </Link>
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center border border-zinc-600 text-white px-10 py-4 text-lg font-medium hover:bg-zinc-800 transition-colors"
+              className="btn-luxury-outline"
               data-testid="button-contact"
             >
               Contact Me
             </Link>
           </div>
           <div className="flex flex-col sm:flex-row gap-6 justify-center text-zinc-400">
-            <a href="tel:+19495551234" className="inline-flex items-center gap-2 hover:text-primary transition-colors">
-              <Phone className="w-5 h-5" /> (949) 555-1234
+            <a href="tel:+19495220606" className="inline-flex items-center gap-2 hover:text-primary transition-colors">
+              <Phone className="w-5 h-5" /> (949) 522-0606
             </a>
-            <a href="mailto:enzo@enzomortgages.com" className="inline-flex items-center gap-2 hover:text-primary transition-colors">
-              <Mail className="w-5 h-5" /> enzo@enzomortgages.com
+            <a href="mailto:smahmoud@emortgagecapital.com" className="inline-flex items-center gap-2 hover:text-primary transition-colors">
+              <Mail className="w-5 h-5" /> smahmoud@emortgagecapital.com
             </a>
           </div>
         </div>

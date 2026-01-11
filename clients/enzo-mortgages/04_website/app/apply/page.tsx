@@ -82,11 +82,11 @@ export default function Page() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="tel:+19495551234"
+              href="tel:+19495220606"
               className="btn-luxury"
             >
               <Phone className="w-5 h-5" />
-              (949) 555-1234
+              (949) 522-0606
             </a>
             <Link
               href="/"

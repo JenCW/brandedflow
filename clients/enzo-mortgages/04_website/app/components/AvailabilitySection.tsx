@@ -102,7 +102,7 @@ export default function AvailabilitySection() {
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <Link href="tel:+19495551234" className="btn-luxury" data-testid="button-call-now">
+              <Link href="tel:+19495220606" className="btn-luxury" data-testid="button-call-now">
                 <Phone className="w-5 h-5" />
                 Call Now
               </Link>
@@ -132,7 +132,7 @@ export default function AvailabilitySection() {
                   </div>
                   <div>
                     <p className="text-white font-bold text-lg">Talk to Enzo</p>
-                    <p className="text-primary font-semibold">(949) 555-1234</p>
+                    <p className="text-primary font-semibold">(949) 522-0606</p>
                   </div>
                 </div>
               </div>

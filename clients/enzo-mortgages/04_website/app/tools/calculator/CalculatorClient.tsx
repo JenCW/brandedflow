@@ -50,7 +50,7 @@ export default function CalculatorClient() {
             </Link>
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center border border-zinc-600 bg-transparent px-10 py-4 text-lg font-medium text-white transition-all hover:bg-zinc-800 hover:border-zinc-500"
+              className="btn-luxury-outline"
               data-testid="button-calculator-contact"
             >
               Talk to Enzo

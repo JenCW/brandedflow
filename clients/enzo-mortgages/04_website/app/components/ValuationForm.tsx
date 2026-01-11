@@ -283,7 +283,7 @@ export default function ValuationForm({ onSuccess }: ValuationFormProps = {}) {
         <button
           type="submit"
           disabled={submitting}
-          className="w-full py-3 bg-primary text-primary-foreground font-semibold rounded hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+          className="w-full btn-luxury justify-center disabled:opacity-50 disabled:cursor-not-allowed"
           data-testid="button-submit"
         >
           {submitting ? (

@@ -76,7 +76,7 @@ export default function About() {
               className="border-t border-black pt-6"
             >
               <p className="text-lg leading-relaxed">
-                So I started <span className="font-bold">branded</span> <span className="text-teal-500 font-script text-2xl">+flow</span> from absolute zero. No safety net. No investor backing. No fancy connections. Just skills, determination, and the kind of desperation that either destroys you or forges you into something stronger.
+                So I started <span className="font-bold text-xs">branded</span><span className="text-teal-500 font-script text-2xl">+FLOW</span> from absolute zero. No safety net. No investor backing. No fancy connections. Just skills, determination, and the kind of desperation that either destroys you or forges you into something stronger.
               </p>
             </motion.div>
           </div>
@@ -131,7 +131,7 @@ export default function About() {
               transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
               className="text-2xl leading-relaxed max-w-4xl mb-6"
             >
-              For small businesses, solopreneurs, and entrepreneurs frustrated and overwhelmed with confusing marketing speak and technical AI jargon: <span className="font-bold">branded</span> <span className="text-teal-500 font-script text-3xl">+flow</span> creates the automation that works together and keeps you in the game.
+              For small businesses, solopreneurs, and entrepreneurs frustrated and overwhelmed with confusing marketing speak and technical AI jargon: <span className="font-bold text-xs">branded</span><span className="text-teal-500 font-script text-3xl">+FLOW</span> creates the automation that works together and keeps you in the game.
             </motion.p>
             <motion.p
               initial={{ opacity: 0, x: 100 }}

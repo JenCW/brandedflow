@@ -2,6 +2,58 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Accessibility Modes */
+
+/* High Contrast Mode */
+body.high-contrast {
+  --color-bg: #000000;
+  --color-text: #ffffff;
+  --color-primary: #00ff00;
+  --color-secondary: #ffff00;
+}
+
+body.high-contrast * {
+  border-color: currentColor !important;
+}
+
+body.high-contrast a,
+body.high-contrast button {
+  text-decoration: underline;
+  font-weight: 700;
+}
+
+/* Dyslexia-Friendly Font */
+body.dyslexia-font,
+body.dyslexia-font * {
+  font-family: 'Comic Sans MS', 'OpenDyslexic', 'Arial', sans-serif !important;
+  letter-spacing: 0.05em;
+  line-height: 1.8;
+}
+
+/* Reduced Motion */
+body.reduced-motion *,
+body.reduced-motion *::before,
+body.reduced-motion *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+/* Font Size Modes */
+body.font-large {
+  font-size: 112.5%; /* 18px base */
+}
+
+body.font-xlarge {
+  font-size: 125%; /* 20px base */
+}
+
+/* Hide custom cursor for accessibility */
+body.reduced-motion .custom-cursor {
+  display: none !important;
+}
+
 @layer utilities {
   .text-stroke {
     -webkit-text-stroke: 1px currentColor;

@@ -226,7 +226,7 @@ export default function ContactPage() {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    placeholder="(949) 555-1234"
+                    placeholder="(949) 522-0606"
                     className={inputClass}
                     required
                   />
@@ -253,7 +253,7 @@ export default function ContactPage() {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="w-full py-4 bg-primary text-primary-foreground font-semibold rounded hover:bg-primary/90 transition-colors disabled:opacity-50"
+                  className="w-full btn-luxury justify-center disabled:opacity-50"
                 >
                   {submitting ? "Sending..." : "Send Message"}
                 </button>
@@ -270,15 +270,15 @@ export default function ContactPage() {
             <div>
               <Phone className="w-12 h-12 text-primary mx-auto mb-4" />
               <h3 className="text-xl font-bold text-white mb-2">Call Us</h3>
-              <a href="tel:+19495551234" className="text-zinc-400 hover:text-primary transition-colors">
-                (949) 555-1234
+              <a href="tel:+19495220606" className="text-zinc-400 hover:text-primary transition-colors">
+                (949) 522-0606
               </a>
             </div>
             <div>
               <Mail className="w-12 h-12 text-primary mx-auto mb-4" />
               <h3 className="text-xl font-bold text-white mb-2">Email Us</h3>
-              <a href="mailto:info@enzomortgages.com" className="text-zinc-400 hover:text-primary transition-colors">
-                info@enzomortgages.com
+              <a href="mailto:smahmoud@emortgagecapital.com" className="text-zinc-400 hover:text-primary transition-colors block">
+                smahmoud@emortgagecapital.com
               </a>
             </div>
             <div>

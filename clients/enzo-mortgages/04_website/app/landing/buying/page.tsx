@@ -193,9 +193,9 @@ export default function BuyingLandingPage() {
                 <Link href="#get-started" className="btn-luxury">
                   Get Pre-Approved <ArrowRight className="w-5 h-5" />
                 </Link>
-                <a href="tel:+19495551234" className="btn-luxury-outline">
+                <a href="tel:+19495220606" className="btn-luxury-outline">
                   <Phone className="w-5 h-5" />
-                  (949) 555-1234
+                  (949) 522-0606
                 </a>
               </div>
 
@@ -405,7 +405,7 @@ export default function BuyingLandingPage() {
               </div>
 
               <div className="mt-8 flex items-center gap-4">
-                <a href="tel:+19495551234" className="btn-luxury btn-shiny">
+                <a href="tel:+19495220606" className="btn-luxury btn-shiny">
                   <Phone className="w-5 h-5" />
                   Call Enzo Now
                 </a>
@@ -530,9 +530,9 @@ export default function BuyingLandingPage() {
             <Link href="/apply" className="btn-luxury">
               Apply Now <ArrowRight className="w-5 h-5" />
             </Link>
-            <a href="tel:+19495551234" className="btn-luxury-outline">
+            <a href="tel:+19495220606" className="btn-luxury-outline">
               <Phone className="w-5 h-5" />
-              Call (949) 555-1234
+              Call (949) 522-0606
             </a>
           </div>
           <p className="text-zinc-500 text-sm mt-8">

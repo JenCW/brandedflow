@@ -221,10 +221,10 @@ export default function BookingPage() {
               <span className="text-white font-medium">Text Us</span>
               <span className="text-zinc-400 text-sm">Quick response</span>
             </a>
-            <a href="mailto:enzo@enzomortgages.com" className="flex flex-col items-center p-6 bg-zinc-800/50 border border-zinc-700 hover:border-primary/50 transition-colors" data-testid="link-contact-email">
+            <a href="mailto:smahmoud@emortgagecapital.com" className="flex flex-col items-center p-6 bg-zinc-800/50 border border-zinc-700 hover:border-primary/50 transition-colors" data-testid="link-contact-email">
               <Mail className="w-8 h-8 text-primary mb-4" />
               <span className="text-white font-medium">Email</span>
-              <span className="text-zinc-400 text-sm">enzo@enzomortgages.com</span>
+              <span className="text-zinc-400 text-sm">smahmoud@emortgagecapital.com</span>
             </a>
           </div>
         </div>

@@ -219,7 +219,7 @@ export default function LocalSEO() {
               </h3>
             </div>
             <h2 className="font-serif text-5xl md:text-7xl leading-tight mb-6">
-              Why Orange County businesses choose <span className="font-bold">branded</span> <span className="font-script text-teal-500 text-6xl md:text-8xl">+flow</span>
+              Why Orange County businesses choose <span className="font-bold text-xs">branded</span><span className="font-script text-teal-500 text-6xl md:text-8xl">+FLOW</span>
             </h2>
           </motion.div>
 

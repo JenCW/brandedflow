@@ -202,7 +202,7 @@ export default function DownPaymentPage() {
             <Link href="/apply" className="btn-luxury" data-testid="button-dpa-start">
               Start Your Application
             </Link>
-            <a href="tel:+19495551234" className="inline-flex items-center justify-center gap-2 border border-zinc-600 bg-transparent px-10 py-4 text-lg font-medium text-white transition-all hover:bg-zinc-800" data-testid="button-dpa-call">
+            <a href="tel:+19495220606" className="inline-flex items-center justify-center gap-2 border border-zinc-600 bg-transparent px-10 py-4 text-lg font-medium text-white transition-all hover:bg-zinc-800" data-testid="button-dpa-call">
               Call Enzo
             </a>
           </div>

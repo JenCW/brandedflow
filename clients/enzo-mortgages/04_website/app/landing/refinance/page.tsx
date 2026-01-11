@@ -101,7 +101,7 @@ export default function RefinanceLandingPage() {
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="#get-started" className="btn-luxury">Check My Savings <ArrowRight className="w-5 h-5" /></Link>
-                <a href="tel:+19495551234" className="btn-luxury-outline"><Phone className="w-5 h-5" />(949) 555-1234</a>
+                <a href="tel:+19495220606" className="btn-luxury-outline"><Phone className="w-5 h-5" />(949) 522-0606</a>
               </div>
 
               <div className="mt-8 inline-flex items-center gap-3 bg-zinc-900/80 border border-zinc-700 px-4 py-3">
@@ -225,7 +225,7 @@ export default function RefinanceLandingPage() {
               <h2 className="text-3xl md:text-4xl font-bold text-white uppercase tracking-wide mb-6">Work Directly With <span className="text-primary">Enzo</span></h2>
               <p className="text-zinc-300 text-lg mb-4">When you refinance with Enzo Mortgages, you work with Enzo himself — not a call center.</p>
               <p className="text-zinc-300 text-lg mb-6">Enzo reviews your situation honestly and explains your options clearly. If refinancing makes sense, you'll understand exactly why. If it doesn't, you'll know that too.</p>
-              <a href="tel:+19495551234" className="btn-luxury btn-shiny"><Phone className="w-5 h-5" />Call Enzo Now</a>
+              <a href="tel:+19495220606" className="btn-luxury btn-shiny"><Phone className="w-5 h-5" />Call Enzo Now</a>
             </div>
           </div>
         </div>
@@ -301,7 +301,7 @@ export default function RefinanceLandingPage() {
           <p className="text-xl text-zinc-300 mb-10">Get a free, no-obligation savings analysis today.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/apply" className="btn-luxury">Get My Savings Analysis <ArrowRight className="w-5 h-5" /></Link>
-            <a href="tel:+19495551234" className="btn-luxury-outline"><Phone className="w-5 h-5" />(949) 555-1234</a>
+            <a href="tel:+19495220606" className="btn-luxury-outline"><Phone className="w-5 h-5" />(949) 522-0606</a>
           </div>
           <p className="text-zinc-500 text-sm mt-8">Available 24/7 — 5-minute callback guarantee</p>
         </div>

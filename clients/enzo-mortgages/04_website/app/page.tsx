@@ -96,7 +96,7 @@ export default function HomePage() {
     <VideoModal 
       isOpen={isVideoOpen} 
       onClose={() => setIsVideoOpen(false)} 
-      videoSrc="/videos/clientvids/IMG_6141.mp4"
+      videoSrc="/videos/IMG_6181.MOV"
     />
     {/* Hero Section */}
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -140,7 +140,7 @@ export default function HomePage() {
           </Link>
           <Link
             href="/tools/calculator"
-            className="btn-luxury-ghost"
+            className="btn-luxury-outline"
             data-testid="button-calculate-payment"
           >
             <Calculator className="w-5 h-5" />
@@ -161,7 +161,7 @@ export default function HomePage() {
         suppressHydrationWarning
       />
       <Link 
-        href="tel:+19495551234" 
+        href="tel:+19495220606" 
         className="relative z-10 w-full max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 group"
         data-testid="link-call-live-person"
       >

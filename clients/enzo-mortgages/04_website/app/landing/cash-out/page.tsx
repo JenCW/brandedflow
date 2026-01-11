@@ -94,7 +94,7 @@ export default function CashOutLandingPage() {
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="#get-started" className="btn-luxury">Check My Equity <ArrowRight className="w-5 h-5" /></Link>
-                <a href="tel:+19495551234" className="btn-luxury-outline"><Phone className="w-5 h-5" />(949) 555-1234</a>
+                <a href="tel:+19495220606" className="btn-luxury-outline"><Phone className="w-5 h-5" />(949) 522-0606</a>
               </div>
 
               <div className="mt-8 inline-flex items-center gap-3 bg-zinc-900/80 border border-zinc-700 px-4 py-3">
@@ -206,7 +206,7 @@ export default function CashOutLandingPage() {
                   <li key={i} className="flex items-center gap-3 text-zinc-300"><CheckCircle className="w-5 h-5 text-primary" />{item}</li>
                 ))}
               </ul>
-              <a href="tel:+19495551234" className="btn-luxury"><Phone className="w-5 h-5" />Talk to Enzo</a>
+              <a href="tel:+19495220606" className="btn-luxury"><Phone className="w-5 h-5" />Talk to Enzo</a>
             </div>
             <div className="relative hidden lg:block">
               <div className="aspect-square relative border border-zinc-700 shadow-2xl overflow-hidden">
@@ -286,7 +286,7 @@ export default function CashOutLandingPage() {
           <p className="text-xl text-zinc-300 mb-10">Get a free equity analysis and see how much cash you could access.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/apply" className="btn-luxury">Check My Equity <ArrowRight className="w-5 h-5" /></Link>
-            <a href="tel:+19495551234" className="btn-luxury-outline"><Phone className="w-5 h-5" />(949) 555-1234</a>
+            <a href="tel:+19495220606" className="btn-luxury-outline"><Phone className="w-5 h-5" />(949) 522-0606</a>
           </div>
           <p className="text-zinc-500 text-sm mt-8">Available 24/7 — 5-minute callback guarantee</p>
         </div>

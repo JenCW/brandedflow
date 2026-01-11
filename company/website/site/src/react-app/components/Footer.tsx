@@ -10,8 +10,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-12">
           <div className="md:col-span-5">
             <div className="font-mono text-lg tracking-tight mb-6">
-              <span className="text-white font-bold">branded</span>
-              <span className="text-teal font-bold"> +flow</span>
+              <span className="text-white font-bold text-xs">branded</span>
+              <span className="text-teal font-bold">+FLOW</span>
             </div>
             <p className="text-white/50 text-sm leading-relaxed max-w-md mb-6">
               Professional business automation for Orange County small businesses. Websites, 24/7 AI phone receptionist, marketing automation, and CRM integration. Based in Irvine, CA.
@@ -88,7 +88,7 @@ export default function Footer() {
         <div className="pt-8 border-t border-white/5">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 mb-4">
             <p className="text-white/30 text-xs">
-              &copy; {currentYear} branded +flow. All rights reserved.
+              &copy; {currentYear} <span className="text-xs">branded</span>+FLOW. All rights reserved.
             </p>
             <p className="text-white/30 text-xs font-mono">
               Serving Irvine, Newport Beach, Costa Mesa & All of Orange County, California
