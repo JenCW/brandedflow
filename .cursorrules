@@ -1203,3 +1203,195 @@ If you need to execute a task that uses an execution-layer script:
 - ACK tokens are properly issued and validated
 - Self-annealing can occur when needed
 - Audit trail is maintained
+
+# ============================================
+# XVIII. VITE PROJECT ENFORCEMENT
+# ============================================
+
+## 🚨 CRITICAL: VITE vs NEXT.JS DETECTION (MANDATORY)
+
+**BEFORE writing ANY code in ANY project:**
+
+1. **Detect Project Type:**
+   ```bash
+   if grep -q '"vite"' package.json; then
+     PROJECT_TYPE="vite"
+   elif grep -q '"next"' package.json; then
+     PROJECT_TYPE="nextjs"
+   fi
+   ```
+
+2. **Read Relevant Directive:**
+   - **Vite**: `systems/doe-engine/directives/validate-vite-build.md`
+   - **Next.js**: `systems/doe-engine/directives/optimize-nextjs-security-performance.md`
+
+3. **Follow Project-Specific Rules:**
+   - **Vite**: MUST use `import.meta.env` (NEVER `process.env`)
+   - **Next.js**: MUST use `process.env` (NOT `import.meta.env`)
+
+## 🔴 VITE PROJECTS HARD STOP
+
+### Environment Variables (MANDATORY)
+
+❌ **FORBIDDEN in Vite:**
+```typescript
+process.env.VITE_API_KEY
+process.env.NODE_ENV
+process.env.RESEND_API_KEY
+```
+
+✅ **REQUIRED in Vite:**
+```typescript
+import.meta.env.VITE_API_KEY
+import.meta.env.DEV  // for development check
+import.meta.env.PROD // for production check
+import.meta.env.RESEND_API_KEY
+```
+
+### Build Validation (MANDATORY)
+
+**BEFORE EVERY commit/deployment in Vite projects:**
+```bash
+cd [vite-project-root]
+./scripts/validate-build.sh
+```
+
+**If validation fails:**
+```bash
+./systems/doe-engine/execution/fix_vite_build.sh [project-root]
+```
+
+## 🚫 CROSS-CHAT CONSISTENCY
+
+### Problem: Multiple Claude Sessions
+
+**Scenario:**
+- Claude Session A: Working on company website (Vite)
+- Claude Session B: Working on client website (Next.js)  
+- Claude Session C: Working on automation (Node.js)
+
+**Solution:**
+Each Claude session MUST:
+1. Check `.cursorrules` at repo root
+2. Detect project type (Vite vs Next.js vs other)
+3. Read relevant directive from `systems/doe-engine/directives/`
+4. Follow project-specific rules
+5. Run validation scripts
+
+### Conflict Resolution
+
+**If two Claudes give different advice:**
+
+**Wrong:**
+```
+Claude A: "Use import.meta.env"
+Claude B: "Use process.env"
+User: WTF?!
+```
+
+**Correct:**
+```
+Both Claudes: Read directive
+Directive: [project-type]-specific rule
+Both Claudes: Follow directive
+Consistency achieved
+```
+
+## 🛡️ HIERARCHY OF TRUTH
+
+**What beats what (highest to lowest):**
+
+1. 🥇 **Directive in `systems/doe-engine/directives/`** ← SOURCE OF TRUTH
+2. 🥈 User's explicit instruction
+3. 🥉 Project-specific `.cursorrules` file
+4. 4️⃣ This root `.cursorrules`
+5. 5️⃣ Claude's "best judgment"
+6. ❌ ~~Any individual Claude's opinion~~
+
+**If conflict:** Higher in hierarchy wins. Always.
+
+## 🔴 MANDATORY PRE-CODE CHECKLIST
+
+**Before writing ANY code:**
+
+```bash
+# 1. Where am I?
+pwd
+# Example: /Users/jennifercortez-walters/brandedflow/company/website/site
+
+# 2. What kind of project?
+grep -E '"vite"|"next"' package.json
+# Found "vite" → This is a Vite project
+
+# 3. Read directive
+cat systems/doe-engine/directives/validate-vite-build.md
+# Rule: Use import.meta.env, NOT process.env
+
+# 4. Write code following directive
+# ✅ import.meta.env.VITE_API_KEY
+
+# 5. Validate BEFORE showing to user
+npm run build  # Must pass
+./scripts/validate-build.sh  # Must pass
+
+# 6. Only then show code
+```
+
+## 🚨 SELF-ENFORCEMENT
+
+**Every Claude instance commits to:**
+
+1. ✅ Detect project type before coding
+2. ✅ Read directive before writing code
+3. ✅ Use correct environment variable syntax
+4. ✅ Validate build before commit
+5. ✅ Auto-fix when errors occur
+6. ✅ Update directive when learning new patterns
+7. ✅ Consistent behavior across ALL sessions
+
+**Violation consequences:**
+- Code breaks build → Auto-fix runs
+- Auto-fix fails → Manual fix + directive update
+- Pattern repeats → Add to directive prevention rules
+- System learns → Never happens again
+
+## 📋 PROJECT-SPECIFIC DIRECTIVES
+
+### Company Website (Vite)
+- **Directive:** `validate-vite-build.md`
+- **Env syntax:** `import.meta.env`
+- **Validation:** `./scripts/validate-build.sh`
+- **Auto-fix:** `./systems/doe-engine/execution/fix_vite_build.sh`
+
+### Client Websites (Next.js)
+- **Directive:** `optimize-nextjs-security-performance.md`
+- **Env syntax:** `process.env`
+- **Validation:** (Next.js built-in)
+- **Auto-fix:** (Project-specific)
+
+### Automations (Node.js)
+- **Directive:** (Task-specific)
+- **Env syntax:** `process.env` (Node.js)
+- **Validation:** (Script-specific)
+
+## 🔴 FINAL ENFORCEMENT
+
+**NO Claude instance (this chat or any other) can:**
+- ❌ Use `process.env` in Vite projects
+- ❌ Use `import.meta.env` in Next.js projects
+- ❌ Skip validation scripts
+- ❌ Commit broken builds
+- ❌ Give conflicting advice
+- ❌ Ignore directives
+
+**ALL Claude instances MUST:**
+- ✅ Read `.cursorrules` on every new conversation
+- ✅ Detect project type before coding
+- ✅ Read relevant directive
+- ✅ Follow directive exactly
+- ✅ Validate before committing
+- ✅ Be consistent across sessions
+
+**DIRECTIVES ARE THE SOURCE OF TRUTH.**
+**Not me. Not any Claude. THE DIRECTIVES.**
+

@@ -1,0 +1,95 @@
+# VITE PROJECT RULES - ENFORCED
+
+## 🚨 CRITICAL: Environment Variables
+
+**NEVER use `process.env` in Vite projects**
+
+❌ **WRONG:**
+```typescript
+process.env.VITE_API_KEY
+process.env.NODE_ENV
+process.env.RESEND_API_KEY
+```
+
+✅ **CORRECT:**
+```typescript
+import.meta.env.VITE_API_KEY
+import.meta.env.DEV  // for development check
+import.meta.env.PROD // for production check
+import.meta.env.RESEND_API_KEY
+```
+
+## 🚨 BEFORE ANY COMMIT OR DEPLOYMENT
+
+**MANDATORY:** Run validation script:
+```bash
+cd company/website/site
+./scripts/validate-build.sh
+```
+
+**If validation fails:** FIX IMMEDIATELY or commit will be blocked.
+
+## 🚨 BEFORE WRITING ANY CODE
+
+When Claude is asked to write code in a Vite project:
+
+1. **Check project type:**
+   ```bash
+   grep "vite" package.json  # If found: Vite project
+   ```
+
+2. **Use correct env syntax:**
+   - Vite: `import.meta.env.VARIABLE_NAME`
+   - Next.js: `process.env.VARIABLE_NAME`
+
+3. **Run build test BEFORE responding:**
+   ```bash
+   npm run build
+   ```
+
+4. **If build fails:** Fix ALL errors before showing code to user
+
+## Auto-Fix Available
+
+If you create build errors:
+
+```bash
+./systems/doe-engine/execution/fix_vite_build.sh company/website/site
+```
+
+This auto-fixes:
+- process.env → import.meta.env
+- Missing type declarations
+- Common import errors
+- TypeScript strict mode issues
+
+## Integration with DOE
+
+Before ANY deployment-related task:
+1. Read directive: `systems/doe-engine/directives/validate-vite-build.md`
+2. Run validation
+3. Auto-fix if needed
+4. Only proceed if build passes
+
+## Claude's Commitment
+
+**I will NEVER:**
+- Use `process.env` in Vite project source files
+- Skip build validation before deployment
+- Commit code that doesn't compile
+- Ignore TypeScript errors
+
+**I will ALWAYS:**
+- Test builds before showing code
+- Auto-fix common errors
+- Run validation scripts
+- Check project type before choosing env syntax
+- Document any manual fixes required
+
+## Consequences of Violation
+
+If Claude creates code that breaks the build:
+1. Auto-fix runs immediately
+2. Build re-tested
+3. If still broken: Claude MUST fix before proceeding
+4. Update this directive with new prevention rules

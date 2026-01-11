@@ -1,7 +1,7 @@
 import { Hono } from "hono";
 import { z } from "zod";
 import { zValidator } from "@hono/zod-validator";
-import { sendContactConfirmation, sendStaffNotification } from "./lib/email";
+import { sendEmail, sendContactConfirmation, sendStaffNotification } from "./lib/email";
 
 const app = new Hono<{ Bindings: Env }>();
 
@@ -108,7 +108,7 @@ app.post(
 
     // Notify staff about new lead magnet download
     await sendEmail({
-      to: process.env.STAFF_EMAIL || 'jen@brandedandflow.com',
+      to: 'jen@brandedandflow.com',
       subject: `New Lead Magnet Download: ${data.magnetName}`,
       html: generateStaffLeadMagnetNotification(data),
       replyTo: data.email

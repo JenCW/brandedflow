@@ -1,5 +1,15 @@
 import type { Metadata } from "next";
-import CalculatorClient from "./CalculatorClient";
+import dynamic from "next/dynamic";
+
+// Dynamic import for calculator component (heavy recharts dependency)
+const CalculatorClient = dynamic(() => import("./CalculatorClient"), {
+  ssr: false,
+  loading: () => (
+    <div className="min-h-screen flex items-center justify-center">
+      <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
+    </div>
+  )
+});
 
 export const metadata: Metadata = {
   title: "Mortgage Calculator | Enzo Mortgages",

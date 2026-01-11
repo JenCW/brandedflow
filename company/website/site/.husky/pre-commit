@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Run build validation before allowing commit
+cd company/website/site && ./scripts/validate-build.sh

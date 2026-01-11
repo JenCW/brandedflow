@@ -3,18 +3,22 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import { Shield, MapPin, Globe, Building2, ArrowRight, MessageCircle, Brain, UserCheck, Lightbulb, Home as HomeIcon, BadgeDollarSign, Clock, Heart, Calculator, FileCheck, Key, CheckCircle, Phone, Headphones } from "lucide-react";
 import FlipCard from "./components/FlipCard";
-import CalculatorSection from "./components/CalculatorSection";
 import TrustMarquee from "./components/TrustMarquee";
 import FloatInObserver from "./components/FloatInObserver";
-import LoanFinderTool from "./components/LoanFinderTool";
 import AvailabilitySection from "./components/AvailabilitySection";
 import LiveRates from "./components/LiveRates";
 import LoanProcessFlow from "./components/LoanProcessFlow";
-import VerticalTestimonialSlider from "./components/VerticalTestimonialSlider";
 import ParallaxProvider from "./components/ParallaxProvider";
-import { VideoModal, VideoButton } from "./components/VideoModal";
+
+// Dynamic imports for heavy components
+const CalculatorSection = dynamic(() => import("./components/CalculatorSection"), { ssr: false });
+const LoanFinderTool = dynamic(() => import("./components/LoanFinderTool"), { ssr: false });
+const VerticalTestimonialSlider = dynamic(() => import("./components/VerticalTestimonialSlider"), { ssr: false });
+const VideoModal = dynamic(() => import("./components/VideoModal").then(mod => ({ default: mod.VideoModal })), { ssr: false });
+const VideoButton = dynamic(() => import("./components/VideoModal").then(mod => ({ default: mod.VideoButton })), { ssr: false });
 
 const serviceCards = [
   {

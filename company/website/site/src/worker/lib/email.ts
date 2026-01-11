@@ -2,7 +2,7 @@ import { Resend } from 'resend';
 
 // Initialize Resend client
 const getResendClient = () => {
-  const apiKey = process.env.RESEND_API_KEY;
+  const apiKey = import.meta.env.RESEND_API_KEY;
 
   if (!apiKey) {
     console.warn('RESEND_API_KEY not configured - emails will not be sent');
@@ -45,7 +45,7 @@ export async function sendEmail(options: EmailOptions): Promise<{
   }
 
   try {
-    const defaultFrom = process.env.FROM_EMAIL || 'hello@brandedandflow.com';
+    const defaultFrom = import.meta.env.FROM_EMAIL || 'hello@brandedandflow.com';
 
     const { data, error } = await resend.emails.send({
       from: options.from || defaultFrom,
@@ -180,7 +180,7 @@ export async function sendStaffNotification(data: {
   message: string;
   submittedAt: string;
 }): Promise<{ success: boolean; error?: string }> {
-  const staffEmail = process.env.STAFF_EMAIL || 'jen@brandedandflow.com';
+  const staffEmail = import.meta.env.STAFF_EMAIL || 'jen@brandedandflow.com';
 
   const html = `
     <!DOCTYPE html>

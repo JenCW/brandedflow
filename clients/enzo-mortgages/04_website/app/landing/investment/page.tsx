@@ -3,10 +3,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import dynamic from "next/dynamic";
 import { Building2, Shield, TrendingUp, CheckCircle, ArrowRight, Phone, Star, DollarSign, Percent, Calculator, ChevronDown, Loader2 } from "lucide-react";
-import LeadMagnet from "@/app/components/LeadMagnet";
-import InvestorCalculator from "@/app/components/InvestorCalculator";
 import HiddenValuationForm from "@/app/components/HiddenValuationForm";
+
+// Dynamic imports for heavy components
+const LeadMagnet = dynamic(() => import("@/app/components/LeadMagnet"), { ssr: false });
+const InvestorCalculator = dynamic(() => import("@/app/components/InvestorCalculator"), { ssr: false });
 
 const benefits = [
   { icon: DollarSign, title: "No W-2 Required", description: "DSCR loans qualify you based on rental income, not personal income." },

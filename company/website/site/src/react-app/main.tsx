@@ -26,7 +26,7 @@ if (sentryDsn) {
   });
 
   // Make Sentry available globally for ErrorBoundary
-  window.Sentry = Sentry;
+  (window as any).Sentry = Sentry;
 }
 
 createRoot(document.getElementById("root")!).render(
