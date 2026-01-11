@@ -38,21 +38,6 @@ const menuItems = [
     ],
   },
   {
-    label: "Loan Guides",
-    href: "/landing",
-    icon: FileText,
-    programs: [
-      { label: "Refinance", href: "/landing/refinance" },
-      { label: "Buying", href: "/landing/buying" },
-      { label: "Cash-Out", href: "/landing/cash-out" },
-      { label: "Investment", href: "/landing/investment" },
-      { label: "VA Loan", href: "/landing/va-loan" },
-      { label: "First-Time Buyer", href: "/landing/first-time-buyer" },
-      { label: "Foreign National", href: "/landing/foreign-national" },
-      { label: "Emergency Cash", href: "/landing/emergency-cash" },
-    ],
-  },
-  {
     label: "Tools",
     href: "/tools",
     icon: Calculator,

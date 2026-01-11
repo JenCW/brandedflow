@@ -190,10 +190,10 @@ export default function BuyingLandingPage() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="#get-started" className="btn-luxury">
+                <Link href="#get-started" className="inline-flex items-center gap-2 px-8 py-4 bg-primary border border-primary text-primary-foreground font-semibold rounded hover:bg-primary/90 transition-colors">
                   Get Pre-Approved <ArrowRight className="w-5 h-5" />
                 </Link>
-                <a href="tel:+19495220606" className="btn-luxury-outline">
+                <a href="tel:+19495220606" className="inline-flex items-center gap-2 px-8 py-4 bg-transparent border border-primary text-primary font-semibold rounded hover:bg-primary hover:text-primary-foreground transition-colors">
                   <Phone className="w-5 h-5" />
                   (949) 522-0606
                 </a>
@@ -277,7 +277,7 @@ export default function BuyingLandingPage() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full btn-luxury justify-center text-lg py-4 disabled:opacity-50"
+                    className="inline-flex items-center gap-2 px-8 py-4 bg-primary border border-primary text-primary-foreground font-semibold rounded hover:bg-primary/90 transition-colors"
                     data-testid="button-hero-submit"
                   >
                     {isSubmitting ? (
@@ -358,7 +358,7 @@ export default function BuyingLandingPage() {
           </div>
 
           <div className="text-center mt-12">
-            <Link href="#get-started" className="btn-luxury">
+            <Link href="#get-started" className="inline-flex items-center gap-2 px-8 py-4 bg-primary border border-primary text-primary-foreground font-semibold rounded hover:bg-primary/90 transition-colors">
               Start Your Journey <ArrowRight className="w-5 h-5" />
             </Link>
           </div>
@@ -405,7 +405,7 @@ export default function BuyingLandingPage() {
               </div>
 
               <div className="mt-8 flex items-center gap-4">
-                <a href="tel:+19495220606" className="btn-luxury btn-shiny">
+                <a href="tel:+19495220606" className="inline-flex items-center gap-2 px-8 py-4 bg-primary border border-primary text-primary-foreground font-semibold rounded hover:bg-primary/90 transition-colors">
                   <Phone className="w-5 h-5" />
                   Call Enzo Now
                 </a>
@@ -527,10 +527,10 @@ export default function BuyingLandingPage() {
             No obligation, no credit check for pre-qualification.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/apply" className="btn-luxury">
+            <Link href="/apply" className="inline-flex items-center gap-2 px-8 py-4 bg-primary border border-primary text-primary-foreground font-semibold rounded hover:bg-primary/90 transition-colors">
               Apply Now <ArrowRight className="w-5 h-5" />
             </Link>
-            <a href="tel:+19495220606" className="btn-luxury-outline">
+            <a href="tel:+19495220606" className="inline-flex items-center gap-2 px-8 py-4 bg-transparent border border-primary text-primary font-semibold rounded hover:bg-primary hover:text-primary-foreground transition-colors">
               <Phone className="w-5 h-5" />
               Call (949) 522-0606
             </a>

@@ -100,8 +100,8 @@ export default function RefinanceLandingPage() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="#get-started" className="btn-luxury">Check My Savings <ArrowRight className="w-5 h-5" /></Link>
-                <a href="tel:+19495220606" className="btn-luxury-outline"><Phone className="w-5 h-5" />(949) 522-0606</a>
+                <Link href="#get-started" className="inline-flex items-center gap-2 px-8 py-4 bg-primary border border-primary text-primary-foreground font-semibold rounded hover:bg-primary/90 transition-colors">Check My Savings <ArrowRight className="w-5 h-5" /></Link>
+                <a href="tel:+19495220606" className="inline-flex items-center gap-2 px-8 py-4 bg-transparent border border-primary text-primary font-semibold rounded hover:bg-primary hover:text-primary-foreground transition-colors"><Phone className="w-5 h-5" />(949) 522-0606</a>
               </div>
 
               <div className="mt-8 inline-flex items-center gap-3 bg-zinc-900/80 border border-zinc-700 px-4 py-3">
@@ -140,7 +140,7 @@ export default function RefinanceLandingPage() {
                     <option value="Cash out">Access my home equity</option>
                     <option value="Remove PMI">Remove mortgage insurance</option>
                   </select>
-                  <button type="submit" disabled={isSubmitting} className="w-full btn-luxury justify-center text-lg py-4 disabled:opacity-50" data-testid="button-refi-submit">
+                  <button type="submit" disabled={isSubmitting} className="inline-flex items-center gap-2 px-8 py-4 bg-primary border border-primary text-primary-foreground font-semibold rounded hover:bg-primary/90 transition-colors" data-testid="button-refi-submit">
                     {isSubmitting ? <Loader2 className="w-5 h-5 animate-spin" /> : <>Calculate My Savings <ArrowRight className="w-5 h-5" /></>}
                   </button>
                   <p className="text-zinc-500 text-xs text-center">No credit check. No commitment.</p>
@@ -225,7 +225,7 @@ export default function RefinanceLandingPage() {
               <h2 className="text-3xl md:text-4xl font-bold text-white uppercase tracking-wide mb-6">Work Directly With <span className="text-primary">Enzo</span></h2>
               <p className="text-zinc-300 text-lg mb-4">When you refinance with Enzo Mortgages, you work with Enzo himself — not a call center.</p>
               <p className="text-zinc-300 text-lg mb-6">Enzo reviews your situation honestly and explains your options clearly. If refinancing makes sense, you'll understand exactly why. If it doesn't, you'll know that too.</p>
-              <a href="tel:+19495220606" className="btn-luxury btn-shiny"><Phone className="w-5 h-5" />Call Enzo Now</a>
+              <a href="tel:+19495220606" className="inline-flex items-center gap-2 px-8 py-4 bg-primary border border-primary text-primary-foreground font-semibold rounded hover:bg-primary/90 transition-colors"><Phone className="w-5 h-5" />Call Enzo Now</a>
             </div>
           </div>
         </div>
@@ -300,8 +300,8 @@ export default function RefinanceLandingPage() {
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white uppercase tracking-wide mb-6">Find Out How Much You Could Save</h2>
           <p className="text-xl text-zinc-300 mb-10">Get a free, no-obligation savings analysis today.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/apply" className="btn-luxury">Get My Savings Analysis <ArrowRight className="w-5 h-5" /></Link>
-            <a href="tel:+19495220606" className="btn-luxury-outline"><Phone className="w-5 h-5" />(949) 522-0606</a>
+            <Link href="/apply" className="inline-flex items-center gap-2 px-8 py-4 bg-primary border border-primary text-primary-foreground font-semibold rounded hover:bg-primary/90 transition-colors">Get My Savings Analysis <ArrowRight className="w-5 h-5" /></Link>
+            <a href="tel:+19495220606" className="inline-flex items-center gap-2 px-8 py-4 bg-transparent border border-primary text-primary font-semibold rounded hover:bg-primary hover:text-primary-foreground transition-colors"><Phone className="w-5 h-5" />(949) 522-0606</a>
           </div>
           <p className="text-zinc-500 text-sm mt-8">Available 24/7 — 5-minute callback guarantee</p>
         </div>

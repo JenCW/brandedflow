@@ -83,7 +83,7 @@ export default function Page() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="tel:+19495220606"
-              className="btn-luxury"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-primary border border-primary text-primary-foreground font-semibold rounded hover:bg-primary/90 transition-colors"
             >
               <Phone className="w-5 h-5" />
               (949) 522-0606

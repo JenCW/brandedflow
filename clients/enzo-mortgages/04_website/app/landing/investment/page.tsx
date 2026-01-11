@@ -103,8 +103,8 @@ export default function InvestmentLandingPage() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="#calculator" className="btn-luxury"><Calculator className="w-5 h-5" />Calculate DSCR</Link>
-                <a href="tel:+19495220606" className="btn-luxury-outline"><Phone className="w-5 h-5" />(949) 522-0606</a>
+                <Link href="#calculator" className="inline-flex items-center gap-2 px-8 py-4 bg-primary border border-primary text-primary-foreground font-semibold rounded hover:bg-primary/90 transition-colors"><Calculator className="w-5 h-5" />Calculate DSCR</Link>
+                <a href="tel:+19495220606" className="inline-flex items-center gap-2 px-8 py-4 bg-transparent border border-primary text-primary font-semibold rounded hover:bg-primary hover:text-primary-foreground transition-colors"><Phone className="w-5 h-5" />(949) 522-0606</a>
               </div>
 
               <div className="mt-8 inline-flex items-center gap-3 bg-zinc-900/80 border border-zinc-700 px-4 py-3">
@@ -143,7 +143,7 @@ export default function InvestmentLandingPage() {
                     <option value="Refinance existing">Refinance existing rentals</option>
                     <option value="Cash out equity">Cash out rental equity</option>
                   </select>
-                  <button type="submit" disabled={isSubmitting} className="w-full btn-luxury justify-center text-lg py-4 disabled:opacity-50" data-testid="button-investor-submit">
+                  <button type="submit" disabled={isSubmitting} className="inline-flex items-center gap-2 px-8 py-4 bg-primary border border-primary text-primary-foreground font-semibold rounded hover:bg-primary/90 transition-colors" data-testid="button-investor-submit">
                     {isSubmitting ? <Loader2 className="w-5 h-5 animate-spin" /> : <>Get Pre-Approved <ArrowRight className="w-5 h-5" /></>}
                   </button>
                   <p className="text-zinc-500 text-xs text-center">No personal income verification needed for DSCR.</p>
@@ -291,8 +291,8 @@ export default function InvestmentLandingPage() {
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white uppercase tracking-wide mb-6">Ready To Grow Your Portfolio?</h2>
           <p className="text-xl text-zinc-300 mb-10">Get pre-approved for investor financing today. No W-2 required.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/apply" className="btn-luxury">Get Pre-Approved <ArrowRight className="w-5 h-5" /></Link>
-            <a href="tel:+19495220606" className="btn-luxury-outline"><Phone className="w-5 h-5" />(949) 522-0606</a>
+            <Link href="/apply" className="inline-flex items-center gap-2 px-8 py-4 bg-primary border border-primary text-primary-foreground font-semibold rounded hover:bg-primary/90 transition-colors">Get Pre-Approved <ArrowRight className="w-5 h-5" /></Link>
+            <a href="tel:+19495220606" className="inline-flex items-center gap-2 px-8 py-4 bg-transparent border border-primary text-primary font-semibold rounded hover:bg-primary hover:text-primary-foreground transition-colors"><Phone className="w-5 h-5" />(949) 522-0606</a>
           </div>
           <p className="text-zinc-500 text-sm mt-8">Available 24/7 — 5-minute callback guarantee</p>
         </div>

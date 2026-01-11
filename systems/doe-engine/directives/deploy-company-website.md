@@ -26,6 +26,20 @@ Deploy the transformed BrandedFlow company website to Netlify with all award-win
 
 ## Build Requirements
 
+### Required Node.js version:
+**Version:** 20 or higher
+**Set in:** `company/website/site/netlify.toml` (line 6)
+**Content:**
+```toml
+[build.environment]
+  NODE_VERSION = "20"
+```
+
+**Why:**
+- Wrangler (Cloudflare Workers build tool) requires Node 20+
+- Without Node 20+, build fails with: "The 'wrangler' package requires Node.js version 20 or higher"
+- DO NOT use Node 18 - it will fail
+
 ### Required .npmrc file:
 **Location:** `company/website/site/.npmrc`
 **Content:**
@@ -94,10 +108,12 @@ Replace placeholders before deploy:
    ```
 
 3. **Configure Netlify:**
-   - Build command: `cd company/website/site && npm install --legacy-peer-deps && npm run build`
+   - Base directory: `company/website/site`
+   - Build command: `npm run cf-typegen && npm run build`
    - Publish directory: `company/website/site/dist/client`
-   - Node version: 20.x
+   - Node version: 20 (set in netlify.toml)
    - Environment variables: Add all from above
+   - Note: npm install runs automatically using .npmrc (no need to include in build command)
 
 4. **Deploy:**
    - Netlify auto-deploys on push to main
