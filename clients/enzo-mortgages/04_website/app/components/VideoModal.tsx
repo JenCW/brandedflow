@@ -160,17 +160,11 @@ export function VideoButton({ onClick, className = "" }: VideoButtonProps) {
   return (
     <button
       onClick={onClick}
-      className={`group inline-flex flex-col items-center gap-5 p-8 rounded-2xl bg-zinc-900/60 backdrop-blur-sm border border-zinc-700/50 hover:border-primary/50 hover:bg-zinc-900/90 transition-all duration-300 shadow-xl hover:shadow-2xl ${className}`}
+      className={`inline-flex items-center gap-2 px-8 py-4 bg-primary border border-primary text-primary-foreground font-semibold rounded hover:bg-primary/90 transition-colors ${className}`}
       data-testid="button-watch-video"
     >
-      <span className="relative flex items-center justify-center w-28 h-28 rounded-full bg-primary/90 border-4 border-primary/30 group-hover:scale-110 group-hover:bg-primary transition-all duration-300 shadow-2xl shadow-primary/40">
-        <Play className="w-14 h-14 text-primary-foreground fill-primary-foreground ml-1" />
-        <span className="absolute inset-0 rounded-full border-4 border-primary/60 animate-ping opacity-20" />
-      </span>
-      <span className="text-white text-xl font-bold uppercase tracking-widest group-hover:text-primary transition-colors">
-        Watch Video
-      </span>
-      <span className="text-zinc-300 text-base">See how we help homeowners like you</span>
+      <Play className="w-5 h-5" />
+      Learn More
     </button>
   );
 }

@@ -1,10 +1,9 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import dynamic from "next/dynamic";
-import { Shield, MapPin, Globe, Building2, ArrowRight, MessageCircle, Brain, UserCheck, Lightbulb, Home as HomeIcon, BadgeDollarSign, Clock, Heart, Calculator, FileCheck, Key, CheckCircle, Phone, Headphones } from "lucide-react";
+import { Shield, MapPin, Globe, Building2, ArrowRight, MessageCircle, Brain, UserCheck, Lightbulb, Home as HomeIcon, BadgeDollarSign, Clock, Heart, FileCheck, Key, CheckCircle, Phone, Headphones } from "lucide-react";
 import FlipCard from "./components/FlipCard";
 import TrustMarquee from "./components/TrustMarquee";
 import FloatInObserver from "./components/FloatInObserver";
@@ -17,8 +16,6 @@ import ParallaxProvider from "./components/ParallaxProvider";
 const CalculatorSection = dynamic(() => import("./components/CalculatorSection"), { ssr: false });
 const LoanFinderTool = dynamic(() => import("./components/LoanFinderTool"), { ssr: false });
 const VerticalTestimonialSlider = dynamic(() => import("./components/VerticalTestimonialSlider"), { ssr: false });
-const VideoModal = dynamic(() => import("./components/VideoModal").then(mod => ({ default: mod.VideoModal })), { ssr: false });
-const VideoButton = dynamic(() => import("./components/VideoModal").then(mod => ({ default: mod.VideoButton })), { ssr: false });
 
 const serviceCards = [
   {
@@ -92,16 +89,9 @@ const buyerJourneySteps = [
 ];
 
 export default function HomePage() {
-  const [isVideoOpen, setIsVideoOpen] = useState(false);
-
   return (
     <ParallaxProvider>
     <FloatInObserver>
-    <VideoModal 
-      isOpen={isVideoOpen} 
-      onClose={() => setIsVideoOpen(false)} 
-      videoSrc="/videos/IMG_6181.MOV"
-    />
     {/* Hero Section */}
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with Ken Burns */}
@@ -137,23 +127,19 @@ export default function HomePage() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up animation-delay-400">
           <Link
             href="/apply"
-            className="btn-luxury btn-shiny animate-glow-pulse"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-primary border border-primary text-primary-foreground font-semibold rounded hover:bg-primary/90 transition-colors"
             data-testid="button-get-prequalified"
           >
-            Apply Now
+            Apply Now <ArrowRight className="w-5 h-5" />
           </Link>
           <Link
-            href="/tools/calculator"
-            className="btn-luxury-outline"
-            data-testid="button-calculate-payment"
+            href="/contact"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-transparent border border-primary text-primary font-semibold rounded hover:bg-primary hover:text-primary-foreground transition-colors"
+            data-testid="button-contact"
           >
-            <Calculator className="w-5 h-5" />
-            Calculate Payment
+            <Phone className="w-5 h-5" />
+            Contact Us
           </Link>
-        </div>
-        
-        <div className="mt-10 animate-fade-in-up animation-delay-500">
-          <VideoButton onClick={() => setIsVideoOpen(true)} />
         </div>
       </div>
     </section>
@@ -288,7 +274,7 @@ export default function HomePage() {
         <div className="text-center mt-12 float-in">
           <Link
             href="/apply"
-            className="btn-luxury"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-primary border border-primary text-primary-foreground font-semibold rounded hover:bg-primary/90 transition-colors"
             data-testid="button-start-journey"
           >
             Apply Now <ArrowRight className="w-5 h-5" />
@@ -501,17 +487,18 @@ export default function HomePage() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center float-in">
           <Link
             href="/apply"
-            className="btn-luxury"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-primary border border-primary text-primary-foreground font-semibold rounded hover:bg-primary/90 transition-colors"
             data-testid="button-start-application"
           >
-            Apply Now
+            Apply Now <ArrowRight className="w-5 h-5" />
           </Link>
           <Link
             href="/contact"
-            className="btn-luxury-outline"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-transparent border border-primary text-primary font-semibold rounded hover:bg-primary hover:text-primary-foreground transition-colors"
             data-testid="button-talk-to-enzo"
           >
-            Talk to Enzo
+            <Phone className="w-5 h-5" />
+            Contact Us
           </Link>
         </div>
       </div>
